@@ -1,0 +1,11 @@
+node_modules
+.next
+.vercel
+.git
+.env*
+*.log
+.DS_Store
+about-banner-desktop.png
+ABOUT_*_IMPLEMENTATION_PLAN.md
+PROJECT_DOCUMENTATION.md
+why_Patients_choose

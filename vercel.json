@@ -1,0 +1,16 @@
+{
+  "rewrites": [
+    {
+      "source": "/home",
+      "destination": "/"
+    },
+    {
+      "source": "/about-us",
+      "destination": "/about"
+    },
+    {
+      "source": "/privacy",
+      "destination": "/privacy-policy"
+    }
+  ]
+}
