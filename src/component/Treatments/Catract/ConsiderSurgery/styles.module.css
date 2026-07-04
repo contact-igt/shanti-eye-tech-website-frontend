@@ -1,0 +1,167 @@
+.section {
+  position: relative;
+  width: min(1920px, calc(100vw - 20px));
+  margin: 0 auto;
+  padding: 100px 6.8%;
+  background: #f4efea;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 18px;
+  border-radius: 99px;
+  background: rgba(22, 193, 228, 0.08);
+  color: #15bfdf;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+
+.title {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(38px, 3.2vw, 54px);
+  line-height: 1.1;
+  color: #263746;
+  margin: 0 0 48px;
+  font-weight: 500;
+}
+
+.contentGrid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 60px;
+  width: 100%;
+  align-items: start;
+}
+
+.leftCol {
+  display: flex;
+  flex-direction: column;
+}
+
+.subtitle {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(26px, 2.2vw, 36px);
+  line-height: 1.2;
+  color: #263746;
+  margin: 0 0 32px;
+  font-weight: 500;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.listItem {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: clamp(16px, 1.4vw, 20px);
+  color: #5b6e80;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.checkIcon {
+  width: clamp(26px, 2.2vw, 32px);
+  height: clamp(26px, 2.2vw, 32px);
+  flex-shrink: 0;
+}
+
+.rightCol {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.bentoGrid {
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr;
+  gap: 20px;
+  width: 100%;
+}
+
+.bentoCard {
+  background: #d9d9d9;
+  border-radius: 20px;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.bentoCard:hover {
+  transform: translateY(-4px);
+  background: #cfcfcf;
+}
+
+.card1 {
+  min-height: 140px;
+}
+
+.card2 {
+  min-height: 140px;
+}
+
+.card3 {
+  min-height: 180px;
+}
+
+.card4 {
+  min-height: 180px;
+}
+
+@media (max-width: 1024px) {
+  .section {
+    padding: 80px 32px;
+  }
+
+  .contentGrid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+}
+
+@media (max-width: 720px) {
+  .section {
+    padding: 60px 20px;
+  }
+
+  .title {
+    font-size: 32px;
+    margin-bottom: 32px;
+  }
+
+  .subtitle {
+    font-size: 24px;
+    margin-bottom: 24px;
+  }
+
+  .bentoGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .card1, .card2, .card3, .card4 {
+    min-height: 110px;
+    border-radius: 14px;
+  }
+}

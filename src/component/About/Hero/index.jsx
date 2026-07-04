@@ -59,8 +59,20 @@ export default function AboutHero() {
             <motion.h1 className={playfair.className} variants={reveal}>Peaceful, Advanced<br /><span>&amp;</span> Personalised<br />Eye Care.</motion.h1>
             <motion.p variants={reveal}>{heroContent.description}</motion.p>
             <motion.div className="about-banner-actions" variants={reveal}>
-              <a className="about-banner-button about-banner-button--primary" href="#about-story">Know Our Story</a>
-              <a className="about-banner-button" href="#doctor-section">Meet Our Doctor</a>
+              <a className="cta-button cta-button--primary" href="#about-story">
+                <span className="cta-button-fill" aria-hidden="true" />
+                <span className="cta-button-text">Know Our Story</span>
+                <span className="arrow-icon" aria-hidden="true">
+                  <span />
+                </span>
+              </a>
+              <a className="cta-button cta-button--secondary" href="#doctor-section">
+                <span className="cta-button-fill" aria-hidden="true" />
+                <span className="cta-button-text">Meet Our Doctor</span>
+                <span className="arrow-icon" aria-hidden="true">
+                  <span />
+                </span>
+              </a>
             </motion.div>
           </div>
         </motion.div>

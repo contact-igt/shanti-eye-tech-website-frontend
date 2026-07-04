@@ -353,6 +353,98 @@ main {
   opacity: 0.62;
 }
 
+/* Dropdown Menu Styles */
+.nav-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.nav-dropdown-trigger {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  color: var(--ink);
+  font-weight: 500;
+  transition: opacity 220ms var(--ease);
+}
+
+.nav-dropdown-trigger:hover {
+  opacity: 0.62;
+}
+
+.nav-dropdown-chevron {
+  font-size: 10px;
+  margin-top: 1px;
+  transition: transform 0.25s var(--ease);
+}
+
+.nav-dropdown:hover .nav-dropdown-chevron,
+.nav-dropdown:focus-within .nav-dropdown-chevron {
+  transform: rotate(180deg);
+}
+
+.nav-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(8px);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.02);
+  border-radius: 14px;
+  padding: 8px;
+  min-width: 150px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s var(--ease), transform 0.25s var(--ease), visibility 0.25s var(--ease);
+  z-index: 100;
+}
+
+.nav-dropdown:hover .nav-dropdown-menu,
+.nav-dropdown:focus-within .nav-dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0px);
+}
+
+.nav-dropdown-menu a {
+  display: flex;
+  align-items: center;
+  padding: 10px 16px;
+  font-size: 15px;
+  color: var(--ink) !important;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  white-space: nowrap;
+}
+
+.nav-dropdown-menu a:hover {
+  background-color: rgba(22, 193, 228, 0.09);
+  color: #15bfdf !important;
+  opacity: 1 !important;
+  transform: translateX(2px);
+}
+
+@media (max-width: 900px) {
+  .nav-dropdown-menu {
+    right: 0;
+    left: auto;
+    transform: translateY(8px);
+  }
+  .nav-dropdown:hover .nav-dropdown-menu,
+  .nav-dropdown:focus-within .nav-dropdown-menu {
+    transform: translateY(0px);
+  }
+}
+
+
 .menu-button {
   width: 64px;
   height: 42px;
@@ -372,6 +464,7 @@ main {
   height: 3px;
   border-radius: 99px;
   background: var(--white);
+  transition: transform 0.25s var(--ease), opacity 0.25s var(--ease), width 0.25s var(--ease);
 }
 
 .menu-button span:nth-child(2) {
@@ -380,6 +473,20 @@ main {
 
 .menu-button span:nth-child(3) {
   width: 8px;
+}
+
+.menu-button.menu-open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+  width: 22px;
+}
+
+.menu-button.menu-open span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-button.menu-open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+  width: 22px;
 }
 
 .feature-pill {
@@ -1590,6 +1697,77 @@ main {
   .hero-canvas {
     width: calc(100% - 24px);
     gap: 12px;
+  }
+
+  .nav-links {
+    top: 24px;
+    right: 24px;
+  }
+
+  .nav-links:not(.nav-open) > a,
+  .nav-links:not(.nav-open) .nav-dropdown {
+    display: none;
+  }
+
+  .nav-links.nav-open {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    box-shadow: 0 20px 48px rgba(39, 55, 65, 0.16);
+    border-radius: 20px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+    min-width: 220px;
+    z-index: 1000;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+  }
+
+  .nav-links.nav-open .menu-button {
+    align-self: flex-end;
+    margin-bottom: 8px;
+  }
+
+  .nav-links.nav-open > a {
+    display: block;
+    padding: 10px 14px;
+    color: var(--ink);
+    font-size: 16px;
+    border-radius: 12px;
+    transition: background-color 0.2s ease;
+  }
+
+  .nav-links.nav-open > a:hover {
+    background-color: rgba(22, 193, 228, 0.08);
+    opacity: 1;
+  }
+
+  .nav-links.nav-open .nav-dropdown {
+    display: block;
+  }
+
+  .nav-links.nav-open .nav-dropdown-trigger {
+    padding: 10px 14px;
+    font-size: 16px;
+  }
+
+  .nav-links.nav-open .nav-dropdown-menu {
+    position: static;
+    transform: none;
+    opacity: 1;
+    visibility: visible;
+    box-shadow: none;
+    background: transparent;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    border: none;
   }
 
   .copy-card,

@@ -89,10 +89,11 @@ export default function AboutCTA() {
             viewport={sectionViewport}
             transition={{ duration: 0.52, delay: 0.3, ease }}
           >
-            <Link className="about-cta-button" href={aboutCtaContent.href}>
-              <span>{aboutCtaContent.buttonLabel}</span>
-              <span className="about-cta-button-icon" aria-hidden="true">
-                <ArrowRight strokeWidth={1.8} />
+            <Link className="cta-button cta-button--primary" href={aboutCtaContent.href}>
+              <span className="cta-button-fill" aria-hidden="true" />
+              <span className="cta-button-text">{aboutCtaContent.buttonLabel}</span>
+              <span className="arrow-icon" aria-hidden="true">
+                <span />
               </span>
             </Link>
           </motion.div>

@@ -56,7 +56,7 @@ function FAQItem({ item, isOpen, onToggle }) {
   );
 }
 
-export default function FAQ() {
+export default function FAQ({ content = aboutFaqContent }) {
   const [openId, setOpenId] = useState(null);
 
   const handleToggle = (id) => {
@@ -80,13 +80,13 @@ export default function FAQ() {
           <span className="about-faq-phone" aria-hidden="true">
             <Phone fill="currentColor" strokeWidth={1.8} />
           </span>
-          <p>{aboutFaqContent.callout}</p>
+          <p>{content.callout}</p>
           <Link className="about-faq-book" href="/#contact">
             <CalendarDays aria-hidden="true" strokeWidth={1.7} />
             <span>Book a call</span>
           </Link>
-          <a className="about-faq-email" href={`mailto:${aboutFaqContent.email}`}>
-            or {aboutFaqContent.email}
+          <a className="about-faq-email" href={`mailto:${content.email}`}>
+            or {content.email}
           </a>
         </motion.aside>
 
@@ -100,13 +100,13 @@ export default function FAQ() {
           <motion.div className="about-faq-heading" variants={reveal}>
             <span className="about-faq-eyebrow">
               <i aria-hidden="true" />
-              {aboutFaqContent.eyebrow}
+              {content.eyebrow}
             </span>
-            <h2 id="about-faq-title">{aboutFaqContent.title}</h2>
+            <h2 id="about-faq-title">{content.title}</h2>
           </motion.div>
 
           <motion.div className="about-faq-list" variants={stagger}>
-            {aboutFaqContent.items.map((item) => (
+            {content.items.map((item) => (
               <FAQItem
                 key={item.id}
                 item={item}

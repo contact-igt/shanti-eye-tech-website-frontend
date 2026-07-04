@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import Link from "next/link";
 import {
   AnimatePresence,
   motion,
@@ -143,13 +144,14 @@ function CTAButton({ children, variant = "primary" }) {
   );
 }
 
-function MenuButton() {
+function MenuButton({ isOpen, onClick }) {
   return (
     <motion.button
-      className="menu-button"
-      aria-label="Open menu"
+      className={`menu-button ${isOpen ? "menu-open" : ""}`}
+      aria-label={isOpen ? "Close menu" : "Open menu"}
       whileHover={{ y: -2 }}
       whileTap={{ scale: 0.96 }}
+      onClick={onClick}
     >
       <span />
       <span />
@@ -237,12 +239,6 @@ function HeroImage() {
         <div className="image-overlay" />
       </div>
 
-      <nav className="nav-links" aria-label="Primary navigation">
-        <a href="#home">Home</a>
-        <a href="about">About</a>
-        <a href="#contact">Contact</a>
-        <MenuButton />
-      </nav>
 
       <FeaturePill
         className="pill-rating"
@@ -279,8 +275,26 @@ function HeroImage() {
 }
 
 function Hero() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   return (
     <section className="hero-canvas" id="home">
+      <nav className={`nav-links ${isMenuOpen ? "nav-open" : ""}`} aria-label="Primary navigation">
+        <Link href="#home" onClick={() => setIsMenuOpen(false)}>Home</Link>
+        <div className="nav-dropdown">
+          <span className="nav-dropdown-trigger">
+            Treatments <span className="nav-dropdown-chevron">▼</span>
+          </span>
+          <div className="nav-dropdown-menu">
+            <Link href="/treatments/lasik" onClick={() => setIsMenuOpen(false)}>LASIK</Link>
+            <Link href="/treatments/catract" onClick={() => setIsMenuOpen(false)}>Cataract</Link>
+          </div>
+        </div>
+        <Link href="/about" onClick={() => setIsMenuOpen(false)}>About</Link>
+        <Link href="#contact" onClick={() => setIsMenuOpen(false)}>Contact</Link>
+        <MenuButton isOpen={isMenuOpen} onClick={() => setIsMenuOpen(!isMenuOpen)} />
+      </nav>
+
       <motion.article
         className="copy-card"
         variants={stagger}

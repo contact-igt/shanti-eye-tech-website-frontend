@@ -94,13 +94,19 @@ export default function KnowYourDoctor() {
           </motion.div>
 
           <motion.div className="about-doctor-actions" variants={reveal}>
-            <Link className="about-doctor-button about-doctor-button--primary" href="/#contact">
-              <span>Book a Consultation</span>
-              <ArrowRight aria-hidden="true" strokeWidth={1.7} />
+            <Link className="cta-button cta-button--primary" href="/#contact">
+              <span className="cta-button-fill" aria-hidden="true" />
+              <span className="cta-button-text">Book a Consultation</span>
+              <span className="arrow-icon" aria-hidden="true">
+                <span />
+              </span>
             </Link>
-            <a className="about-doctor-button" href="tel:+919179191939">
-              <span>Call Now !</span>
-              <ArrowRight aria-hidden="true" strokeWidth={1.7} />
+            <a className="cta-button cta-button--secondary" href="tel:+919179191939">
+              <span className="cta-button-fill" aria-hidden="true" />
+              <span className="cta-button-text">Call Now !</span>
+              <span className="arrow-icon" aria-hidden="true">
+                <span />
+              </span>
             </a>
           </motion.div>
         </div>

@@ -1,0 +1,237 @@
+.section {
+  width: 100%;
+  margin: 0 auto;
+  padding: 80px 0 60px;
+  background: #f0ebe5;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.inner {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 22px;
+  border-radius: 99px;
+  background: #ffffff;
+  color: #293747;
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 18px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+  letter-spacing: 0.3px;
+}
+
+.title {
+  color: #1a2b3c;
+  font-size: clamp(42px, 5.2vw, 72px);
+  margin: 0 0 44px;
+  font-weight: 700;
+  text-align: center;
+  line-height: 1.05;
+}
+
+/* ---- Carousel ---- */
+
+.carouselOuter {
+  position: relative;
+  width: 100%;
+}
+
+.carouselContainer {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1.2vw;
+  padding: 0 2vw;
+  box-sizing: border-box;
+}
+
+/* ---- Cards ---- */
+
+.centerCard,
+.sideCard {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #d6e2ee;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  flex-shrink: 0;
+}
+
+/* Center: 34vw wide, taller */
+.centerCard {
+  width: 34vw;
+  height: 36vw;
+  max-height: 520px;
+  z-index: 5;
+}
+
+/* Side cards: 28vw wide, shorter, pushed down with margin-top */
+.sideCard {
+  width: 28vw;
+  height: 22vw;
+  max-height: 340px;
+  margin-top: 11vw;
+  z-index: 3;
+}
+
+/* Let the side cards overflow past viewport naturally */
+.sideCardLeft {
+  transform: translateX(-8vw);
+}
+
+.sideCardRight {
+  transform: translateX(8vw);
+}
+
+.cardImage {
+  object-fit: cover;
+  z-index: 0;
+}
+
+.cardGradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(214, 226, 238, 0.92) 0%,
+    rgba(214, 226, 238, 0.35) 25%,
+    transparent 42%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+.centerTitle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  padding: 28px 32px;
+  margin: 0;
+  color: #1a2b3c;
+  font-size: clamp(24px, 2.4vw, 36px);
+  font-weight: 600;
+  line-height: 1.18;
+  max-width: 85%;
+}
+
+.sideTitle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  padding: 18px 20px;
+  margin: 0;
+  color: #293747;
+  font-size: clamp(13px, 1.1vw, 17px);
+  font-weight: 500;
+  line-height: 1.25;
+}
+
+/* ---- Navigation ---- */
+
+.navButton {
+  position: absolute;
+  /* Vertically center on the side cards */
+  bottom: calc(11vw + 1vw);
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 15;
+  color: #293747;
+  transition: all 0.25s ease;
+  padding: 0;
+}
+
+.navButton:hover {
+  background: #ffffff;
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.12);
+  transform: scale(1.06);
+}
+
+.prevButton {
+  left: 2vw;
+}
+
+.nextButton {
+  right: 2vw;
+}
+
+.navIcon {
+  width: 16px;
+  height: 16px;
+}
+
+/* ---- Responsive ---- */
+
+@media (max-width: 768px) {
+  .section {
+    padding: 50px 0 40px;
+  }
+  .title {
+    margin-bottom: 30px;
+  }
+  .centerCard {
+    width: 46vw;
+    height: 50vw;
+  }
+  .sideCard {
+    width: 34vw;
+    height: 30vw;
+    margin-top: 14vw;
+  }
+  .sideCardLeft {
+    transform: translateX(-10vw);
+  }
+  .sideCardRight {
+    transform: translateX(10vw);
+  }
+  .navButton {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+@media (max-width: 490px) {
+  .centerCard {
+    width: 56vw;
+    height: 62vw;
+  }
+  .sideCard {
+    width: 36vw;
+    height: 34vw;
+    margin-top: 18vw;
+  }
+  .sideCardLeft {
+    transform: translateX(-12vw);
+  }
+  .sideCardRight {
+    transform: translateX(12vw);
+  }
+  .centerTitle {
+    padding: 16px 18px;
+    font-size: 20px;
+  }
+  .sideTitle {
+    padding: 12px 14px;
+    font-size: 12px;
+  }
+}
