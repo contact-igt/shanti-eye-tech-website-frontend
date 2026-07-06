@@ -1,0 +1,180 @@
+.section {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 100px 24px 110px;
+  background: #f4f0eb;
+  box-sizing: border-box;
+}
+
+/* Decorative rings — same style as About FAQ */
+.section::before,
+.section::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.section::before {
+  left: -260px;
+  top: 260px;
+  width: 720px;
+  height: 720px;
+  border: 110px solid rgba(255, 255, 255, 0.2);
+}
+
+.section::after {
+  right: -260px;
+  bottom: -420px;
+  width: 760px;
+  height: 760px;
+  border: 120px solid rgba(197, 192, 188, 0.18);
+}
+
+.inner {
+  position: relative;
+  z-index: 1;
+  max-width: 860px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ── Badge ── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 20px;
+  border-radius: 999px;
+  background: #e8e4de;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  color: #7a7068;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 26px;
+}
+
+.badge::before {
+  content: "✦";
+  font-size: 9px;
+}
+
+/* ── Heading ── */
+.heading {
+  margin: 0 0 52px;
+  text-align: center;
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: -0.04em;
+  color: #0d2040;
+}
+
+.headingAccent {
+  display: block;
+  color: #13c5e8;
+}
+
+/* ── FAQ list ── */
+.list {
+  width: 100%;
+}
+
+.item {
+  border-bottom: 1.5px solid rgba(72, 65, 61, 0.1);
+}
+
+.item:first-child {
+  border-top: 1.5px solid rgba(72, 65, 61, 0.1);
+}
+
+.questionBtn {
+  width: 100%;
+  min-height: 76px;
+  padding: 18px 0;
+  border: 0;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.questionText {
+  font-size: 16.5px;
+  font-weight: 700;
+  color: #0d2040;
+  line-height: 1.35;
+  letter-spacing: -0.015em;
+  flex: 1;
+}
+
+/* Toggle circle — lavender/periwinkle, matching screenshot */
+.toggle {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #ced4f0;
+  display: grid;
+  place-items: center;
+  transition: background 220ms ease;
+}
+
+.toggle svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: #3b4dab;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  transition: stroke 220ms ease;
+}
+
+.questionBtn:hover .toggle {
+  background: #bcc4ec;
+}
+
+/* Answer */
+.answerWrap {
+  overflow: hidden;
+}
+
+.answerWrap p {
+  margin: 0 0 22px;
+  padding-right: 60px;
+  color: #7a8898;
+  font-size: 14.5px;
+  line-height: 1.65;
+  font-weight: 400;
+  max-width: 720px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 640px) {
+  .section {
+    padding: 72px 18px 80px;
+  }
+
+  .heading {
+    font-size: 30px;
+    margin-bottom: 36px;
+  }
+
+  .questionText {
+    font-size: 15px;
+  }
+
+  .answerWrap p {
+    padding-right: 0;
+    font-size: 14px;
+  }
+}

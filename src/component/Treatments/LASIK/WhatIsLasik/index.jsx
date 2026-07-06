@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import Image from "next/image";
 import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 import { Playfair_Display } from "next/font/google";
 import styles from "./styles.module.css";
@@ -38,6 +39,7 @@ export default function WhatIsLasikSection({ content }) {
 
   return (
     <section className={styles.section} aria-labelledby="what-is-lasik-title" ref={sectionRef}>
+      {/* badge + title + first paragraph inside padded inner */}
       <div className={styles.inner}>
         <span className={styles.badge}>{content.badge}</span>
 
@@ -49,7 +51,14 @@ export default function WhatIsLasikSection({ content }) {
           </div>
 
           <div className={styles.visual} aria-hidden="true">
-            <span className={styles.visualFill} />
+            <Image
+              src="/assets/Treatments/LASIK/92a1835e1ef63ae90a3cc2d7cc296acf44366304.png"
+              alt=""
+              fill
+              className={styles.visualImg}
+              sizes="(max-width:768px) 80vw, 45vw"
+              priority
+            />
           </div>
         </div>
 
@@ -66,12 +75,22 @@ export default function WhatIsLasikSection({ content }) {
             </ScrollTextWord>
           ))}
         </p>
+      </div>
 
-        <div className={styles.middleVisual}>
-          <span className={styles.middleVisualFill} />
-        </div>
+      {/* Full-bleed banner — outside .inner, no padding, no border-radius */}
+      <div className={styles.middleVisual}>
+        <Image
+          src="/assets/Treatments/LASIK/fcaf36b415bc029b876282b7c58e920d8be0fdf7.png"
+          alt="LASIK laser eye surgery procedure"
+          fill
+          className={styles.middleVisualImg}
+          sizes="100vw"
+        />
+      </div>
 
-        <p className={styles.description}>
+      {/* Second paragraph back inside padded inner */}
+      <div className={styles.inner}>
+        <p className={`${styles.description} ${styles.descriptionCenter}`}>
           {wordsTwo.map((word, wordIndex) => (
             <ScrollTextWord
               key={`two-${wordIndex}-${word}`}

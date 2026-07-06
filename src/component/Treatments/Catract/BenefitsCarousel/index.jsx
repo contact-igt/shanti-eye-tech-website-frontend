@@ -15,14 +15,17 @@ const playfairDisplay = Playfair_Display({
 
 export default function BenefitsCarouselSection({ content }) {
   const [currentIndex, setCurrentIndex] = useState(1);
+  const [slideDirection, setSlideDirection] = useState(1);
 
   const total = content?.cards?.length || 1;
 
   const handleNext = useCallback(() => {
+    setSlideDirection(1);
     setCurrentIndex((prev) => (prev + 1) % total);
   }, [total]);
 
   const handlePrev = useCallback(() => {
+    setSlideDirection(-1);
     setCurrentIndex((prev) => (prev - 1 + total) % total);
   }, [total]);
 
@@ -35,6 +38,21 @@ export default function BenefitsCarouselSection({ content }) {
   const centerCard = content.cards[centerIdx];
   const leftCard = content.cards[leftIdx];
   const rightCard = content.cards[rightIdx];
+  const slideTransition = { duration: 0.54, ease: [0.32, 0.72, 0, 1] };
+  const slideVariants = {
+    enter: (direction) => ({
+      opacity: 0,
+      x: direction > 0 ? 90 : -90,
+    }),
+    center: {
+      opacity: 1,
+      x: 0,
+    },
+    exit: (direction) => ({
+      opacity: 0,
+      x: direction > 0 ? -90 : 90,
+    }),
+  };
 
   return (
     <section className={styles.section} aria-labelledby="benefits-carousel-title">
@@ -51,14 +69,16 @@ export default function BenefitsCarouselSection({ content }) {
         <div className={styles.carouselOuter}>
           <div className={styles.carouselContainer}>
             {/* Left side card */}
-            <AnimatePresence mode="popLayout">
+            <AnimatePresence mode="popLayout" custom={slideDirection}>
               <motion.div
                 key={`left-${leftIdx}`}
                 className={`${styles.sideCard} ${styles.sideCardLeft}`}
-                initial={{ opacity: 0, x: -30 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -30 }}
-                transition={{ duration: 0.5, ease: [0.32, 0.72, 0, 1] }}
+                custom={slideDirection}
+                variants={slideVariants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                transition={slideTransition}
               >
                 <Image
                   src={leftCard.image}
@@ -73,14 +93,16 @@ export default function BenefitsCarouselSection({ content }) {
             </AnimatePresence>
 
             {/* Center card */}
-            <AnimatePresence mode="popLayout">
+            <AnimatePresence mode="popLayout" custom={slideDirection}>
               <motion.div
                 key={`center-${centerIdx}`}
                 className={styles.centerCard}
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.5, ease: [0.32, 0.72, 0, 1] }}
+                custom={slideDirection}
+                variants={slideVariants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                transition={slideTransition}
               >
                 <Image
                   src={centerCard.image}
@@ -97,14 +119,16 @@ export default function BenefitsCarouselSection({ content }) {
             </AnimatePresence>
 
             {/* Right side card */}
-            <AnimatePresence mode="popLayout">
+            <AnimatePresence mode="popLayout" custom={slideDirection}>
               <motion.div
                 key={`right-${rightIdx}`}
                 className={`${styles.sideCard} ${styles.sideCardRight}`}
-                initial={{ opacity: 0, x: 30 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: 30 }}
-                transition={{ duration: 0.5, ease: [0.32, 0.72, 0, 1] }}
+                custom={slideDirection}
+                variants={slideVariants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                transition={slideTransition}
               >
                 <Image
                   src={rightCard.image}

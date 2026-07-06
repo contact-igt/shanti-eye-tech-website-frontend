@@ -1,28 +1,23 @@
+/* ── Section: left padding only — bento bleeds to right edge ── */
 .section {
-  position: relative;
-  width: min(1920px, calc(100vw - 20px));
-  margin: 0 auto;
-  padding: 100px 6.8%;
+  width: 100%;
+  padding: 80px 0 100px clamp(24px, 6.8%, 130px);
   background: #f4efea;
-  box-sizing: border-box;
   overflow: hidden;
+  box-sizing: border-box;
 }
 
-.inner {
-  position: relative;
-  z-index: 1;
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+/* ── Full-width header (badge + title) with right padding restored ── */
+.sectionHeader {
+  padding-right: clamp(24px, 6.8%, 130px);
+  margin-bottom: 48px;
 }
 
 .badge {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 8px 18px;
+  padding: 7px 18px;
   border-radius: 99px;
   background: rgba(22, 193, 228, 0.08);
   color: #15bfdf;
@@ -30,44 +25,43 @@
   font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 
 .title {
-  font-family: "Playfair Display", Georgia, serif;
-  font-size: clamp(38px, 3.2vw, 54px);
+  font-size: clamp(32px, 3.2vw, 54px);
   line-height: 1.1;
   color: #263746;
-  margin: 0 0 48px;
+  margin: 0;
   font-weight: 500;
 }
 
+/* ── Two-column content grid ── */
 .contentGrid {
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 60px;
-  width: 100%;
+  grid-template-columns: minmax(260px, 520px) 1fr;
+  gap: 52px;
   align-items: start;
 }
 
-.leftCol {
+/* ── Left column ── */
+.leftContent {
   display: flex;
   flex-direction: column;
 }
 
 .subtitle {
-  font-family: "Playfair Display", Georgia, serif;
-  font-size: clamp(26px, 2.2vw, 36px);
-  line-height: 1.2;
+  font-size: clamp(24px, 2vw, 34px);
+  line-height: 1.22;
   color: #263746;
-  margin: 0 0 32px;
+  margin: 0 0 28px;
   font-weight: 500;
 }
 
 .list {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 18px;
   padding: 0;
   margin: 0;
   list-style: none;
@@ -76,92 +70,100 @@
 .listItem {
   display: flex;
   align-items: center;
-  gap: 16px;
-  font-size: clamp(16px, 1.4vw, 20px);
+  gap: 14px;
+  font-size: clamp(15px, 1.3vw, 19px);
   color: #5b6e80;
   font-weight: 500;
   line-height: 1.4;
 }
 
 .checkIcon {
-  width: clamp(26px, 2.2vw, 32px);
-  height: clamp(26px, 2.2vw, 32px);
+  width: clamp(26px, 2.2vw, 34px);
+  height: clamp(26px, 2.2vw, 34px);
   flex-shrink: 0;
 }
 
-.rightCol {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
-
+/* ── Right: 2×2 bento image grid ── */
 .bentoGrid {
   display: grid;
-  grid-template-columns: 1.3fr 0.7fr;
-  gap: 20px;
-  width: 100%;
+  grid-template-columns: 1.4fr 1fr;
+  grid-template-rows: 250px 250px;
+  gap: 14px;
 }
 
 .bentoCard {
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
   background: #d9d9d9;
-  border-radius: 20px;
-  transition: transform 0.3s ease, background-color 0.3s ease;
+  transition: transform 0.3s ease;
 }
 
 .bentoCard:hover {
-  transform: translateY(-4px);
-  background: #cfcfcf;
+  transform: translateY(-3px);
 }
 
-.card1 {
-  min-height: 140px;
+.cardImg {
+  object-fit: cover;
 }
 
-.card2 {
-  min-height: 140px;
-}
+/* ── Responsive ── */
 
-.card3 {
-  min-height: 180px;
-}
-
-.card4 {
-  min-height: 180px;
-}
-
+/* Tablet: stack columns, restore right padding */
 @media (max-width: 1024px) {
   .section {
-    padding: 80px 32px;
+    padding: 72px clamp(24px, 5vw, 60px) 80px;
+  }
+
+  .sectionHeader {
+    padding-right: 0;
   }
 
   .contentGrid {
     grid-template-columns: 1fr;
-    gap: 48px;
+    gap: 40px;
+  }
+
+  .bentoGrid {
+    grid-template-rows: 220px 220px;
+    gap: 12px;
   }
 }
 
-@media (max-width: 720px) {
+/* Mobile: 2-col bento becomes equal columns */
+@media (max-width: 640px) {
   .section {
-    padding: 60px 20px;
+    padding: 56px 18px 64px;
   }
 
-  .title {
-    font-size: 32px;
-    margin-bottom: 32px;
+  .sectionHeader {
+    padding-right: 0;
   }
 
-  .subtitle {
-    font-size: 24px;
-    margin-bottom: 24px;
+  .contentGrid {
+    gap: 32px;
   }
 
   .bentoGrid {
     grid-template-columns: 1fr 1fr;
-    gap: 12px;
+    grid-template-rows: 160px 160px;
+    gap: 10px;
   }
 
-  .card1, .card2, .card3, .card4 {
-    min-height: 110px;
+  .bentoCard {
     border-radius: 14px;
+  }
+
+  .subtitle {
+    font-size: 22px;
+    margin-bottom: 20px;
+  }
+}
+
+/* Small mobile: single-column bento */
+@media (max-width: 420px) {
+  .bentoGrid {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, 200px);
   }
 }

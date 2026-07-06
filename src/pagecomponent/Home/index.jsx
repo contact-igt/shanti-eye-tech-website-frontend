@@ -291,7 +291,7 @@ function Hero() {
           </div>
         </div>
         <Link href="/about" onClick={() => setIsMenuOpen(false)}>About</Link>
-        <Link href="#contact" onClick={() => setIsMenuOpen(false)}>Contact</Link>
+        <Link href="/contact" onClick={() => setIsMenuOpen(false)}>Contact</Link>
         <MenuButton isOpen={isMenuOpen} onClick={() => setIsMenuOpen(!isMenuOpen)} />
       </nav>
 

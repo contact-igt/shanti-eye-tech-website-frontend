@@ -50,7 +50,7 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   gap: 1.2vw;
   padding: 0 2vw;
   box-sizing: border-box;
@@ -76,12 +76,11 @@
   z-index: 5;
 }
 
-/* Side cards: 28vw wide, shorter, pushed down with margin-top */
+/* Side cards: 28vw wide, shorter */
 .sideCard {
   width: 28vw;
   height: 22vw;
   max-height: 340px;
-  margin-top: 11vw;
   z-index: 3;
 }
 
@@ -143,8 +142,8 @@
 
 .navButton {
   position: absolute;
-  /* Vertically center on the side cards */
-  bottom: calc(11vw + 1vw);
+  top: 50%;
+  transform: translateY(-50%);
   width: 42px;
   height: 42px;
   border-radius: 50%;
@@ -164,7 +163,7 @@
 .navButton:hover {
   background: #ffffff;
   box-shadow: 0 5px 18px rgba(0, 0, 0, 0.12);
-  transform: scale(1.06);
+  transform: translateY(-50%) scale(1.06);
 }
 
 .prevButton {
@@ -196,7 +195,6 @@
   .sideCard {
     width: 34vw;
     height: 30vw;
-    margin-top: 14vw;
   }
   .sideCardLeft {
     transform: translateX(-10vw);
@@ -218,7 +216,6 @@
   .sideCard {
     width: 36vw;
     height: 34vw;
-    margin-top: 18vw;
   }
   .sideCardLeft {
     transform: translateX(-12vw);

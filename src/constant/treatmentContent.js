@@ -91,7 +91,7 @@ export const lasikTreatmentContent = {
       },
       {
         title: "Clearer everyday vision",
-        image: "/assets/Treatments/c4ce383aa720ee5e8768d85726ef2502367e016f.png",
+        image: "/assets/Treatments/ae08abf366197adc432fbda371363e23f90e052b.png",
       },
     ],
   },
@@ -223,7 +223,7 @@ export const catractTreatmentContent = {
       },
       {
         title: "Clearer everyday vision",
-        image: "/assets/Treatments/c4ce383aa720ee5e8768d85726ef2502367e016f.png",
+        image: "/assets/Treatments/ae08abf366197adc432fbda371363e23f90e052b.png",
       },
     ],
   },

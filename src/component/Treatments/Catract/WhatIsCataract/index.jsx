@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import Image from "next/image";
 import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 import { Playfair_Display } from "next/font/google";
 import styles from "./styles.module.css";
@@ -50,7 +51,14 @@ export default function WhatIsCataractSection({ content }) {
           </div>
 
           <div className={styles.visual} aria-hidden="true">
-            <span className={styles.visualFill} />
+            <Image
+              src="/assets/Treatments/Catract/d3b2f33f3c20b3c8ce9805a8a1592ed1b573631e.png"
+              alt=""
+              fill
+              className={styles.visualImg}
+              sizes="(max-width:768px) 80vw, 45vw"
+              priority
+            />
           </div>
         </div>
 
@@ -67,12 +75,22 @@ export default function WhatIsCataractSection({ content }) {
             </ScrollTextWord>
           ))}
         </p>
+      </div>
 
-        <div className={styles.middleVisual}>
-          <span className={styles.middleVisualFill} />
-        </div>
+      {/* Full-bleed banner */}
+      <div className={styles.middleVisual}>
+        <Image
+          src="/assets/Treatments/Catract/82354ede80d3c5023fb8c7b9be9067c00fab8ce9.png"
+          alt="Cataract surgery procedure"
+          fill
+          className={styles.middleVisualImg}
+          sizes="100vw"
+        />
+      </div>
 
-        <p className={styles.description}>
+      {/* Second paragraph */}
+      <div className={styles.inner}>
+        <p className={`${styles.description} ${styles.descriptionCenter}`}>
           {wordsTwo.map((word, wordIndex) => (
             <ScrollTextWord
               key={`two-${wordIndex}-${word}`}
