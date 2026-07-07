@@ -3840,6 +3840,19 @@ main {
   }
 }
 
+/* ─── Hide per-page mobile navs — replaced by global sticky Header ─────── */
+@media (max-width: 760px) {
+  /* Home page hero nav (hamburger + links) */
+  .nav-links {
+    display: none !important;
+  }
+
+  /* About page hero nav (hamburger + links) */
+  .about-banner-nav {
+    display: none !important;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

@@ -418,3 +418,10 @@
     font-size: 35px;
   }
 }
+
+/* Hide per-page hero chrome (logo + nav) on mobile — global sticky header handles mobile nav */
+@media (max-width: 760px) {
+  .heroChrome {
+    display: none !important;
+  }
+}

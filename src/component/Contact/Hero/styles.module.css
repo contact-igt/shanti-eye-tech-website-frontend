@@ -196,3 +196,10 @@
     padding-bottom: 40px;
   }
 }
+
+/* Hide per-page hero header (logo + nav) on mobile — global sticky header handles mobile nav */
+@media (max-width: 760px) {
+  .header {
+    display: none !important;
+  }
+}

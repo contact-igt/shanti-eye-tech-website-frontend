@@ -1,0 +1,261 @@
+/* ─── Global Mobile-Only Header ──────────────────────────────────────────── */
+/* Hidden on desktop; shown on mobile only */
+
+.header {
+  display: none;
+}
+
+.backdrop {
+  display: none;
+}
+
+.drawer {
+  display: none;
+}
+
+/* ─── Mobile breakpoint ──────────────────────────────────────────────────── */
+@media (max-width: 760px) {
+
+  /* ── Sticky header bar ── */
+  .header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 900;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 16px;
+    background: rgba(255, 255, 255, 0.97);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 14px rgba(0, 0, 0, 0.07);
+  }
+
+  .logoLink {
+    display: block;
+    flex-shrink: 0;
+  }
+
+  .logo {
+    display: block;
+    width: 190px;
+    height: auto;
+  }
+
+  /* ── Teal circular hamburger button ── */
+  .hamburger {
+    flex-shrink: 0;
+    width: 56px;
+    height: 38px;
+    border: none;
+    border-radius: 999px;
+    background: #16c1e4;
+    box-shadow: 0 10px 26px rgba(22, 193, 228, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    padding: 0;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+
+  .hamburger:hover {
+    background: #0fb3d4;
+  }
+
+  .hamburger span {
+    display: block;
+    height: 2.5px;
+    border-radius: 99px;
+    background: #ffffff;
+    transition: transform 0.25s ease, opacity 0.25s ease, width 0.25s ease;
+  }
+
+  .hamburger span:nth-child(1) { width: 22px; }
+  .hamburger span:nth-child(2) { width: 15px; }
+  .hamburger span:nth-child(3) { width: 8px; }
+
+  /* X animation when open */
+  .hamburgerOpen span:nth-child(1) {
+    transform: translateY(6.5px) rotate(45deg);
+    width: 22px;
+  }
+  .hamburgerOpen span:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburgerOpen span:nth-child(3) {
+    transform: translateY(-6.5px) rotate(-45deg);
+    width: 22px;
+  }
+
+  /* ── Backdrop overlay ── */
+  .backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: rgba(12, 20, 30, 0.22);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    animation: fadeIn 0.2s ease forwards;
+  }
+
+  /* ── Nav drawer panel ── */
+  .drawer {
+    display: flex;
+    position: fixed;
+    top: 64px;
+    left: 12px;
+    right: 12px;
+    z-index: 1001;
+    flex-direction: column;
+    gap: 2px;
+    background: rgba(255, 255, 255, 0.99);
+    border-radius: 22px;
+    padding: 14px 18px 22px;
+    box-shadow:
+      0 24px 64px rgba(18, 26, 36, 0.18),
+      0 4px 12px rgba(18, 26, 36, 0.07);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-10px) scale(0.98);
+    transition: opacity 0.22s ease, transform 0.22s ease;
+  }
+
+  .drawerOpen {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateY(0) scale(1);
+  }
+
+  /* ── Nav link items ── */
+  .navLink {
+    display: block;
+    padding: 13px 14px;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1;
+    color: #151c23;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: background-color 0.18s ease, color 0.18s ease;
+  }
+
+  .navLink:hover {
+    background-color: rgba(22, 193, 228, 0.07);
+    color: #16c1e4;
+  }
+
+  /* ── Treatments dropdown ── */
+  .dropdownItem {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .dropdownTrigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 13px 14px;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1;
+    color: #151c23;
+    background: none;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    text-align: left;
+    font-family: inherit;
+    transition: background-color 0.18s ease;
+  }
+
+  .dropdownTrigger:hover {
+    background-color: rgba(22, 193, 228, 0.07);
+  }
+
+  .chevron {
+    font-size: 10px;
+    color: #8fa0ae;
+    margin-left: 8px;
+    transition: transform 0.22s ease;
+    flex-shrink: 0;
+  }
+
+  .chevronOpen {
+    transform: rotate(180deg);
+  }
+
+  /* Sub-links (LASIK, Cataract) */
+  .subLinks {
+    display: flex;
+    flex-direction: column;
+    padding: 4px 0 6px 22px;
+    gap: 0;
+  }
+
+  .subLink {
+    display: block;
+    padding: 10px 14px;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1;
+    color: #3d5060;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: background-color 0.18s ease, color 0.18s ease;
+  }
+
+  .subLink:hover {
+    background-color: rgba(22, 193, 228, 0.07);
+    color: #16c1e4;
+  }
+
+  /* Divider between items */
+  .divider {
+    height: 1px;
+    background: rgba(0, 0, 0, 0.05);
+    margin: 6px 0;
+    border: none;
+  }
+
+  /* ── Large teal X close button ── */
+  .closeButton {
+    align-self: flex-end;
+    margin-top: 14px;
+    width: 54px;
+    height: 54px;
+    border: none;
+    border-radius: 50%;
+    background: #16c1e4;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 14px 30px rgba(22, 193, 228, 0.34);
+    transition: background-color 0.2s ease, transform 0.2s ease;
+  }
+
+  .closeButton:hover {
+    background-color: #0fb3d4;
+    transform: scale(1.05);
+  }
+
+  .closeButton svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
