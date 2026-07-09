@@ -1,5 +1,7 @@
 import { useRef, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
+import { Playfair_Display } from "next/font/google";
 import {
   AnimatePresence,
   motion,
@@ -26,6 +28,13 @@ import {
   testimonials,
   faqs
 } from "./homeData";
+
+const playfairDisplay = Playfair_Display({
+  subsets: ["latin"],
+  weight: ["500"],
+  style: ["normal"],
+  display: "swap",
+});
 
 function ArrowIcon() {
   return (
@@ -160,41 +169,7 @@ function MenuButton({ isOpen, onClick }) {
   );
 }
 
-function MetricIcon({ type }) {
-  if (type === "rating") {
-    return (
-      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-        <path d="M9 21h6" />
-        <path d="M12 17v4" />
-        <path d="M7 4h10v5a5 5 0 0 1-10 0V4Z" />
-        <path d="M7 7H4.5a2.5 2.5 0 0 0 2.5 2.5" />
-        <path d="M17 7h2.5A2.5 2.5 0 0 1 17 9.5" />
-        <path d="M10 8.5h4" />
-      </svg>
-    );
-  }
-
-  if (type === "years") {
-    return (
-      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-        <path d="M4 9h16v9H4z" />
-        <path d="M8 9V6h8v3" />
-        <path d="M8 14h3l2-3 2 5 2-2h3" />
-      </svg>
-    );
-  }
-
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-      <path d="M9 7a3 3 0 1 1 6 0 3 3 0 0 1-6 0Z" />
-      <path d="M6 20a6 6 0 0 1 12 0" />
-      <path d="M17 13h4" />
-      <path d="M19 11v4" />
-    </svg>
-  );
-}
-
-function FeaturePill({ className, icon, label, delay }) {
+function FeaturePill({ className, iconSrc, label, delay }) {
   return (
     <motion.div
       className={`feature-pill ${className}`}
@@ -204,7 +179,15 @@ function FeaturePill({ className, icon, label, delay }) {
     >
       <span className="feature-pill-float">
         <span className="feature-icon">
-          <MetricIcon type={icon} />
+          <Image
+            src={iconSrc}
+            alt=""
+            width={52}
+            height={52}
+            loading="lazy"
+            decoding="async"
+            aria-hidden="true"
+          />
         </span>
         <span className="feature-label">{label}</span>
       </span>
@@ -230,7 +213,7 @@ function HeroImage() {
 
       <div className="image-card">
         <motion.img
-          src="/assets/Home_page.webp"
+          src="/assets/home_logos/new_background.png"
           alt="Santhi Eye Tech reception"
           initial={{ scale: 1.08 }}
           animate={{ scale: 1.04 }}
@@ -242,19 +225,19 @@ function HeroImage() {
 
       <FeaturePill
         className="pill-rating"
-        icon="rating"
+        iconSrc="/assets/home_logos/gogle_rating.png"
         label="4.9 Google Rating"
         delay={0.42}
       />
       <FeaturePill
         className="pill-years"
-        icon="years"
+        iconSrc="/assets/home_logos/20+_Years.png"
         label="20+ Years Experience"
         delay={0.56}
       />
       <FeaturePill
         className="pill-procedures"
-        icon="procedures"
+        iconSrc="/assets/home_logos/10000+_Patients.png"
         label="1000+ Procedures"
         delay={0.7}
       />
@@ -281,8 +264,21 @@ function Hero() {
     <section className="hero-canvas" id="home">
       <nav className={`nav-links ${isMenuOpen ? "nav-open" : ""}`} aria-label="Primary navigation">
         <Link href="#home" onClick={() => setIsMenuOpen(false)}>Home</Link>
-        <Link href="/treatments/catract" onClick={() => setIsMenuOpen(false)}>Cataract</Link>
-        <Link href="/treatments/lasik" onClick={() => setIsMenuOpen(false)}>LASIK</Link>
+        <div className="nav-dropdown">
+          <button
+            type="button"
+            className="nav-dropdown-trigger"
+            aria-haspopup="true"
+            aria-label="Treatment menu"
+          >
+            Treatment
+            <span className="nav-dropdown-chevron" aria-hidden="true">▼</span>
+          </button>
+          <div className="nav-dropdown-menu">
+            <Link href="/treatments/catract" onClick={() => setIsMenuOpen(false)}>Cataract</Link>
+            <Link href="/treatments/lasik" onClick={() => setIsMenuOpen(false)}>LASIK</Link>
+          </div>
+        </div>
         <Link href="/about" onClick={() => setIsMenuOpen(false)}>About</Link>
         <Link href="/contact" onClick={() => setIsMenuOpen(false)}>Contact</Link>
         <MenuButton isOpen={isMenuOpen} onClick={() => setIsMenuOpen(!isMenuOpen)} />
@@ -296,18 +292,24 @@ function Hero() {
       >
         <motion.a className="brand-mark" href="#home" variants={reveal}>
           <span className="logo-crop">
-            <img src="/assets/LOGO.jpeg" alt="Santhi Eye Tech logo" />
+            <Image
+              src="/assets/about/about_logo.png"
+              alt="Shanti EyeTech Eye Care & Laser Hospital logo"
+              fill
+              priority
+              sizes="(max-width: 760px) 245px, 330px"
+            />
           </span>
         </motion.a>
 
         <div className="copy-center">
           <motion.div className="section-label" variants={reveal}>
-            <span />
+            <span className="section-label-line section-label-line--left" aria-hidden="true" />
             <b>Eye Care Experts</b>
-            <span />
+            <span className="section-label-line section-label-line--right" aria-hidden="true" />
           </motion.div>
 
-          <motion.h1 variants={reveal}>
+          <motion.h1 className={playfairDisplay.className} variants={reveal}>
             Eyecare for clearer vision & confident living
           </motion.h1>
 
