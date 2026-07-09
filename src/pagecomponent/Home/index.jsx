@@ -27,7 +27,21 @@ import {
   awards,
   testimonials,
   faqs
-} from "./homeData";
+} from "@/constant/homeContent";
+import styles from "./styles.module.css";
+
+
+function toStyleName(className) {
+  return className.replace(/-+([a-z0-9])/g, (_, character) => character.toUpperCase());
+}
+
+function css(classNames) {
+  return classNames
+    .split(/\s+/)
+    .filter(Boolean)
+    .map((className) => styles[toStyleName(className)] ?? className)
+    .join(" ");
+}
 
 const playfairDisplay = Playfair_Display({
   subsets: ["latin"],
@@ -38,7 +52,7 @@ const playfairDisplay = Playfair_Display({
 
 function ArrowIcon() {
   return (
-    <span className="arrow-icon" aria-hidden="true">
+    <span className={css("arrow-icon")} aria-hidden="true">
       <span />
     </span>
   );
@@ -142,12 +156,12 @@ const iconVariant = {
 function CTAButton({ children, variant = "primary" }) {
   return (
     <motion.a
-      className={`cta-button cta-button--${variant}`}
+      className={css(`cta-button cta-button--${variant}`)}
       href="#contact"
       whileTap={{ scale: 0.98 }}
     >
-      <span className="cta-button-fill" aria-hidden="true" />
-      <span className="cta-button-text">{children}</span>
+      <span className={css("cta-button-fill")} aria-hidden="true" />
+      <span className={css("cta-button-text")}>{children}</span>
       <ArrowIcon />
     </motion.a>
   );
@@ -156,7 +170,7 @@ function CTAButton({ children, variant = "primary" }) {
 function MenuButton({ isOpen, onClick }) {
   return (
     <motion.button
-      className={`menu-button ${isOpen ? "menu-open" : ""}`}
+      className={css(`menu-button ${isOpen ? "menu-open" : ""}`)}
       aria-label={isOpen ? "Close menu" : "Open menu"}
       whileHover={{ y: -2 }}
       whileTap={{ scale: 0.96 }}
@@ -172,13 +186,13 @@ function MenuButton({ isOpen, onClick }) {
 function FeaturePill({ className, iconSrc, label, delay }) {
   return (
     <motion.div
-      className={`feature-pill ${className}`}
+      className={css(`feature-pill ${className}`)}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.6, delay, ease }}
     >
-      <span className="feature-pill-float">
-        <span className="feature-icon">
+      <span className={css("feature-pill-float")}>
+        <span className={css("feature-icon")}>
           <Image
             src={iconSrc}
             alt=""
@@ -189,7 +203,7 @@ function FeaturePill({ className, iconSrc, label, delay }) {
             aria-hidden="true"
           />
         </span>
-        <span className="feature-label">{label}</span>
+        <span className={css("feature-label")}>{label}</span>
       </span>
     </motion.div>
   );
@@ -198,12 +212,12 @@ function FeaturePill({ className, iconSrc, label, delay }) {
 function HeroImage() {
   return (
     <motion.div
-      className="hero-media"
+      className={css("hero-media")}
       initial={{ opacity: 0, x: 32 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.72, ease, delay: 0.1 }}
     >
-      <svg className="clip-defs" aria-hidden="true" focusable="false">
+      <svg className={css("clip-defs")} aria-hidden="true" focusable="false">
         <defs>
           <clipPath id="hero-image-shape" clipPathUnits="objectBoundingBox">
             <path d="M0.04,0 H0.96 C0.982,0 1,0.018 1,0.04 V0.855 C1,0.88 0.982,0.898 0.958,0.898 H0.82 C0.8,0.898 0.784,0.906 0.772,0.922 C0.756,0.942 0.742,0.964 0.724,0.982 C0.712,0.994 0.697,1 0.678,1 H0.04 C0.018,1 0,0.982 0,0.96 V0.04 C0,0.018 0.018,0 0.04,0 Z" />
@@ -211,7 +225,7 @@ function HeroImage() {
         </defs>
       </svg>
 
-      <div className="image-card">
+      <div className={css("image-card")}>
         <motion.img
           src="/assets/home_logos/new_background.png"
           alt="Santhi Eye Tech reception"
@@ -219,32 +233,32 @@ function HeroImage() {
           animate={{ scale: 1.04 }}
           transition={{ duration: 0.75, ease }}
         />
-        <div className="image-overlay" />
+        <div className={css("image-overlay")} />
       </div>
 
 
       <FeaturePill
-        className="pill-rating"
+        className={css("pill-rating")}
         iconSrc="/assets/home_logos/gogle_rating.png"
         label="4.9 Google Rating"
         delay={0.42}
       />
       <FeaturePill
-        className="pill-years"
+        className={css("pill-years")}
         iconSrc="/assets/home_logos/20+_Years.png"
         label="20+ Years Experience"
         delay={0.56}
       />
       <FeaturePill
-        className="pill-procedures"
+        className={css("pill-procedures")}
         iconSrc="/assets/home_logos/10000+_Patients.png"
         label="1000+ Procedures"
         delay={0.7}
       />
 
-      <div className="location-pill">
+      <div className={css("location-pill")}>
         <motion.span
-          className="location-pill-inner"
+          className={css("location-pill-inner")}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.62, delay: 0.65, ease }}
@@ -261,20 +275,20 @@ function Hero() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <section className="hero-canvas" id="home">
-      <nav className={`nav-links ${isMenuOpen ? "nav-open" : ""}`} aria-label="Primary navigation">
+    <section className={css("hero-canvas")} id="home">
+      <nav className={css(`nav-links ${isMenuOpen ? "nav-open" : ""}`)} aria-label="Primary navigation">
         <Link href="#home" onClick={() => setIsMenuOpen(false)}>Home</Link>
-        <div className="nav-dropdown">
+        <div className={css("nav-dropdown")}>
           <button
             type="button"
-            className="nav-dropdown-trigger"
+            className={css("nav-dropdown-trigger")}
             aria-haspopup="true"
             aria-label="Treatment menu"
           >
             Treatment
-            <span className="nav-dropdown-chevron" aria-hidden="true">▼</span>
+            <span className={css("nav-dropdown-chevron")} aria-hidden="true">▼</span>
           </button>
-          <div className="nav-dropdown-menu">
+          <div className={css("nav-dropdown-menu")}>
             <Link href="/treatments/catract" onClick={() => setIsMenuOpen(false)}>Cataract</Link>
             <Link href="/treatments/lasik" onClick={() => setIsMenuOpen(false)}>LASIK</Link>
           </div>
@@ -285,13 +299,13 @@ function Hero() {
       </nav>
 
       <motion.article
-        className="copy-card"
+        className={css("copy-card")}
         variants={stagger}
         initial="hidden"
         animate="show"
       >
-        <motion.a className="brand-mark" href="#home" variants={reveal}>
-          <span className="logo-crop">
+        <motion.a className={css("brand-mark")} href="#home" variants={reveal}>
+          <span className={css("logo-crop")}>
             <Image
               src="/assets/about/about_logo.png"
               alt="Shanti EyeTech Eye Care & Laser Hospital logo"
@@ -302,11 +316,11 @@ function Hero() {
           </span>
         </motion.a>
 
-        <div className="copy-center">
-          <motion.div className="section-label" variants={reveal}>
-            <span className="section-label-line section-label-line--left" aria-hidden="true" />
+        <div className={css("copy-center")}>
+          <motion.div className={css("section-label")} variants={reveal}>
+            <span className={css("section-label-line section-label-line--left")} aria-hidden="true" />
             <b>Eye Care Experts</b>
-            <span className="section-label-line section-label-line--right" aria-hidden="true" />
+            <span className={css("section-label-line section-label-line--right")} aria-hidden="true" />
           </motion.div>
 
           <motion.h1 className={playfairDisplay.className} variants={reveal}>
@@ -318,7 +332,7 @@ function Hero() {
             designed around your comfort.
           </motion.p>
 
-          <motion.div className="button-row" variants={reveal}>
+          <motion.div className={css("button-row")} variants={reveal}>
             <CTAButton>Book a Consultation</CTAButton>
             <CTAButton variant="secondary">Call Now !</CTAButton>
           </motion.div>
@@ -327,7 +341,7 @@ function Hero() {
 
       <HeroImage />
 
-      <div className="mouse-cutout scroll-hint" aria-hidden="true">
+      <div className={css("mouse-cutout scroll-hint")} aria-hidden="true">
         <span />
       </div>
     </section>
@@ -340,7 +354,7 @@ function ScrollTextWord({ children, index, progress, reduceMotion }) {
 
   return (
     <motion.span
-      className="about-word"
+      className={css("about-word")}
       style={reduceMotion ? { color: "#111111" } : { color }}
     >
       {children}{" "}
@@ -351,13 +365,13 @@ function ScrollTextWord({ children, index, progress, reduceMotion }) {
 function StatCard({ value, description, tone }) {
   return (
     <motion.article
-      className={`stat-card stat-card--${tone}`}
+      className={css(`stat-card stat-card--${tone}`)}
       variants={reveal}
       whileHover={{ y: -8 }}
       transition={{ duration: 0.75, ease }}
     >
-      <span className="stat-dot" />
-      <div className="stat-content">
+      <span className={css("stat-dot")} />
+      <div className={css("stat-content")}>
         <h3>{value}</h3>
         <p>{description}</p>
       </div>
@@ -374,24 +388,24 @@ function AboutStats() {
   });
 
   return (
-    <section className="about-stats" id="about" ref={sectionRef}>
+    <section className={css("about-stats")} id="about" ref={sectionRef}>
       <motion.div
-        className="about-inner"
+        className={css("about-inner")}
         initial="hidden"
         whileInView="show"
         viewport={sectionViewport}
         variants={stagger}
       >
-        <motion.div className="about-intro" variants={reveal}>
-          <span className="about-badge">About Us</span>
-          <p className="about-text">
+        <motion.div className={css("about-intro")} variants={reveal}>
+          <span className={css("about-badge")}>About Us</span>
+          <p className={css("about-text")}>
             {aboutLines.map((line, lineIndex) => {
               const previousWords = aboutLines
                 .slice(0, lineIndex)
                 .reduce((total, item) => total + item.split(" ").length, 0);
 
               return (
-                <span className="about-line" key={line}>
+                <span className={css("about-line")} key={line}>
                   {line.split(" ").map((word, wordIndex) => (
                     <ScrollTextWord
                       key={`${line}-${word}-${wordIndex}`}
@@ -408,7 +422,7 @@ function AboutStats() {
           </p>
         </motion.div>
 
-        <motion.div className="stats-grid" variants={stagger}>
+        <motion.div className={css("stats-grid")} variants={stagger}>
           {stats.map((stat) => (
             <StatCard
               key={stat.value}
@@ -453,12 +467,12 @@ function ServiceIcon({ type }) {
 function TechnologyCard({ title, description, icon }) {
   return (
     <motion.article
-      className="tech-card"
+      className={css("tech-card")}
       variants={cardVariant}
       whileHover={{ y: -7 }}
       transition={{ duration: 0.75, ease }}
     >
-      <motion.span className="tech-icon" variants={iconVariant}>
+      <motion.span className={css("tech-icon")} variants={iconVariant}>
         <ServiceIcon type={icon} />
       </motion.span>
       <div>
@@ -474,15 +488,15 @@ function TechnologySection() {
   const reduceMotion = useReducedMotion();
   const isInView = useInView(sectionRef, technologyViewport);
   return (
-    <section className="technology-section" ref={sectionRef}>
+    <section className={css("technology-section")} ref={sectionRef}>
       <motion.div
-        className="technology-inner"
+        className={css("technology-inner")}
         initial="hidden"
         animate={isInView ? "show" : "hidden"}
         variants={containerVariant}
       >
         <motion.div
-          className="technology-image"
+          className={css("technology-image")}
           variants={imageVariant}
           whileHover={reduceMotion ? undefined : { scale: 1.02 }}
           transition={{ duration: 0.7, ease }}
@@ -493,8 +507,8 @@ function TechnologySection() {
           />
         </motion.div>
 
-        <div className="technology-content">
-          <motion.div className="technology-copy" variants={containerVariant}>
+        <div className={css("technology-content")}>
+          <motion.div className={css("technology-copy")} variants={containerVariant}>
             <motion.h2 variants={textVariant} custom={{ y: 40, delay: 0, duration: 0.7 }}>
               Expert Eye Care with Advanced Technology
             </motion.h2>
@@ -503,22 +517,22 @@ function TechnologySection() {
               quality, and patient experience.
             </motion.p>
             <motion.a
-              className="learn-button"
+              className={css("learn-button")}
               href="#contact"
               variants={textVariant}
               custom={{ y: 25, scale: 0.96, delay: 0.42, duration: 0.62 }}
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.98 }}
             >
-              <span className="learn-button-fill" />
-              <span className="learn-button-text">Learn More</span>
-              <span className="learn-button-arrow" aria-hidden="true">
+              <span className={css("learn-button-fill")} />
+              <span className={css("learn-button-text")}>Learn More</span>
+              <span className={css("learn-button-arrow")} aria-hidden="true">
                 <span />
               </span>
             </motion.a>
           </motion.div>
 
-          <motion.div className="technology-cards" variants={cardContainerVariant}>
+          <motion.div className={css("technology-cards")} variants={cardContainerVariant}>
             {technologyFeatures.map((feature) => (
               <TechnologyCard
                 key={feature.title}
@@ -536,16 +550,16 @@ function TechnologySection() {
 
 function ServiceCard({ service }) {
   return (
-    <article className="service-card">
-      <span className="service-number">{service.number}</span>
-      <div className="service-card-panel">
-        <span className="service-glow" />
-        <div className="service-card-content">
+    <article className={css("service-card")}>
+      <span className={css("service-number")}>{service.number}</span>
+      <div className={css("service-card-panel")}>
+        <span className={css("service-glow")} />
+        <div className={css("service-card-content")}>
           <div>
             <h3>{service.title}</h3>
             <p>{service.description}</p>
           </div>
-          <div className="service-tags">
+          <div className={css("service-tags")}>
             {service.tags.map((tag) => (
               <span key={tag}>{tag}</span>
             ))}
@@ -560,15 +574,15 @@ function ServicesSection() {
   const serviceRows = [services.slice(0, 3), services.slice(3, 6)];
 
   return (
-    <section className="services-section" id="services">
+    <section className={css("services-section")} id="services">
       <motion.div
-        className="services-inner"
+        className={css("services-inner")}
         initial="hidden"
         whileInView="show"
         viewport={sectionViewport}
         variants={stagger}
       >
-        <svg className="service-clip-defs" aria-hidden="true" focusable="false">
+        <svg className={css("service-clip-defs")} aria-hidden="true" focusable="false">
           <defs>
             <clipPath id="service-card-shape" clipPathUnits="objectBoundingBox">
               <path d="M0.04,0 H0.81 C0.81,0.058 0.836,0.092 0.882,0.092 H0.942 C0.978,0.092 1,0.12 1,0.156 V0.93 C1,0.97 0.975,1 0.94,1 H0.04 C0.016,1 0,0.974 0,0.93 V0.07 C0,0.026 0.016,0 0.04,0 Z" />
@@ -576,8 +590,8 @@ function ServicesSection() {
           </defs>
         </svg>
 
-        <motion.div className="services-heading" variants={stagger}>
-          <motion.span className="services-badge" variants={reveal}>
+        <motion.div className={css("services-heading")} variants={stagger}>
+          <motion.span className={css("services-badge")} variants={reveal}>
             Services
           </motion.span>
           <motion.h2 variants={reveal}>
@@ -589,10 +603,10 @@ function ServicesSection() {
           </motion.p>
         </motion.div>
 
-        <div className="services-grid">
+        <div className={css("services-grid")}>
           {serviceRows.map((row, rowIndex) => (
             <motion.div
-              className="services-row"
+              className={css("services-row")}
               key={`services-row-${rowIndex}`}
               custom={rowIndex}
               variants={serviceCardReveal}
@@ -614,19 +628,19 @@ function ServicesSection() {
 function DoctorInfoCard({ card, index }) {
   return (
     <motion.article
-      className="doc-card"
+      className={css("doc-card")}
       custom={index}
       variants={docCardReveal}
       whileHover={{ y: -7 }}
       transition={{ duration: 0.75, ease }}
     >
-      <span className="doc-card-number">{card.number}</span>
-      <div className="doc-card-panel">
-        <span className="doc-glow" />
-        <div className="doc-card-body">
+      <span className={css("doc-card-number")}>{card.number}</span>
+      <div className={css("doc-card-panel")}>
+        <span className={css("doc-glow")} />
+        <div className={css("doc-card-body")}>
           <h3>{card.title}</h3>
           {card.type === "pills" ? (
-            <div className="doc-card-pills">
+            <div className={css("doc-card-pills")}>
               {card.items.map((item) => (
                 <span key={item}>{item}</span>
               ))}
@@ -645,16 +659,16 @@ function DoctorSection() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section className="specialist-section" id="specialist" ref={sectionRef}>
+    <section className={css("specialist-section")} id="specialist" ref={sectionRef}>
       <motion.div
-        className="specialist-inner"
+        className={css("specialist-inner")}
         initial="hidden"
         whileInView="show"
         viewport={sectionViewport}
         variants={stagger}
       >
-        <motion.div className="specialist-heading" variants={stagger}>
-          <motion.span className="specialist-badge" variants={reveal}>
+        <motion.div className={css("specialist-heading")} variants={stagger}>
+          <motion.span className={css("specialist-badge")} variants={reveal}>
             Our Specialist
           </motion.span>
           <motion.h2 variants={reveal}>
@@ -668,9 +682,9 @@ function DoctorSection() {
           </motion.p>
         </motion.div>
 
-        <div className="specialist-layout">
+        <div className={css("specialist-layout")}>
           <motion.div
-            className="specialist-photo"
+            className={css("specialist-photo")}
             initial={{ opacity: 0, scale: 1.03 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={sectionViewport}
@@ -681,26 +695,26 @@ function DoctorSection() {
               alt="Dr. Amit N. Solanki"
             />
             <motion.div
-              className="specialist-name-overlay"
+              className={css("specialist-name-overlay")}
               initial={{ opacity: 0, y: 14 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.62, delay: 0.24, ease }}
             >
-              <span className="specialist-doctor-name">Dr. Amit N. Solanki</span>
-              <span className="specialist-doctor-role">
+              <span className={css("specialist-doctor-name")}>Dr. Amit N. Solanki</span>
+              <span className={css("specialist-doctor-role")}>
                 Medical Director of Shanthi Eye Care
               </span>
             </motion.div>
           </motion.div>
 
-          <div className="specialist-cards-wrap">
-            <motion.div className="specialist-cards-grid" variants={stagger}>
+          <div className={css("specialist-cards-wrap")}>
+            <motion.div className={css("specialist-cards-grid")} variants={stagger}>
               {doctorCards.map((card, index) => (
                 <DoctorInfoCard key={`${card.number}-${card.title}`} card={card} index={index} />
               ))}
             </motion.div>
-            <motion.div className="specialist-buttons" variants={reveal}>
+            <motion.div className={css("specialist-buttons")} variants={reveal}>
               <CTAButton>Book a Consultation</CTAButton>
               <CTAButton variant="secondary">Call Now !</CTAButton>
             </motion.div>
@@ -713,9 +727,9 @@ function DoctorSection() {
 
 function BenefitIcon({ index }) {
   return (
-    <span className="benefit-icon" aria-hidden="true">
+    <span className={css("benefit-icon")} aria-hidden="true">
       <img
-        src={`/assets/why-patients/${index + 1}.png`}
+        src={`/assets/why_Patients_choose/${index + 1}.png`}
         alt=""
         loading="lazy"
         decoding="async"
@@ -729,7 +743,7 @@ function BenefitItem({ item, index }) {
   const row = Math.floor(index / 4);
   return (
     <motion.div
-      className="benefit-item"
+      className={css("benefit-item")}
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={sectionViewport}
@@ -748,16 +762,16 @@ function BenefitItem({ item, index }) {
 
 function BenefitsSection() {
   return (
-    <section className="benefits-section" id="benefits">
+    <section className={css("benefits-section")} id="benefits">
       <motion.div
-        className="benefits-inner"
+        className={css("benefits-inner")}
         initial="hidden"
         whileInView="show"
         viewport={sectionViewport}
         variants={stagger}
       >
-        <motion.div className="benefits-heading" variants={stagger}>
-          <motion.span className="benefits-badge" variants={reveal}>
+        <motion.div className={css("benefits-heading")} variants={stagger}>
+          <motion.span className={css("benefits-badge")} variants={reveal}>
             Benefits
           </motion.span>
           <motion.h2 variants={reveal}>
@@ -769,7 +783,7 @@ function BenefitsSection() {
           </motion.p>
         </motion.div>
 
-        <div className="benefits-grid">
+        <div className={css("benefits-grid")}>
           {benefits.map((item, index) => (
             <BenefitItem key={item.title} item={item} index={index} />
           ))}
@@ -791,7 +805,7 @@ function TimelineRow({ item, index }) {
   /* Year label — slides in from its side */
   const yearEl = item.year && (
     <motion.div
-      className={`tl-year tl-year--${item.accent}`}
+      className={css(`tl-year tl-year--${item.accent}`)}
       initial={{ opacity: 0, x: cardOnRight ? -44 : 44 }}
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true }}
@@ -804,7 +818,7 @@ function TimelineRow({ item, index }) {
   /* Award card — slides in from its side */
   const cardEl = (
     <motion.div
-      className={`award-card${item.highlight ? " award-card--highlight" : ""}`}
+      className={css(`award-card${item.highlight ? " award-card--highlight" : ""}`)}
       initial={{ opacity: 0, x: isTail ? -32 : cardOnRight ? 44 : -44 }}
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true }}
@@ -819,7 +833,7 @@ function TimelineRow({ item, index }) {
   /* Numbered dot — scales in */
   const dotEl = item.num && (
     <motion.div
-      className={`tl-circle tl-circle--${item.accent}`}
+      className={css(`tl-circle tl-circle--${item.accent}`)}
       initial={{ opacity: 0, scale: 0 }}
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}
@@ -833,26 +847,26 @@ function TimelineRow({ item, index }) {
   /* Tail row: no dot, no year — card aligned with the left column (same as card above) */
   if (isTail) {
     return (
-      <div className="tl-row tl-row--tail">
-        <div className="tl-col-left">{cardEl}</div>
-        <div className="tl-col-center" />
-        <div className="tl-col-right" />
+      <div className={css("tl-row tl-row--tail")}>
+        <div className={css("tl-col-left")}>{cardEl}</div>
+        <div className={css("tl-col-center")} />
+        <div className={css("tl-col-right")} />
       </div>
     );
   }
 
   return (
-    <div className={`tl-row tl-row--${item.side}`}>
+    <div className={css(`tl-row tl-row--${item.side}`)}>
       {/* Left column: year when card-right, card when card-left */}
-      <div className="tl-col-left">
+      <div className={css("tl-col-left")}>
         {cardOnRight ? yearEl : cardEl}
       </div>
       {/* Center column: always the numbered dot */}
-      <div className="tl-col-center">
+      <div className={css("tl-col-center")}>
         {dotEl}
       </div>
       {/* Right column: card when card-right, year when card-left */}
-      <div className="tl-col-right">
+      <div className={css("tl-col-right")}>
         {cardOnRight ? cardEl : yearEl}
       </div>
     </div>
@@ -861,17 +875,17 @@ function TimelineRow({ item, index }) {
 
 function AwardsSection() {
   return (
-    <section className="awards-section" id="awards">
+    <section className={css("awards-section")} id="awards">
       <motion.div
-        className="awards-inner"
+        className={css("awards-inner")}
         initial="hidden"
         whileInView="show"
         viewport={sectionViewport}
         variants={stagger}
       >
         {/* Heading */}
-        <motion.div className="awards-heading" variants={stagger}>
-          <motion.span className="awards-badge" variants={reveal}>
+        <motion.div className={css("awards-heading")} variants={stagger}>
+          <motion.span className={css("awards-badge")} variants={reveal}>
             Awards &amp; Recognition
           </motion.span>
           <motion.h2 variants={reveal}>A Legacy of Recognition</motion.h2>
@@ -881,11 +895,11 @@ function AwardsSection() {
         </motion.div>
 
         {/* Timeline */}
-        <div className="tl-track">
+        <div className={css("tl-track")}>
           {/* Single continuous vertical spine line that draws downward */}
-          <div className="tl-spine-outer">
+          <div className={css("tl-spine-outer")}>
             <motion.div
-              className="tl-spine-inner"
+              className={css("tl-spine-inner")}
               initial={{ scaleY: 0 }}
               whileInView={{ scaleY: 1 }}
               viewport={{ once: true }}
@@ -906,14 +920,14 @@ function AwardsSection() {
 function TestimonialCard({ item, index }) {
   return (
     <motion.article
-      className="testimonial-card"
+      className={css("testimonial-card")}
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6, delay: index * 0.15, ease: "easeOut" }}
       whileHover={{ scale: 1.02, boxShadow: "0 26px 58px rgba(20, 16, 12, 0.14)" }}
     >
-      <div className="testimonial-stars" aria-label="5 out of 5 stars">
+      <div className={css("testimonial-stars")} aria-label="5 out of 5 stars">
         <span>★</span>
         <span>★</span>
         <span>★</span>
@@ -922,15 +936,15 @@ function TestimonialCard({ item, index }) {
       </div>
 
       <h3>{item.title}</h3>
-      <p className="testimonial-quote">“{item.quote}”</p>
+      <p className={css("testimonial-quote")}>“{item.quote}”</p>
 
-      <div className="testimonial-divider" />
+      <div className={css("testimonial-divider")} />
 
-      <div className="testimonial-patient-row">
-        <img src={item.avatar} alt={item.name} className="testimonial-avatar" loading="lazy" />
-        <p className="testimonial-patient-line">
-          <span className="testimonial-name">{item.name}</span>
-          <span className="testimonial-meta">{item.details}</span>
+      <div className={css("testimonial-patient-row")}>
+        <img src={item.avatar} alt={item.name} className={css("testimonial-avatar")} loading="lazy" />
+        <p className={css("testimonial-patient-line")}>
+          <span className={css("testimonial-name")}>{item.name}</span>
+          <span className={css("testimonial-meta")}>{item.details}</span>
         </p>
       </div>
     </motion.article>
@@ -939,10 +953,10 @@ function TestimonialCard({ item, index }) {
 
 function TestimonialsSection() {
   return (
-    <section className="testimonials-section" id="testimonials">
-      <div className="testimonials-inner">
+    <section className={css("testimonials-section")} id="testimonials">
+      <div className={css("testimonials-inner")}>
         <motion.span
-          className="testimonials-badge"
+          className={css("testimonials-badge")}
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -961,7 +975,7 @@ function TestimonialsSection() {
         </motion.h2>
 
         <motion.p
-          className="testimonials-subtitle"
+          className={css("testimonials-subtitle")}
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -970,7 +984,7 @@ function TestimonialsSection() {
           Real experiences from patients who improved their vision and confidence through our expert eye care services.
         </motion.p>
 
-        <div className="testimonials-grid">
+        <div className={css("testimonials-grid")}>
           {testimonials.map((item, i) => (
             <TestimonialCard key={item.id} item={item} index={i} />
           ))}
@@ -978,13 +992,13 @@ function TestimonialsSection() {
 
         <motion.a
           href="#contact"
-          className="testimonials-view-all"
+          className={css("testimonials-view-all")}
           whileTap={{ scale: 0.98 }}
         >
-          <span className="testimonials-view-all-fill" aria-hidden="true" />
-          <span className="testimonials-view-all-text">View all</span>
+          <span className={css("testimonials-view-all-fill")} aria-hidden="true" />
+          <span className={css("testimonials-view-all-text")}>View all</span>
           <motion.span
-            className="testimonials-view-all-arrow"
+            className={css("testimonials-view-all-arrow")}
             aria-hidden="true"
           >
             →
@@ -998,7 +1012,7 @@ function TestimonialsSection() {
 function FAQItem({ item, index, isOpen, onToggle }) {
   return (
     <motion.article
-      className="faq-item"
+      className={css("faq-item")}
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
@@ -1010,16 +1024,16 @@ function FAQItem({ item, index, isOpen, onToggle }) {
       }}
     >
       <button
-        className="faq-question-row"
+        className={css("faq-question-row")}
         type="button"
         onClick={onToggle}
         aria-expanded={isOpen}
         aria-controls={`faq-answer-${item.id}`}
       >
-        <span className="faq-question">{item.question}</span>
-        <span className="faq-toggle" aria-hidden="true">
+        <span className={css("faq-question")}>{item.question}</span>
+        <span className={css("faq-toggle")} aria-hidden="true">
           <motion.span
-            className="faq-toggle-symbol"
+            className={css("faq-toggle-symbol")}
             animate={{ rotate: isOpen ? 45 : 0 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
           >
@@ -1032,13 +1046,13 @@ function FAQItem({ item, index, isOpen, onToggle }) {
         {isOpen && (
           <motion.div
             id={`faq-answer-${item.id}`}
-            className="faq-answer-wrap"
+            className={css("faq-answer-wrap")}
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.4, ease: "easeInOut" }}
           >
-            <p className="faq-answer">{item.answer}</p>
+            <p className={css("faq-answer")}>{item.answer}</p>
           </motion.div>
         )}
       </AnimatePresence>
@@ -1054,21 +1068,21 @@ function FAQSection() {
   };
 
   return (
-    <section className="faq-section" id="faq">
-      <div className="faq-inner">
+    <section className={css("faq-section")} id="faq">
+      <div className={css("faq-inner")}>
         <motion.div
-          className="faq-heading"
+          className={css("faq-heading")}
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
-          <span className="faq-badge">FAQ</span>
+          <span className={css("faq-badge")}>FAQ</span>
           <h2>Frequently Asked Questions</h2>
           <p>Everything you need to know before your visit.</p>
         </motion.div>
 
-        <div className="faq-list">
+        <div className={css("faq-list")}>
           {faqs.map((item, index) => (
             <FAQItem
               key={item.id}
@@ -1086,12 +1100,12 @@ function FAQSection() {
 
 function CTABannerSection() {
   return (
-    <section className="cta-banner-section" id="cta-banner">
-      <div className="cta-banner-shell">
+    <section className={css("cta-banner-section")} id="cta-banner">
+      <div className={css("cta-banner-shell")}>
         <motion.img
           src="/assets/1_doctor.png"
           alt="Eye specialist"
-          className="cta-banner-photo cta-banner-photo--left"
+          className={css("cta-banner-photo cta-banner-photo--left")}
           initial={{ opacity: 0, x: -60 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
@@ -1101,16 +1115,16 @@ function CTABannerSection() {
         <motion.img
           src="/assets/1_doctor.png"
           alt="Patient consultation"
-          className="cta-banner-photo cta-banner-photo--right"
+          className={css("cta-banner-photo cta-banner-photo--right")}
           initial={{ opacity: 0, x: 60 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, ease: "easeOut" }}
         />
 
-        <div className="cta-banner-card">
+        <div className={css("cta-banner-card")}>
           <motion.span
-            className="cta-banner-badge"
+            className={css("cta-banner-badge")}
             initial={{ opacity: 0, y: -10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -1125,9 +1139,9 @@ function CTABannerSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.62, delay: 0.14, ease: "easeOut" }}
           >
-            <span className="cta-banner-heading-soft">Start Your </span>
+            <span className={css("cta-banner-heading-soft")}>Start Your </span>
             {" "}
-            <span className="cta-banner-heading-accent">Vision Journey</span>
+            <span className={css("cta-banner-heading-accent")}>Vision Journey</span>
           </motion.h2>
 
           <motion.div
@@ -1138,13 +1152,13 @@ function CTABannerSection() {
           >
             <motion.a
               href="#contact"
-              className="cta-banner-button"
+              className={css("cta-banner-button")}
               whileTap={{ scale: 0.98 }}
             >
-              <span className="cta-banner-button-fill" aria-hidden="true" />
-              <span className="cta-banner-button-text">Book a Consultation</span>
+              <span className={css("cta-banner-button-fill")} aria-hidden="true" />
+              <span className={css("cta-banner-button-text")}>Book a Consultation</span>
               <motion.span
-                className="cta-banner-button-arrow"
+                className={css("cta-banner-button-arrow")}
                 aria-hidden="true"
               >
                 →
@@ -1173,3 +1187,4 @@ export default function HomePageComponent() {
     </>
   );
 }
+

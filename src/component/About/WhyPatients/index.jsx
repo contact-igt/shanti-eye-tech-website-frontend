@@ -7,7 +7,8 @@ import {
   sectionViewport,
   stagger,
   whyPatientsContent
-} from "@/pagecomponent/About/aboutData";
+} from "@/constant/aboutContent";
+import styles from "./styles.module.css";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -21,7 +22,7 @@ function BenefitItem({ item, index }) {
 
   return (
     <motion.li
-      className="about-why-item"
+      className={styles.aboutWhyItem}
       initial={{ opacity: 0, y: 22 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={sectionViewport}
@@ -31,7 +32,7 @@ function BenefitItem({ item, index }) {
         ease
       }}
     >
-      <span className="about-why-icon" aria-hidden="true">
+      <span className={styles.aboutWhyIcon} aria-hidden="true">
         <Image src={item.image} alt="" width={52} height={52} sizes="52px" />
       </span>
       <h3>{item.title}</h3>
@@ -42,16 +43,16 @@ function BenefitItem({ item, index }) {
 
 export default function WhyPatients() {
   return (
-    <section className={`${inter.className} about-why-section`} aria-labelledby="about-why-title">
+    <section className={`${inter.className} ${styles.aboutWhySection}`} aria-labelledby="about-why-title">
       <motion.div
-        className="about-why-inner"
+        className={styles.aboutWhyInner}
         initial="hidden"
         whileInView="show"
         viewport={sectionViewport}
         variants={stagger}
       >
-        <motion.header className="about-why-heading" variants={stagger}>
-          <motion.span className="about-why-badge" variants={reveal}>
+        <motion.header className={styles.aboutWhyHeading} variants={stagger}>
+          <motion.span className={styles.aboutWhyBadge} variants={reveal}>
             {whyPatientsContent.badge}
           </motion.span>
           <motion.h2 id="about-why-title" variants={reveal}>
@@ -64,7 +65,7 @@ export default function WhyPatients() {
           </motion.p>
         </motion.header>
 
-        <ul className="about-why-grid">
+        <ul className={styles.aboutWhyGrid}>
           {whyPatientsContent.items.map((item, index) => (
             <BenefitItem key={item.title} item={item} index={index} />
           ))}

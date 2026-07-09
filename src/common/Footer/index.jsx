@@ -1,6 +1,20 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { footerContent } from "@/constant/footerContent";
+import styles from "./styles.module.css";
+
+
+function toStyleName(className) {
+  return className.replace(/-+([a-z0-9])/g, (_, character) => character.toUpperCase());
+}
+
+function css(classNames) {
+  return classNames
+    .split(/\s+/)
+    .filter(Boolean)
+    .map((className) => styles[toStyleName(className)] ?? className)
+    .join(" ");
+}
 
 const footerEase = [0.22, 1, 0.36, 1];
 const footerViewport = { once: true, amount: 0.2 };
@@ -57,7 +71,7 @@ function FooterCurveLine({ position }) {
 
   return (
     <motion.svg
-      className={`footer-curve footer-curve--${position}`}
+      className={css(`footer-curve footer-curve--${position}`)}
       viewBox="0 0 1600 92"
       preserveAspectRatio="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -108,30 +122,30 @@ function FooterNavLink({ href, children }) {
 
 export default function Footer() {
   return (
-    <footer className="footer-section">
+    <footer className={css("footer-section")}>
       <motion.div
-        className="footer-shell"
+        className={css("footer-shell")}
         initial="hidden"
         whileInView="show"
         viewport={footerViewport}
         variants={footerContainerVariant}
       >
         <img
-          className="footer-bg-image"
+          className={css("footer-bg-image")}
           src="https://framerusercontent.com/images/Kw7qYWRE5oJS1vo7LgFTnJmSPZI.png?width=4800&height=2644"
           alt=""
           decoding="async"
           loading="lazy"
           aria-hidden="true"
         />
-        <span className="footer-bg-overlay" aria-hidden="true" />
+        <span className={css("footer-bg-overlay")} aria-hidden="true" />
 
         <FooterCurveLine position="top" />
 
-        <div className="footer-content">
-          <motion.div className="footer-left" variants={footerContainerVariant}>
+        <div className={css("footer-content")}>
+          <motion.div className={css("footer-left")} variants={footerContainerVariant}>
             <motion.p
-              className="footer-description"
+              className={css("footer-description")}
               variants={footerRevealVariant}
               custom={{ delay: 0.12 }}
             >
@@ -139,7 +153,7 @@ export default function Footer() {
             </motion.p>
 
             <motion.div
-              className="footer-pages"
+              className={css("footer-pages")}
               variants={footerRevealVariant}
               custom={{ delay: 0.24 }}
             >
@@ -154,21 +168,21 @@ export default function Footer() {
             </motion.div>
           </motion.div>
 
-          <motion.div className="footer-center" variants={footerContainerVariant}>
+          <motion.div className={css("footer-center")} variants={footerContainerVariant}>
             <motion.img
               src="/assets/LOGO.jpeg"
               alt="Shanti EyeTech logo"
-              className="footer-logo"
+              className={css("footer-logo")}
               variants={footerLogoVariant}
             />
-            <motion.div className="footer-socials" variants={footerSocialsVariant}>
+            <motion.div className={css("footer-socials")} variants={footerSocialsVariant}>
               {footerContent.socials.map((social) => (
                 <motion.a
                   key={social.label}
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="footer-social-icon"
+                  className={css("footer-social-icon")}
                   aria-label={social.label}
                   variants={footerSocialVariant}
                   whileHover={{ y: -4 }}
@@ -180,9 +194,9 @@ export default function Footer() {
             </motion.div>
           </motion.div>
 
-          <motion.div className="footer-right" variants={footerContainerVariant}>
+          <motion.div className={css("footer-right")} variants={footerContainerVariant}>
             <motion.div
-              className="footer-support"
+              className={css("footer-support")}
               variants={footerRevealVariant}
               custom={{ delay: 0.78 }}
             >
@@ -197,7 +211,7 @@ export default function Footer() {
             </motion.div>
 
             <motion.div
-              className="footer-visit"
+              className={css("footer-visit")}
               variants={footerRevealVariant}
               custom={{ delay: 0.9 }}
             >
@@ -219,7 +233,7 @@ export default function Footer() {
         <FooterCurveLine position="bottom" />
 
         <motion.p
-          className="footer-copy"
+          className={css("footer-copy")}
           variants={footerRevealVariant}
           custom={{ delay: 1.14 }}
         >

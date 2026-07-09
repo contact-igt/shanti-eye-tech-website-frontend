@@ -8,7 +8,8 @@ import {
   reveal,
   sectionViewport,
   stagger
-} from "@/pagecomponent/About/aboutData";
+} from "@/constant/aboutContent";
+import styles from "./styles.module.css";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -24,16 +25,16 @@ const playfair = Playfair_Display({
 
 function TestimonialCard({ item }) {
   return (
-    <div className="about-testimonial-slide">
+    <div className={styles.aboutTestimonialSlide}>
       <article
-        className="about-testimonial-card"
+        className={styles.aboutTestimonialCard}
         style={{
           "--testimonial-rotation": `${item.rotation}deg`,
           "--testimonial-offset": `${item.offset}px`
         }}
       >
         <Image
-          className="about-testimonial-pin"
+          className={styles.aboutTestimonialPin}
           src={item.pin}
           alt=""
           width={232}
@@ -41,7 +42,7 @@ function TestimonialCard({ item }) {
           sizes="64px"
           aria-hidden="true"
         />
-        <cite className={`${inter.className} about-testimonial-name`}>
+        <cite className={`${inter.className} ${styles.aboutTestimonialName}`}>
           {item.name}
         </cite>
         <blockquote className={playfair.className}>
@@ -102,19 +103,19 @@ export default function Testimonials() {
 
   return (
     <section
-      className="about-testimonials-section"
+      className={styles.aboutTestimonialsSection}
       id="testimonials"
       aria-labelledby="about-testimonials-title"
     >
       <motion.header
-        className="about-testimonials-heading"
+        className={styles.aboutTestimonialsHeading}
         initial="hidden"
         whileInView="show"
         viewport={sectionViewport}
         variants={stagger}
       >
         <motion.span
-          className={`${inter.className} about-testimonials-badge`}
+          className={`${inter.className} ${styles.aboutTestimonialsBadge}`}
           variants={reveal}
         >
           {aboutTestimonialsContent.badge}
@@ -131,7 +132,7 @@ export default function Testimonials() {
       </motion.header>
 
       <div
-        className="about-testimonials-carousel"
+        className={styles.aboutTestimonialsCarousel}
         aria-label="Client testimonials carousel"
         onMouseEnter={keepAutoplayRunning}
         onMouseMove={keepAutoplayRunning}

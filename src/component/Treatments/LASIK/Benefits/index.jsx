@@ -6,7 +6,7 @@ import {
   sectionViewport,
   stagger,
   whyPatientsContent
-} from "@/pagecomponent/About/aboutData";
+} from "@/constant/aboutContent";
 import styles from "./styles.module.css";
 
 function BenefitItem({ item, index }) {
@@ -15,7 +15,7 @@ function BenefitItem({ item, index }) {
 
   return (
     <motion.div
-      className="benefit-item"
+      className={styles.item}
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={sectionViewport}
@@ -25,7 +25,7 @@ function BenefitItem({ item, index }) {
         ease
       }}
     >
-      <span className="benefit-icon" aria-hidden="true">
+      <span className={styles.icon} aria-hidden="true">
         <Image src={item.image} alt="" width={54} height={54} sizes="54px" />
       </span>
       <h3>{item.title}</h3>
@@ -36,35 +36,38 @@ function BenefitItem({ item, index }) {
 
 export default function LasikBenefitsSection() {
   return (
-    <section className={`benefits-section ${styles.section}`} id="benefits">
+    <section className={styles.section} id="benefits" aria-labelledby="treatment-benefits-title">
       <Image
         className={styles.background}
         src="/assets/Treatments/background.png"
         alt=""
-        fill
-        sizes="100vw"
+        width={2048}
+        height={594}
+        sizes="(max-width: 992px) 142vw, 104vw"
         aria-hidden="true"
       />
       <motion.div
-        className={`benefits-inner ${styles.inner}`}
+        className={styles.inner}
         initial="hidden"
         whileInView="show"
         viewport={sectionViewport}
         variants={stagger}
       >
-        <motion.div className="benefits-heading" variants={stagger}>
-          <motion.span className="benefits-badge" variants={reveal}>
+        <motion.div className={styles.heading} variants={stagger}>
+          <motion.span className={styles.badge} variants={reveal}>
             {whyPatientsContent.badge}
           </motion.span>
-          <motion.h2 variants={reveal}>{whyPatientsContent.title}</motion.h2>
-          <motion.p variants={reveal}>
+          <motion.h2 id="treatment-benefits-title" variants={reveal}>
+            {whyPatientsContent.title}
+          </motion.h2>
+          <motion.p className={styles.description} variants={reveal}>
             {whyPatientsContent.description.map((line) => (
               <span key={line}>{line}</span>
             ))}
           </motion.p>
         </motion.div>
 
-        <div className="benefits-grid">
+        <div className={styles.grid}>
           {whyPatientsContent.items.map((item, index) => (
             <BenefitItem key={item.title} item={item} index={index} />
           ))}
@@ -73,3 +76,5 @@ export default function LasikBenefitsSection() {
     </section>
   );
 }
+
+

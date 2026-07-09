@@ -7,7 +7,8 @@ import {
   aboutCtaContent,
   ease,
   sectionViewport
-} from "@/pagecomponent/About/aboutData";
+} from "@/constant/aboutContent";
+import styles from "./styles.module.css";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -18,12 +19,12 @@ const inter = Inter({
 export default function AboutCTA() {
   return (
     <section
-      className={`${inter.className} about-cta-section`}
+      className={`${inter.className} ${styles.aboutCtaSection}`}
       aria-labelledby="about-cta-title"
     >
-      <div className="about-cta-shell">
+      <div className={styles.aboutCtaShell}>
         <motion.div
-          className="about-cta-image about-cta-image--left"
+          className={`${styles.aboutCtaImage} ${styles.aboutCtaImageLeft}`}
           initial={{ opacity: 0, x: -34, y: 12 }}
           whileInView={{ opacity: 1, x: 0, y: 0 }}
           viewport={sectionViewport}
@@ -39,7 +40,7 @@ export default function AboutCTA() {
         </motion.div>
 
         <motion.div
-          className="about-cta-image about-cta-image--right"
+          className={`${styles.aboutCtaImage} ${styles.aboutCtaImageRight}`}
           initial={{ opacity: 0, x: 34, y: 12 }}
           whileInView={{ opacity: 1, x: 0, y: 0 }}
           viewport={sectionViewport}
@@ -55,14 +56,14 @@ export default function AboutCTA() {
         </motion.div>
 
         <motion.div
-          className="about-cta-card"
+          className={styles.aboutCtaCard}
           initial={{ opacity: 0, y: 34 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={sectionViewport}
           transition={{ duration: 0.72, ease }}
         >
           <motion.span
-            className="about-cta-badge"
+            className={styles.aboutCtaBadge}
             initial={{ opacity: 0, y: -12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={sectionViewport}
@@ -89,10 +90,10 @@ export default function AboutCTA() {
             viewport={sectionViewport}
             transition={{ duration: 0.52, delay: 0.3, ease }}
           >
-            <Link className="cta-button cta-button--primary" href={aboutCtaContent.href}>
-              <span className="cta-button-fill" aria-hidden="true" />
-              <span className="cta-button-text">{aboutCtaContent.buttonLabel}</span>
-              <span className="arrow-icon" aria-hidden="true">
+            <Link className={`${styles.ctaButton} ${styles.ctaButtonPrimary}`} href={aboutCtaContent.href}>
+              <span className={styles.ctaButtonFill} aria-hidden="true" />
+              <span className={styles.ctaButtonText}>{aboutCtaContent.buttonLabel}</span>
+              <span className={styles.arrowIcon} aria-hidden="true">
                 <span />
               </span>
             </Link>

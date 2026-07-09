@@ -9,7 +9,8 @@ import {
   reveal,
   sectionViewport,
   stagger
-} from "@/pagecomponent/About/aboutData";
+} from "@/constant/aboutContent";
+import styles from "./styles.module.css";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -19,9 +20,9 @@ const inter = Inter({
 
 function FAQItem({ item, isOpen, onToggle }) {
   return (
-    <motion.article className="about-faq-item" variants={reveal}>
+    <motion.article className={styles.aboutFaqItem} variants={reveal}>
       <button
-        className="about-faq-question"
+        className={styles.aboutFaqQuestion}
         type="button"
         onClick={onToggle}
         aria-expanded={isOpen}
@@ -29,7 +30,7 @@ function FAQItem({ item, isOpen, onToggle }) {
       >
         <span>{item.question}</span>
         <motion.span
-          className="about-faq-arrow"
+          className={styles.aboutFaqArrow}
           aria-hidden="true"
           animate={{ rotate: isOpen ? 90 : 0 }}
           transition={{ duration: 0.3, ease }}
@@ -41,7 +42,7 @@ function FAQItem({ item, isOpen, onToggle }) {
       <AnimatePresence initial={false}>
         {isOpen && (
           <motion.div
-            className="about-faq-answer-wrap"
+            className={styles.aboutFaqAnswerWrap}
             id={`about-faq-answer-${item.id}`}
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
@@ -65,47 +66,47 @@ export default function FAQ({ content = aboutFaqContent }) {
 
   return (
     <section
-      className={`${inter.className} about-faq-section`}
+      className={`${inter.className} ${styles.aboutFaqSection}`}
       id="faq"
       aria-labelledby="about-faq-title"
     >
-      <div className="about-faq-inner">
+      <div className={styles.aboutFaqInner}>
         <motion.aside
-          className="about-faq-callout"
+          className={styles.aboutFaqCallout}
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={sectionViewport}
           transition={{ duration: 0.7, ease }}
         >
-          <span className="about-faq-phone" aria-hidden="true">
+          <span className={styles.aboutFaqPhone} aria-hidden="true">
             <Phone fill="currentColor" strokeWidth={1.8} />
           </span>
           <p>{content.callout}</p>
-          <Link className="about-faq-book" href="/#contact">
+          <Link className={styles.aboutFaqBook} href="/#contact">
             <CalendarDays aria-hidden="true" strokeWidth={1.7} />
             <span>Book a call</span>
           </Link>
-          <a className="about-faq-email" href={`mailto:${content.email}`}>
+          <a className={styles.aboutFaqEmail} href={`mailto:${content.email}`}>
             or {content.email}
           </a>
         </motion.aside>
 
         <motion.div
-          className="about-faq-content"
+          className={styles.aboutFaqContent}
           initial="hidden"
           whileInView="show"
           viewport={sectionViewport}
           variants={stagger}
         >
-          <motion.div className="about-faq-heading" variants={reveal}>
-            <span className="about-faq-eyebrow">
+          <motion.div className={styles.aboutFaqHeading} variants={reveal}>
+            <span className={styles.aboutFaqEyebrow}>
               <i aria-hidden="true" />
               {content.eyebrow}
             </span>
             <h2 id="about-faq-title">{content.title}</h2>
           </motion.div>
 
-          <motion.div className="about-faq-list" variants={stagger}>
+          <motion.div className={styles.aboutFaqList} variants={stagger}>
             {content.items.map((item) => (
               <FAQItem
                 key={item.id}

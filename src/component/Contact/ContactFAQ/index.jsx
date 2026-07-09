@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Inter } from "next/font/google";
-import { ease, reveal, sectionViewport, stagger } from "@/pagecomponent/About/aboutData";
+import { ease, reveal, sectionViewport, stagger } from "@/constant/aboutContent";
 import styles from "./styles.module.css";
 
 const inter = Inter({

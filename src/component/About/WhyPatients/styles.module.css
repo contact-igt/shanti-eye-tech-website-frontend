@@ -1,0 +1,520 @@
+.aboutWhySection {
+  position: relative;
+  width: 100%;
+  min-height: 594px;
+  overflow: hidden;
+  padding: 82px 0 94px;
+  background: #f4f0ed;
+  color: #11100f;
+}
+
+.aboutWhySection::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  left: 50%;
+  bottom: 18px;
+  width: min(1180px, 82vw);
+  height: 340px;
+  transform: translateX(-50%);
+  opacity: 0.12;
+  pointer-events: none;
+  background-image: radial-gradient(circle, rgba(89, 83, 79, 0.62) 1.2px, transparent 1.35px);
+  background-size: 8px 8px;
+  -webkit-mask-image:
+    radial-gradient(ellipse 19% 32% at 12% 48%, #000 5%, transparent 72%),
+    radial-gradient(ellipse 22% 38% at 32% 55%, #000 6%, transparent 73%),
+    radial-gradient(ellipse 26% 45% at 52% 50%, #000 8%, transparent 72%),
+    radial-gradient(ellipse 22% 36% at 72% 55%, #000 6%, transparent 73%),
+    radial-gradient(ellipse 18% 31% at 90% 48%, #000 5%, transparent 72%);
+  mask-image:
+    radial-gradient(ellipse 19% 32% at 12% 48%, #000 5%, transparent 72%),
+    radial-gradient(ellipse 22% 38% at 32% 55%, #000 6%, transparent 73%),
+    radial-gradient(ellipse 26% 45% at 52% 50%, #000 8%, transparent 72%),
+    radial-gradient(ellipse 22% 36% at 72% 55%, #000 6%, transparent 73%),
+    radial-gradient(ellipse 18% 31% at 90% 48%, #000 5%, transparent 72%);
+}
+
+.aboutWhyInner {
+  position: relative;
+  z-index: 1;
+  width: min(1500px, calc(100% - 96px));
+  margin: 0 auto;
+}
+
+.aboutWhyHeading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.aboutWhyBadge {
+  min-height: 27px;
+  padding: 6px 17px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 10px 30px rgba(51, 43, 38, 0.045);
+  color: #4c4946;
+  font-size: 12px;
+  line-height: 1;
+  font-weight: 500;
+}
+
+.aboutWhyHeading h2 {
+  margin: 20px 0 0;
+  color: #151311;
+  font-size: clamp(38px, 2.45vw, 47px);
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+  font-weight: 500;
+}
+
+.aboutWhyHeading p {
+  margin: 13px 0 0;
+  display: flex;
+  flex-direction: column;
+  color: #5d5753;
+  font-size: 17px;
+  line-height: 1.08;
+  font-weight: 400;
+}
+
+.aboutWhyGrid {
+  width: 100%;
+  margin: 72px 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  column-gap: 60px;
+  row-gap: 80px;
+}
+
+.aboutWhyItem {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.aboutWhyIcon {
+    width: 72px;
+    height: 72px;
+    display: grid;
+    place-items: center;
+    margin-bottom: 16px;
+  }
+
+.aboutWhyIcon img {
+    width: 100%;
+    height: 100%;
+    max-width: 72px;
+    max-height: 72px;
+    object-fit: contain;
+  }
+
+.aboutWhyItem h3 {
+  margin: 0;
+  color: #171513;
+  font-size: 19px;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+  font-weight: 600;
+}
+
+.aboutWhyItem p {
+  width: min(100%, 222px);
+  margin: 14px 0 0;
+  color: #625d59;
+  font-size: 14px;
+  line-height: 1.45;
+  font-weight: 400;
+}
+
+@media (max-width: 1200px) {
+  .aboutWhySection {  
+      padding: 76px 0 90px;  
+    }
+  
+  .aboutWhyInner {  
+      width: calc(100% - 64px);  
+    }
+  
+  .aboutWhyGrid {  
+      column-gap: 40px; row-gap: 70px;  
+    }
+  
+  .aboutWhyItem h3 {  
+      font-size: 17px;  
+    }
+  
+  .aboutWhyItem p {  
+      max-width: 205px;  
+      font-size: 13px;  
+    }
+}
+
+@media (max-width: 992px) {
+  .aboutWhySection {  
+      min-height: 0;  
+      padding: 72px 0 92px;  
+    }
+  
+  .aboutWhySection::before {  
+      width: 94vw;  
+      height: 620px;  
+      bottom: 30px;  
+      opacity: 0.1;  
+    }
+  
+  .aboutWhyInner {  
+      width: min(760px, calc(100% - 56px));  
+    }
+  
+  .aboutWhyHeading h2 {  
+      font-size: 40px;  
+    }
+  
+  .aboutWhyGrid {  
+      width: min(700px, 100%);  
+      margin: 52px auto 0;  
+      grid-template-columns: repeat(2, minmax(0, 1fr));  
+      column-gap: 80px; row-gap: 70px;  
+    }
+}
+
+@media (max-width: 768px) {
+  .aboutWhySection {  
+      padding: 64px 0 82px;  
+    }
+  
+  .aboutWhyInner {  
+      width: calc(100% - 40px);  
+    }
+  
+  .aboutWhyHeading h2 {  
+      max-width: 600px;  
+      margin-top: 18px;  
+      font-size: 36px;  
+    }
+  
+  .aboutWhyHeading p {  
+      margin-top: 14px;  
+      font-size: 16px;  
+      line-height: 1.2;  
+    }
+  
+  .aboutWhyGrid {  
+      margin-top: 48px;  
+      column-gap: 40px; row-gap: 60px;  
+    }
+  
+  .aboutWhyIcon {  
+      width: 72px;  
+      height: 72px;  
+      display: grid;  
+      place-items: center;  
+      margin-bottom: 16px;  
+    }
+  
+  .aboutWhyIcon img {  
+      width: 100%;  
+      height: 100%;  
+      max-width: 72px;  
+      max-height: 72px;  
+      object-fit: contain;  
+    }
+  
+  .aboutWhyItem p {  
+      margin-top: 11px;  
+    }
+}
+
+@media (max-width: 576px) {
+  .aboutWhySection {  
+      padding: 58px 0 74px;  
+    }
+  
+  .aboutWhySection::before {  
+      height: 650px;  
+      opacity: 0.065;  
+    }
+  
+  .aboutWhyInner {  
+      width: calc(100% - 28px);  
+    }
+  
+  .aboutWhyBadge {  
+      font-size: 11px;  
+    }
+  
+  .aboutWhyHeading h2 {  
+      max-width: 430px;  
+      font-size: 32px;  
+      line-height: 1.12;  
+    }
+  
+  .aboutWhyHeading p {  
+      font-size: 14px;  
+      line-height: 1.3;  
+    }
+  
+  .aboutWhyGrid {  
+      margin-top: 42px;  
+      column-gap: 12px;  
+      row-gap: 42px;  
+    }
+  
+  .aboutWhyItem {  
+      padding: 0 4px;  
+    }
+  
+  .aboutWhyIcon {  
+      width: 72px;  
+      height: 72px;  
+      display: grid;  
+      place-items: center;  
+      margin-bottom: 16px;  
+    }
+  
+  .aboutWhyIcon img {  
+      width: 100%;  
+      height: 100%;  
+      max-width: 72px;  
+      max-height: 72px;  
+      object-fit: contain;  
+    }
+  
+  .aboutWhyItem h3 {  
+      font-size: 15px;  
+      line-height: 1.22;  
+    }
+  
+  .aboutWhyItem p {  
+      max-width: 170px;  
+      font-size: 12px;  
+      line-height: 1.42;  
+    }
+}
+
+@media (max-width: 390px) {
+  .aboutWhySection {  
+      padding: 52px 0 68px;  
+    }
+  
+  .aboutWhySection::before {  
+      display: none;  
+    }
+  
+  .aboutWhyInner {  
+      width: calc(100% - 32px);  
+    }
+  
+  .aboutWhyHeading h2 {  
+      max-width: 340px;  
+      font-size: 30px;  
+    }
+  
+  .aboutWhyHeading p {  
+      max-width: 320px;  
+    }
+  
+  .aboutWhyHeading p span {  
+      display: inline;  
+    }
+  
+  .aboutWhyGrid {  
+      width: 100%;  
+      margin-top: 42px;  
+      grid-template-columns: 1fr;  
+      row-gap: 38px;  
+    }
+  
+  .aboutWhyItem {  
+      padding: 0;  
+    }
+  
+  .aboutWhyIcon {  
+      width: 72px;  
+      height: 72px;  
+      display: grid;  
+      place-items: center;  
+      margin-bottom: 16px;  
+    }
+  
+  .aboutWhyIcon img {  
+      width: 100%;  
+      height: 100%;  
+      max-width: 72px;  
+      max-height: 72px;  
+      object-fit: contain;  
+    }
+  
+  .aboutWhyItem h3 {  
+      font-size: 17px;  
+    }
+  
+  .aboutWhyItem p {  
+      width: min(100%, 250px);  
+      max-width: 250px;  
+      font-size: 13px;  
+    }
+}
+
+.aboutWhySection{background:#f4f0ed url('/assets/about/chooseus.png') center center/contain no-repeat}
+
+.aboutWhySection::before{display:none}
+
+.aboutWhyHeading h2{font-family:inherit;font-size:44px;line-height:52.8px;letter-spacing:-1.94px;font-weight:400;color:rgb(18,10,11)}
+
+@media (max-width:992px) {
+  .aboutWhySection{background-size:contain;background-position:center center}
+  
+  .aboutWhyHeading h2{font-size:40px;line-height:48px;letter-spacing:-1.6px}
+}
+
+@media (max-width:768px) {
+  .aboutWhyHeading h2{font-size:36px;line-height:43.2px;letter-spacing:-1.35px}
+}
+
+@media (max-width:576px) {
+  .aboutWhySection{background-size:auto 100%;background-position:center center}
+  
+  .aboutWhyHeading h2{font-size:32px;line-height:38.4px;letter-spacing:-1.1px}
+}
+
+@media (max-width:390px) {
+  .aboutWhySection{background-size:auto 100%;background-position:center center}
+  
+  .aboutWhyHeading h2{font-size:30px;line-height:36px;letter-spacing:-.9px}
+}
+
+.aboutWhySection {
+  overflow-x: clip;
+}
+
+@media (max-width: 1200px) {
+  .aboutWhyInner {  
+      width: calc(100% - 64px);  
+    }
+}
+
+@media (max-width: 992px) {
+  .aboutWhyGrid {  
+      grid-template-columns: repeat(2, minmax(0, 1fr));  
+      row-gap: 44px;  
+    }
+}
+
+@media (max-width: 768px) {
+  .aboutWhySection {  
+      padding-top: 70px;  
+      padding-bottom: 80px;  
+    }
+  
+  .aboutWhyInner {  
+      width: calc(100% - 40px);  
+    }
+  
+  .aboutWhyHeading h2 {  
+      font-size: clamp(36px, 8vw, 44px);  
+      line-height: 1.14;  
+    }
+}
+
+@media (max-width: 576px) {
+  .aboutWhySection {  
+      padding-top: 58px;  
+      padding-bottom: 68px;  
+    }
+  
+  .aboutWhyInner {  
+      width: calc(100% - 28px);  
+    }
+  
+  .aboutWhyGrid {  
+      grid-template-columns: 1fr;  
+      gap: 28px;  
+    }
+}
+
+@media (max-width: 390px) {
+  .aboutWhyHeading h2 {  
+      font-size: 32px;  
+      line-height: 1.12;  
+    }
+  
+  .aboutWhyInner {  
+      width: calc(100% - 24px);  
+    }
+}
+
+@media (max-width: 576px) {
+  .aboutWhyIcon {  
+      width: 72px;  
+      height: 72px;  
+      display: grid;  
+      place-items: center;  
+      margin-bottom: 16px;  
+    }
+  
+  .aboutWhyIcon img {  
+      width: 100%;  
+      height: 100%;  
+      max-width: 72px;  
+      max-height: 72px;  
+      object-fit: contain;  
+    }
+}
+
+@media (max-width: 390px) {
+  .aboutWhyIcon {  
+      width: 72px;  
+      height: 72px;  
+      display: grid;  
+      place-items: center;  
+      margin-bottom: 16px;  
+    }
+  
+  .aboutWhyIcon img {  
+      width: 100%;  
+      height: 100%;  
+      max-width: 72px;  
+      max-height: 72px;  
+      object-fit: contain;  
+    }
+}
+
+.aboutWhyIcon {
+  width: 56px !important;
+  height: 56px !important;
+}
+
+.aboutWhyIcon img {
+  width: 52px !important;
+  height: 52px !important;
+  max-width: 52px !important;
+  max-height: 52px !important;
+  object-fit: contain !important;
+  image-rendering: auto;
+}
+
+@media (max-width: 576px) {
+  .aboutWhyIcon {  
+      width: 50px !important;  
+      height: 50px !important;  
+      margin-bottom: 14px !important;  
+    }
+  
+  .aboutWhyIcon img {  
+      width: 46px !important;  
+      height: 46px !important;  
+      max-width: 46px !important;  
+      max-height: 46px !important;  
+    }
+}

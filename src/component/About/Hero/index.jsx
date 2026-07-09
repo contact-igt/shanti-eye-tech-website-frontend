@@ -3,7 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Intel_One_Mono, Playfair_Display } from "next/font/google";
-import { ease, heroContent, reveal, stagger } from "@/pagecomponent/About/aboutData";
+import { ease, heroContent, reveal, stagger } from "@/constant/aboutContent";
+import styles from "./styles.module.css";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -39,8 +40,8 @@ function MenuIcon() {
 
 function StatCard({ stat, index }) {
   return (
-    <motion.article className="about-banner-stat" initial={{ opacity: 0, y: 28, rotate: cardRotations[index] }} animate={{ opacity: 1, y: 0, rotate: cardRotations[index] }} transition={{ duration: 0.6, delay: 0.72 + index * 0.12, ease }}>
-      <span className="about-banner-stat-icon"><Image src={statIcons[index]} alt="" width={34} height={34} aria-hidden="true" /></span>
+    <motion.article className={styles.aboutBannerStat} initial={{ opacity: 0, y: 28, rotate: cardRotations[index] }} animate={{ opacity: 1, y: 0, rotate: cardRotations[index] }} transition={{ duration: 0.6, delay: 0.72 + index * 0.12, ease }}>
+      <span className={styles.aboutBannerStatIcon}><Image src={statIcons[index]} alt="" width={34} height={34} aria-hidden="true" /></span>
       <strong className={intelOneMono.className}>{stat.value} {stat.label}<br />{stat.description}</strong>
     </motion.article>
   );
@@ -49,35 +50,35 @@ function StatCard({ stat, index }) {
 export default function AboutHero() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   return (
-    <section className={`${playfair.variable} ${intelOneMono.variable} about-banner`} id="about-hero">
-      <div className="about-banner-inner">
-        <motion.div className="about-banner-copy" variants={stagger} initial="hidden" animate="show">
-          <motion.div className="about-banner-logo" variants={reveal}>
+    <section className={`${playfair.variable} ${intelOneMono.variable} ${styles.aboutBanner}`} id="about-hero">
+      <div className={styles.aboutBannerInner}>
+        <motion.div className={styles.aboutBannerCopy} variants={stagger} initial="hidden" animate="show">
+          <motion.div className={styles.aboutBannerLogo} variants={reveal}>
             <Link href="/" aria-label="Shanti EyeTech home"><Image src="/assets/about/about_logo.png" alt="Shanti EyeTech" width={330} height={178} priority /></Link>
           </motion.div>
-          <div className="about-banner-content">
+          <div className={styles.aboutBannerContent}>
             <motion.h1 className={playfair.className} variants={reveal}>Peaceful, Advanced<br /><span>&amp;</span> Personalised<br />Eye Care.</motion.h1>
             <motion.p variants={reveal}>{heroContent.description}</motion.p>
-            <motion.div className="about-banner-actions" variants={reveal}>
-              <a className="cta-button cta-button--primary" href="#about-story">
-                <span className="cta-button-fill" aria-hidden="true" />
-                <span className="cta-button-text">Know Our Story</span>
-                <span className="arrow-icon" aria-hidden="true">
+            <motion.div className={styles.aboutBannerActions} variants={reveal}>
+              <a className={`${styles.ctaButton} ${styles.ctaButtonPrimary}`} href="#about-story">
+                <span className={styles.ctaButtonFill} aria-hidden="true" />
+                <span className={styles.ctaButtonText}>Know Our Story</span>
+                <span className={styles.arrowIcon} aria-hidden="true">
                   <span />
                 </span>
               </a>
-              <a className="cta-button cta-button--secondary" href="#doctor-section">
-                <span className="cta-button-fill" aria-hidden="true" />
-                <span className="cta-button-text">Meet Our Doctor</span>
-                <span className="arrow-icon" aria-hidden="true">
+              <a className={`${styles.ctaButton} ${styles.ctaButtonSecondary}`} href="#doctor-section">
+                <span className={styles.ctaButtonFill} aria-hidden="true" />
+                <span className={styles.ctaButtonText}>Meet Our Doctor</span>
+                <span className={styles.arrowIcon} aria-hidden="true">
                   <span />
                 </span>
               </a>
             </motion.div>
           </div>
         </motion.div>
-        <nav className={`about-banner-nav${isMenuOpen ? " about-banner-nav--open" : ""}`} aria-label="Primary navigation">
-          <div className="about-banner-nav-links">
+        <nav className={`${styles.aboutBannerNav}${isMenuOpen ? ` ${styles.aboutBannerNavOpen}` : ""}`} aria-label="Primary navigation">
+          <div className={styles.aboutBannerNavLinks}>
             <Link href="/" onClick={() => setIsMenuOpen(false)}>Home</Link>
             <Link href="/treatments/catract" onClick={() => setIsMenuOpen(false)}>Cataract</Link>
             <Link href="/treatments/lasik" onClick={() => setIsMenuOpen(false)}>LASIK</Link>
@@ -93,11 +94,11 @@ export default function AboutHero() {
             <MenuIcon />
           </button>
         </nav>
-        <motion.div className="about-banner-visual" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, ease }}>
-          <Image className="about-banner-image about-banner-image--one" src="/assets/about/banner_image1.png" alt="" fill sizes="(max-width: 900px) 100vw, 65vw" priority />
-          <Image className="about-banner-image about-banner-image--two" src="/assets/about/banner_image2.png" alt="Dr. Amit N. Solanki in the eye clinic" fill sizes="(max-width: 900px) 100vw, 65vw" priority />
+        <motion.div className={styles.aboutBannerVisual} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, ease }}>
+          <Image className={`${styles.aboutBannerImage} ${styles.aboutBannerImageOne}`} src="/assets/about/banner_image1.png" alt="" fill sizes="(max-width: 900px) 100vw, 65vw" priority />
+          <Image className={`${styles.aboutBannerImage} ${styles.aboutBannerImageTwo}`} src="/assets/about/banner_image2.png" alt="Dr. Amit N. Solanki in the eye clinic" fill sizes="(max-width: 900px) 100vw, 65vw" priority />
         </motion.div>
-        <div className="about-banner-stats">{heroContent.stats.map((stat, index) => <StatCard key={stat.description} stat={stat} index={index} />)}</div>
+        <div className={styles.aboutBannerStats}>{heroContent.stats.map((stat, index) => <StatCard key={stat.description} stat={stat} index={index} />)}</div>
       </div>
     </section>
   );

@@ -47,42 +47,42 @@ export const whyPatientsContent = {
     {
       title: "Doctor-led eye care",
       description: "Every consultation handled by an experienced ophthalmologist.",
-      image: "/assets/why-patients/1.png"
+      image: "/assets/why_Patients_choose/1.png"
     },
     {
       title: "Advanced technology",
       description: "Modern diagnostic and surgical equipment.",
-      image: "/assets/why-patients/2.png"
+      image: "/assets/why_Patients_choose/2.png"
     },
     {
       title: "Patient-friendly environment",
       description: "A calm, peaceful, reassuring space.",
-      image: "/assets/why-patients/3.png"
+      image: "/assets/why_Patients_choose/3.png"
     },
     {
       title: "Personalised Attention",
       description: "Treatment plans tailored to your case.",
-      image: "/assets/why-patients/4.png"
+      image: "/assets/why_Patients_choose/4.png"
     },
     {
       title: "Affordable solutions",
       description: "Quality care at accessible rates.",
-      image: "/assets/why-patients/5.png"
+      image: "/assets/why_Patients_choose/5.png"
     },
     {
       title: "Central Indore location",
       description: "Easily reachable from across the city.",
-      image: "/assets/why-patients/6.png"
+      image: "/assets/why_Patients_choose/6.png"
     },
     {
       title: "Trained paramedical staff",
       description: "Qualified team supporting every step.",
-      image: "/assets/why-patients/7.png"
+      image: "/assets/why_Patients_choose/7.png"
     },
     {
       title: "Comprehensive services",
       description: "All major eye care under one roof.",
-      image: "/assets/why-patients/8.png"
+      image: "/assets/why_Patients_choose/8.png"
     }
   ]
 };

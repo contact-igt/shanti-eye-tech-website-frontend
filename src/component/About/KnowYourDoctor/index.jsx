@@ -9,7 +9,8 @@ import {
   reveal,
   sectionViewport,
   stagger
-} from "@/pagecomponent/About/aboutData";
+} from "@/constant/aboutContent";
+import styles from "./styles.module.css";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -25,14 +26,14 @@ const playfair = Playfair_Display({
 
 function DoctorInfoCard({ card }) {
   return (
-    <motion.article className="about-doctor-card" variants={reveal}>
-      <div className="about-doctor-card-heading">
+    <motion.article className={styles.aboutDoctorCard} variants={reveal}>
+      <div className={styles.aboutDoctorCardHeading}>
         <h3>{card.title}</h3>
         <span aria-hidden="true">{card.number}</span>
       </div>
 
       {card.type === "pills" ? (
-        <div className="about-doctor-pills">
+        <div className={styles.aboutDoctorPills}>
           {card.items.map((item) => (
             <span key={item}>{item}</span>
           ))}
@@ -48,19 +49,19 @@ function DoctorInfoCard({ card }) {
 export default function KnowYourDoctor() {
   return (
     <section
-      className={`${inter.className} about-doctor-section`}
+      className={`${inter.className} ${styles.aboutDoctorSection}`}
       id="doctor-section"
       aria-labelledby="about-doctor-title"
     >
       <motion.div
-        className="about-doctor-inner"
+        className={styles.aboutDoctorInner}
         initial="hidden"
         whileInView="show"
         viewport={sectionViewport}
         variants={stagger}
       >
         <motion.div
-          className="about-doctor-visual"
+          className={styles.aboutDoctorVisual}
           initial={{ opacity: 0, x: -28 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={sectionViewport}
@@ -74,37 +75,37 @@ export default function KnowYourDoctor() {
           />
         </motion.div>
 
-        <div className="about-doctor-content">
-          <motion.header className="about-doctor-header" variants={reveal}>
+        <div className={styles.aboutDoctorContent}>
+          <motion.header className={styles.aboutDoctorHeader} variants={reveal}>
             <h2 id="about-doctor-title">
               <span>{knowYourDoctorContent.eyebrow}</span>
               <strong>{knowYourDoctorContent.accent}</strong>
             </h2>
-            <span className="about-doctor-divider" aria-hidden="true" />
-            <div className="about-doctor-identity">
+            <span className={styles.aboutDoctorDivider} aria-hidden="true" />
+            <div className={styles.aboutDoctorIdentity}>
               <p className={playfair.className}>{knowYourDoctorContent.name}</p>
               <span>{knowYourDoctorContent.role}</span>
             </div>
           </motion.header>
 
-          <motion.div className="about-doctor-grid" variants={stagger}>
+          <motion.div className={styles.aboutDoctorGrid} variants={stagger}>
             {knowYourDoctorContent.cards.map((card) => (
               <DoctorInfoCard key={`${card.number}-${card.title}`} card={card} />
             ))}
           </motion.div>
 
-          <motion.div className="about-doctor-actions" variants={reveal}>
-            <Link className="cta-button cta-button--primary" href="/#contact">
-              <span className="cta-button-fill" aria-hidden="true" />
-              <span className="cta-button-text">Book a Consultation</span>
-              <span className="arrow-icon" aria-hidden="true">
+          <motion.div className={styles.aboutDoctorActions} variants={reveal}>
+            <Link className={`${styles.ctaButton} ${styles.ctaButtonPrimary}`} href="/#contact">
+              <span className={styles.ctaButtonFill} aria-hidden="true" />
+              <span className={styles.ctaButtonText}>Book a Consultation</span>
+              <span className={styles.arrowIcon} aria-hidden="true">
                 <span />
               </span>
             </Link>
-            <a className="cta-button cta-button--secondary" href="tel:+919179191939">
-              <span className="cta-button-fill" aria-hidden="true" />
-              <span className="cta-button-text">Call Now !</span>
-              <span className="arrow-icon" aria-hidden="true">
+            <a className={`${styles.ctaButton} ${styles.ctaButtonSecondary}`} href="tel:+919179191939">
+              <span className={styles.ctaButtonFill} aria-hidden="true" />
+              <span className={styles.ctaButtonText}>Call Now !</span>
+              <span className={styles.arrowIcon} aria-hidden="true">
                 <span />
               </span>
             </a>

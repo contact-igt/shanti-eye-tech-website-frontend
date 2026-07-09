@@ -5,7 +5,8 @@ import {
   reveal,
   sectionViewport,
   stagger
-} from "@/pagecomponent/About/aboutData";
+} from "@/constant/aboutContent";
+import styles from "./styles.module.css";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -16,22 +17,22 @@ const inter = Inter({
 export default function AboutText() {
   return (
     <section
-      className={`${inter.className} about-introduction-section`}
+      className={`${inter.className} ${styles.aboutIntroductionSection}`}
       aria-labelledby="about-introduction-title"
       id="about-story"
     >
       <motion.div
-        className="about-introduction-inner"
+        className={styles.aboutIntroductionInner}
         initial="hidden"
         whileInView="show"
         viewport={sectionViewport}
         variants={stagger}
       >
-        <motion.span className="about-introduction-badge" variants={reveal}>
+        <motion.span className={styles.aboutIntroductionBadge} variants={reveal}>
           {aboutIntroductionContent.badge}
         </motion.span>
 
-        <motion.div className="about-introduction-copy" variants={stagger}>
+        <motion.div className={styles.aboutIntroductionCopy} variants={stagger}>
           {aboutIntroductionContent.paragraphs.map((paragraph, index) => (
             <motion.p
               id={index === 0 ? "about-introduction-title" : undefined}

@@ -2,7 +2,7 @@ import ContactHero from "@/component/Contact/Hero";
 import ContactInfo from "@/component/Contact/ContactInfo";
 import ContactForm from "@/component/Contact/ContactForm";
 import ContactFAQ from "@/component/Contact/ContactFAQ";
-import { contactPageContent } from "./contactData";
+import { contactPageContent } from "@/constant/contactContent";
 
 export default function ContactPage() {
   return (

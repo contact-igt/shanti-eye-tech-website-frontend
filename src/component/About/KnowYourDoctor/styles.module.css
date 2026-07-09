@@ -1,0 +1,716 @@
+.aboutDoctorSection {
+  position: relative;
+  width: 100%;
+  min-height: 790px;
+  overflow: hidden;
+  padding: 78px 0 88px;
+  background: #f4f0ed;
+  color: #12100f;
+}
+
+.aboutDoctorSection::before {
+  content: "";
+  position: absolute;
+  left: -50px;
+  top: 250px;
+  width: 450px;
+  height: 80%;
+  background-image: url('/assets/about/your_doctor_bgimage1.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: left center;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 1;
+}
+
+.aboutDoctorSection::after {
+  content: "";
+  position: absolute;
+  right: 0px;
+  bottom: -50px;
+  width: 250px;
+  height: 250px;
+  background-image: url('/assets/about/your_doctor_bgimage2.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: bottom right;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 1;
+}
+
+.aboutDoctorInner {
+  position: relative;
+  z-index: 2;
+  width: min(1400px, calc(100% - 96px));
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(450px, 560px) minmax(0, 1fr);
+  align-items: center;
+  gap: 58px;
+}
+
+.aboutDoctorVisual {
+  position: relative;
+  width: 100%;
+  height: 650px;
+}
+
+.aboutDoctorVisual img {
+  object-fit: contain;
+  object-position: center;
+}
+
+.aboutDoctorContent {
+  min-width: 0;
+  padding-top: 14px;
+}
+
+.aboutDoctorHeader {
+  display: grid;
+  grid-template-columns: auto 2px minmax(0, 1fr);
+  align-items: center;
+  gap: 30px;
+}
+
+.aboutDoctorHeader h2 {
+  min-width: 250px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  color: #090807;
+  line-height: 0.88;
+  letter-spacing: -0.055em;
+}
+
+.aboutDoctorHeader h2 span {
+  padding-right: 4px;
+  font-size: 37px;
+  line-height: 1;
+  font-weight: 700;
+}
+
+.aboutDoctorHeader h2 strong {
+  color: #18c1e5;
+  font-size: 72px;
+  line-height: 0.94;
+  font-weight: 700;
+}
+
+.aboutDoctorDivider {
+  width: 2px;
+  height: 94px;
+  background: #171310;
+}
+
+.aboutDoctorIdentity {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.aboutDoctorIdentity p {
+  margin: 0;
+  color: #17110f;
+  font-size: 43px;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  font-weight: 400;
+}
+
+.aboutDoctorIdentity span {
+  color: #24201e;
+  font-size: 18px;
+  line-height: 1.25;
+  font-weight: 600;
+}
+
+.aboutDoctorGrid {
+  margin-top: 46px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 32px;
+}
+
+.aboutDoctorCard {
+  position: relative;
+  min-height: 154px;
+  padding: 18px 18px 16px;
+  border-radius: 18px;
+  background: #fbf9f7;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    0 12px 32px rgba(46, 38, 31, 0.035);
+}
+
+.aboutDoctorCardHeading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.aboutDoctorCardHeading h3 {
+  margin: 0;
+  color: #27221f;
+  font-size: 18px;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  font-weight: 600;
+}
+
+.aboutDoctorCardHeading > span {
+  color: #5fbf65;
+  font-size: 12px;
+  line-height: 1;
+  font-weight: 600;
+}
+
+.aboutDoctorPills {
+  margin-top: 16px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px 9px;
+}
+
+.aboutDoctorPills span,
+.aboutDoctorCard p {
+  color: #68615d;
+  font-size: 12px;
+  line-height: 1.35;
+  font-weight: 400;
+}
+
+.aboutDoctorPills span {
+  min-height: 28px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.92);
+  text-align: center;
+}
+
+.aboutDoctorCard p {
+  min-height: 66px;
+  margin: 17px 0 0;
+  padding: 15px 18px;
+  border-radius: 13px;
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.88);
+}
+
+.aboutDoctorActions {
+  margin-top: 48px;
+  display: flex;
+  align-items: center;
+  gap: 42px;
+}
+
+.aboutDoctorButton {
+  min-width: 210px;
+  min-height: 48px;
+  padding: 5px 7px 5px 22px;
+  border: 2px solid #1bc2e5;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  background: rgba(255, 255, 255, 0.55);
+  color: #302c29;
+  font-size: 13px;
+  font-weight: 500;
+  transition: transform 220ms ease, box-shadow 220ms ease;
+}
+
+.aboutDoctorButton:hover {
+  box-shadow: 0 13px 30px rgba(24, 193, 227, 0.16);
+}
+
+.aboutDoctorButton > span:last-child {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: #ffffff;
+  color: #49606a;
+  font-size: 17px;
+}
+
+.aboutDoctorButtonPrimary {
+  border-color: #18c2e4;
+  background: #18c2e4;
+  color: #ffffff;
+  box-shadow: 0 10px 24px rgba(24, 194, 228, 0.2);
+}
+
+@media (max-width: 1200px) {
+  .aboutDoctorSection {  
+      padding: 70px 0 80px;  
+    }
+  
+  .aboutDoctorInner {  
+      width: calc(100% - 64px);  
+      grid-template-columns: minmax(390px, 47%) minmax(0, 1fr);  
+      gap: 38px;  
+    }
+  
+  .aboutDoctorVisual {  
+      height: 590px;  
+    }
+  
+  .aboutDoctorHeader {  
+      gap: 22px;  
+    }
+  
+  .aboutDoctorHeader h2 {  
+      min-width: 210px;  
+    }
+  
+  .aboutDoctorHeader h2 span {  
+      font-size: 31px;  
+    }
+  
+  .aboutDoctorHeader h2 strong {  
+      font-size: 61px;  
+    }
+  
+  .aboutDoctorIdentity p {  
+      font-size: 35px;  
+    }
+  
+  .aboutDoctorIdentity span {  
+      font-size: 15px;  
+    }
+  
+  .aboutDoctorGrid {  
+      margin-top: 38px;  
+      gap: 24px;  
+    }
+  
+  .aboutDoctorCard {  
+      min-height: 150px;  
+      padding: 17px 15px 15px;  
+    }
+  
+  .aboutDoctorActions {  
+      gap: 22px;  
+      margin-top: 38px;  
+    }
+}
+
+@media (max-width: 992px) {
+  .aboutDoctorSection {  
+      min-height: 0;  
+      padding: 66px 0 78px;  
+    }
+  
+  .aboutDoctorInner {  
+      width: min(780px, calc(100% - 56px));  
+      grid-template-columns: 1fr;  
+      gap: 38px;  
+    }
+  
+  .aboutDoctorVisual {  
+      width: min(580px, 100%);  
+      height: 650px;  
+      margin: 0 auto;  
+    }
+  
+  .aboutDoctorContent {  
+      padding-top: 0;  
+    }
+  
+  .aboutDoctorHeader {  
+      justify-content: center;  
+      grid-template-columns: auto 2px minmax(0, 360px);  
+    }
+  
+  .aboutDoctorGrid {  
+      width: min(720px, 100%);  
+      margin: 42px auto 0;  
+    }
+  
+  .aboutDoctorActions {  
+      justify-content: center;  
+    }
+}
+
+@media (max-width: 768px) {
+  .aboutDoctorSection {  
+      padding: 58px 0 70px;  
+    }
+  
+  .aboutDoctorInner {  
+      width: calc(100% - 40px);  
+    }
+  
+  .aboutDoctorVisual {  
+      height: 590px;  
+    }
+  
+  .aboutDoctorHeader {  
+      grid-template-columns: 1fr;  
+      justify-items: center;  
+      gap: 16px;  
+      text-align: center;  
+    }
+  
+  .aboutDoctorHeader h2 {  
+      min-width: 0;  
+      align-items: center;  
+    }
+  
+  .aboutDoctorDivider {  
+      width: 120px;  
+      height: 2px;  
+    }
+  
+  .aboutDoctorIdentity {  
+      align-items: center;  
+    }
+  
+  .aboutDoctorGrid {  
+      grid-template-columns: 1fr;  
+      gap: 24px;  
+    }
+  
+  .aboutDoctorCard {  
+      min-height: 0;  
+    }
+  
+  .aboutDoctorCard p {  
+      min-height: 58px;  
+    }
+}
+
+@media (max-width: 576px) {
+  .aboutDoctorSection {  
+      padding: 52px 0 64px;  
+    }
+  
+  .aboutDoctorInner {  
+      width: calc(100% - 28px);  
+      gap: 28px;  
+    }
+  
+  .aboutDoctorVisual {  
+      height: 500px;  
+    }
+  
+  .aboutDoctorHeader h2 span {  
+      font-size: 28px;  
+    }
+  
+  .aboutDoctorHeader h2 strong {  
+      font-size: 56px;  
+    }
+  
+  .aboutDoctorIdentity p {  
+      font-size: 32px;  
+    }
+  
+  .aboutDoctorIdentity span {  
+      font-size: 14px;  
+    }
+  
+  .aboutDoctorGrid {  
+      margin-top: 34px;  
+    }
+  
+  .aboutDoctorActions {  
+      margin-top: 32px;  
+      flex-direction: column;  
+      gap: 14px;  
+    }
+  
+  .aboutDoctorButton {  
+      width: min(100%, 280px);  
+    }
+}
+
+@media (max-width: 390px) {
+  .aboutDoctorSection {  
+      padding: 46px 0 58px;  
+    }
+  
+  .aboutDoctorInner {  
+      width: calc(100% - 24px);  
+    }
+  
+  .aboutDoctorVisual {  
+      height: 430px;  
+    }
+  
+  .aboutDoctorHeader h2 span {  
+      font-size: 25px;  
+    }
+  
+  .aboutDoctorHeader h2 strong {  
+      font-size: 50px;  
+    }
+  
+  .aboutDoctorIdentity p {  
+      font-size: 28px;  
+    }
+  
+  .aboutDoctorCardHeading h3 {  
+      font-size: 17px;  
+    }
+  
+  .aboutDoctorPills span,
+  .aboutDoctorCard p {  
+      font-size: 11px;  
+    }
+}
+
+.aboutDoctorCard{background:#fff;box-shadow:0 16px 38px rgba(46,38,31,.045)}
+
+.aboutDoctorPills span,
+.aboutDoctorCard p{background:#fff;box-shadow:0 7px 20px rgba(46,38,31,.025)}
+
+.aboutDoctorButton>svg{width:34px;height:34px;padding:8px;flex:0 0 auto;border-radius:50%;background:#fff;color:#49606a}
+
+.aboutDoctorButtonPrimary>svg{color:#49606a}
+
+.aboutDoctorCard {
+  background: rgba(255, 255, 255, 0.58);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.82),
+    0 14px 36px rgba(46, 38, 31, 0.035);
+}
+
+.aboutDoctorPills span,
+.aboutDoctorCard p {
+  background: #ffffff;
+  box-shadow: none;
+}
+
+.aboutDoctorVisual {
+  isolation: isolate;
+  overflow: visible;
+}
+
+.aboutDoctorVisual img {
+  z-index: 2;
+}
+
+.aboutDoctorSection {
+  overflow-x: clip;
+}
+
+@media (max-width: 1200px) {
+  .aboutDoctorInner {  
+      width: calc(100% - 64px);  
+    }
+  
+  .aboutDoctorInner {  
+      grid-template-columns: minmax(360px, 0.86fr) minmax(0, 1fr);  
+    }
+}
+
+@media (max-width: 992px) {
+  .aboutDoctorInner {  
+      width: min(760px, calc(100% - 56px));  
+    }
+  
+  .aboutDoctorInner {  
+      grid-template-columns: 1fr;  
+    }
+  
+  .aboutDoctorVisual {  
+      width: min(520px, 100%);  
+      margin: 0 auto;  
+    }
+  
+  .aboutDoctorHeader {  
+      text-align: center;  
+    }
+}
+
+@media (max-width: 768px) {
+  .aboutDoctorSection {  
+      padding-top: 70px;  
+      padding-bottom: 80px;  
+    }
+  
+  .aboutDoctorInner {  
+      width: calc(100% - 40px);  
+    }
+  
+  .aboutDoctorVisual {  
+      width: min(430px, 100%);  
+    }
+  
+  .aboutDoctorGrid {  
+      grid-template-columns: 1fr;  
+    }
+}
+
+@media (max-width: 576px) {
+  .aboutDoctorSection {  
+      padding-top: 58px;  
+      padding-bottom: 68px;  
+    }
+  
+  .aboutDoctorInner {  
+      width: calc(100% - 28px);  
+    }
+  
+  .aboutDoctorActions {  
+      flex-direction: column;  
+      align-items: stretch;  
+    }
+  
+  .aboutDoctorButton {  
+      width: 100%;  
+    }
+}
+
+@media (max-width: 390px) {
+  .aboutDoctorHeader h2 span,
+  .aboutDoctorHeader h2 strong {  
+      font-size: 32px;  
+      line-height: 1.12;  
+    }
+  
+  .aboutDoctorCard {  
+      padding: 18px 14px;  
+    }
+  
+  .aboutDoctorInner {  
+      width: calc(100% - 24px);  
+    }
+}
+
+@media (max-width: 576px) {
+  .aboutDoctorActions {  
+      align-items: flex-start;  
+    }
+  
+  .aboutDoctorButton {  
+      width: fit-content !important;  
+      min-width: 0;  
+      max-width: 100%;  
+      padding: 5px 7px 5px 22px;  
+      gap: 18px;  
+    }
+}
+
+@media (max-width: 390px) {
+  .aboutDoctorButton {  
+      padding-left: 18px;  
+      gap: 14px;  
+    }
+}
+
+.aboutDoctorButton:not(.aboutDoctorButtonPrimary) {
+  width: fit-content !important;
+  min-width: 0 !important;
+  padding: 5px 7px 5px 22px;
+  justify-content: flex-start;
+  gap: 42px;
+}
+
+@media (max-width: 576px) {
+  .aboutDoctorButton:not(.aboutDoctorButtonPrimary) {  
+      gap: 18px;  
+    }
+}
+
+.ctaButton {
+  position: relative;
+  min-height: 54px;
+  display: inline-grid;
+  grid-template-columns: minmax(0, 1fr) 28px;
+  align-items: center;
+  border-radius: 70px;
+  column-gap: 12px;
+  padding: 0 14px 0 24px;
+  border: 2px solid var(--aqua);
+  overflow: hidden;
+  font-size: 17px;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: box-shadow 240ms var(--ease), border-color 240ms var(--ease);
+}
+
+.ctaButtonPrimary {
+  min-width: 246px;
+  color: var(--white);
+  background: var(--aqua);
+  box-shadow: 0 14px 30px rgba(36, 197, 232, 0.22);
+}
+
+.ctaButtonSecondary {
+  min-width: 232px;
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.ctaButtonFill {
+  position: absolute;
+  top: 50%;
+  right: 14px;
+  z-index: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 28px;
+  background: #f3efea;
+  transform: translateY(-50%) translateZ(0);
+  transition:
+    width 0.75s var(--ease),
+    height 0.75s var(--ease),
+    right 0.75s var(--ease),
+    border-radius 0.75s var(--ease),
+    background 0.75s var(--ease);
+  }
+
+.ctaButtonSecondary .ctaButtonFill {
+  background: rgba(36, 197, 232, 0.94);
+}
+
+.ctaButton:hover .ctaButtonFill {
+  right: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 70px;
+}
+
+.ctaButtonText {
+  position: relative;
+  z-index: 2;
+  min-width: 0;
+  text-align: center;
+  white-space: nowrap;
+  transition: color 0.75s var(--ease);
+}
+
+.ctaButtonPrimary:hover .ctaButtonText {
+  color: var(--ink);
+}
+
+.ctaButtonSecondary:hover .ctaButtonText {
+  color: var(--white);
+}
+
+.arrowIcon {
+  position: relative;
+  z-index: 3;
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  background: center / contain no-repeat url("/assets/home_logos/Button_arrow.png");
+}
+
+.arrowIcon span {
+  display: none;
+}
