@@ -1040,12 +1040,6 @@
   margin: 0 auto;
 }
 
-.serviceClipDefs {
-  position: absolute;
-  width: 0;
-  height: 0;
-}
-
 .servicesHeading {
   display: grid;
   justify-items: center;
@@ -1099,7 +1093,7 @@
 
 .serviceCard {
   position: relative;
-  min-height: 270px;
+  min-height: 292px;
   isolation: isolate;
   overflow: visible;
 }
@@ -1108,69 +1102,42 @@
   position: absolute;
   inset: 0;
   z-index: 1;
-  overflow: hidden;
-  background: rgba(255, 255, 255, 0.9);
-  box-shadow: 0 24px 60px rgba(38, 31, 24, 0.08);
-  clip-path: url("#service-card-shape");
-}
-
-.serviceGlow {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  border-radius: inherit;
-  background:
-    radial-gradient(circle at calc(100% - 62px) 0,
-      #78e8fa 0%,
-      #83e9fb 18%,
-      #a2f0ff 34%,
-      #c3f7ff 62%,
-      rgba(209, 248, 255, 0.98) 100%);
-  opacity: 0;
-  clip-path: circle(23px at calc(100% - 62px) 0);
-  transition: clip-path 1.05s var(--ease), opacity 1.05s var(--ease);
-  }
-
-.serviceCard:hover .serviceGlow {
-  opacity: 1;
-  clip-path: circle(145% at calc(100% - 62px) 0);
+  overflow: visible;
+  background: center / 100% 100% no-repeat url("/assets/home_logos/Home_Cards.png");
+  filter: drop-shadow(0 24px 60px rgba(38, 31, 24, 0.08));
 }
 
 .serviceNumber {
   position: absolute;
-  top: 10;
-  right: 6px;
+  top: 0;
+  right: 0;
   z-index: 5;
-  width: 68px;
-  height: 46px;
+  width: 12.5%;
+  height: 10.1%;
+  min-width: 44px;
+  min-height: 28px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.9);
-  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.08);
+  background: transparent;
+  box-shadow: none;
   color: #1f9f43;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 1;
   font-weight: 600;
-  letter-spacing: 0.04em;
-  transform: translateY(-50%);
-  transition: background 1.05s var(--ease), box-shadow 1.05s var(--ease);
-}
-
-.serviceCard:hover .serviceNumber {
-  background: #c7f5ff;
-  box-shadow: 0 18px 38px rgba(29, 173, 203, 0.22);
+  letter-spacing: 0.02em;
+  transform: none;
 }
 
 .serviceCardContent {
   position: relative;
   z-index: 2;
-  min-height: 270px;
+  min-height: 292px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 28px 26px 26px;
+  padding: 34px 28px 30px;
 }
 
 .serviceCard h3 {
@@ -1212,11 +1179,6 @@
   line-height: 1;
   font-weight: 400;
   transition: background 0.82s var(--ease), color 0.82s var(--ease);
-}
-
-.serviceCard:hover .serviceTags span {
-  background: rgba(255, 255, 255, 0.9);
-  color: #312d2b;
 }
 
 .specialistSection {
@@ -1613,12 +1575,14 @@
       gap: 22px;  
     }
   
-  .serviceCard {  
-      min-height: 270px;  
+  .serviceCard {
+      width: min(100%, 390px);
+      margin: 0 auto;
+      min-height: 292px;
     }
   
-  .serviceCardContent {  
-      min-height: 270px;  
+  .serviceCardContent {
+      min-height: 292px;
     }
   
   .specialistSection {  
@@ -2000,24 +1964,24 @@
     }
   
   .serviceCard,
-  .serviceCardContent {  
-      min-height: 260px;  
+  .serviceCardContent {
+      min-height: 276px;
     }
   
-  .serviceCard {  
-      border-radius: 18px;  
+  .serviceCard {
+      width: 100%;
     }
   
-  .serviceCardPanel {  
-      clip-path: url("#service-card-shape");  
+  .serviceCardContent {
+      padding: 32px 24px 24px;
     }
   
-  .serviceCardContent {  
-      padding: 28px 24px 24px;  
-    }
-  
-  .serviceNumber {  
-      right: 16px;  
+  .serviceNumber {
+      top: 0;
+      right: 0;
+      width: 12.5%;
+      height: 10.1%;
+      font-size: 13px;
     }
   
   .serviceCard h3 {  

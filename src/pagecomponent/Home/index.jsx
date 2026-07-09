@@ -553,7 +553,6 @@ function ServiceCard({ service }) {
     <article className={css("service-card")}>
       <span className={css("service-number")}>{service.number}</span>
       <div className={css("service-card-panel")}>
-        <span className={css("service-glow")} />
         <div className={css("service-card-content")}>
           <div>
             <h3>{service.title}</h3>
@@ -575,33 +574,19 @@ function ServicesSection() {
 
   return (
     <section className={css("services-section")} id="services">
-      <motion.div
-        className={css("services-inner")}
-        initial="hidden"
-        whileInView="show"
-        viewport={sectionViewport}
-        variants={stagger}
-      >
-        <svg className={css("service-clip-defs")} aria-hidden="true" focusable="false">
-          <defs>
-            <clipPath id="service-card-shape" clipPathUnits="objectBoundingBox">
-              <path d="M0.04,0 H0.81 C0.81,0.058 0.836,0.092 0.882,0.092 H0.942 C0.978,0.092 1,0.12 1,0.156 V0.93 C1,0.97 0.975,1 0.94,1 H0.04 C0.016,1 0,0.974 0,0.93 V0.07 C0,0.026 0.016,0 0.04,0 Z" />
-            </clipPath>
-          </defs>
-        </svg>
-
-        <motion.div className={css("services-heading")} variants={stagger}>
-          <motion.span className={css("services-badge")} variants={reveal}>
+      <div className={css("services-inner")}>
+        <div className={css("services-heading")}>
+          <span className={css("services-badge")}>
             Services
-          </motion.span>
-          <motion.h2 variants={reveal}>
+          </span>
+          <h2>
             Comprehensive Eye Care Services
-          </motion.h2>
-          <motion.p variants={reveal}>
+          </h2>
+          <p>
             From routine concerns to advanced surgical care, Shanti EyeTech
             offers specialised treatment across the major areas of ophthalmology.
-          </motion.p>
-        </motion.div>
+          </p>
+        </div>
 
         <div className={css("services-grid")}>
           {serviceRows.map((row, rowIndex) => (
@@ -620,7 +605,7 @@ function ServicesSection() {
             </motion.div>
           ))}
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 }
@@ -1187,4 +1172,3 @@ export default function HomePageComponent() {
     </>
   );
 }
-
