@@ -1,0 +1,276 @@
+.section {
+  width: 100%;
+  margin: 0 auto;
+  padding: 80px 0 80px;
+  background: #f0ebe5;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.inner {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 22px;
+  border-radius: 99px;
+  background: #ffffff;
+  color: #293747;
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 18px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+  letter-spacing: 0.3px;
+}
+
+.title {
+  color: #1a2b3c;
+  font-size: clamp(42px, 5.2vw, 72px);
+  margin: 0 0 44px;
+  font-weight: 700;
+  text-align: center;
+  line-height: 1.05;
+}
+
+.carouselOuter {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.carouselContainer {
+  position: relative;
+  width: max-content;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  box-sizing: border-box;
+}
+
+.centerCard,
+.sideCard {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #d6e2ee;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  flex-shrink: 0;
+}
+
+.centerCard {
+  width: clamp(390px, 25.8vw, 495px);
+  height: clamp(420px, 28.2vw, 540px);
+  z-index: 5;
+}
+
+.sideCard {
+  width: clamp(280px, 17.92vw, 344px);
+  height: clamp(206px, 15.2vw, 292px);
+  z-index: 3;
+  margin-top: 36px;
+}
+
+.cardImage {
+  object-fit: cover;
+  z-index: 0;
+}
+
+.cardGradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(214, 226, 238, 0.92) 0%,
+    rgba(214, 226, 238, 0.35) 25%,
+    transparent 42%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+.centerTitle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  padding: 22px 24px;
+  margin: 0;
+  color: rgb(42, 58, 119);
+  font-size: clamp(32px, 2vw, 45px);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0;
+  max-width: 495px;
+}
+
+.sideTitle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  padding: 16px 18px;
+  margin: 0;
+  color: rgb(42, 58, 119);
+  font-size: clamp(16px, 0.95vw, 18px);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.navButton {
+  position: absolute;
+  top: 54%;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgba(239, 249, 250, 0.96);
+  border: 2px solid rgba(255, 255, 255, 0.96);
+  box-shadow: 0 8px 22px rgba(38, 55, 70, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 15;
+  color: #263746;
+  transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+  padding: 0;
+}
+
+.navButton:hover {
+  background: #ffffff;
+  box-shadow: 0 10px 26px rgba(38, 55, 70, 0.16);
+}
+
+.prevButton {
+  left: 0;
+  transform: translate(-50%, -50%);
+}
+
+.nextButton {
+  right: 0;
+  transform: translate(50%, -50%);
+}
+
+.prevButton:hover {
+  transform: translate(-50%, -50%) scale(1.04);
+}
+
+.nextButton:hover {
+  transform: translate(50%, -50%) scale(1.04);
+}
+
+.navIcon {
+  width: 20px;
+  height: 20px;
+}
+
+@media (max-width: 1280px) {
+  .carouselContainer {
+    gap: 14px;
+  }
+
+  .centerCard {
+    width: clamp(360px, 32vw, 440px);
+    height: clamp(390px, 35vw, 500px);
+  }
+
+  .sideCard {
+    width: clamp(246px, 23vw, 302px);
+    height: clamp(184px, 18vw, 242px);
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 50px 0 40px;
+  }
+
+  .title {
+    margin-bottom: 30px;
+  }
+
+  .carouselContainer {
+    width: 100%;
+    gap: 12px;
+    padding: 0 22px;
+  }
+
+  .centerCard {
+    width: 48vw;
+    height: 56vw;
+  }
+
+  .sideCard {
+    width: 32vw;
+    height: 30vw;
+    margin-top: 24px;
+  }
+
+  .centerTitle {
+    padding: 18px 18px;
+    font-size: clamp(25px, 5.2vw, 38px);
+  }
+
+  .sideTitle {
+    padding: 12px 14px;
+    font-size: 13px;
+  }
+
+  .navButton {
+    width: 42px;
+    height: 42px;
+  }
+
+  .prevButton {
+    left: 22px;
+    transform: translateY(-50%);
+  }
+
+  .nextButton {
+    right: 22px;
+    transform: translateY(-50%);
+  }
+
+  .prevButton:hover,
+  .nextButton:hover {
+    transform: translateY(-50%) scale(1.04);
+  }
+}
+
+@media (max-width: 490px) {
+  .carouselContainer {
+    gap: 10px;
+    padding: 0 16px;
+  }
+
+  .centerCard {
+    width: 58vw;
+    height: 66vw;
+  }
+
+  .sideCard {
+    width: 34vw;
+    height: 34vw;
+  }
+
+  .centerTitle {
+    padding: 14px 14px;
+    font-size: 22px;
+  }
+
+  .sideTitle {
+    padding: 10px 11px;
+    font-size: 12px;
+  }
+}
+

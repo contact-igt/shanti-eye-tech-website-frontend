@@ -1,3 +1,5 @@
+﻿import { whyPatientsContent } from "@/constant/aboutContent";
+
 export const lasikTreatmentContent = {
   hero: {
     logo: {
@@ -261,3 +263,172 @@ export const catractTreatmentContent = {
     ]
   },
 };
+const sharedTreatmentBenefits = {
+  id: "benefits",
+  headingId: "treatment-benefits-title",
+  badge: whyPatientsContent.badge,
+  title: whyPatientsContent.title,
+  description: whyPatientsContent.description,
+  background: {
+    src: "/assets/Treatments/background.png",
+    alt: "",
+  },
+  items: whyPatientsContent.items,
+};
+
+export const treatmentPages = {
+  catract: {
+    seo: {
+      title: "Cataract Treatment | Shanti EyeTech Eye Care & Laser Hospital",
+      description:
+        "Explore advanced Cataract Treatment at Shanti EyeTech Eye Care & Laser Hospital in Indore, restoring vision clarity and quality.",
+    },
+    hero: {
+      ...catractTreatmentContent.hero,
+      headingId: "catract-hero-title",
+      accentWords: ["Rediscover"],
+    },
+    benefits: sharedTreatmentBenefits,
+    intro: {
+      ...catractTreatmentContent.whatIsCataract,
+      headingId: "what-is-cataract-title",
+      topImage: {
+        src: "/assets/Treatments/Catract/cataract-new.png",
+        alt: "",
+      },
+      middleImage: {
+        src: "/assets/Treatments/Catract/82354ede80d3c5023fb8c7b9be9067c00fab8ce9.png",
+        alt: "Cataract surgery procedure",
+      },
+    },
+    checklistBento: {
+      badge: "Services",
+      title: "When Should You Consider Surgery?",
+      subtitle: "Cataract Surgery May Be Recommended If",
+      headingId: "consider-surgery-title",
+      layoutVariant: "four-card",
+      listItems: [
+        "Vision interferes with daily activities",
+        "Glasses no longer improve your vision",
+        "Reading or driving has become difficult",
+        "Cataracts are affecting your independence",
+        "Your eye specialist recommends treatment",
+      ],
+      images: [
+        {
+          id: "catract-card1",
+          src: "/assets/Treatments/Catract/3a0367b670f3795a1eaed25172c9c7ba2cf2afc3.png",
+          alt: "Elderly man struggling to read newspaper - blurry vision symptom",
+          objectPosition: "center top",
+        },
+        {
+          id: "catract-card2",
+          src: "/assets/Treatments/Catract/9efa0bd53bf7cbafb709b9b53de912fc20c2a0ae.png",
+          alt: "Elderly man having difficulty reading a book - cataract symptom",
+          objectPosition: "center center",
+        },
+        {
+          id: "catract-card3",
+          src: "/assets/Treatments/Catract/8e0710610a2bd4e48b6fae4572c5444e1d7109ff.png",
+          alt: "Elderly man struggling with phone screen in dim light - night vision difficulty",
+          objectPosition: "center center",
+        },
+        {
+          id: "catract-card4",
+          src: "/assets/Treatments/Catract/e26ee078e6c07a5d6b07d7a60565c2444ac41851.png",
+          alt: "Elderly man experiencing eye discomfort - cataract symptom",
+          objectPosition: "center center",
+        },
+      ],
+    },
+    cardGrid: {
+      ...catractTreatmentContent.advancedCare,
+      headingId: "advanced-cataract-care-title",
+    },
+    benefitsCarousel: {
+      ...catractTreatmentContent.benefitsCarousel,
+      headingId: "cataract-benefits-carousel-title",
+    },
+    faq: catractTreatmentContent.faq,
+  },
+  lasik: {
+    seo: {
+      title: "LASIK Treatment | Shanti EyeTech Eye Care & Laser Hospital",
+      description:
+        "Explore LASIK laser vision correction at Shanti EyeTech Eye Care & Laser Hospital in Indore, including consultation and eligibility screening.",
+    },
+    hero: {
+      ...lasikTreatmentContent.hero,
+      headingId: "lasik-hero-title",
+      accentWords: ["Starts Here."],
+    },
+    benefits: sharedTreatmentBenefits,
+    intro: {
+      ...lasikTreatmentContent.whatIsLasik,
+      headingId: "what-is-lasik-title",
+      topImage: {
+        src: "/assets/Treatments/LASIK/lasik-new.png",
+        alt: "",
+      },
+      middleImage: {
+        src: "/assets/Treatments/LASIK/fcaf36b415bc029b876282b7c58e920d8be0fdf7.png",
+        alt: "LASIK laser eye surgery procedure",
+      },
+    },
+    checklistBento: {
+      badge: "Services",
+      title: "Is LASIK Right For You?",
+      subtitle: "You May Be A Good Candidate If You",
+      headingId: "is-lasik-right-title",
+      layoutVariant: "five-card",
+      listItems: [
+        "Are over 18 years of age",
+        "Have stable vision prescription",
+        "Have healthy eyes",
+        "Tired of wearing glasses or contact lenses",
+        "Have myopia (near-sightedness)",
+        "Have hyperopia (far-sightedness)",
+        "Have astigmatism",
+      ],
+      images: [
+        {
+          id: "card1",
+          src: "/assets/Treatments/LASIK/4ace159656d795c72e72bfd3a053e52f41a43fbc.png",
+          alt: "Doctor examining patient's eyes",
+        },
+        {
+          id: "card2",
+          src: "/assets/Treatments/LASIK/d54d3fba574c60621b053a0ad7dcca3873dbed00.png",
+          alt: "Close-up of eye with laser treatment",
+        },
+        {
+          id: "card3",
+          src: "/assets/Treatments/LASIK/711d0d6ad3bed69e51fe8cb7e3254d02bbe5f1c1.png",
+          alt: "Glasses and contact lenses",
+        },
+        {
+          id: "card4",
+          src: "/assets/Treatments/LASIK/fc939891e9418eb68f171e14c33ed05ca7e6f054.png",
+          alt: "Eye test with phoropter",
+        },
+        {
+          id: "card5",
+          src: "/assets/Treatments/LASIK/24f1c3b3e7814ae91706722ef4d342dacc5b706e.png",
+          alt: "Patient in surgical setting",
+        },
+      ],
+    },
+    cardGrid: {
+      ...lasikTreatmentContent.conditionsCorrect,
+      headingId: "lasik-conditions-title",
+    },
+    benefitsCarousel: {
+      ...lasikTreatmentContent.benefitsCarousel,
+      headingId: "lasik-benefits-carousel-title",
+    },
+    faq: lasikTreatmentContent.faq,
+  },
+};
+
+
+
