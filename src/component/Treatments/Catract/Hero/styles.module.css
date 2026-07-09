@@ -8,7 +8,7 @@
   position: relative;
   width: 100%;
   min-height: 100vh;
-  height: 100vh;
+  min-height: 100dvh;
   margin: 0;
   overflow: hidden;
   isolation: isolate;
@@ -398,9 +398,7 @@
 }
 
 @media (max-width: 420px) {
-  .hero {
-    min-height: 684px;
-  }
+  /* Inherit min-height: 100dvh from .hero */
 
   .logoLink {
     width: 155px;

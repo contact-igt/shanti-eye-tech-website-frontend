@@ -10,7 +10,8 @@ export const contactPageContent = {
     },
     navLinks: [
       { label: "Home", href: "/" },
-      { label: "Services", href: "/#services" },
+      { label: "Cataract", href: "/treatments/catract" },
+      { label: "LASIK", href: "/treatments/lasik" },
       { label: "About", href: "/about" },
       { label: "Contact", href: "/contact" },
     ],

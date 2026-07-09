@@ -79,6 +79,8 @@ export default function AboutHero() {
         <nav className={`about-banner-nav${isMenuOpen ? " about-banner-nav--open" : ""}`} aria-label="Primary navigation">
           <div className="about-banner-nav-links">
             <Link href="/" onClick={() => setIsMenuOpen(false)}>Home</Link>
+            <Link href="/treatments/catract" onClick={() => setIsMenuOpen(false)}>Cataract</Link>
+            <Link href="/treatments/lasik" onClick={() => setIsMenuOpen(false)}>LASIK</Link>
             <Link href="/about" onClick={() => setIsMenuOpen(false)}>About</Link>
             <Link href="/#contact" onClick={() => setIsMenuOpen(false)}>Contact</Link>
           </div>

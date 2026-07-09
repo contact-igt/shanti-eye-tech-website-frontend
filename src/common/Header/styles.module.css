@@ -16,38 +16,37 @@
 /* ─── Mobile breakpoint ──────────────────────────────────────────────────── */
 @media (max-width: 760px) {
 
-  /* ── Sticky header bar ── */
+  /* ── Transparent Header Container ── */
   .header {
-    position: sticky;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 900;
     display: flex;
+    position: absolute;
+    top: 24px;
+    left: 16px;
+    right: 16px;
     align-items: center;
     justify-content: space-between;
-    padding: 10px 16px;
-    background: rgba(255, 255, 255, 0.97);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-    box-shadow: 0 2px 14px rgba(0, 0, 0, 0.07);
+    /* Removed z-index to prevent creating a stacking context that forces logo above drawer */
   }
 
   .logoLink {
     display: block;
     flex-shrink: 0;
+    position: relative;
+    z-index: 900;
   }
 
   .logo {
     display: block;
-    width: 190px;
+    width: 170px;
     height: auto;
   }
 
   /* ── Teal circular hamburger button ── */
   .hamburger {
+    margin-left: auto;
     flex-shrink: 0;
+    position: relative;
+    z-index: 1002;
     width: 56px;
     height: 38px;
     border: none;
@@ -76,18 +75,28 @@
     transition: transform 0.25s ease, opacity 0.25s ease, width 0.25s ease;
   }
 
-  .hamburger span:nth-child(1) { width: 22px; }
-  .hamburger span:nth-child(2) { width: 15px; }
-  .hamburger span:nth-child(3) { width: 8px; }
+  .hamburger span:nth-child(1) {
+    width: 22px;
+  }
+
+  .hamburger span:nth-child(2) {
+    width: 15px;
+  }
+
+  .hamburger span:nth-child(3) {
+    width: 8px;
+  }
 
   /* X animation when open */
   .hamburgerOpen span:nth-child(1) {
     transform: translateY(6.5px) rotate(45deg);
     width: 22px;
   }
+
   .hamburgerOpen span:nth-child(2) {
     opacity: 0;
   }
+
   .hamburgerOpen span:nth-child(3) {
     transform: translateY(-6.5px) rotate(-45deg);
     width: 22px;
@@ -105,33 +114,33 @@
     animation: fadeIn 0.2s ease forwards;
   }
 
-  /* ── Nav drawer panel ── */
+  /* ── Nav drawer panel (Floating Card) ── */
   .drawer {
     display: flex;
-    position: fixed;
-    top: 64px;
-    left: 12px;
-    right: 12px;
+    position: absolute;
+    top: 70px;
+    right: 16px;
+    width: 250px;
     z-index: 1001;
     flex-direction: column;
-    gap: 2px;
-    background: rgba(255, 255, 255, 0.99);
-    border-radius: 22px;
-    padding: 14px 18px 22px;
-    box-shadow:
-      0 24px 64px rgba(18, 26, 36, 0.18),
-      0 4px 12px rgba(18, 26, 36, 0.07);
-    border: 1px solid rgba(0, 0, 0, 0.04);
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 20px 16px;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    transform: translateY(-10px);
     opacity: 0;
     pointer-events: none;
-    transform: translateY(-10px) scale(0.98);
-    transition: opacity 0.22s ease, transform 0.22s ease;
+    transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.25s ease;
   }
 
   .drawerOpen {
-    opacity: 1;
     pointer-events: all;
-    transform: translateY(0) scale(1);
+    transform: translateY(0);
+    opacity: 1;
   }
 
   /* ── Nav link items ── */
@@ -226,36 +235,14 @@
     border: none;
   }
 
-  /* ── Large teal X close button ── */
-  .closeButton {
-    align-self: flex-end;
-    margin-top: 14px;
-    width: 54px;
-    height: 54px;
-    border: none;
-    border-radius: 50%;
-    background: #16c1e4;
-    color: #ffffff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    box-shadow: 0 14px 30px rgba(22, 193, 228, 0.34);
-    transition: background-color 0.2s ease, transform 0.2s ease;
-  }
-
-  .closeButton:hover {
-    background-color: #0fb3d4;
-    transform: scale(1.05);
-  }
-
-  .closeButton svg {
-    width: 20px;
-    height: 20px;
-  }
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }

@@ -10,8 +10,8 @@ export const lasikTreatmentContent = {
     },
     navLinks: [
       { label: "Home", href: "/" },
-      { label: "LASIK", href: "/treatments/lasik" },
       { label: "Cataract", href: "/treatments/catract" },
+      { label: "LASIK", href: "/treatments/lasik" },
       { label: "About", href: "/about" },
       { label: "Contact", href: "/#contact" },
     ],
@@ -142,8 +142,8 @@ export const catractTreatmentContent = {
     },
     navLinks: [
       { label: "Home", href: "/" },
-      { label: "LASIK", href: "/treatments/lasik" },
       { label: "Cataract", href: "/treatments/catract" },
+      { label: "LASIK", href: "/treatments/lasik" },
       { label: "About", href: "/about" },
       { label: "Contact", href: "/#contact" },
     ],

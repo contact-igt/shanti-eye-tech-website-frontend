@@ -281,15 +281,8 @@ function Hero() {
     <section className="hero-canvas" id="home">
       <nav className={`nav-links ${isMenuOpen ? "nav-open" : ""}`} aria-label="Primary navigation">
         <Link href="#home" onClick={() => setIsMenuOpen(false)}>Home</Link>
-        <div className="nav-dropdown">
-          <span className="nav-dropdown-trigger">
-            Treatments <span className="nav-dropdown-chevron">▼</span>
-          </span>
-          <div className="nav-dropdown-menu">
-            <Link href="/treatments/lasik" onClick={() => setIsMenuOpen(false)}>LASIK</Link>
-            <Link href="/treatments/catract" onClick={() => setIsMenuOpen(false)}>Cataract</Link>
-          </div>
-        </div>
+        <Link href="/treatments/catract" onClick={() => setIsMenuOpen(false)}>Cataract</Link>
+        <Link href="/treatments/lasik" onClick={() => setIsMenuOpen(false)}>LASIK</Link>
         <Link href="/about" onClick={() => setIsMenuOpen(false)}>About</Link>
         <Link href="/contact" onClick={() => setIsMenuOpen(false)}>Contact</Link>
         <MenuButton isOpen={isMenuOpen} onClick={() => setIsMenuOpen(!isMenuOpen)} />
