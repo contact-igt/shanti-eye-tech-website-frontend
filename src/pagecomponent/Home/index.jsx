@@ -464,7 +464,7 @@ function ServiceIcon({ type }) {
   );
 }
 
-function TechnologyCard({ title, description, icon }) {
+function TechnologyCard({ title, description, image }) {
   return (
     <motion.article
       className={css("tech-card")}
@@ -473,7 +473,7 @@ function TechnologyCard({ title, description, icon }) {
       transition={{ duration: 0.75, ease }}
     >
       <motion.span className={css("tech-icon")} variants={iconVariant}>
-        <ServiceIcon type={icon} />
+        <Image src={image} alt="" width={42} height={42} unoptimized />
       </motion.span>
       <div>
         <h3>{title}</h3>
@@ -517,18 +517,16 @@ function TechnologySection() {
               quality, and patient experience.
             </motion.p>
             <motion.a
-              className={css("learn-button")}
+              className={css("learn-button cta-button cta-button--primary")}
               href="#contact"
               variants={textVariant}
               custom={{ y: 25, scale: 0.96, delay: 0.42, duration: 0.62 }}
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.98 }}
             >
-              <span className={css("learn-button-fill")} />
-              <span className={css("learn-button-text")}>Learn More</span>
-              <span className={css("learn-button-arrow")} aria-hidden="true">
-                <span />
-              </span>
+              <span className={css("cta-button-fill")} aria-hidden="true" />
+              <span className={css("cta-button-text")}>Learn More</span>
+              <ArrowIcon />
             </motion.a>
           </motion.div>
 
@@ -538,7 +536,7 @@ function TechnologySection() {
                 key={feature.title}
                 title={feature.title}
                 description={feature.description}
-                icon={feature.icon}
+                image={feature.image}
               />
             ))}
           </motion.div>
@@ -688,7 +686,7 @@ function DoctorSection() {
             >
               <span className={css("specialist-doctor-name")}>Dr. Amit N. Solanki</span>
               <span className={css("specialist-doctor-role")}>
-                Medical Director of Shanthi Eye Care
+                Medical Director of Shanti Eye Care
               </span>
             </motion.div>
           </motion.div>

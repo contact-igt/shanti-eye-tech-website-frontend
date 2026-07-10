@@ -85,17 +85,17 @@ export const technologyFeatures = [
   {
     title: "Advanced Diagnostics",
     description: "Fast and precise eye assessments",
-    icon: "diagnostics"
+    image: "/assets/home_logos/tech1.png"
   },
   {
     title: "Precision Surgery",
     description: "Modern equipment for improved outcomes",
-    icon: "surgery"
+    image: "/assets/home_logos/tech2.png"
   },
   {
     title: "Comfortable Experience",
     description: "Support faster and safer recovery",
-    icon: "comfort"
+    image: "/assets/home_logos/tech3.png"
   }
 ];
 
@@ -162,7 +162,7 @@ export const doctorCards = [
     body: "9+ National & international honours"
   },
   {
-    number: "03",
+    number: "04",
     title: "Affiliations",
     type: "text",
     body: "11 Professional memberships"
