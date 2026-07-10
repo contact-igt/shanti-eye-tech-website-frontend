@@ -122,7 +122,7 @@ export const knowYourDoctorContent = {
       body: "Cataract Surgery, Glaucoma Care, LASIK / Refractive, Phacoemulsification"
     },
     {
-      number: "03",
+      number: "04",
       title: "Affiliations",
       type: "text",
       body: "11 Professional memberships"

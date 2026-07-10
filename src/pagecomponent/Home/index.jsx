@@ -464,7 +464,7 @@ function ServiceIcon({ type }) {
   );
 }
 
-function TechnologyCard({ title, description, icon }) {
+function TechnologyCard({ title, description, image }) {
   return (
     <motion.article
       className={css("tech-card")}
@@ -473,7 +473,7 @@ function TechnologyCard({ title, description, icon }) {
       transition={{ duration: 0.75, ease }}
     >
       <motion.span className={css("tech-icon")} variants={iconVariant}>
-        <ServiceIcon type={icon} />
+        <Image src={image} alt="" width={42} height={42} unoptimized />
       </motion.span>
       <div>
         <h3>{title}</h3>
@@ -517,18 +517,16 @@ function TechnologySection() {
               quality, and patient experience.
             </motion.p>
             <motion.a
-              className={css("learn-button")}
+              className={css("learn-button cta-button cta-button--primary")}
               href="#contact"
               variants={textVariant}
               custom={{ y: 25, scale: 0.96, delay: 0.42, duration: 0.62 }}
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.98 }}
             >
-              <span className={css("learn-button-fill")} />
-              <span className={css("learn-button-text")}>Learn More</span>
-              <span className={css("learn-button-arrow")} aria-hidden="true">
-                <span />
-              </span>
+              <span className={css("cta-button-fill")} aria-hidden="true" />
+              <span className={css("cta-button-text")}>Learn More</span>
+              <ArrowIcon />
             </motion.a>
           </motion.div>
 
@@ -538,7 +536,7 @@ function TechnologySection() {
                 key={feature.title}
                 title={feature.title}
                 description={feature.description}
-                icon={feature.icon}
+                image={feature.image}
               />
             ))}
           </motion.div>
@@ -553,7 +551,6 @@ function ServiceCard({ service }) {
     <article className={css("service-card")}>
       <span className={css("service-number")}>{service.number}</span>
       <div className={css("service-card-panel")}>
-        <span className={css("service-glow")} />
         <div className={css("service-card-content")}>
           <div>
             <h3>{service.title}</h3>
@@ -575,33 +572,19 @@ function ServicesSection() {
 
   return (
     <section className={css("services-section")} id="services">
-      <motion.div
-        className={css("services-inner")}
-        initial="hidden"
-        whileInView="show"
-        viewport={sectionViewport}
-        variants={stagger}
-      >
-        <svg className={css("service-clip-defs")} aria-hidden="true" focusable="false">
-          <defs>
-            <clipPath id="service-card-shape" clipPathUnits="objectBoundingBox">
-              <path d="M0.04,0 H0.81 C0.81,0.058 0.836,0.092 0.882,0.092 H0.942 C0.978,0.092 1,0.12 1,0.156 V0.93 C1,0.97 0.975,1 0.94,1 H0.04 C0.016,1 0,0.974 0,0.93 V0.07 C0,0.026 0.016,0 0.04,0 Z" />
-            </clipPath>
-          </defs>
-        </svg>
-
-        <motion.div className={css("services-heading")} variants={stagger}>
-          <motion.span className={css("services-badge")} variants={reveal}>
+      <div className={css("services-inner")}>
+        <div className={css("services-heading")}>
+          <span className={css("services-badge")}>
             Services
-          </motion.span>
-          <motion.h2 variants={reveal}>
+          </span>
+          <h2>
             Comprehensive Eye Care Services
-          </motion.h2>
-          <motion.p variants={reveal}>
+          </h2>
+          <p>
             From routine concerns to advanced surgical care, Shanti EyeTech
             offers specialised treatment across the major areas of ophthalmology.
-          </motion.p>
-        </motion.div>
+          </p>
+        </div>
 
         <div className={css("services-grid")}>
           {serviceRows.map((row, rowIndex) => (
@@ -620,7 +603,7 @@ function ServicesSection() {
             </motion.div>
           ))}
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 }
@@ -703,7 +686,7 @@ function DoctorSection() {
             >
               <span className={css("specialist-doctor-name")}>Dr. Amit N. Solanki</span>
               <span className={css("specialist-doctor-role")}>
-                Medical Director of Shanthi Eye Care
+                Medical Director of Shanti Eye Care
               </span>
             </motion.div>
           </motion.div>
@@ -1187,4 +1170,3 @@ export default function HomePageComponent() {
     </>
   );
 }
-
