@@ -259,7 +259,7 @@ export const catractTreatmentContent = {
     ]
   },
 };
-<<<<<<< Updated upstream
+
 const sharedTreatmentBenefits = {
   id: "benefits",
   headingId: "treatment-benefits-title",
@@ -429,8 +429,6 @@ export const treatmentPages = {
 
 
 
-=======
-
 export const glaucomaTreatmentContent = {
   hero: {
     logo: {
@@ -564,4 +562,4 @@ export const glaucomaTreatmentContent = {
     ]
   },
 };
->>>>>>> Stashed changes
+
