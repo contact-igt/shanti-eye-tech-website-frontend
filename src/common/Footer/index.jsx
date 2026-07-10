@@ -170,7 +170,7 @@ export default function Footer() {
 
           <motion.div className={css("footer-center")} variants={footerContainerVariant}>
             <motion.img
-              src="/assets/LOGO.jpeg"
+              src="/assets/about/about_logo.png"
               alt="Shanti EyeTech logo"
               className={css("footer-logo")}
               variants={footerLogoVariant}

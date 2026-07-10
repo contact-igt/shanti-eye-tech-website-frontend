@@ -291,6 +291,7 @@ function Hero() {
           <div className={css("nav-dropdown-menu")}>
             <Link href="/treatments/catract" onClick={() => setIsMenuOpen(false)}>Cataract</Link>
             <Link href="/treatments/lasik" onClick={() => setIsMenuOpen(false)}>LASIK</Link>
+            <Link href="/treatments/glaucoma" onClick={() => setIsMenuOpen(false)}>Glaucoma</Link>
           </div>
         </div>
         <Link href="/about" onClick={() => setIsMenuOpen(false)}>About</Link>

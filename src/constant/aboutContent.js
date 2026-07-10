@@ -110,12 +110,6 @@ export const knowYourDoctorContent = {
       items: ["MBBS", "DOMS", "DNB", "FAECS"]
     },
     {
-      number: "03",
-      title: "Recognition",
-      type: "text",
-      body: "9+ National & international honours"
-    },
-    {
       number: "02",
       title: "Specialization",
       type: "text",
@@ -123,6 +117,12 @@ export const knowYourDoctorContent = {
     },
     {
       number: "03",
+      title: "Recognition",
+      type: "text",
+      body: "9+ National & international honours"
+    },
+    {
+      number: "04",
       title: "Affiliations",
       type: "text",
       body: "11 Professional memberships"

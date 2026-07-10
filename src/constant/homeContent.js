@@ -162,7 +162,7 @@ export const doctorCards = [
     body: "9+ National & international honours"
   },
   {
-    number: "03",
+    number: "04",
     title: "Affiliations",
     type: "text",
     body: "11 Professional memberships"

@@ -24,7 +24,7 @@ export default function PrivacyPolicyPage() {
         <div className={styles.heroInner}>
           <Link className={styles.logoLink} href="/" aria-label="Go to Shanti EyeTech home">
             <Image
-              src="/assets/LOGO.jpeg"
+              src="/assets/about/about_logo.png"
               alt="Shanti EyeTech logo"
               width={260}
               height={150}

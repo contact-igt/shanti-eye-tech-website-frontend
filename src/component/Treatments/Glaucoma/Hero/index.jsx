@@ -1,7 +1,8 @@
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Playfair_Display } from "next/font/google";
+import { AlignCenter } from "lucide-react";
 import styles from "./styles.module.css";
 
 const playfairDisplay = Playfair_Display({
@@ -19,6 +20,7 @@ function TreatmentLink({ href, children, className, onClick }) {
       </Link>
     );
   }
+
   return (
     <a className={className} href={href} onClick={onClick}>
       {children}
@@ -26,79 +28,12 @@ function TreatmentLink({ href, children, className, onClick }) {
   );
 }
 
-const treatmentDropdownLinks = [
-  { label: "Cataract", href: "/treatments/catract" },
-  { label: "LASIK", href: "/treatments/lasik" },
-];
-
-function TreatmentsDropdown({ closeMenu }) {
-  const [open, setOpen] = useState(false);
-  const ref = useRef(null);
-
-  useEffect(() => {
-    function handler(e) {
-      if (ref.current && !ref.current.contains(e.target)) setOpen(false);
-    }
-    document.addEventListener("mousedown", handler);
-    return () => document.removeEventListener("mousedown", handler);
-  }, []);
-
-  return (
-    <div className={styles.dropdown} ref={ref}>
-      <button
-        className={styles.dropdownTrigger}
-        type="button"
-        aria-haspopup="true"
-        aria-expanded={open}
-        onClick={() => setOpen((o) => !o)}
-      >
-        Treatments
-        <svg
-          className={`${styles.chevron} ${open ? styles.chevronOpen : ""}`}
-          width="12"
-          height="12"
-          viewBox="0 0 12 12"
-          fill="none"
-          aria-hidden="true"
-        >
-          <path
-            d="M2 4.5L6 8.5L10 4.5"
-            stroke="currentColor"
-            strokeWidth="1.6"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-      </button>
-
-      {open && (
-        <div className={styles.dropdownMenu} role="menu">
-          {treatmentDropdownLinks.map((link) => (
-            <Link
-              key={link.label}
-              href={link.href}
-              className={styles.dropdownItem}
-              role="menuitem"
-              onClick={() => {
-                setOpen(false);
-                closeMenu();
-              }}
-            >
-              {link.label}
-            </Link>
-          ))}
-        </div>
-      )}
-    </div>
-  );
-}
-
-export default function LasikHero({ content }) {
+export default function GlaucomaHero({ content }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <article className={styles.page}>
-      <section className={styles.hero} aria-labelledby="lasik-hero-title">
+      <section className={styles.hero} aria-labelledby="glaucoma-hero-title">
         <Image
           className={styles.heroImage}
           src={content.background.src}
@@ -126,24 +61,15 @@ export default function LasikHero({ content }) {
             aria-label="Primary navigation"
           >
             <div className={styles.navLinks}>
-              {/* Home */}
-              <Link href="/" onClick={() => setIsMenuOpen(false)}>
-                Home
-              </Link>
-
-              {/* Treatments dropdown */}
-              <TreatmentsDropdown closeMenu={() => setIsMenuOpen(false)} />
-
-              {/* About */}
-              <Link href="/about" onClick={() => setIsMenuOpen(false)}>
-                About
-              </Link>
-
-              {/* Contact */}
-              <Link href="/contact" onClick={() => setIsMenuOpen(false)}>
-                Contact
-              </Link>
-
+              {content.navLinks.map((link) => (
+                <TreatmentLink
+                  key={link.label}
+                  href={link.href}
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {link.label}
+                </TreatmentLink>
+              ))}
               <button
                 className={`${styles.menuButton} ${isMenuOpen ? styles.menuOpen : ""}`}
                 type="button"
@@ -160,7 +86,7 @@ export default function LasikHero({ content }) {
         </div>
 
         <div className={styles.heroCopy}>
-          <h1 id="lasik-hero-title" className={playfairDisplay.className}>
+          <h1 id="glaucoma-hero-title" className={playfairDisplay.className}>
             {content.title.lineOne}
             <br />
             {content.title.lineTwoStart} <span>{content.title.accent}</span>

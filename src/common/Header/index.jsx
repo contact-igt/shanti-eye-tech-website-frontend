@@ -7,8 +7,15 @@ import styles from "./styles.module.css";
 
 const NAV_ITEMS = [
   { label: "Home", href: "/" },
-  { label: "Cataract", href: "/treatments/catract" },
-  { label: "LASIK", href: "/treatments/lasik" },
+  {
+    label: "Treatments",
+    href: "#",
+    subItems: [
+      { label: "Cataract", href: "/treatments/catract" },
+      { label: "LASIK", href: "/treatments/lasik" },
+      { label: "Glaucoma", href: "/treatments/glaucoma" },
+    ],
+  },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];
@@ -16,11 +23,13 @@ const NAV_ITEMS = [
 export default function Header() {
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
+  const [isTreatmentsOpen, setIsTreatmentsOpen] = useState(false);
 
   const hideLogo = router.pathname === "/" || router.pathname === "/about";
 
   function close() {
     setIsOpen(false);
+    setIsTreatmentsOpen(false);
   }
 
   return (
@@ -68,16 +77,48 @@ export default function Header() {
         aria-hidden={!isOpen}
         inert={!isOpen ? "" : undefined}
       >
-        {NAV_ITEMS.map((item) => (
-          <Link
-            key={item.label}
-            href={item.href}
-            className={styles.navLink}
-            onClick={close}
-          >
-            {item.label}
-          </Link>
-        ))}
+        {NAV_ITEMS.map((item) => {
+          if (item.subItems) {
+            return (
+              <div key={item.label} className={styles.dropdownItem}>
+                <button
+                  className={styles.dropdownTrigger}
+                  onClick={() => setIsTreatmentsOpen(!isTreatmentsOpen)}
+                  aria-expanded={isTreatmentsOpen}
+                >
+                  {item.label}
+                  <span className={`${styles.chevron} ${isTreatmentsOpen ? styles.chevronOpen : ""}`}>
+                    ▼
+                  </span>
+                </button>
+                {isTreatmentsOpen && (
+                  <div className={styles.subLinks}>
+                    {item.subItems.map((sub) => (
+                      <Link
+                        key={sub.label}
+                        href={sub.href}
+                        className={styles.subLink}
+                        onClick={close}
+                      >
+                        {sub.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+            );
+          }
+          return (
+            <Link
+              key={item.label}
+              href={item.href}
+              className={styles.navLink}
+              onClick={close}
+            >
+              {item.label}
+            </Link>
+          );
+        })}
       </nav>
     </>
   );

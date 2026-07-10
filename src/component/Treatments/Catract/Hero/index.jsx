@@ -173,11 +173,11 @@ export default function CatractHero({ content }) {
               <TreatmentLink
                 key={action.label}
                 href={action.href}
-                className={`cta-button cta-button--${action.variant === "primary" ? "primary" : "secondary"}`}
+                className={`${styles.ctaButton} ${action.variant === "primary" ? styles.ctaButtonPrimary : styles.ctaButtonSecondary}`}
               >
-                <span className="cta-button-fill" aria-hidden="true" />
-                <span className="cta-button-text">{action.label}</span>
-                <span className="arrow-icon" aria-hidden="true">
+                <span className={styles.ctaButtonFill} aria-hidden="true" />
+                <span className={styles.ctaButtonText}>{action.label}</span>
+                <span className={styles.arrowIcon} aria-hidden="true">
                   <span />
                 </span>
               </TreatmentLink>

@@ -45,6 +45,10 @@
   margin-top: 10px;
 }
 
+.aboutIntroductionWord {
+  display: inline;
+}
+
 @media (max-width: 1200px) {
   .aboutIntroductionSection {  
       min-height: 0;  

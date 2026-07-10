@@ -259,6 +259,7 @@ export const catractTreatmentContent = {
     ]
   },
 };
+<<<<<<< Updated upstream
 const sharedTreatmentBenefits = {
   id: "benefits",
   headingId: "treatment-benefits-title",
@@ -428,3 +429,139 @@ export const treatmentPages = {
 
 
 
+=======
+
+export const glaucomaTreatmentContent = {
+  hero: {
+    logo: {
+      src: "/assets/about/about_logo.png",
+      alt: "Shanti EyeTech Eye Care & Laser Hospital",
+    },
+    background: {
+      src: "/assets/Treatments/glaucoma/Gluocoma_backgrund.png",
+      alt: "Glaucoma Treatment Background",
+    },
+    navLinks: [
+      { label: "Home", href: "/" },
+      { label: "Cataract", href: "/treatments/catract" },
+      { label: "LASIK", href: "/treatments/lasik" },
+      { label: "Glaucoma", href: "/treatments/glaucoma" },
+      { label: "About", href: "/about" },
+      { label: "Contact", href: "/#contact" },
+    ],
+    title: {
+      lineOne: "Detect",
+      lineTwoStart: "Glaucoma ",
+      accent: "Early,",
+      lineThree: "Preserve Life's Precious Moments.",
+    },
+    description:
+      "Glaucoma is often called the 'silent thief of sight'. Protect your vision with our advanced diagnostics and personalized treatment.",
+    actions: [
+      { label: "Book Consultation", href: "/#contact", variant: "primary" },
+      { label: "Check your Eligibility", href: "/#contact", variant: "secondary" },
+    ],
+  },
+  whatIsGlaucoma: {
+    badge: "Services",
+    title: "What is Glaucoma?",
+    description:
+      "Glaucoma is a group of eye diseases that damage the optic nerve, often due to increased pressure inside the eye. It usually has no early symptoms but can cause gradual vision loss.",
+    descriptionSecondary:
+      "Fortunately, glaucoma can be effectively managed if detected early. Early detection through regular eye check-ups is the key to protecting your vision.",
+  },
+  warningSigns: {
+    badge: "Services",
+    title: "When Should You Consider Evaluation?",
+    subtitle: "Watch Out For These Warning Signs",
+  },
+  advancedCare: {
+    badge: "Services",
+    title: "Our Glaucoma Care & Treatment Options",
+    subtitle: "Personalized solutions to manage eye pressure and protect your optic nerve.",
+    cards: [
+      {
+        image: {
+          src: "/assets/Treatments/glaucoma/86bd16b205c41335d124ac0ab2189273c13a1e96.png",
+          alt: "Medications",
+        },
+        title: "Medications",
+        description:
+          "Prescription eye drops help reduce eye pressure and slow disease progression.",
+        tags: ["Preventive measure", "Anti - Progression"],
+      },
+      {
+        image: {
+          src: "/assets/Treatments/glaucoma/05a77aa2c207af02183f97fc979cf5a86b810a05.png",
+          alt: "Laser Therapy",
+        },
+        title: "Laser Therapy",
+        description:
+          "Advanced laser procedures to improve fluid drainage and reduce eye pressure.",
+        tags: ["Quick Recovery"],
+      },
+      {
+        image: {
+          src: "/assets/Treatments/glaucoma/1b16ab3e404a55e8510be714e3fdbd617d455645.png",
+          alt: "Glaucoma Surgery",
+        },
+        title: "Glaucoma Surgery",
+        description:
+          "Minimally invasive surgical options for long-term pressure control.",
+        tags: ["Long Term Relief"],
+      },
+    ],
+  },
+  benefitsCarousel: {
+    badge: "Services",
+    title: "Benefits of Early Glaucoma Care",
+    cards: [
+      {
+        title: "Maintain an active life",
+        image: "/assets/Treatments/glaucoma/1a7d1a65c84191423b79eed37ce8ee377f9497ae.png",
+      },
+      {
+        title: "Preserve your vision",
+        image: "/assets/Treatments/glaucoma/eea449ec779f949737d32bcd53516f26dfc6f888.png",
+      },
+      {
+        title: "Live independently",
+        image: "/assets/Treatments/glaucoma/9ee28d1e61d081deafdb54ddff5befea02be8ab7.png",
+      },
+    ],
+  },
+  faq: {
+    eyebrow: "Frequently asked question",
+    title: "Answers to your asked queries",
+    callout: "Still not sure? Book a free discovery call now.",
+    email: "info@shantieyetech.com",
+    items: [
+      {
+        id: "glaucoma-what-is",
+        question: "What is glaucoma?",
+        answer: "Glaucoma is a group of eye conditions that damage the optic nerve, the health of which is vital for good vision. This damage is often caused by an abnormally high pressure in your eye."
+      },
+      {
+        id: "glaucoma-cured",
+        question: "Can glaucoma be cured?",
+        answer: "Glaucoma cannot be cured, and vision lost to the disease cannot be restored. However, early detection and treatment can delay or prevent further vision loss."
+      },
+      {
+        id: "glaucoma-hereditary",
+        question: "Is glaucoma hereditary?",
+        answer: "Yes, family history is a significant risk factor for glaucoma. If you have an immediate family member with glaucoma, you have a much higher risk of developing the disease."
+      },
+      {
+        id: "glaucoma-pressure",
+        question: "Does high eye pressure always mean glaucoma?",
+        answer: "Not necessarily. High eye pressure (ocular hypertension) increases your risk of developing glaucoma, but not everyone with high pressure will develop the disease. Regular monitoring is key."
+      },
+      {
+        id: "glaucoma-checked",
+        question: "How often should I get checked?",
+        answer: "It's recommended to have a comprehensive eye exam every 1 to 2 years, especially if you are over 40 or have risk factors like a family history of glaucoma."
+      }
+    ]
+  },
+};
+>>>>>>> Stashed changes

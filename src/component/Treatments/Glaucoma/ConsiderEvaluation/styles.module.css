@@ -1,0 +1,170 @@
+/* ── Section: left padding only — bento bleeds to right edge ── */
+.section {
+  width: 100%;
+  padding: 80px 0 100px clamp(24px, 6.8%, 130px);
+  background: #f4efea;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* ── Full-width header (badge + title) with right padding restored ── */
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 7px 18px;
+  border-radius: 99px;
+  background: white;
+  color: #5b6e80;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.title {
+  font-size: clamp(32px, 3.2vw, 54px);
+  line-height: 1.1;
+  color: #263746;
+  margin: 0;
+  font-weight: 500;
+}
+
+/* ── Two-column content grid ── */
+.contentGrid {
+  display: grid;
+  grid-template-columns: minmax(260px, 520px) 1fr;
+  gap: 52px;
+  align-items: start;
+}
+
+/* ── Left column ── */
+.leftContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.subtitle {
+  font-size: clamp(28px, 2.5vw, 42px);
+  line-height: 1.2;
+  color: #263746;
+  margin: 0 0 32px;
+  font-weight: 500;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.listItem {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: clamp(16px, 1.4vw, 20px);
+  color: #5b6e80;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.checkIcon {
+  width: clamp(28px, 2.4vw, 36px);
+  height: clamp(28px, 2.4vw, 36px);
+  flex-shrink: 0;
+}
+
+/* ── Right: 2×2 bento image grid ── */
+.bentoGrid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  grid-template-rows: 250px 250px;
+  gap: 14px;
+}
+
+.bentoCard {
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #d9d9d9;
+  transition: transform 0.3s ease;
+}
+
+.bentoCard:hover {
+  transform: translateY(-3px);
+}
+
+.cardImg {
+  object-fit: cover;
+}
+
+/* ── Responsive ── */
+
+/* Tablet: stack columns, restore right padding */
+@media (max-width: 1024px) {
+  .section {
+    padding: 72px clamp(24px, 5vw, 60px) 80px;
+  }
+
+  .sectionHeader {
+    padding-right: 0;
+  }
+
+  .contentGrid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .bentoGrid {
+    grid-template-rows: 220px 220px;
+    gap: 12px;
+  }
+}
+
+/* Mobile: 2-col bento becomes equal columns */
+@media (max-width: 640px) {
+  .section {
+    padding: 56px 18px 64px;
+  }
+
+  .sectionHeader {
+    padding-right: 0;
+  }
+
+  .contentGrid {
+    gap: 32px;
+  }
+
+  .bentoGrid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 160px 160px;
+    gap: 10px;
+  }
+
+  .bentoCard {
+    border-radius: 14px;
+  }
+
+  .subtitle {
+    font-size: 22px;
+    margin-bottom: 20px;
+  }
+}
+
+/* Small mobile: single-column bento */
+@media (max-width: 420px) {
+  .bentoGrid {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, 200px);
+  }
+}

@@ -1,0 +1,109 @@
+import { useRef } from "react";
+import Image from "next/image";
+import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
+import { Playfair_Display } from "next/font/google";
+import styles from "./styles.module.css";
+
+const playfairDisplay = Playfair_Display({
+  subsets: ["latin"],
+  weight: ["500"],
+  style: ["normal"],
+  display: "swap",
+});
+
+function ScrollTextWord({ children, index, totalWords, progress, reduceMotion }) {
+  // Start and end values for opacity fade trigger
+  const start = (index / totalWords) * 0.72;
+  const color = useTransform(progress, [start, start + 0.22], ["rgba(41, 55, 71, 0.2)", "#111111"]);
+
+  return (
+    <motion.span
+      className={styles.word}
+      style={reduceMotion ? { color: "#111111" } : { color }}
+    >
+      {children}{" "}
+    </motion.span>
+  );
+}
+
+export default function WhatIsGlaucomaSection({ content }) {
+  const sectionRef = useRef(null);
+  const reduceMotion = useReducedMotion();
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start 80%", "end 50%"]
+  });
+
+  const wordsOne = content.description.split(" ");
+  const wordsTwo = content.descriptionSecondary.split(" ");
+  const totalWords = wordsOne.length + wordsTwo.length;
+
+  return (
+    <section className={styles.section} aria-labelledby="what-is-glaucoma-title" ref={sectionRef}>
+      <div className={styles.inner}>
+        <span className={styles.badge}>{content.badge}</span>
+
+        <div className={styles.headerRow}>
+          <div className={styles.titleWrap}>
+            <h2 id="what-is-glaucoma-title" className={playfairDisplay.className}>
+              {content.title}
+            </h2>
+          </div>
+
+          <div className={styles.visual} aria-hidden="true">
+            <Image
+              src="/assets/Treatments/Catract/d3b2f33f3c20b3c8ce9805a8a1592ed1b573631e.png"
+              alt=""
+              fill
+              className={styles.visualImg}
+              sizes="(max-width:768px) 80vw, 45vw"
+              priority
+            />
+          </div>
+        </div>
+
+        <p className={styles.description}>
+          {wordsOne.map((word, wordIndex) => (
+            <ScrollTextWord
+              key={`one-${wordIndex}-${word}`}
+              index={wordIndex}
+              totalWords={totalWords}
+              progress={scrollYProgress}
+              reduceMotion={reduceMotion}
+            >
+              {word}
+            </ScrollTextWord>
+          ))}
+        </p>
+      </div>
+
+      {/* Full-bleed banner */}
+      <div className={styles.middleVisual}>
+        <Image
+          src="/assets/Treatments/glaucoma/081025920cc8d271562973e4ae61a644fef3b036.png"
+          alt="Glaucoma evaluation"
+          fill
+          className={styles.middleVisualImg}
+          sizes="100vw"
+        />
+      </div>
+
+      {/* Second paragraph */}
+      <div className={styles.inner}>
+        <p className={`${styles.description} ${styles.descriptionCenter}`}>
+          {wordsTwo.map((word, wordIndex) => (
+            <ScrollTextWord
+              key={`two-${wordIndex}-${word}`}
+              index={wordsOne.length + wordIndex}
+              totalWords={totalWords}
+              progress={scrollYProgress}
+              reduceMotion={reduceMotion}
+            >
+              {word}
+            </ScrollTextWord>
+          ))}
+        </p>
+      </div>
+    </section>
+  );
+}
