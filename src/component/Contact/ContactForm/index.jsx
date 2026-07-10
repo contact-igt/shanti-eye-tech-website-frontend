@@ -1,90 +1,121 @@
 "use client";
 import { useState } from "react";
+import Image from "next/image";
+import { useRouter } from "next/router";
+import { Inter, Montserrat } from "next/font/google";
+import { submitForm } from "@/lib/formService";
 import styles from "./styles.module.css";
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  weight: ["600", "700"],
+  display: "swap",
+  variable: "--font-contact-form-montserrat",
+});
 
-/* ── Inline SVG icons ── */
-function UserIcon() {
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  display: "swap",
+  variable: "--font-contact-form-inter",
+});
+
+function FieldIcon({ src }) {
   return (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <circle cx="12" cy="8" r="4" />
-      <path d="M4 20c0-4 3.58-7 8-7s8 3 8 7" />
-    </svg>
+    <Image
+      className={styles.fieldIconImage}
+      src={src}
+      alt=""
+      width={18}
+      height={18}
+      aria-hidden="true"
+    />
   );
 }
 
-function EmailIcon() {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <rect x="2" y="4" width="20" height="16" rx="2" />
-      <path d="M22 7l-10 7L2 7" />
-    </svg>
-  );
-}
-
-function PhoneIcon() {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.08 1.18 2 2 0 012.07 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z" />
-    </svg>
-  );
-}
-
-function MessageIcon() {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" />
-    </svg>
-  );
-}
-
-function ArrowIcon() {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <line x1="5" y1="19" x2="19" y2="5" />
-      <polyline points="6 5 19 5 19 18" />
-    </svg>
-  );
-}
 
 const INITIAL = { firstName: "", lastName: "", email: "", mobile: "", message: "" };
 
 export default function ContactForm() {
+  const router = useRouter();
   const [form, setForm] = useState(INITIAL);
-  const [sent, setSent] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   function handleChange(e) {
+    e.target.setCustomValidity("");
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   }
 
-  function handleSubmit(e) {
+  function handleInvalid(e) {
+    const messages = {
+      firstName: "Please enter your first name.",
+      email: "Please enter your email address.",
+      mobile: "Please enter your mobile number.",
+    };
+    e.target.setCustomValidity(messages[e.target.name] || "Please fill out this field.");
+  }
+
+  async function handleSubmit(e) {
     e.preventDefault();
-    // TODO: wire up real submission (email service / API route)
-    setSent(true);
-    setTimeout(() => setSent(false), 4000);
-    setForm(INITIAL);
+    if (!e.currentTarget.reportValidity()) {
+      return;
+    }
+    setLoading(true);
+
+    const fullName = [form.firstName, form.lastName]
+      .map((value) => value.trim())
+      .filter(Boolean)
+      .join(" ");
+
+    const contactData = {
+      fullName,
+      email: form.email.trim(),
+      mobile: form.mobile.trim(),
+      message: form.message.trim(),
+    };
+
+    try {
+      await submitForm("Contact", contactData);
+      setForm(INITIAL);
+      router.push("/thank-you");
+    } catch (err) {
+      const msg = err?.message || "Failed to submit contact form";
+      router.push({ pathname: "/error", query: { msg } });
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
-    <section className={styles.section} id="contact-form">
+    <section className={`${inter.variable} ${montserrat.variable} ${styles.section}`} id="contact-form">
       <div className={styles.inner}>
 
         {/* ── Left: form ── */}
         <div className={styles.left}>
-          <span className={styles.badge}>Get In Touch</span>
+          <span className={styles.badge}>
+            <Image
+              className={styles.badgeIcon}
+              src="/assets/contact/plus-icon.png"
+              alt=""
+              width={14}
+              height={14}
+              aria-hidden="true"
+            />
+            Get In Touch
+          </span>
 
-          <h2 className={styles.heading}>
+          <h2 className={`${montserrat.className} ${styles.heading}`}>
             We&apos;re here for you.
             <span className={styles.headingAccent}>Our team will contact Shortly</span>
           </h2>
 
-          <p className={styles.description}>
+          <p className={`${inter.className} ${styles.description}`}>
             Have questions or need assistance? Our friendly eyecare team is here
             to help. Contact us by phone, email, or visit our medical center—we&apos;re
             always ready to assist you.
           </p>
 
           <div className={styles.formCard}>
-            <form onSubmit={handleSubmit} noValidate>
+            <form onSubmit={handleSubmit}>
               <div className={styles.formGrid}>
 
                 {/* First Name */}
@@ -98,10 +129,11 @@ export default function ContactForm() {
                       placeholder="Enter first name"
                       value={form.firstName}
                       onChange={handleChange}
+                      onInvalid={handleInvalid}
                       required
                       autoComplete="given-name"
                     />
-                    <span className={styles.inputIcon}><UserIcon /></span>
+                    <span className={styles.inputIcon}><FieldIcon src="/assets/contact/user-icon.png" /></span>
                   </div>
                 </div>
 
@@ -119,7 +151,7 @@ export default function ContactForm() {
                       required
                       autoComplete="family-name"
                     />
-                    <span className={styles.inputIcon}><UserIcon /></span>
+                    <span className={styles.inputIcon}><FieldIcon src="/assets/contact/user-icon.png" /></span>
                   </div>
                 </div>
 
@@ -134,10 +166,11 @@ export default function ContactForm() {
                       placeholder="Enter email id"
                       value={form.email}
                       onChange={handleChange}
+                      onInvalid={handleInvalid}
                       required
                       autoComplete="email"
                     />
-                    <span className={styles.inputIcon}><EmailIcon /></span>
+                    <span className={styles.inputIcon}><FieldIcon src="/assets/contact/email-icon.png" /></span>
                   </div>
                 </div>
 
@@ -152,9 +185,11 @@ export default function ContactForm() {
                       placeholder="Enter mobile number"
                       value={form.mobile}
                       onChange={handleChange}
+                      onInvalid={handleInvalid}
+                      required
                       autoComplete="tel"
                     />
-                    <span className={styles.inputIcon}><PhoneIcon /></span>
+                    <span className={styles.inputIcon}><FieldIcon src="/assets/contact/call-icon-blue.png" /></span>
                   </div>
                 </div>
 
@@ -170,15 +205,24 @@ export default function ContactForm() {
                       onChange={handleChange}
                       rows={4}
                     />
-                    <span className={`${styles.inputIcon} ${styles.iconTop}`}><MessageIcon /></span>
+                    <span className={`${styles.inputIcon} ${styles.iconTop}`}><FieldIcon src="/assets/contact/message-icon.png" /></span>
                   </div>
                 </div>
 
               </div>
 
-              <button className={styles.submitBtn} type="submit">
-                {sent ? "Message Sent!" : "Send Message"}
-                <span className={styles.arrowCircle}><ArrowIcon /></span>
+              <button className={styles.submitBtn} type="submit" disabled={loading}>
+                {loading ? "Sending..." : "Send Message"}
+                <span className={styles.arrowCircle}>
+                  <Image
+                    className={styles.arrowIconImage}
+                    src="/assets/contact/Arrow.png"
+                    alt=""
+                    width={20}
+                    height={20}
+                    aria-hidden="true"
+                  />
+                </span>
               </button>
             </form>
           </div>

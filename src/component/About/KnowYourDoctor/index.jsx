@@ -95,7 +95,7 @@ export default function KnowYourDoctor() {
           </motion.div>
 
           <motion.div className={styles.aboutDoctorActions} variants={reveal}>
-            <Link className={`${styles.ctaButton} ${styles.ctaButtonPrimary}`} href="/#contact">
+            <Link className={`${styles.ctaButton} ${styles.ctaButtonPrimary}`} href="/contact">
               <span className={styles.ctaButtonFill} aria-hidden="true" />
               <span className={styles.ctaButtonText}>Book a Consultation</span>
               <span className={styles.arrowIcon} aria-hidden="true">

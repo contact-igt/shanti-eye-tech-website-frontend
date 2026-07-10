@@ -82,7 +82,7 @@ export default function FAQ({ content = aboutFaqContent }) {
             <Phone fill="currentColor" strokeWidth={1.8} />
           </span>
           <p>{content.callout}</p>
-          <Link className={styles.aboutFaqBook} href="/#contact">
+          <Link className={styles.aboutFaqBook} href="/contact">
             <CalendarDays aria-hidden="true" strokeWidth={1.7} />
             <span>Book a call</span>
           </Link>

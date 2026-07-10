@@ -1633,3 +1633,104 @@
 .arrowIcon span {
   display: none;
 }
+
+/* -- Treatments dropdown -- */
+.dropdown {
+  position: relative;
+}
+
+.dropdownTrigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: inherit;
+  font-weight: 500;
+  color: inherit;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 180ms ease;
+  font-family: inherit;
+}
+
+.dropdownTrigger:hover {
+  color: #14bddd;
+}
+
+.chevron {
+  transition: transform 0.22s ease;
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 160px;
+  background: rgba(255, 255, 255, 0.97);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 12px;
+  box-shadow: 0 16px 40px rgba(39, 55, 65, 0.14);
+  overflow: hidden;
+  z-index: 100;
+  animation: dropIn 0.18s ease both;
+}
+
+@keyframes dropIn {
+  from { opacity: 0; transform: translateX(-50%) translateY(-6px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+.dropdownItem {
+  display: block;
+  padding: 11px 18px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #151c23;
+  transition: background 0.18s ease, color 0.18s ease;
+  white-space: nowrap;
+}
+
+.dropdownItem:hover {
+  background: rgba(22, 193, 228, 0.08);
+  color: #16c1e4;
+}
+
+@media (max-width: 760px) {
+  .aboutBannerNavLinks .dropdownTrigger {
+      display: none !important;
+  }
+  .aboutBannerNav.aboutBannerNavOpen .aboutBannerNavLinks .dropdownTrigger {
+      display: flex !important;
+      padding: 12px 14px !important;
+      color: #151c23 !important;
+      font-size: 16px !important;
+      font-weight: 500 !important;
+      border-radius: 12px !important;
+      width: 100% !important;
+      background: none !important;
+      border: none !important;
+  }
+  .aboutBannerNav.aboutBannerNavOpen .dropdownMenu {
+      position: static !important;
+      transform: none !important;
+      animation: none !important;
+      box-shadow: none !important;
+      border: none !important;
+      background: rgba(22, 193, 228, 0.05) !important;
+      border-radius: 10px !important;
+      margin-top: 2px !important;
+  }
+  .aboutBannerNav.aboutBannerNavOpen .dropdownItem {
+      padding: 10px 20px !important;
+      font-size: 14px !important;
+  }
+}

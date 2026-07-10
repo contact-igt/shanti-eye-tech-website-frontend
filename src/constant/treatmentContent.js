@@ -1,4 +1,4 @@
-﻿import { whyPatientsContent } from "@/constant/aboutContent";
+import { whyPatientsContent } from "@/constant/aboutContent";
 
 export const lasikTreatmentContent = {
   hero: {
@@ -12,10 +12,8 @@ export const lasikTreatmentContent = {
     },
     navLinks: [
       { label: "Home", href: "/" },
-      { label: "Cataract", href: "/treatments/catract" },
-      { label: "LASIK", href: "/treatments/lasik" },
       { label: "About", href: "/about" },
-      { label: "Contact", href: "/#contact" },
+      { label: "Contact", href: "/contact" },
     ],
     title: {
       lineOne: "Freedom From",
@@ -26,8 +24,8 @@ export const lasikTreatmentContent = {
     description:
       "Experience sharper, clearer vision with advanced LASIK technology. Our personalized approach, experienced specialists, and precision-driven care help you see the world with greater confidence.",
     actions: [
-      { label: "Book Consultation", href: "/#contact", variant: "primary" },
-      { label: "Check your Eligibility", href: "/#contact", variant: "secondary" },
+      { label: "Book Consultation", href: "/contact", variant: "primary" },
+      { label: "Check your Eligibility", href: "/contact", variant: "secondary" },
     ],
   },
   whatIsLasik: {
@@ -144,10 +142,8 @@ export const catractTreatmentContent = {
     },
     navLinks: [
       { label: "Home", href: "/" },
-      { label: "Cataract", href: "/treatments/catract" },
-      { label: "LASIK", href: "/treatments/lasik" },
       { label: "About", href: "/about" },
-      { label: "Contact", href: "/#contact" },
+      { label: "Contact", href: "/contact" },
     ],
     title: {
       lineOne: "Restore Clear",
@@ -158,8 +154,8 @@ export const catractTreatmentContent = {
     description:
       "Cataracts can gradually make everyday activities like reading, driving, and recognizing faces more difficult. At Shanti EyeTech, we combine advanced surgical technology with personalized care to restore clearer vision safely and comfortably.",
     actions: [
-      { label: "Book Consultation", href: "/#contact", variant: "primary" },
-      { label: "Check your Eligibility", href: "/#contact", variant: "secondary" },
+      { label: "Book Consultation", href: "/contact", variant: "primary" },
+      { label: "Check your Eligibility", href: "/contact", variant: "secondary" },
     ],
   },
   whatIsCataract: {

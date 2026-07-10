@@ -157,7 +157,7 @@ function CTAButton({ children, variant = "primary" }) {
   return (
     <motion.a
       className={css(`cta-button cta-button--${variant}`)}
-      href="#contact"
+      href="contact"
       whileTap={{ scale: 0.98 }}
     >
       <span className={css("cta-button-fill")} aria-hidden="true" />
@@ -518,7 +518,7 @@ function TechnologySection() {
             </motion.p>
             <motion.a
               className={css("learn-button")}
-              href="#contact"
+              href="contact"
               variants={textVariant}
               custom={{ y: 25, scale: 0.96, delay: 0.42, duration: 0.62 }}
               whileHover={{ scale: 1.03 }}
@@ -991,7 +991,7 @@ function TestimonialsSection() {
         </div>
 
         <motion.a
-          href="#contact"
+          href="contact"
           className={css("testimonials-view-all")}
           whileTap={{ scale: 0.98 }}
         >
@@ -1151,7 +1151,7 @@ function CTABannerSection() {
             transition={{ duration: 0.55, delay: 0.28, ease: "easeOut" }}
           >
             <motion.a
-              href="#contact"
+              href="contact"
               className={css("cta-banner-button")}
               whileTap={{ scale: 0.98 }}
             >

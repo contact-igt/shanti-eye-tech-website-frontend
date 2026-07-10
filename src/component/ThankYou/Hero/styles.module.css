@@ -66,6 +66,76 @@
   color: #16c1e4;
 }
 
+/* ── Treatments dropdown ── */
+.dropdown {
+  position: relative;
+}
+
+.dropdownTrigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 14px;
+  font-weight: 500;
+  color: #263746;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 180ms ease;
+  font-family: inherit;
+}
+
+.dropdownTrigger:hover {
+  color: #16c1e4;
+}
+
+.chevron {
+  transition: transform 0.22s ease;
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 160px;
+  background: rgba(255, 255, 255, 0.97);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 12px;
+  box-shadow: 0 16px 40px rgba(39, 55, 65, 0.14);
+  overflow: hidden;
+  z-index: 100;
+  animation: dropIn 0.18s ease both;
+}
+
+@keyframes dropIn {
+  from { opacity: 0; transform: translateX(-50%) translateY(-6px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+.dropdownItem {
+  display: block;
+  padding: 11px 18px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #151c23;
+  transition: background 0.18s ease, color 0.18s ease;
+  white-space: nowrap;
+}
+
+.dropdownItem:hover {
+  background: rgba(22, 193, 228, 0.08);
+  color: #16c1e4;
+}
+
 /* Hamburger button */
 .menuButton {
   width: 52px;
@@ -107,18 +177,22 @@
   flex-direction: column;
   justify-content: center;
   padding: clamp(20px, 4vh, 50px) clamp(24px, 5vw, 90px) clamp(40px, 7vh, 90px);
-  max-width: 600px;
+  max-width: 680px;
   margin-left: clamp(24px, 5vw, 80px);
   align-self: flex-start;
 }
 
 .heading {
   margin: 0 0 16px;
-  font-size: clamp(44px, 5.5vw, 72px);
+  font-size: clamp(38px, 5vw, 66px);
   font-weight: 700;
   color: #011139;
-  line-height: 1.014;
-  letter-spacing: 0.96px;
+  line-height: 1.1;
+  letter-spacing: 0.6px;
+}
+
+.headingAccent {
+  color: #16c1e4;
 }
 
 .subtitle {
@@ -126,9 +200,12 @@
   font-size: clamp(14px, 1.2vw, 17px);
   font-weight: 400;
   color: #5f7281;
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
+.subtitleBr {
+  display: inline;
+}
 
 /* ── Mobile nav drawer ── */
 @media (max-width: 720px) {
@@ -137,6 +214,11 @@
   }
 
   .navLinks a {
+    display: none;
+  }
+
+  /* hide the dropdown trigger in collapsed state */
+  .navLinks .dropdownTrigger {
     display: none;
   }
 
@@ -173,13 +255,45 @@
     color: #15bfdf;
   }
 
+  /* Show Treatments trigger inside open drawer */
+  .navOpen .navLinks .dropdownTrigger {
+    display: flex;
+    padding: 12px 14px;
+    color: #151c23;
+    font-size: 15px;
+    font-weight: 500;
+    border-radius: 10px;
+    width: 100%;
+  }
+
+  /* Dropdown menu in mobile — show inline below trigger */
+  .navOpen .dropdownMenu {
+    position: static;
+    transform: none;
+    animation: none;
+    box-shadow: none;
+    border: none;
+    background: rgba(22, 193, 228, 0.05);
+    border-radius: 10px;
+    margin-top: 2px;
+  }
+
+  .navOpen .dropdownItem {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+
   .heading {
-    font-size: clamp(38px, 10vw, 54px);
-    letter-spacing: 0.4px;
+    font-size: clamp(30px, 9vw, 48px);
+    letter-spacing: 0.3px;
   }
 
   .heroCopy {
     padding-bottom: 40px;
+  }
+
+  .subtitleBr {
+    display: none;
   }
 }
 

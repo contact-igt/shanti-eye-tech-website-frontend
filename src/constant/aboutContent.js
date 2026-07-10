@@ -244,7 +244,7 @@ export const aboutCtaContent = {
   badge: "Let's Talk",
   title: ["Start Your", "Vision Journey"],
   buttonLabel: "Book a Consultation",
-  href: "/#contact",
+  href: "/contact",
   images: {
     left: {
       src: "/assets/about/cta_image1.png",

@@ -1,6 +1,6 @@
 .section {
   width: 100%;
-  background: #edf0f8;
+  background: #f5f7fc;
   padding: 80px 24px 90px;
   box-sizing: border-box;
 }
@@ -23,32 +23,40 @@
 .badge {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 6px 18px;
+  gap: 7px;
+  min-height: 27px;
+  padding: 0 18px;
   border-radius: 999px;
-  border: 1px solid #b2eaf6;
-  background: #e4f7fd;
-  color: #0db8d9;
-  font-size: 12px;
+  border: 1px solid rgba(181, 205, 255, 0.78);
+  background: rgba(0, 68, 240, 0.1);
+  color: #15c8f0;
+  font-family: var(--font-contact-form-montserrat), Montserrat, Arial, sans-serif;
+  font-size: 15px;
   font-weight: 600;
-  letter-spacing: 0.08em;
+  line-height: 27px;
+  letter-spacing: 0;
   text-transform: uppercase;
   margin-bottom: 22px;
   align-self: flex-start;
+  box-shadow: 0 4px 14px rgba(181, 205, 255, 0.28);
 }
 
-.badge::before {
-  content: "✦";
-  font-size: 10px;
+.badgeIcon {
+  width: 11px;
+  height: 11px;
+  object-fit: contain;
+  flex-shrink: 0;
 }
+
 
 .heading {
-  margin: 0 0 6px;
-  font-size: clamp(26px, 3.2vw, 40px);
-  font-weight: 800;
-  color: #0d2040;
-  line-height: 1.18;
-  letter-spacing: -0.5px;
+  margin: 0 0 14px;
+  font-family: var(--font-contact-form-montserrat), Montserrat, Arial, sans-serif;
+  font-size: clamp(38px, 3.2vw, 46px);
+  font-weight: 700;
+  color: #011139;
+  line-height: 42px;
+  letter-spacing: 0.96px;
 }
 
 .headingAccent {
@@ -57,19 +65,23 @@
 }
 
 .description {
-  max-width: 460px;
-  color: #7a8898;
+  max-width: 415px;
+  font-family: var(--font-contact-form-montserrat), Montserrat, Arial, sans-serif;
+  color: rgba(75, 85, 99, 0.55);
   font-size: 14px;
-  line-height: 1.65;
-  margin: 16px 0 30px;
+  font-weight: 400;
+  line-height: 16.8px;
+  letter-spacing: 0;
+  margin: 20px 0 38px;
 }
 
 /* ── Form card ── */
 .formCard {
-  background: #ffffff;
+  background: #f5f7fc;
+  border: 1px solid #d9dde8;
   border-radius: 20px;
   padding: 28px 28px 32px;
-  box-shadow: 0 4px 32px rgba(13, 32, 64, 0.07);
+  box-shadow: none;
 }
 
 .formGrid {
@@ -89,9 +101,12 @@
 }
 
 .label {
-  font-size: 13px;
+  font-family: var(--font-contact-form-montserrat), Montserrat, Arial, sans-serif;
+  font-size: 16px;
   font-weight: 600;
-  color: #0d2040;
+  line-height: 24px;
+  letter-spacing: 0;
+  color: #011139;
 }
 
 .inputWrap {
@@ -104,7 +119,7 @@
 .inputWrap textarea {
   width: 100%;
   padding: 12px 42px 12px 14px;
-  border: 1.5px solid #dde4ef;
+  border: 1px solid #dde4ef;
   border-radius: 10px;
   font-size: 13.5px;
   color: #1a2b3c;
@@ -112,7 +127,7 @@
   outline: none;
   transition: border-color 200ms ease, box-shadow 200ms ease;
   box-sizing: border-box;
-  font-family: inherit;
+  font-family: var(--font-contact-form-inter), Inter, Arial, sans-serif;
 }
 
 .inputWrap input::placeholder,
@@ -149,18 +164,14 @@
   transform: none;
 }
 
-.inputIcon svg {
-  width: 18px;
-  height: 18px;
-  stroke: #16c1e4;
-  fill: none;
-  stroke-width: 1.7;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+.fieldIconImage {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
 }
-
 /* ── Submit button ── */
 .submitBtn {
+  font-family: var(--font-contact-form-montserrat), Montserrat, Arial, sans-serif;
   margin-top: 22px;
   display: inline-flex;
   align-items: center;
@@ -187,27 +198,28 @@
   transform: translateY(0);
 }
 
+.submitBtn:disabled {
+  cursor: not-allowed;
+  opacity: 0.72;
+  transform: none;
+}
+
 .arrowCircle {
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.22);
+  background: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
 }
 
-.arrowCircle svg {
-  width: 14px;
-  height: 14px;
-  fill: none;
-  stroke: #fff;
-  stroke-width: 2.2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+.arrowIconImage {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
 }
-
 /* ── Right column: map ── */
 .mapWrap {
   border-radius: 20px;

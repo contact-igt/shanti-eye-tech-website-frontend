@@ -85,6 +85,76 @@
   color: #15bfdf;
 }
 
+/* ── Treatments dropdown ── */
+.dropdown {
+  position: relative;
+}
+
+.dropdownTrigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: inherit;
+  font-weight: 500;
+  color: inherit;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 180ms ease;
+  font-family: inherit;
+}
+
+.dropdownTrigger:hover {
+  color: #15bfdf;
+}
+
+.chevron {
+  transition: transform 0.22s ease;
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 160px;
+  background: rgba(255, 255, 255, 0.97);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 12px;
+  box-shadow: 0 16px 40px rgba(39, 55, 65, 0.14);
+  overflow: hidden;
+  z-index: 100;
+  animation: dropIn 0.18s ease both;
+}
+
+@keyframes dropIn {
+  from { opacity: 0; transform: translateX(-50%) translateY(-6px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+.dropdownItem {
+  display: block;
+  padding: 11px 18px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #151c23;
+  transition: background 0.18s ease, color 0.18s ease;
+  white-space: nowrap;
+}
+
+.dropdownItem:hover {
+  background: rgba(22, 193, 228, 0.08);
+  color: #16c1e4;
+}
+
 .menuButton {
   width: 52px;
   height: 32px;
@@ -316,8 +386,12 @@
     height: 34px;
   }
 
-  /* On mobile: hide links by default, show only the hamburger button */
+  /* On mobile: hide links and dropdown trigger by default */
   .navLinks a {
+    display: none;
+  }
+
+  .navLinks .dropdownTrigger {
     display: none;
   }
 
@@ -355,6 +429,34 @@
   .navOpen .navLinks a:hover {
     background-color: rgba(22, 193, 228, 0.08);
     color: #15bfdf;
+  }
+
+  /* Show Treatments trigger inside open drawer */
+  .navOpen .navLinks .dropdownTrigger {
+    display: flex;
+    padding: 12px 14px;
+    color: #151c23;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 12px;
+    width: 100%;
+  }
+
+  /* Dropdown menu in mobile — show inline */
+  .navOpen .dropdownMenu {
+    position: static;
+    transform: none;
+    animation: none;
+    box-shadow: none;
+    border: none;
+    background: rgba(22, 193, 228, 0.05);
+    border-radius: 10px;
+    margin-top: 2px;
+  }
+
+  .navOpen .dropdownItem {
+    padding: 10px 20px;
+    font-size: 14px;
   }
 
   /* Push the X/menu button to the bottom right inside open drawer */
