@@ -1,4 +1,4 @@
-const GOOGLE_APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycby6iX3bN634qsyT8jNrkw4_AnDr02g116hk20adldbpr-CCuFpBiSaa88uVZJOMBhnw2A/exec";
+const GOOGLE_APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxyeCVcViIO5lOqfb2zAb1ZNhhUQylvHqLk56JY7CBOXnqjRCC-UG25sB0CnX2y8yPd2Q/exec";
 
 export async function submitForm(formName, data) {
   if (!GOOGLE_APPS_SCRIPT_URL) {

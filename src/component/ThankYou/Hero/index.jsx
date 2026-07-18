@@ -46,7 +46,16 @@ function TreatmentsDropdown({ closeMenu }) {
   }, []);
 
   return (
-    <div className={styles.dropdown} ref={ref}>
+    <div
+      className={styles.dropdown}
+      ref={ref}
+      onMouseEnter={() => setOpen(true)}
+      onMouseLeave={() => setOpen(false)}
+      onFocus={() => setOpen(true)}
+      onBlur={(event) => {
+        if (!event.currentTarget.contains(event.relatedTarget)) setOpen(false);
+      }}
+    >
       <button
         className={styles.dropdownTrigger}
         type="button"

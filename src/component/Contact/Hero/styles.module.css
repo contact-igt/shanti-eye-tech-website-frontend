@@ -509,3 +509,30 @@
   }
 }
 
+
+/* Final Treatments dropdown interaction fix */
+.dropdown {
+  position: relative !important;
+  padding-bottom: 12px !important;
+  margin-bottom: -12px !important;
+}
+
+.dropdownTrigger {
+  appearance: none !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+.dropdownMenu {
+  top: calc(100% - 2px) !important;
+}
+
+.dropdownMenu::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -14px;
+  height: 14px;
+}

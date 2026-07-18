@@ -184,6 +184,50 @@ function CTAButton({ children, variant = "primary" }) {
   );
 }
 
+const treatmentDropdownLinks = [
+  { label: "Cataract", href: "/treatments/catract" },
+  { label: "LASIK", href: "/treatments/lasik" },
+  { label: "Pediatric Eye Care", href: "/treatments/pediatric-eye-care" },
+  { label: "Glaucoma", href: "/treatments/glaucoma" },
+  { label: "Retina", href: "/treatments/retina" },
+];
+
+function TreatmentsDropdown({ closeMenu }) {
+  return (
+    <div className={styles.navDropdown}>
+      <button
+        className={styles.navDropdownTrigger}
+        type="button"
+        aria-haspopup="true"
+      >
+        Treatments
+        <svg
+          className={styles.navDropdownChevron}
+          width="12"
+          height="12"
+          viewBox="0 0 12 12"
+          fill="none"
+          aria-hidden="true"
+        >
+          <path
+            d="M2 4.5L6 8.5L10 4.5"
+            stroke="currentColor"
+            strokeWidth="1.6"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      </button>
+      <div className={styles.navDropdownMenu} role="menu">
+        {treatmentDropdownLinks.map((link) => (
+          <Link key={link.label} href={link.href} role="menuitem" onClick={closeMenu}>
+            {link.label}
+          </Link>
+        ))}
+      </div>
+    </div>
+  );
+}
 function MenuButton({ isOpen, onClick }) {
   return (
     <motion.button
@@ -288,7 +332,7 @@ function Hero() {
       <nav className={`${css(`nav-links ${isMenuOpen ? "nav-open" : ""}`)} ${homeNavMontserrat.variable}`} aria-label="Primary navigation">
         <div className={css("nav-pill")}>
           <Link href="#home" onClick={() => setIsMenuOpen(false)}>Home</Link>
-          <Link href="#services" onClick={() => setIsMenuOpen(false)}>Services</Link>
+          <TreatmentsDropdown closeMenu={() => setIsMenuOpen(false)} />
           <Link href="/about" onClick={() => setIsMenuOpen(false)}>About</Link>
           <Link href="/contact" onClick={() => setIsMenuOpen(false)}>Contact</Link>
         </div>

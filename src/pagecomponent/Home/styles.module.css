@@ -8040,3 +8040,55 @@
     flex-basis: 34px !important;
   }
 }
+
+/* Final Treatments nav dropdown interaction fix */
+.navDropdown {
+  position: relative !important;
+  display: flex !important;
+  align-items: center !important;
+  padding-bottom: 12px !important;
+  margin-bottom: -12px !important;
+}
+
+.navDropdownTrigger {
+  appearance: none !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  color: var(--ink) !important;
+  font: inherit !important;
+  font-size: 15px !important;
+  font-weight: 500 !important;
+  cursor: pointer !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  line-height: 1 !important;
+  white-space: nowrap !important;
+}
+
+.navDropdownTrigger:hover,
+.navDropdown:focus-within .navDropdownTrigger {
+  color: var(--aqua) !important;
+  opacity: 0.85 !important;
+}
+
+.navDropdownChevron {
+  flex: 0 0 auto !important;
+  transition: transform 200ms ease !important;
+}
+
+.navDropdownMenu {
+  top: calc(100% - 2px) !important;
+}
+
+.navDropdownMenu::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -14px;
+  height: 14px;
+}
