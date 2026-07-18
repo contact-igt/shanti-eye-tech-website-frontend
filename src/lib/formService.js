@@ -1,8 +1,31 @@
 const BACKEND_BASE_URL = (
-  process.env.NEXT_PUBLIC_BACKEND_API_BASE_URL || "http://localhost:8000"
+  process.env.NEXT_PUBLIC_BACKEND_API_BASE_URL
 ).replace(/\/+$/, "");
 const BACKEND_CLIENT_KEY =
-  process.env.NEXT_PUBLIC_BACKEND_CLIENT_KEY || "shanti_eye_tech";
+  process.env.NEXT_PUBLIC_BACKEND_CLIENT_KEY;
+const IP_LOOKUP_URL = "https://api.ipify.org?format=json";
+
+export async function findIpAddress() {
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 5000);
+
+  try {
+    const response = await fetch(IP_LOOKUP_URL, {
+      headers: { Accept: "application/json" },
+      signal: controller.signal,
+    });
+
+    if (!response.ok) return "";
+
+    const result = await response.json().catch(() => null);
+    return typeof result?.ip === "string" ? result.ip.trim() : "";
+  } catch {
+    // IP lookup must not prevent a visitor from submitting the form.
+    return "";
+  } finally {
+    clearTimeout(timeout);
+  }
+}
 
 export async function registerContactLead(data) {
   const endpoint = `${BACKEND_BASE_URL}/api/v1/shanti-eye-tech/register`;

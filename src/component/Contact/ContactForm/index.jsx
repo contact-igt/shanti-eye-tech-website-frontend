@@ -6,6 +6,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { Inter, Montserrat } from "next/font/google";
 import {
+  findIpAddress,
   registerContactLead,
   submitContactLeadToGoogleSheets,
 } from "@/lib/formService";
@@ -94,11 +95,13 @@ export default function ContactForm() {
     validateOnBlur: true,
     validateOnChange: true,
     onSubmit: async (values, { resetForm, setSubmitting }) => {
+      const ipAddress = await findIpAddress();
       const contactData = {
         name: values.firstName.trim(),
         mobile_number: values.mobile.trim(),
         service: values.treatment,
         message: values.message.trim(),
+        ip_address: ipAddress,
         utm_source: utmSource || "direct",
       };
 
@@ -106,7 +109,7 @@ export default function ContactForm() {
         const backendResult = await registerContactLead(contactData);
         const sheetData = {
           ...contactData,
-          ip_address: backendResult.data?.ip_address || "",
+          ip_address: backendResult.data?.ip_address || contactData.ip_address,
           utm_source: backendResult.data?.utm_source || contactData.utm_source,
         };
 
