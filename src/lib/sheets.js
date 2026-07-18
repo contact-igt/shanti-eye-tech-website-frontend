@@ -1,4 +1,4 @@
-const GOOGLE_APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyVZGoTqPbRkmAO-1BmLLs_0g9T577v3F3nnHhuDyf_KSrlgWMOglPRg8KAA-OAL8XR0w/exec";
+const GOOGLE_APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxyeCVcViIO5lOqfb2zAb1ZNhhUQylvHqLk56JY7CBOXnqjRCC-UG25sB0CnX2y8yPd2Q/exec";
 
 export async function sendToGoogleSheets(formName, data) {
   if (!GOOGLE_APPS_SCRIPT_URL) {

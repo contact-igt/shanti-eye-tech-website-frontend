@@ -184,6 +184,50 @@ function CTAButton({ children, variant = "primary" }) {
   );
 }
 
+const treatmentDropdownLinks = [
+  { label: "Cataract", href: "/treatments/catract" },
+  { label: "LASIK", href: "/treatments/lasik" },
+  { label: "Pediatric Eye Care", href: "/treatments/pediatric-eye-care" },
+  { label: "Glaucoma", href: "/treatments/glaucoma" },
+  { label: "Retina", href: "/treatments/retina" },
+];
+
+function TreatmentsDropdown({ closeMenu }) {
+  return (
+    <div className={styles.navDropdown}>
+      <button
+        className={styles.navDropdownTrigger}
+        type="button"
+        aria-haspopup="true"
+      >
+        Treatments
+        <svg
+          className={styles.navDropdownChevron}
+          width="12"
+          height="12"
+          viewBox="0 0 12 12"
+          fill="none"
+          aria-hidden="true"
+        >
+          <path
+            d="M2 4.5L6 8.5L10 4.5"
+            stroke="currentColor"
+            strokeWidth="1.6"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      </button>
+      <div className={styles.navDropdownMenu} role="menu">
+        {treatmentDropdownLinks.map((link) => (
+          <Link key={link.label} href={link.href} role="menuitem" onClick={closeMenu}>
+            {link.label}
+          </Link>
+        ))}
+      </div>
+    </div>
+  );
+}
 function MenuButton({ isOpen, onClick }) {
   return (
     <motion.button
@@ -239,7 +283,7 @@ function HeroImage() {
         <motion.span
           className={css("image-card-photo")}
           role="img"
-          aria-label="Santhi Eye Tech reception"
+          aria-label="Shanthi Eye Tech reception"
           initial={{ scale: 1.08 }}
           animate={{ scale: 1.04 }}
           transition={{ duration: 0.75, ease }}
@@ -286,42 +330,12 @@ function Hero() {
   return (
     <section className={css("hero-canvas")} id="home">
       <nav className={`${css(`nav-links ${isMenuOpen ? "nav-open" : ""}`)} ${homeNavMontserrat.variable}`} aria-label="Primary navigation">
-        <Link href="#home" onClick={() => setIsMenuOpen(false)}>Home</Link>
-        <div className={css("nav-dropdown")}>
-          <button
-            type="button"
-            className={css("nav-dropdown-trigger")}
-            aria-haspopup="true"
-            aria-label="Treatment menu"
-          >
-            Treatment
-            <svg
-              className={css("nav-dropdown-chevron")}
-              width="12"
-              height="12"
-              viewBox="0 0 12 12"
-              fill="none"
-              aria-hidden="true"
-            >
-              <path
-                d="M2 4.5L6 8.5L10 4.5"
-                stroke="currentColor"
-                strokeWidth="1.6"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </button>
-          <div className={css("nav-dropdown-menu")}>
-            <Link href="/treatments/catract" onClick={() => setIsMenuOpen(false)}>Cataract</Link>
-            <Link href="/treatments/lasik" onClick={() => setIsMenuOpen(false)}>LASIK</Link>
-            <Link href="/treatments/pediatric-eye-care" onClick={() => setIsMenuOpen(false)}>Pediatric Eye Care</Link>
-            <Link href="/treatments/glaucoma" onClick={() => setIsMenuOpen(false)}>Glaucoma</Link>
-            <Link href="/treatments/retina" onClick={() => setIsMenuOpen(false)}>Retina</Link>
-          </div>
+        <div className={css("nav-pill")}>
+          <Link href="#home" onClick={() => setIsMenuOpen(false)}>Home</Link>
+          <TreatmentsDropdown closeMenu={() => setIsMenuOpen(false)} />
+          <Link href="/about" onClick={() => setIsMenuOpen(false)}>About</Link>
+          <Link href="/contact" onClick={() => setIsMenuOpen(false)}>Contact</Link>
         </div>
-        <Link href="/about" onClick={() => setIsMenuOpen(false)}>About</Link>
-        <Link href="/contact" onClick={() => setIsMenuOpen(false)}>Contact</Link>
         <MenuButton isOpen={isMenuOpen} onClick={() => setIsMenuOpen(!isMenuOpen)} />
       </nav>
 

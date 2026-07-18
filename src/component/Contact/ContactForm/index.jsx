@@ -36,8 +36,8 @@ function FieldIcon({ src }) {
 
 const INITIAL_VALUES = {
   firstName: "",
-  email: "",
   mobile: "",
+  treatment: "",
   message: "",
 };
 
@@ -47,16 +47,14 @@ const contactSchema = Yup.object({
     .min(2, "Name must be at least 2 characters.")
     .max(50, "Name must be 50 characters or less.")
     .required("Please enter your name."),
-  email: Yup.string()
-    .trim()
-    .email("Please enter a valid email address.")
-    .required("Please enter your email address."),
   mobile: Yup.string()
     .trim()
     .matches(/^[+]?[(]?[0-9]{1,4}[)]?[-\s./0-9]*$/, "Please enter a valid mobile number.")
     .min(10, "Mobile number must be at least 10 digits.")
     .max(16, "Mobile number must be 16 digits or less.")
     .required("Please enter your mobile number."),
+  treatment: Yup.string()
+    .required("Please select a treatment."),
   message: Yup.string()
     .trim()
     .max(500, "Message must be 500 characters or less."),
@@ -75,8 +73,8 @@ export default function ContactForm() {
 
       const contactData = {
         fullName,
-        email: values.email.trim(),
         mobile: values.mobile.trim(),
+        treatment: values.treatment,
         message: values.message.trim(),
       };
 
@@ -170,26 +168,29 @@ export default function ContactForm() {
 
 
                 <div className={`${styles.formGroup} ${styles.formGroupFull}`}>
-                  <label className={styles.label} htmlFor="email">Email</label>
+                  <label className={styles.label} htmlFor="treatment">Treatments</label>
                   <div className={styles.inputWrap}>
-                    <input
-                      id="email"
-                      name="email"
-                      type="email"
-                      placeholder="Enter email id"
-                      value={formik.values.email}
+                    <select
+                      id="treatment"
+                      name="treatment"
+                      value={formik.values.treatment}
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
-                      className={getInputClassName("email")}
-                      aria-invalid={Boolean(getFieldError("email"))}
-                      aria-describedby={getFieldError("email") ? "email-error" : undefined}
-                      autoComplete="email"
-                    />
-                    <span className={styles.inputIcon}><FieldIcon src="/assets/contact/email-icon.png" /></span>
+                      className={getInputClassName("treatment")}
+                      aria-invalid={Boolean(getFieldError("treatment"))}
+                      aria-describedby={getFieldError("treatment") ? "treatment-error" : undefined}
+                    >
+                      <option value="">Select treatment</option>
+                      <option value="Cataract">Cataract</option>
+                      <option value="LASIK">LASIK</option>
+                      <option value="Pediatric Eye Care">Pediatric Eye Care</option>
+                      <option value="Glaucoma">Glaucoma</option>
+                      <option value="Retina">Retina</option>
+                    </select>
+                    <span className={styles.inputIcon}><FieldIcon src="/assets/contact/plus-icon.png" /></span>
                   </div>
-                  {getFieldError("email") && <p id="email-error" className={styles.errorText}>{getFieldError("email")}</p>}
+                  {getFieldError("treatment") && <p id="treatment-error" className={styles.errorText}>{getFieldError("treatment")}</p>}
                 </div>
-
                 <div className={`${styles.formGroup} ${styles.formGroupFull}`}>
                   <label className={styles.label} htmlFor="message">Message</label>
                   <div className={styles.inputWrap}>
