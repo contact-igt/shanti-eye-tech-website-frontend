@@ -58,18 +58,21 @@ export const stats = [
     value: "10k+ Patients",
     description:
       "Providing professional EYE care helping patients restore VISION and CONFIDENCE",
+    icon: "/assets/Treatments/patient.png",
     tone: "sky"
   },
   {
     value: "20+ Experience",
     description:
       "Personalized therapy programs designed to improve health and support recovery.",
+    icon: "/assets/Treatments/medical-staff.png",
     tone: "gold"
   },
   {
     value: "8 Specialized Services",
     description:
       "Effective therapy treatments focused on helping patients achieve faster recovery.",
+    icon: "/assets/Treatments/achievement.png",
     tone: "teal"
   }
 ];
@@ -284,3 +287,4 @@ export const faqs = [
       "Yes, follow-up visits are important after treatments like LASIK or cataract surgery. They help us monitor healing, adjust medications, and protect long-term vision outcomes."
   }
 ];
+
