@@ -280,6 +280,14 @@ function HeroImage() {
     >
 
       <div className={css("image-card")}>
+        <Link href="#home" className={css("responsive-image-logo")} aria-label="Shanti EyeTech home">
+          <Image
+            src="/assets/about/about_logo.png"
+            alt="Shanti EyeTech Eye Care & Laser Hospital logo"
+            fill
+            sizes="(max-width: 430px) 150px, 180px"
+          />
+        </Link>
         <motion.span
           className={css("image-card-photo")}
           role="img"
@@ -405,7 +413,7 @@ function ScrollTextWord({ children, index, progress, reduceMotion }) {
   );
 }
 
-function StatCard({ value, description, tone }) {
+function StatCard({ value, description, tone, icon }) {
   return (
     <motion.article
       className={css(`stat-card stat-card--${tone}`)}
@@ -414,6 +422,9 @@ function StatCard({ value, description, tone }) {
       transition={{ duration: 0.75, ease }}
     >
       <span className={css("stat-dot")} />
+      <span className={css("stat-icon")} aria-hidden="true">
+        <Image src={icon} alt="" width={124} height={124} />
+      </span>
       <div className={css("stat-content")}>
         <h3>{value}</h3>
         <p>{description}</p>
@@ -477,6 +488,7 @@ function AboutStats() {
               key={stat.value}
               value={stat.value}
               description={stat.description}
+              icon={stat.icon}
               tone={stat.tone}
             />
           ))}
@@ -1381,6 +1393,7 @@ export default function HomePageComponent() {
     </main>
   );
 };
+
 
 
 
