@@ -15,7 +15,7 @@
   top: 250px;
   width: 450px;
   height: 80%;
-  background-image: url('/assets/about/your_doctor_bgimage1.png');
+  background-image: url("/assets/about/your_doctor_bgimage1.png");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: left center;
@@ -31,7 +31,7 @@
   bottom: -50px;
   width: 250px;
   height: 250px;
-  background-image: url('/assets/about/your_doctor_bgimage2.png');
+  background-image: url("/assets/about/your_doctor_bgimage2.png");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: bottom right;
@@ -48,7 +48,7 @@
   display: grid;
   grid-template-columns: minmax(450px, 560px) minmax(0, 1fr);
   align-items: center;
-  gap: 58px;
+  gap: 10px;
 }
 
 .aboutDoctorVisual {
@@ -80,28 +80,29 @@
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  width: fit-content;
   color: #090807;
   line-height: 0.88;
-  letter-spacing: -0.055em;
+  letter-spacing: -3px;
 }
 
 .aboutDoctorHeader h2 span {
   padding-right: 4px;
-  font-size: 37px;
+  font-size: 48px;
   line-height: 1;
   font-weight: 700;
 }
 
 .aboutDoctorHeader h2 strong {
   color: #18c1e5;
-  font-size: 72px;
-  line-height: 0.94;
-  font-weight: 700;
+  font-size: 107px;
+  line-height: 84px;
+  font-weight: 600;
 }
 
 .aboutDoctorDivider {
-  width: 2px;
-  height: 94px;
+  width: 3px;
+  height: 100%;
   background: #171310;
 }
 
@@ -117,15 +118,15 @@
   color: #17110f;
   font-size: 43px;
   line-height: 1.1;
-  letter-spacing: -0.025em;
+  letter-spacing: 0;
   font-weight: 400;
 }
 
 .aboutDoctorIdentity span {
   color: #24201e;
-  font-size: 18px;
+  font-size: 22px;
   line-height: 1.25;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .aboutDoctorGrid {
@@ -226,7 +227,9 @@
   color: #302c29;
   font-size: 13px;
   font-weight: 500;
-  transition: transform 220ms ease, box-shadow 220ms ease;
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease;
 }
 
 .aboutDoctorButton:hover {
@@ -251,234 +254,30 @@
   box-shadow: 0 10px 24px rgba(24, 194, 228, 0.2);
 }
 
-@media (max-width: 1200px) {
-  .aboutDoctorSection {  
-      padding: 70px 0 80px;  
-    }
-  
-  .aboutDoctorInner {  
-      width: calc(100% - 64px);  
-      grid-template-columns: minmax(390px, 47%) minmax(0, 1fr);  
-      gap: 38px;  
-    }
-  
-  .aboutDoctorVisual {  
-      height: 590px;  
-    }
-  
-  .aboutDoctorHeader {  
-      gap: 22px;  
-    }
-  
-  .aboutDoctorHeader h2 {  
-      min-width: 210px;  
-    }
-  
-  .aboutDoctorHeader h2 span {  
-      font-size: 31px;  
-    }
-  
-  .aboutDoctorHeader h2 strong {  
-      font-size: 61px;  
-    }
-  
-  .aboutDoctorIdentity p {  
-      font-size: 35px;  
-    }
-  
-  .aboutDoctorIdentity span {  
-      font-size: 15px;  
-    }
-  
-  .aboutDoctorGrid {  
-      margin-top: 38px;  
-      gap: 24px;  
-    }
-  
-  .aboutDoctorCard {  
-      min-height: 150px;  
-      padding: 17px 15px 15px;  
-    }
-  
-  .aboutDoctorActions {  
-      gap: 22px;  
-      margin-top: 38px;  
-    }
+.aboutDoctorCard {
+  background: #fff;
+  box-shadow: 0 16px 38px rgba(46, 38, 31, 0.045);
 }
-
-@media (max-width: 992px) {
-  .aboutDoctorSection {  
-      min-height: 0;  
-      padding: 66px 0 78px;  
-    }
-  
-  .aboutDoctorInner {  
-      width: min(780px, calc(100% - 56px));  
-      grid-template-columns: 1fr;  
-      gap: 38px;  
-    }
-  
-  .aboutDoctorVisual {  
-      width: min(580px, 100%);  
-      height: 650px;  
-      margin: 0 auto;  
-    }
-  
-  .aboutDoctorContent {  
-      padding-top: 0;  
-    }
-  
-  .aboutDoctorHeader {  
-      justify-content: center;  
-      grid-template-columns: auto 2px minmax(0, 360px);  
-    }
-  
-  .aboutDoctorGrid {  
-      width: min(720px, 100%);  
-      margin: 42px auto 0;  
-    }
-  
-  .aboutDoctorActions {  
-      justify-content: center;  
-    }
-}
-
-@media (max-width: 768px) {
-  .aboutDoctorSection {  
-      padding: 58px 0 70px;  
-    }
-  
-  .aboutDoctorInner {  
-      width: calc(100% - 40px);  
-    }
-  
-  .aboutDoctorVisual {  
-      height: 590px;  
-    }
-  
-  .aboutDoctorHeader {  
-      grid-template-columns: 1fr;  
-      justify-items: center;  
-      gap: 16px;  
-      text-align: center;  
-    }
-  
-  .aboutDoctorHeader h2 {  
-      min-width: 0;  
-      align-items: center;  
-    }
-  
-  .aboutDoctorDivider {  
-      width: 120px;  
-      height: 2px;  
-    }
-  
-  .aboutDoctorIdentity {  
-      align-items: center;  
-    }
-  
-  .aboutDoctorGrid {  
-      grid-template-columns: 1fr;  
-      gap: 24px;  
-    }
-  
-  .aboutDoctorCard {  
-      min-height: 0;  
-    }
-  
-  .aboutDoctorCard p {  
-      min-height: 58px;  
-    }
-}
-
-@media (max-width: 576px) {
-  .aboutDoctorSection {  
-      padding: 52px 0 64px;  
-    }
-  
-  .aboutDoctorInner {  
-      width: calc(100% - 28px);  
-      gap: 28px;  
-    }
-  
-  .aboutDoctorVisual {  
-      height: 500px;  
-    }
-  
-  .aboutDoctorHeader h2 span {  
-      font-size: 28px;  
-    }
-  
-  .aboutDoctorHeader h2 strong {  
-      font-size: 56px;  
-    }
-  
-  .aboutDoctorIdentity p {  
-      font-size: 32px;  
-    }
-  
-  .aboutDoctorIdentity span {  
-      font-size: 14px;  
-    }
-  
-  .aboutDoctorGrid {  
-      margin-top: 34px;  
-    }
-  
-  .aboutDoctorActions {  
-      margin-top: 32px;  
-      flex-direction: column;  
-      gap: 14px;  
-    }
-  
-  .aboutDoctorButton {  
-      width: min(100%, 280px);  
-    }
-}
-
-@media (max-width: 390px) {
-  .aboutDoctorSection {  
-      padding: 46px 0 58px;  
-    }
-  
-  .aboutDoctorInner {  
-      width: calc(100% - 24px);  
-    }
-  
-  .aboutDoctorVisual {  
-      height: 430px;  
-    }
-  
-  .aboutDoctorHeader h2 span {  
-      font-size: 25px;  
-    }
-  
-  .aboutDoctorHeader h2 strong {  
-      font-size: 50px;  
-    }
-  
-  .aboutDoctorIdentity p {  
-      font-size: 28px;  
-    }
-  
-  .aboutDoctorCardHeading h3 {  
-      font-size: 17px;  
-    }
-  
-  .aboutDoctorPills span,
-  .aboutDoctorCard p {  
-      font-size: 11px;  
-    }
-}
-
-.aboutDoctorCard{background:#fff;box-shadow:0 16px 38px rgba(46,38,31,.045)}
 
 .aboutDoctorPills span,
-.aboutDoctorCard p{background:#fff;box-shadow:0 7px 20px rgba(46,38,31,.025)}
+.aboutDoctorCard p {
+  background: #fff;
+  box-shadow: 0 7px 20px rgba(46, 38, 31, 0.025);
+}
 
-.aboutDoctorButton>svg{width:34px;height:34px;padding:8px;flex:0 0 auto;border-radius:50%;background:#fff;color:#49606a}
+.aboutDoctorButton > svg {
+  width: 34px;
+  height: 34px;
+  padding: 8px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: #fff;
+  color: #49606a;
+}
 
-.aboutDoctorButtonPrimary>svg{color:#49606a}
+.aboutDoctorButtonPrimary > svg {
+  color: #49606a;
+}
 
 .aboutDoctorCard {
   background: rgba(255, 255, 255, 0.58);
@@ -506,123 +305,12 @@
   overflow-x: clip;
 }
 
-@media (max-width: 1200px) {
-  .aboutDoctorInner {  
-      width: calc(100% - 64px);  
-    }
-  
-  .aboutDoctorInner {  
-      grid-template-columns: minmax(360px, 0.86fr) minmax(0, 1fr);  
-    }
-}
-
-@media (max-width: 992px) {
-  .aboutDoctorInner {  
-      width: min(760px, calc(100% - 56px));  
-    }
-  
-  .aboutDoctorInner {  
-      grid-template-columns: 1fr;  
-    }
-  
-  .aboutDoctorVisual {  
-      width: min(520px, 100%);  
-      margin: 0 auto;  
-    }
-  
-  .aboutDoctorHeader {  
-      text-align: center;  
-    }
-}
-
-@media (max-width: 768px) {
-  .aboutDoctorSection {  
-      padding-top: 70px;  
-      padding-bottom: 80px;  
-    }
-  
-  .aboutDoctorInner {  
-      width: calc(100% - 40px);  
-    }
-  
-  .aboutDoctorVisual {  
-      width: min(430px, 100%);  
-    }
-  
-  .aboutDoctorGrid {  
-      grid-template-columns: 1fr;  
-    }
-}
-
-@media (max-width: 576px) {
-  .aboutDoctorSection {  
-      padding-top: 58px;  
-      padding-bottom: 68px;  
-    }
-  
-  .aboutDoctorInner {  
-      width: calc(100% - 28px);  
-    }
-  
-  .aboutDoctorActions {  
-      flex-direction: column;  
-      align-items: stretch;  
-    }
-  
-  .aboutDoctorButton {  
-      width: 100%;  
-    }
-}
-
-@media (max-width: 390px) {
-  .aboutDoctorHeader h2 span,
-  .aboutDoctorHeader h2 strong {  
-      font-size: 32px;  
-      line-height: 1.12;  
-    }
-  
-  .aboutDoctorCard {  
-      padding: 18px 14px;  
-    }
-  
-  .aboutDoctorInner {  
-      width: calc(100% - 24px);  
-    }
-}
-
-@media (max-width: 576px) {
-  .aboutDoctorActions {  
-      align-items: flex-start;  
-    }
-  
-  .aboutDoctorButton {  
-      width: fit-content !important;  
-      min-width: 0;  
-      max-width: 100%;  
-      padding: 5px 7px 5px 22px;  
-      gap: 18px;  
-    }
-}
-
-@media (max-width: 390px) {
-  .aboutDoctorButton {  
-      padding-left: 18px;  
-      gap: 14px;  
-    }
-}
-
 .aboutDoctorButton:not(.aboutDoctorButtonPrimary) {
   width: fit-content !important;
   min-width: 0 !important;
   padding: 5px 7px 5px 22px;
   justify-content: flex-start;
   gap: 42px;
-}
-
-@media (max-width: 576px) {
-  .aboutDoctorButton:not(.aboutDoctorButtonPrimary) {  
-      gap: 18px;  
-    }
 }
 
 .ctaButton {
@@ -639,7 +327,18 @@
   font-size: 17px;
   font-weight: 500;
   white-space: nowrap;
-  transition: box-shadow 240ms var(--ease), border-color 240ms var(--ease);
+  transition:
+    box-shadow 240ms var(--ease),
+    border-color 240ms var(--ease),
+    transform 240ms var(--ease);
+}
+
+.ctaButton:hover {
+  transform: scale(1.04);
+}
+
+.ctaButton:active {
+  transform: scale(0.98);
 }
 
 .ctaButtonPrimary {
@@ -671,17 +370,10 @@
     right 0.75s var(--ease),
     border-radius 0.75s var(--ease),
     background 0.75s var(--ease);
-  }
+}
 
 .ctaButtonSecondary .ctaButtonFill {
   background: rgba(36, 197, 232, 0.94);
-}
-
-.ctaButton:hover .ctaButtonFill {
-  right: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 70px;
 }
 
 .ctaButtonText {
@@ -693,14 +385,6 @@
   transition: color 0.75s var(--ease);
 }
 
-.ctaButtonPrimary:hover .ctaButtonText {
-  color: var(--ink);
-}
-
-.ctaButtonSecondary:hover .ctaButtonText {
-  color: var(--white);
-}
-
 .arrowIcon {
   position: relative;
   z-index: 3;
@@ -708,9 +392,1121 @@
   height: 28px;
   display: grid;
   place-items: center;
-  background: center / contain no-repeat url("/assets/home_logos/Button_arrow.png");
+  background: center / contain no-repeat
+    url("/assets/home_logos/Button_arrow.png");
 }
 
 .arrowIcon span {
   display: none;
+}
+/* Final home doctor card parity for About doctor cards */
+.aboutDoctorGrid {
+  gap: 18px 22px;
+}
+
+.aboutDoctorCard {
+  position: relative;
+  min-height: 0;
+  aspect-ratio: 1268 / 620;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  isolation: isolate;
+  overflow: visible;
+}
+
+.aboutDoctorCardNumber {
+  position: absolute;
+  top: -9px;
+  right: -5px;
+  z-index: 5;
+  width: 58px;
+  height: 58px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #1f9f43;
+  font-size: 16px;
+  line-height: 1;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.aboutDoctorCardPanel {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: visible;
+  border-radius: 18px;
+  background: center / 100% 100% no-repeat
+    url("/assets/home_logos/doctor_card.png");
+}
+
+.aboutDoctorCardBody {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  min-height: 0;
+  padding: 22px 28px 24px;
+  box-sizing: border-box;
+}
+
+.aboutDoctorCardHeading {
+  display: block;
+}
+
+.aboutDoctorCardHeading h3 {
+  margin: 0;
+  color: #100e0d;
+  font-size: 24px;
+  line-height: 1.05;
+  font-weight: 500;
+  letter-spacing: -0.98px;
+}
+
+.aboutDoctorPills {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.aboutDoctorPills span {
+  min-height: 32px;
+  min-width: 150px;
+  padding: 5px 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.78);
+  box-shadow: 0 8px 20px rgba(27, 43, 50, 0.05);
+  color: #57504d;
+  font-size: 15px;
+  line-height: 1.25;
+  font-weight: 400;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.aboutDoctorCard p {
+  width: 100%;
+  max-width: none;
+  min-height: 100px;
+  margin: 18px 0 0;
+  padding: 18px 28px;
+  display: flex;
+  align-items: center;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.86);
+  box-shadow: none;
+  color: #5b5551;
+  font-size: 16px;
+  line-height: 1.4;
+  font-weight: 400;
+  box-sizing: border-box;
+}
+
+/* Remove right-side decorative rounded shape */
+.aboutDoctorSection::after {
+  display: none;
+}
+
+/* Final responsive CTA buttons: match Home mobile sizing and arrow placement */
+/* Final spacing tune after About story section */
+.aboutDoctorSection {
+  padding-top: 42px !important;
+}
+
+/* Remove duplicate CTA icon circle in Know Your Doctor buttons */
+.ctaButtonFill {
+  display: none !important;
+}
+
+.ctaButton {
+  grid-template-columns: minmax(0, 1fr) 38px !important;
+}
+
+.arrowIcon {
+  width: 38px !important;
+  height: 38px !important;
+  min-width: 38px !important;
+  background-size: contain !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+
+@media (max-width: 1440px) {
+  .aboutDoctorSection {
+    padding: 70px 0 82px;
+  }
+
+  .aboutDoctorInner {
+    width: min(1240px, calc(100% - 80px));
+    grid-template-columns: minmax(420px, 500px) minmax(0, 1fr);
+    gap: 38px;
+    align-items: center;
+  }
+
+  .aboutDoctorCard{
+    aspect-ratio: 1220 / 620;
+  }
+  .aboutDoctorVisual {
+    height: 610px;
+  }
+
+  .aboutDoctorHeader {
+    grid-template-columns: minmax(210px, 1fr) 3px minmax(210px, 355px);
+    gap: 24px;
+  }
+
+  .aboutDoctorHeader h2 {
+    min-width: 0;
+    letter-spacing: -2px;
+  }
+
+  .aboutDoctorHeader h2 span {
+    font-size: 40px;
+  }
+
+  .aboutDoctorHeader h2 strong {
+    font-size: 88px;
+    line-height: 0.88;
+  }
+
+  .aboutDoctorIdentity p {
+    font-size: 38px;
+    line-height: 1.08;
+  }
+
+  .aboutDoctorIdentity span {
+    font-size: 19px;
+    line-height: 1.28;
+  }
+
+  .aboutDoctorGrid {
+    margin-top: 38px;
+    gap: 18px;
+  }
+
+  .aboutDoctorCardBody {
+    padding: 20px 24px 22px;
+  }
+
+  .aboutDoctorCardHeading h3 {
+    font-size: 22px;
+  }
+
+  .aboutDoctorPills {
+    gap: 9px;
+  }
+
+  .aboutDoctorPills span {
+    min-width: 128px;
+    font-size: 13px;
+  }
+
+  .aboutDoctorCard p {
+    min-height: 86px;
+    padding: 16px 22px;
+    font-size: 14px;
+  }
+
+  .aboutDoctorActions {
+    margin-top: 38px;
+    gap: 30px;
+  }
+
+  .ctaButton {
+    min-height: 50px;
+    font-size: 15px;
+  }
+
+  .ctaButtonPrimary {
+    min-width: 222px;
+  }
+
+  .ctaButtonSecondary {
+    min-width: 212px;
+  }
+  .aboutDoctorCardNumber {
+    top: -10px;
+    right: -7px;
+  }
+}
+
+@media (max-width: 1300px) {
+  .aboutDoctorHeader h2 span {
+    font-size: 32px;
+  }
+  .aboutDoctorHeader h2 strong {
+    font-size: 70px;
+  }
+  .aboutDoctorCard {
+    aspect-ratio: 1050 / 620;
+  }
+  .aboutDoctorCardNumber {
+    top: -12px;
+    right: -10px;
+  }
+  .aboutDoctorPills span {
+    min-width: 112px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .aboutDoctorSection {
+    padding: 70px 0 80px;
+  }
+
+  .aboutDoctorInner {
+    width: calc(100% - 64px);
+
+    grid-template-columns: minmax(390px, 47%) minmax(0, 1fr);
+
+    gap: 38px;
+  }
+
+  .aboutDoctorVisual {
+    height: 590px;
+  }
+
+  .aboutDoctorHeader {
+    gap: 22px;
+  }
+
+  .aboutDoctorHeader h2 {
+    min-width: 210px;
+  }
+
+  .aboutDoctorHeader h2 span {
+    font-size: 31px;
+  }
+
+  .aboutDoctorHeader h2 strong {
+    font-size: 61px;
+  }
+
+  .aboutDoctorIdentity p {
+    font-size: 35px;
+  }
+
+  .aboutDoctorIdentity span {
+    font-size: 15px;
+  }
+
+  .aboutDoctorGrid {
+    margin-top: 38px;
+
+    gap: 24px;
+  }
+
+  .aboutDoctorCard {
+    min-height: 150px;
+
+    padding: 17px 15px 15px;
+  }
+
+  .aboutDoctorActions {
+    gap: 22px;
+
+    margin-top: 38px;
+  }
+
+  .aboutDoctorInner {
+    width: calc(100% - 64px);
+  }
+
+  .aboutDoctorInner {
+    grid-template-columns: minmax(360px, 0.86fr) minmax(0, 1fr);
+  }
+
+  .aboutDoctorCardBody {
+    padding: 20px 24px 22px;
+  }
+
+  .aboutDoctorCardHeading h3 {
+    font-size: 22px;
+  }
+
+  .aboutDoctorCard p {
+    min-height: 88px;
+    padding: 16px 22px;
+    font-size: 14px;
+  }
+
+  .aboutDoctorPills span {
+    min-width: 130px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .aboutDoctorInner {
+    width: min(920px, calc(100% - 64px));
+    grid-template-columns: 1fr;
+    gap: 42px;
+  }
+
+  .aboutDoctorVisual {
+    width: min(560px, 100%);
+    height: 620px;
+    margin: 0 auto;
+  }
+
+  .aboutDoctorContent {
+    padding-top: 0;
+  }
+
+  .aboutDoctorHeader {
+    grid-template-columns: minmax(0, auto) 3px minmax(220px, 360px);
+    justify-content: center;
+  }
+
+  .aboutDoctorGrid {
+    width: min(760px, 100%);
+    margin: 40px auto 0;
+  }
+
+  .aboutDoctorActions {
+    justify-content: center;
+  }
+
+  .aboutDoctorCard {
+    aspect-ratio: 1350 / 620;
+  }
+
+  .aboutDoctorCardNumber {
+    top: -10px;
+    right: -5px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .aboutDoctorSection {
+    padding-top: 46px !important;
+  }
+}
+
+@media (max-width: 992px) {
+  .aboutDoctorSection {
+    min-height: 0;
+
+    padding: 66px 0 78px;
+  }
+
+  .aboutDoctorInner {
+    width: min(780px, calc(100% - 56px));
+
+    grid-template-columns: 1fr;
+
+    gap: 38px;
+  }
+
+  .aboutDoctorVisual {
+    width: min(580px, 100%);
+
+    height: 650px;
+
+    margin: 0 auto;
+  }
+
+  .aboutDoctorContent {
+    padding-top: 0;
+  }
+
+  .aboutDoctorHeader {
+    justify-content: center;
+
+    grid-template-columns: auto 2px minmax(0, 360px);
+  }
+
+  .aboutDoctorGrid {
+    width: min(720px, 100%);
+
+    margin: 42px auto 0;
+  }
+
+  .aboutDoctorActions {
+    justify-content: center;
+  }
+
+  .aboutDoctorInner {
+    width: min(760px, calc(100% - 56px));
+  }
+
+  .aboutDoctorInner {
+    grid-template-columns: 1fr;
+  }
+
+  .aboutDoctorVisual {
+    width: min(520px, 100%);
+
+    margin: 0 auto;
+  }
+
+  .aboutDoctorHeader {
+    text-align: center;
+  }
+}
+
+@media (max-width: 992px) {
+  .aboutDoctorSection {
+    padding-top: 50px !important;
+  }
+  .aboutDoctorCard{
+    aspect-ratio: 1220/620;
+    min-height: 150px;
+  }
+}
+
+@media (max-width: 768px) {
+  .aboutDoctorSection {
+    padding: 58px 0 70px;
+  }
+
+  .aboutDoctorInner {
+    width: calc(100% - 40px);
+  }
+
+  .aboutDoctorVisual {
+    height: 590px;
+  }
+
+  .aboutDoctorHeader {
+    grid-template-columns: 1fr;
+
+    justify-items: center;
+
+    gap: 16px;
+
+    text-align: center;
+  }
+
+  .aboutDoctorHeader h2 {
+    min-width: 0;
+
+    align-items: center;
+  }
+
+  .aboutDoctorDivider {
+    width: 120px;
+
+    height: 2px;
+  }
+
+  .aboutDoctorIdentity {
+    align-items: center;
+  }
+
+  .aboutDoctorGrid {
+    grid-template-columns: 1fr;
+
+    gap: 24px;
+  }
+
+  .aboutDoctorCard {
+    min-height: 0;
+  }
+
+  .aboutDoctorCard p {
+    min-height: 58px;
+  }
+
+  .aboutDoctorSection {
+    padding-top: 70px;
+
+    padding-bottom: 80px;
+  }
+
+  .aboutDoctorInner {
+    width: calc(100% - 40px);
+  }
+
+  .aboutDoctorVisual {
+    width: min(430px, 100%);
+  }
+
+  .aboutDoctorGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .aboutDoctorGrid {
+    gap: 20px;
+  }
+
+  .aboutDoctorCardBody {
+    padding: 22px 28px 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .aboutDoctorSection {
+    padding: 58px 0 70px;
+  }
+
+  .aboutDoctorInner {
+    width: calc(100% - 40px);
+    gap: 34px;
+  }
+
+  .aboutDoctorVisual {
+    width: min(480px, 100%);
+    height: 560px;
+  }
+
+  .aboutDoctorHeader {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 16px;
+    text-align: center;
+  }
+
+  .aboutDoctorHeader h2 {
+    align-items: center;
+  }
+
+  .aboutDoctorHeader h2 span {
+    padding-right: 0;
+    font-size: 32px;
+  }
+
+  .aboutDoctorHeader h2 strong {
+    font-size: 64px;
+    line-height: 0.92;
+  }
+
+  .aboutDoctorDivider {
+    width: 120px;
+    height: 2px;
+  }
+
+  .aboutDoctorIdentity {
+    align-items: center;
+  }
+
+  .aboutDoctorIdentity p {
+    font-size: 34px;
+  }
+
+  .aboutDoctorIdentity span {
+    max-width: 320px;
+    font-size: 16px;
+    text-align: center;
+  }
+
+  .aboutDoctorGrid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .aboutDoctorCard {
+    aspect-ratio: auto;
+    min-height: 172px;
+    /* aspect-ratio: 1200 / 620; */
+  }
+
+  .aboutDoctorCardPanel {
+    background-size: 100% 100%;
+  }
+
+  .aboutDoctorCardBody {
+    padding: 22px 28px 24px;
+  }
+
+  .aboutDoctorPills span {
+    min-width: calc(45% - 5px);
+  }
+
+  .aboutDoctorActions {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 768px) and (min-width: 577px) {
+  .aboutDoctorGrid {
+    width: 100%;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 18px !important;
+  }
+
+  .aboutDoctorCard {
+    min-height: 170px;
+  }
+
+  .aboutDoctorCardBody {
+    padding: 20px 18px 22px;
+  }
+
+  .aboutDoctorCardHeading h3 {
+    font-size: 20px;
+  }
+
+  .aboutDoctorPills {
+    gap: 8px;
+  }
+
+  .aboutDoctorPills span {
+    min-width: 45%;
+    font-size: 12px;
+  }
+
+  .aboutDoctorCard p {
+    min-height: 92px;
+    padding: 14px 16px;
+    font-size: 13px;
+    line-height: 1.35;
+  }
+  .aboutDoctorCardNumber{
+    top: -10px;
+    right: -10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .aboutDoctorInner {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .aboutDoctorContent {
+    display: contents;
+  }
+
+  .aboutDoctorHeader {
+    order: 1;
+    width: 100%;
+  }
+
+  .aboutDoctorVisual {
+    order: 2;
+    width: min(430px, 100%);
+    margin-inline: auto;
+  }
+
+  .aboutDoctorGrid {
+    order: 3;
+    width: 100%;
+  }
+
+  .aboutDoctorActions {
+    order: 4;
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .ctaButton,
+  .ctaButtonPrimary,
+  .ctaButtonSecondary {
+    width: min(100%, 480px) !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    min-height: 62px !important;
+    display: grid !important;
+    grid-template-columns: 38px minmax(0, 1fr) 38px !important;
+    align-items: center !important;
+    justify-items: center !important;
+    column-gap: 0 !important;
+    padding: 9px 12px !important;
+    align-self: center !important;
+    justify-content: center !important;
+  }
+
+  .ctaButtonText {
+    grid-column: 2 !important;
+    justify-self: center !important;
+    text-align: center !important;
+  }
+
+  .arrowIcon {
+    grid-column: 3 !important;
+    justify-self: end !important;
+    width: 38px !important;
+    height: 38px !important;
+    min-width: 38px !important;
+    flex: 0 0 38px !important;
+    background-size: contain !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+  }
+
+  .ctaButtonFill {
+    display: none !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .aboutDoctorSection {
+    padding-top: 46px !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .aboutDoctorSection {
+    padding: 52px 0 64px;
+  }
+
+  .aboutDoctorInner {
+    width: calc(100% - 28px);
+
+    gap: 28px;
+  }
+
+  .aboutDoctorVisual {
+    height: 500px;
+  }
+
+  .aboutDoctorHeader h2 span {
+    font-size: 28px;
+  }
+
+  .aboutDoctorHeader h2 strong {
+    font-size: 56px;
+  }
+
+  .aboutDoctorIdentity p {
+    font-size: 32px;
+  }
+
+  .aboutDoctorIdentity span {
+    font-size: 14px;
+  }
+
+  .aboutDoctorGrid {
+    margin-top: 34px;
+  }
+
+  .aboutDoctorActions {
+    margin-top: 32px;
+
+    flex-direction: column;
+
+    gap: 14px;
+  }
+
+  .aboutDoctorButton {
+    width: min(100%, 280px);
+  }
+
+  .aboutDoctorSection {
+    padding-top: 58px;
+
+    padding-bottom: 68px;
+  }
+
+  .aboutDoctorInner {
+    width: calc(100% - 28px);
+  }
+
+  .aboutDoctorActions {
+    flex-direction: column;
+
+    align-items: stretch;
+  }
+
+  .aboutDoctorButton {
+    width: 100%;
+  }
+
+  .aboutDoctorActions {
+    align-items: flex-start;
+  }
+
+  .aboutDoctorButton {
+    width: fit-content !important;
+
+    min-width: 0;
+
+    max-width: 100%;
+
+    padding: 5px 7px 5px 22px;
+
+    gap: 18px;
+  }
+
+  .aboutDoctorButton:not(.aboutDoctorButtonPrimary) {
+    gap: 18px;
+  }
+}
+
+@media (max-width: 576px) {
+  .aboutDoctorSection {
+    padding: 52px 0 64px;
+  }
+
+  .aboutDoctorInner {
+    width: calc(100% - 28px);
+    gap: 28px;
+  }
+
+  .aboutDoctorVisual {
+    height: 500px;
+  }
+
+  .aboutDoctorHeader h2 span {
+    font-size: 28px;
+  }
+
+  .aboutDoctorHeader h2 strong {
+    font-size: 54px;
+  }
+
+  .aboutDoctorIdentity p {
+    font-size: 30px;
+  }
+
+  .aboutDoctorIdentity span {
+    font-size: 14px;
+  }
+
+  .aboutDoctorGrid {
+    margin-top: 32px;
+  }
+
+  .aboutDoctorCard {
+    min-height: 184px;
+  }
+
+  .aboutDoctorCardBody {
+    padding: 20px 22px 22px;
+  }
+
+  .aboutDoctorCardHeading h3 {
+    font-size: 20px;
+  }
+
+  .aboutDoctorPills span,
+  .aboutDoctorCard p {
+    font-size: 13px;
+  }
+
+  .aboutDoctorCard p {
+    min-height: 95px;
+    padding: 14px 18px;
+  }
+
+  .aboutDoctorActions {
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .ctaButton {
+    width: fit-content;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  .aboutDoctorGrid {
+    grid-template-columns: 1fr !important;
+  }
+  .aboutDoctorCardNumber{
+    top: -10px;
+    right: 4px;
+  }
+  .aboutDoctorCard{
+    min-height: 185px;
+  }
+}
+
+@media (max-width: 576px) {
+  .ctaButton,
+  .ctaButtonPrimary,
+  .ctaButtonSecondary {
+    width: min(100%, 420px) !important;
+    min-height: 60px !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .aboutDoctorSection {
+    padding-top: 40px !important;
+  }
+}
+
+@media (max-width: 480px){
+  .aboutDoctorCardNumber{
+    top: -10px;
+    right: 0px;
+  }
+}
+
+@media (max-width: 430px){
+   .aboutDoctorCardNumber{
+    top: -10px;
+    right: -4px;
+  }
+  .aboutDoctorCard{
+    min-height: 175px;
+  }
+}
+
+@media (max-width: 390px) {
+  .aboutDoctorSection {
+    padding: 46px 0 58px;
+  }
+
+  .aboutDoctorInner {
+    width: calc(100% - 24px);
+  }
+
+  .aboutDoctorVisual {
+    height: 430px;
+  }
+
+  .aboutDoctorHeader h2 span {
+    font-size: 25px;
+  }
+
+  .aboutDoctorHeader h2 strong {
+    font-size: 50px;
+  }
+
+  .aboutDoctorIdentity p {
+    font-size: 28px;
+  }
+
+  .aboutDoctorCardHeading h3 {
+    font-size: 17px;
+  }
+
+  .aboutDoctorPills span,
+  .aboutDoctorCard p {
+    font-size: 11px;
+  }
+
+  .aboutDoctorHeader h2 span,
+  .aboutDoctorHeader h2 strong {
+    font-size: 32px;
+
+    line-height: 1.12;
+  }
+
+  .aboutDoctorCard {
+    padding: 18px 14px;
+        min-height: 155px;
+  }
+
+  .aboutDoctorInner {
+    width: calc(100% - 24px);
+  }
+
+  .aboutDoctorButton {
+    padding-left: 18px;
+
+    gap: 14px;
+  }
+
+  .aboutDoctorCardBody {
+    padding: 19px 20px 21px;
+  }
+
+  .aboutDoctorPills span {
+    min-width: calc(50% - 5px);
+    padding: 5px 12px;
+  }
+
+  .aboutDoctorCard p {
+    min-height: 78px;
+    padding: 14px 18px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 390px) {
+  .aboutDoctorSection {
+    padding: 46px 0 58px;
+  }
+
+  .aboutDoctorInner {
+    width: calc(100% - 24px);
+  }
+
+  .aboutDoctorVisual {
+    height: 430px;
+  }
+
+  .aboutDoctorHeader h2 span {
+    font-size: 25px;
+  }
+
+  .aboutDoctorHeader h2 strong {
+    font-size: 50px;
+  }
+
+  .aboutDoctorIdentity p {
+    font-size: 28px;
+  }
+
+  .aboutDoctorCardHeading h3 {
+    font-size: 17px;
+  }
+
+  .aboutDoctorPills span,
+  .aboutDoctorCard p {
+    font-size: 11px;
+  }
+
+  .aboutDoctorHeader h2 span,
+  .aboutDoctorHeader h2 strong {
+    font-size: 32px;
+
+    line-height: 1.12;
+  }
+
+  .aboutDoctorCard {
+    padding: 18px 14px;
+  }
+
+  .aboutDoctorInner {
+    width: calc(100% - 24px);
+  }
+
+  .aboutDoctorButton {
+    padding-left: 18px;
+
+    gap: 14px;
+  }
+
+  .aboutDoctorCardBody {
+    padding: 19px 20px 21px;
+  }
+
+  .aboutDoctorPills span {
+    min-width: calc(50% - 5px);
+    padding: 5px 12px;
+  }
+
+  .aboutDoctorCard p {
+    min-height: 78px;
+    padding: 14px 18px;
+    font-size: 13px;
+  }
+   .aboutDoctorCardNumber{
+    top: -10px;
+    right: -7px;
+  }
+}
+
+@media (max-width: 390px) {
+  .ctaButton,
+  .ctaButtonPrimary,
+  .ctaButtonSecondary {
+    width: 100% !important;
+    min-height: 56px !important;
+    grid-template-columns: 34px minmax(0, 1fr) 34px !important;
+    padding: 7px 10px !important;
+  }
+
+  .arrowIcon {
+    width: 34px !important;
+    height: 34px !important;
+    min-width: 34px !important;
+    flex-basis: 34px !important;
+  }
 }

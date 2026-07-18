@@ -1,147 +1,150 @@
 "use client";
-import { useState } from "react";
+import Image from "next/image";
+import { useRouter } from "next/router";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import { Inter, Montserrat } from "next/font/google";
+import { submitForm } from "@/lib/formService";
 import styles from "./styles.module.css";
 
-/* ── Inline SVG icons ── */
-function UserIcon() {
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  weight: ["600", "700"],
+  display: "swap",
+  variable: "--font-contact-form-montserrat",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  display: "swap",
+  variable: "--font-contact-form-inter",
+});
+
+function FieldIcon({ src }) {
   return (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <circle cx="12" cy="8" r="4" />
-      <path d="M4 20c0-4 3.58-7 8-7s8 3 8 7" />
-    </svg>
+    <Image
+      className={styles.fieldIconImage}
+      src={src}
+      alt=""
+      width={18}
+      height={18}
+      aria-hidden="true"
+    />
   );
 }
 
-function EmailIcon() {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <rect x="2" y="4" width="20" height="16" rx="2" />
-      <path d="M22 7l-10 7L2 7" />
-    </svg>
-  );
-}
+const INITIAL_VALUES = {
+  firstName: "",
+  mobile: "",
+  treatment: "",
+  message: "",
+};
 
-function PhoneIcon() {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.08 1.18 2 2 0 012.07 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z" />
-    </svg>
-  );
-}
-
-function MessageIcon() {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" />
-    </svg>
-  );
-}
-
-function ArrowIcon() {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <line x1="5" y1="19" x2="19" y2="5" />
-      <polyline points="6 5 19 5 19 18" />
-    </svg>
-  );
-}
-
-const INITIAL = { firstName: "", lastName: "", email: "", mobile: "", message: "" };
+const contactSchema = Yup.object({
+  firstName: Yup.string()
+    .trim()
+    .min(2, "Name must be at least 2 characters.")
+    .max(50, "Name must be 50 characters or less.")
+    .required("Please enter your name."),
+  mobile: Yup.string()
+    .trim()
+    .matches(/^[+]?[(]?[0-9]{1,4}[)]?[-\s./0-9]*$/, "Please enter a valid mobile number.")
+    .min(10, "Mobile number must be at least 10 digits.")
+    .max(16, "Mobile number must be 16 digits or less.")
+    .required("Please enter your mobile number."),
+  treatment: Yup.string()
+    .required("Please select a treatment."),
+  message: Yup.string()
+    .trim()
+    .max(500, "Message must be 500 characters or less."),
+});
 
 export default function ContactForm() {
-  const [form, setForm] = useState(INITIAL);
-  const [sent, setSent] = useState(false);
+  const router = useRouter();
 
-  function handleChange(e) {
-    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  }
+  const formik = useFormik({
+    initialValues: INITIAL_VALUES,
+    validationSchema: contactSchema,
+    validateOnBlur: true,
+    validateOnChange: true,
+    onSubmit: async (values, { resetForm, setSubmitting }) => {
+      const fullName = values.firstName.trim();
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    // TODO: wire up real submission (email service / API route)
-    setSent(true);
-    setTimeout(() => setSent(false), 4000);
-    setForm(INITIAL);
-  }
+      const contactData = {
+        fullName,
+        mobile: values.mobile.trim(),
+        treatment: values.treatment,
+        message: values.message.trim(),
+      };
+
+      try {
+        await submitForm("Contact", contactData);
+        resetForm();
+        router.push("/thank-you");
+      } catch (err) {
+        const msg = err?.message || "Failed to submit contact form";
+        router.push({ pathname: "/error", query: { msg } });
+      } finally {
+        setSubmitting(false);
+      }
+    },
+  });
+
+  const getFieldError = (name) => formik.touched[name] && formik.errors[name] ? formik.errors[name] : "";
+  const getInputClassName = (name) => getFieldError(name) ? styles.inputError : "";
 
   return (
-    <section className={styles.section} id="contact-form">
+    <section className={`${inter.variable} ${montserrat.variable} ${styles.section}`} id="contact-form">
       <div className={styles.inner}>
-
-        {/* ── Left: form ── */}
         <div className={styles.left}>
-          <span className={styles.badge}>Get In Touch</span>
+          <span className={styles.badge}>
+            <Image
+              className={styles.badgeIcon}
+              src="/assets/contact/plus-icon.png"
+              alt=""
+              width={14}
+              height={14}
+              aria-hidden="true"
+            />
+            Get In Touch
+          </span>
 
-          <h2 className={styles.heading}>
+          <h2 className={`${montserrat.className} ${styles.heading}`}>
             We&apos;re here for you.
             <span className={styles.headingAccent}>Our team will contact Shortly</span>
           </h2>
 
-          <p className={styles.description}>
+          <p className={`${inter.className} ${styles.description}`}>
             Have questions or need assistance? Our friendly eyecare team is here
-            to help. Contact us by phone, email, or visit our medical center—we&apos;re
+            to help. Contact us by phone, email, or visit our medical center - we&apos;re
             always ready to assist you.
           </p>
 
           <div className={styles.formCard}>
-            <form onSubmit={handleSubmit} noValidate>
+            <form onSubmit={formik.handleSubmit} noValidate>
               <div className={styles.formGrid}>
-
-                {/* First Name */}
                 <div className={styles.formGroup}>
-                  <label className={styles.label} htmlFor="firstName">First Name</label>
+                  <label className={styles.label} htmlFor="firstName">Name</label>
                   <div className={styles.inputWrap}>
                     <input
                       id="firstName"
                       name="firstName"
                       type="text"
-                      placeholder="Enter first name"
-                      value={form.firstName}
-                      onChange={handleChange}
-                      required
+                      placeholder="Enter name"
+                      value={formik.values.firstName}
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      className={getInputClassName("firstName")}
+                      aria-invalid={Boolean(getFieldError("firstName"))}
+                      aria-describedby={getFieldError("firstName") ? "firstName-error" : undefined}
                       autoComplete="given-name"
                     />
-                    <span className={styles.inputIcon}><UserIcon /></span>
+                    <span className={styles.inputIcon}><FieldIcon src="/assets/contact/user-icon.png" /></span>
                   </div>
+                  {getFieldError("firstName") && <p id="firstName-error" className={styles.errorText}>{getFieldError("firstName")}</p>}
                 </div>
 
-                {/* Last Name */}
-                <div className={styles.formGroup}>
-                  <label className={styles.label} htmlFor="lastName">Last Name</label>
-                  <div className={styles.inputWrap}>
-                    <input
-                      id="lastName"
-                      name="lastName"
-                      type="text"
-                      placeholder="Enter last name"
-                      value={form.lastName}
-                      onChange={handleChange}
-                      required
-                      autoComplete="family-name"
-                    />
-                    <span className={styles.inputIcon}><UserIcon /></span>
-                  </div>
-                </div>
-
-                {/* Email */}
-                <div className={styles.formGroup}>
-                  <label className={styles.label} htmlFor="email">Email</label>
-                  <div className={styles.inputWrap}>
-                    <input
-                      id="email"
-                      name="email"
-                      type="email"
-                      placeholder="Enter email id"
-                      value={form.email}
-                      onChange={handleChange}
-                      required
-                      autoComplete="email"
-                    />
-                    <span className={styles.inputIcon}><EmailIcon /></span>
-                  </div>
-                </div>
-
-                {/* Mobile */}
                 <div className={styles.formGroup}>
                   <label className={styles.label} htmlFor="mobile">Mobile Number</label>
                   <div className={styles.inputWrap}>
@@ -150,15 +153,44 @@ export default function ContactForm() {
                       name="mobile"
                       type="tel"
                       placeholder="Enter mobile number"
-                      value={form.mobile}
-                      onChange={handleChange}
+                      value={formik.values.mobile}
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      className={getInputClassName("mobile")}
+                      aria-invalid={Boolean(getFieldError("mobile"))}
+                      aria-describedby={getFieldError("mobile") ? "mobile-error" : undefined}
                       autoComplete="tel"
                     />
-                    <span className={styles.inputIcon}><PhoneIcon /></span>
+                    <span className={styles.inputIcon}><FieldIcon src="/assets/contact/call-icon-blue.png" /></span>
                   </div>
+                  {getFieldError("mobile") && <p id="mobile-error" className={styles.errorText}>{getFieldError("mobile")}</p>}
                 </div>
 
-                {/* Message */}
+
+                <div className={`${styles.formGroup} ${styles.formGroupFull}`}>
+                  <label className={styles.label} htmlFor="treatment">Treatments</label>
+                  <div className={styles.inputWrap}>
+                    <select
+                      id="treatment"
+                      name="treatment"
+                      value={formik.values.treatment}
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      className={getInputClassName("treatment")}
+                      aria-invalid={Boolean(getFieldError("treatment"))}
+                      aria-describedby={getFieldError("treatment") ? "treatment-error" : undefined}
+                    >
+                      <option value="">Select treatment</option>
+                      <option value="Cataract">Cataract</option>
+                      <option value="LASIK">LASIK</option>
+                      <option value="Pediatric Eye Care">Pediatric Eye Care</option>
+                      <option value="Glaucoma">Glaucoma</option>
+                      <option value="Retina">Retina</option>
+                    </select>
+                    <span className={styles.inputIcon}><FieldIcon src="/assets/contact/plus-icon.png" /></span>
+                  </div>
+                  {getFieldError("treatment") && <p id="treatment-error" className={styles.errorText}>{getFieldError("treatment")}</p>}
+                </div>
                 <div className={`${styles.formGroup} ${styles.formGroupFull}`}>
                   <label className={styles.label} htmlFor="message">Message</label>
                   <div className={styles.inputWrap}>
@@ -166,25 +198,37 @@ export default function ContactForm() {
                       id="message"
                       name="message"
                       placeholder="Enter Your Message Or Note here..."
-                      value={form.message}
-                      onChange={handleChange}
+                      value={formik.values.message}
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      className={getInputClassName("message")}
+                      aria-invalid={Boolean(getFieldError("message"))}
+                      aria-describedby={getFieldError("message") ? "message-error" : undefined}
                       rows={4}
                     />
-                    <span className={`${styles.inputIcon} ${styles.iconTop}`}><MessageIcon /></span>
+                    <span className={`${styles.inputIcon} ${styles.iconTop}`}><FieldIcon src="/assets/contact/message-icon.png" /></span>
                   </div>
+                  {getFieldError("message") && <p id="message-error" className={styles.errorText}>{getFieldError("message")}</p>}
                 </div>
-
               </div>
 
-              <button className={styles.submitBtn} type="submit">
-                {sent ? "Message Sent!" : "Send Message"}
-                <span className={styles.arrowCircle}><ArrowIcon /></span>
+              <button className={styles.submitBtn} type="submit" disabled={formik.isSubmitting}>
+                {formik.isSubmitting ? "Sending..." : "Send Message"}
+                <span className={styles.arrowCircle}>
+                  <Image
+                    className={styles.arrowIconImage}
+                    src="/assets/contact/Arrow.png"
+                    alt=""
+                    width={20}
+                    height={20}
+                    aria-hidden="true"
+                  />
+                </span>
               </button>
             </form>
           </div>
         </div>
 
-        {/* ── Right: map ── */}
         <div className={styles.mapWrap}>
           <iframe
             title="Shanti EyeTech location map"
@@ -194,8 +238,8 @@ export default function ContactForm() {
             referrerPolicy="strict-origin-when-cross-origin"
           />
         </div>
-
       </div>
     </section>
   );
 }
+

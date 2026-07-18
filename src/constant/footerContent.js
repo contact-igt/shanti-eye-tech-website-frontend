@@ -12,10 +12,10 @@ export const footerContent = {
     { label: "Privacy Policy", href: "/privacy-policy" },
   ],
   socials: [
-    { label: "Facebook", href: "https://facebook.com" },
-    { label: "X / Twitter", href: "https://x.com/" },
-    { label: "Instagram", href: "https://instagram.com" },
-    { label: "LinkedIn", href: "https://linkedin.com" },
+    { label: "Facebook", href: "https://www.facebook.com/shantieyetech" },
+    { label: "WhatsApp", href: "https://wa.me/919179191939" },
+    { label: "Instagram", href: "https://www.instagram.com/shantieyetech/" },
+    { label: "YouTube", href: "https://www.youtube.com/@shantieyetech" },
   ],
   contact: {
     address: ["Shekhar Central, M1 & M2,", "Palasia Square, Manorama Ganj,", "Indore, MP 452001"],

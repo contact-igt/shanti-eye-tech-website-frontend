@@ -1,8 +1,7 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Playfair_Display } from "next/font/google";
-import { AlignCenter } from "lucide-react";
 import styles from "./styles.module.css";
 
 const playfairDisplay = Playfair_Display({
@@ -20,11 +19,89 @@ function TreatmentLink({ href, children, className, onClick }) {
       </Link>
     );
   }
-
   return (
     <a className={className} href={href} onClick={onClick}>
       {children}
     </a>
+  );
+}
+
+const treatmentDropdownLinks = [
+  { label: "Cataract", href: "/treatments/catract" },
+  { label: "LASIK", href: "/treatments/lasik" },
+  { label: "Pediatric Eye Care", href: "/treatments/pediatric-eye-care" },
+  { label: "Glaucoma", href: "/treatments/glaucoma" },
+  { label: "Retina", href: "/treatments/retina" },
+];
+
+function TreatmentsDropdown({ closeMenu }) {
+  const [open, setOpen] = useState(false);
+  const ref = useRef(null);
+
+  useEffect(() => {
+    function handler(e) {
+      if (ref.current && !ref.current.contains(e.target)) setOpen(false);
+    }
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
+  }, []);
+
+  return (
+    <div
+      className={styles.dropdown}
+      ref={ref}
+      onMouseEnter={() => setOpen(true)}
+      onMouseLeave={() => setOpen(false)}
+      onFocus={() => setOpen(true)}
+      onBlur={(event) => {
+        if (!event.currentTarget.contains(event.relatedTarget)) setOpen(false);
+      }}
+    >
+      <button
+        className={styles.dropdownTrigger}
+        type="button"
+        aria-haspopup="true"
+        aria-expanded={open}
+        onClick={() => setOpen((o) => !o)}
+      >
+        Treatments
+        <svg
+          className={`${styles.chevron} ${open ? styles.chevronOpen : ""}`}
+          width="12"
+          height="12"
+          viewBox="0 0 12 12"
+          fill="none"
+          aria-hidden="true"
+        >
+          <path
+            d="M2 4.5L6 8.5L10 4.5"
+            stroke="currentColor"
+            strokeWidth="1.6"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      </button>
+
+      {open && (
+        <div className={styles.dropdownMenu} role="menu">
+          {treatmentDropdownLinks.map((link) => (
+            <Link
+              key={link.label}
+              href={link.href}
+              className={styles.dropdownItem}
+              role="menuitem"
+              onClick={() => {
+                setOpen(false);
+                closeMenu();
+              }}
+            >
+              {link.label}
+            </Link>
+          ))}
+        </div>
+      )}
+    </div>
   );
 }
 
@@ -61,15 +138,24 @@ export default function CatractHero({ content }) {
             aria-label="Primary navigation"
           >
             <div className={styles.navLinks}>
-              {content.navLinks.map((link) => (
-                <TreatmentLink
-                  key={link.label}
-                  href={link.href}
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {link.label}
-                </TreatmentLink>
-              ))}
+              {/* Home */}
+              <Link href="/" onClick={() => setIsMenuOpen(false)}>
+                Home
+              </Link>
+
+              {/* Treatments dropdown */}
+              <TreatmentsDropdown closeMenu={() => setIsMenuOpen(false)} />
+
+              {/* About */}
+              <Link href="/about" onClick={() => setIsMenuOpen(false)}>
+                About
+              </Link>
+
+              {/* Contact */}
+              <Link href="/contact" onClick={() => setIsMenuOpen(false)}>
+                Contact
+              </Link>
+
               <button
                 className={`${styles.menuButton} ${isMenuOpen ? styles.menuOpen : ""}`}
                 type="button"
@@ -99,11 +185,11 @@ export default function CatractHero({ content }) {
               <TreatmentLink
                 key={action.label}
                 href={action.href}
-                className={`cta-button cta-button--${action.variant === "primary" ? "primary" : "secondary"}`}
+                className={`${styles.ctaButton} ${action.variant === "primary" ? styles.ctaButtonPrimary : styles.ctaButtonSecondary}`}
               >
-                <span className="cta-button-fill" aria-hidden="true" />
-                <span className="cta-button-text">{action.label}</span>
-                <span className="arrow-icon" aria-hidden="true">
+                <span className={styles.ctaButtonFill} aria-hidden="true" />
+                <span className={styles.ctaButtonText}>{action.label}</span>
+                <span className={styles.arrowIcon} aria-hidden="true">
                   <span />
                 </span>
               </TreatmentLink>
@@ -114,3 +200,6 @@ export default function CatractHero({ content }) {
     </article>
   );
 }
+
+
+

@@ -1,0 +1,580 @@
+.page {
+  width: 100%;
+  overflow: hidden;
+  background: #fbfdfe;
+}
+
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  margin: 0;
+  overflow: hidden;
+  isolation: isolate;
+  background: #f7fbfc;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 180px;
+  padding-bottom: 120px;
+  box-sizing: border-box;
+}
+
+.heroImage {
+  z-index: 0;
+  object-fit: cover;
+  object-position: right center;
+  top: -1px !important;
+  bottom: -1px !important;
+  left: -1px !important;
+  right: -1px !important;
+  width: calc(100% + 2px) !important;
+  height: calc(100% + 2px) !important;
+}
+
+.heroChrome {
+  position: absolute;
+  top: 40px;
+  left: clamp(24px, 4.9vw, 100px);
+  right: clamp(24px, 4.4vw, 92px);
+  z-index: 3;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: clamp(42px, 4vw, 92px);
+}
+
+.logoLink {
+  display: block;
+  width: 314px;
+  max-width: 30vw;
+}
+
+.logo {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.nav {
+  position: relative;
+  margin-top: 22px;
+  display: flex;
+  align-items: center;
+  gap: 23px;
+  color: #151c23;
+  font-size: 14px;
+  line-height: 1;
+  font-weight: 500;
+}
+
+.navLinks {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.navLinks a {
+  transition:
+    color 180ms ease,
+    opacity 180ms ease;
+}
+
+.navLinks a:hover {
+  color: #15bfdf;
+}
+
+.menuButton {
+  width: 52px;
+  height: 32px;
+  border: 0;
+  border-radius: 999px;
+  display: none; /* Hidden on desktop */
+  grid-template-rows: repeat(3, auto);
+  gap: 3.5px;
+  padding: 0;
+  place-items: center;
+  align-content: center;
+  justify-content: center;
+  background: #16c1e4;
+  color: #ffffff;
+  box-shadow: 0 14px 28px rgba(22, 193, 228, 0.26);
+  cursor: pointer;
+}
+
+.menuButton span {
+  width: 20px;
+  height: 2.5px;
+  border-radius: 99px;
+  background: #ffffff;
+  transition: transform 0.25s ease, opacity 0.25s ease, width 0.25s ease;
+}
+
+.menuButton span:nth-child(2) {
+  width: 14px;
+}
+
+.menuButton span:nth-child(3) {
+  width: 8px;
+}
+
+.menuButton.menuOpen span:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+  width: 20px;
+}
+
+.menuButton.menuOpen span:nth-child(2) {
+  opacity: 0;
+}
+
+.menuButton.menuOpen span:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+  width: 20px;
+}
+
+.heroCopy {
+  position: relative;
+  z-index: 2;
+  width: min(620px, calc(100vw - 20px));
+  padding-top: 0;
+  margin-left: clamp(24px, 4.9vw, 100px);
+}
+
+.heroCopy h1 {
+  margin: 0;
+  color: #263746;
+  width: min(620px, 100%);
+  height: auto;
+  font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+  font-style: normal;
+  font-size: 72px;
+  line-height: 76px;
+  letter-spacing: -2px;
+  font-weight: 500;
+}
+
+.heroCopy h1 span {
+  color: #19c3e4;
+}
+
+.heroCopy p {
+  max-width: 580px;
+  margin: 24px 0 0;
+  color: #758493;
+  font-size: 16px;
+  line-height: 1.42;
+  letter-spacing: 0;
+  font-weight: 400;
+}
+
+.actions {
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+
+
+@media (min-width: 1800px) {
+  .hero {
+    min-height: 748px;
+  }
+
+  .heroCopy h1 {
+    font-size: 72px;
+  }
+}
+
+@media (max-width: 1440px) {
+  .hero {
+  }
+
+  .heroChrome {
+    top: 30px;
+  }
+
+  .logoLink {
+    width: 256px;
+  }
+
+  .nav {
+    margin-top: 18px;
+    gap: 18px;
+    font-size: 14px;
+  }
+
+  .navLinks {
+    gap: 16px;
+  }
+
+  .heroCopy {
+    width: min(558px, calc(100vw - 48px));
+    padding-top: 0;
+  }
+
+  .heroCopy h1 {
+    width: min(558px, 100%);
+    height: auto;
+    font-size: 61px;
+    line-height: 65px;
+    letter-spacing: -1.4px;
+  }
+
+  .heroCopy p {
+    margin-top: 22px;
+    font-size: 15px;
+  }
+
+  .actions {
+    margin-top: 26px;
+  }
+
+
+}
+
+@media (max-width: 1024px) {
+  .hero {
+  }
+
+  .heroImage {
+    object-position: 78% center;
+  }
+
+  /* heroShade removed */
+
+  .heroChrome {
+    top: 25px;
+    left: 32px;
+    right: 32px;
+    gap: 22px;
+  }
+
+  .logoLink {
+    width: 243px;
+    max-width: 42vw;
+  }
+
+  .nav {
+    margin-top: 18px;
+  }
+
+  .heroCopy {
+    width: min(486px, calc(100vw - 48px));
+    padding-top: 0;
+    margin-left: 24px;
+  }
+
+  .heroCopy h1 {
+    width: min(486px, 100%);
+    font-size: 50px;
+    line-height: 54px;
+    letter-spacing: -1.1px;
+  }
+
+  .heroCopy p {
+    max-width: 450px;
+    font-size: 15px;
+  }
+
+
+}
+
+@media (max-width: 720px) {
+  .hero {
+    min-height: 780px;
+    height: auto;
+  }
+
+  .heroImage {
+    object-position: 72% center;
+  }
+
+  /* heroShade removed */
+
+  .heroChrome {
+    top: 18px;
+    left: 18px;
+    right: 18px;
+    justify-content: flex-start;
+  }
+
+  .logoLink {
+    width: 200px;
+    max-width: 62vw;
+  }
+
+  .nav {
+    margin-top: 11px;
+  }
+
+  .menuButton {
+    display: grid;
+    width: 52px;
+    height: 34px;
+  }
+
+  /* On mobile: hide links by default, show only the hamburger button */
+  .navLinks a {
+    display: none;
+  }
+
+  /* When nav is open: show floating dropdown with all links */
+  .navOpen .navLinks {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 240px;
+    padding: 24px;
+    border-radius: 20px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 4px;
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    box-shadow: 0 20px 48px rgba(39, 55, 65, 0.16);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    z-index: 1000;
+  }
+
+  /* Show links inside open dropdown */
+  .navOpen .navLinks a {
+    display: block;
+    min-height: auto;
+    padding: 12px 14px;
+    color: #151c23;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 12px;
+    transition: background-color 0.2s ease;
+  }
+
+  .navOpen .navLinks a:hover {
+    background-color: rgba(22, 193, 228, 0.08);
+    color: #15bfdf;
+  }
+
+  /* Push the X/menu button to the bottom right inside open drawer */
+  .navOpen .navLinks .menuButton {
+    display: grid;
+    align-self: flex-end;
+    margin-top: 12px;
+    order: 999;
+  }
+
+  .heroCopy {
+    width: calc(100vw - 36px);
+    padding-top: 0;
+    margin-left: 18px;
+  }
+
+  .heroCopy h1 {
+    max-width: 430px;
+    width: auto;
+    height: auto;
+    font-size: 41px;
+    line-height: 1.08;
+    letter-spacing: -0.7px;
+  }
+
+  .heroCopy p {
+    max-width: 430px;
+    margin-top: 22px;
+    font-size: 14px;
+    line-height: 1.48;
+  }
+
+  .actions {
+    margin-top: 26px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+
+}
+
+@media (max-width: 420px) {
+  /* Inherit min-height: 100dvh from .hero */
+
+  .logoLink {
+    width: 155px;
+  }
+
+  .navOpen .navLinks {
+    width: calc(100vw - 36px);
+  }
+
+  .heroCopy {
+    padding-top: 0;
+  }
+
+  .heroCopy h1 {
+    font-size: 35px;
+  }
+}
+
+/* Hide per-page hero chrome (logo + nav) on mobile — global sticky header handles mobile nav */
+@media (max-width: 760px) {
+  .heroChrome {
+    display: none !important;
+  }
+}
+
+.ctaButton {
+  position: relative;
+  min-height: 54px;
+  display: inline-grid;
+  grid-template-columns: minmax(0, 1fr) 28px;
+  align-items: center;
+  border-radius: 70px;
+  column-gap: 12px;
+  padding: 0 14px 0 24px;
+  border: 2px solid var(--aqua);
+  overflow: hidden;
+  font-size: 17px;
+  font-weight: 500;
+  white-space: nowrap;
+  transition:
+    box-shadow 240ms var(--ease),
+    border-color 240ms var(--ease),
+    transform 240ms var(--ease);
+}
+
+.ctaButton:hover {
+  transform: scale(1.04);
+}
+
+.ctaButton:active {
+  transform: scale(0.98);
+}
+
+.ctaButtonPrimary {
+  min-width: 246px;
+  color: var(--white);
+  background: var(--aqua);
+  box-shadow: 0 14px 30px rgba(36, 197, 232, 0.22);
+}
+
+.ctaButtonSecondary {
+  min-width: 232px;
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.ctaButtonFill {
+  position: absolute;
+  top: 50%;
+  right: 14px;
+  z-index: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 28px;
+  background: #f3efea;
+  transform: translateY(-50%) translateZ(0);
+  transition:
+    width 0.75s var(--ease),
+    height 0.75s var(--ease),
+    right 0.75s var(--ease),
+    border-radius 0.75s var(--ease),
+    background 0.75s var(--ease);
+}
+
+.ctaButtonSecondary .ctaButtonFill {
+  background: rgba(36, 197, 232, 0.94);
+}
+
+.ctaButtonText {
+  position: relative;
+  z-index: 2;
+  min-width: 0;
+  text-align: center;
+  white-space: nowrap;
+  transition: color 0.75s var(--ease);
+}
+
+.arrowIcon {
+  position: relative;
+  z-index: 3;
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  background: center / contain no-repeat url("/assets/home_logos/Button_arrow.png");
+}
+
+.arrowIcon span {
+  display: none;
+}
+
+/* Final responsive CTA buttons: match Home mobile sizing and arrow placement */
+@media (max-width: 768px) {
+  .ctaButton,
+  .ctaButtonPrimary,
+  .ctaButtonSecondary {
+    width: min(100%, 480px) !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    min-height: 62px !important;
+    display: grid !important;
+    grid-template-columns: 38px minmax(0, 1fr) 38px !important;
+    align-items: center !important;
+    justify-items: center !important;
+    column-gap: 0 !important;
+    padding: 9px 12px !important;
+    align-self: center !important;
+    justify-content: center !important;
+  }
+
+  .ctaButtonText {
+    grid-column: 2 !important;
+    justify-self: center !important;
+    text-align: center !important;
+  }
+
+  .arrowIcon {
+    grid-column: 3 !important;
+    justify-self: end !important;
+    width: 38px !important;
+    height: 38px !important;
+    min-width: 38px !important;
+    flex: 0 0 38px !important;
+    background-size: contain !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+  }
+
+  .ctaButtonFill {
+    display: none !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .ctaButton,
+  .ctaButtonPrimary,
+  .ctaButtonSecondary {
+    width: min(100%, 420px) !important;
+    min-height: 60px !important;
+  }
+}
+
+@media (max-width: 390px) {
+  .ctaButton,
+  .ctaButtonPrimary,
+  .ctaButtonSecondary {
+    width: 100% !important;
+    min-height: 56px !important;
+    grid-template-columns: 34px minmax(0, 1fr) 34px !important;
+    padding: 7px 10px !important;
+  }
+
+  .arrowIcon {
+    width: 34px !important;
+    height: 34px !important;
+    min-width: 34px !important;
+    flex-basis: 34px !important;
+  }
+}

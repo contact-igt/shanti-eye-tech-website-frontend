@@ -1,13 +1,19 @@
 "use client";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Inter } from "next/font/google";
+import { Inter, Montserrat } from "next/font/google";
 import styles from "./styles.module.css";
 
 const inter = Inter({
   subsets: ["latin"],
   weight: ["400", "500", "700", "800"],
+  display: "swap",
+});
+
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  weight: ["700"],
   display: "swap",
 });
 
@@ -17,26 +23,82 @@ function NavLink({ href, children, onClick }) {
   }
   return <a href={href} onClick={onClick}>{children}</a>;
 }
+const treatmentLinks = [
+  { label: "Cataract", href: "/treatments/catract" },
+  { label: "LASIK", href: "/treatments/lasik" },
+  { label: "Pediatric Eye Care", href: "/treatments/pediatric-eye-care" },
+  { label: "Glaucoma", href: "/treatments/glaucoma" },
+  { label: "Retina", href: "/treatments/retina" },
+];
 
-function AsteriskIcon() {
+function TreatmentsDropdown({ closeMenu }) {
+  const [open, setOpen] = useState(false);
+  const ref = useRef(null);
+
+  useEffect(() => {
+    function handler(e) {
+      if (ref.current && !ref.current.contains(e.target)) setOpen(false);
+    }
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
+  }, []);
+
   return (
-    <svg
-      className={styles.asteriskSvg}
-      viewBox="0 0 80 80"
-      fill="none"
-      aria-hidden="true"
+    <div
+      className={styles.dropdown}
+      ref={ref}
+      onMouseEnter={() => setOpen(true)}
+      onMouseLeave={() => setOpen(false)}
+      onFocus={() => setOpen(true)}
+      onBlur={(event) => {
+        if (!event.currentTarget.contains(event.relatedTarget)) setOpen(false);
+      }}
     >
-      {/* vertical */}
-      <line x1="40" y1="2"  x2="40" y2="78" stroke="#16c1e4" strokeWidth="1.5" strokeDasharray="5 4" />
-      {/* horizontal */}
-      <line x1="2"  y1="40" x2="78" y2="40" stroke="#16c1e4" strokeWidth="1.5" strokeDasharray="5 4" />
-      {/* diagonal \ */}
-      <line x1="8"  y1="8"  x2="72" y2="72" stroke="#16c1e4" strokeWidth="1.5" strokeDasharray="5 4" />
-      {/* diagonal / */}
-      <line x1="72" y1="8"  x2="8"  y2="72" stroke="#16c1e4" strokeWidth="1.5" strokeDasharray="5 4" />
-      {/* center dot */}
-      <circle cx="40" cy="40" r="3" fill="#16c1e4" />
-    </svg>
+      <button
+        className={styles.dropdownTrigger}
+        type="button"
+        aria-haspopup="true"
+        aria-expanded={open}
+        onClick={() => setOpen((o) => !o)}
+      >
+        Treatments
+        <svg
+          className={`${styles.chevron} ${open ? styles.chevronOpen : ""}`}
+          width="12"
+          height="12"
+          viewBox="0 0 12 12"
+          fill="none"
+          aria-hidden="true"
+        >
+          <path
+            d="M2 4.5L6 8.5L10 4.5"
+            stroke="currentColor"
+            strokeWidth="1.6"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      </button>
+
+      {open && (
+        <div className={styles.dropdownMenu} role="menu">
+          {treatmentLinks.map((link) => (
+            <Link
+              key={link.label}
+              href={link.href}
+              className={styles.dropdownItem}
+              role="menuitem"
+              onClick={() => {
+                setOpen(false);
+                closeMenu();
+              }}
+            >
+              {link.label}
+            </Link>
+          ))}
+        </div>
+      )}
+    </div>
   );
 }
 
@@ -78,15 +140,16 @@ export default function ContactHero({ content }) {
           aria-label="Primary navigation"
         >
           <div className={styles.navLinks}>
-            {content.navLinks.map((link) => (
-              <NavLink
-                key={link.label}
-                href={link.href}
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {link.label}
-              </NavLink>
-            ))}
+            <NavLink href="/" onClick={() => setIsMenuOpen(false)}>
+              Home
+            </NavLink>
+            <TreatmentsDropdown closeMenu={() => setIsMenuOpen(false)} />
+            <NavLink href="/about" onClick={() => setIsMenuOpen(false)}>
+              About
+            </NavLink>
+            <NavLink href="/contact" onClick={() => setIsMenuOpen(false)}>
+              Contact
+            </NavLink>
             <button
               className={`${styles.menuButton} ${isMenuOpen ? styles.menuOpen : ""}`}
               type="button"
@@ -102,18 +165,15 @@ export default function ContactHero({ content }) {
 
       {/* ── Hero copy ── */}
       <div className={styles.heroCopy}>
-        <h1 id="contact-hero-heading" className={styles.heading}>
+        <h1 id="contact-hero-heading" className={`${montserrat.className} ${styles.heading}`}>
           {content.heading.line1}
           <br />
           {content.heading.line2}
         </h1>
         <p className={styles.subtitle}>{content.subtitle}</p>
       </div>
-
-      {/* ── Decorative asterisk ── */}
-      <div className={styles.asterisk} aria-hidden="true">
-        <AsteriskIcon />
-      </div>
     </section>
   );
 }
+
+

@@ -1,6 +1,8 @@
-﻿import Image from "next/image";
+import { useEffect, useState } from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { Playfair_Display } from "next/font/google";
+import Slider from "react-slick";
 import styles from "./styles.module.css";
 
 const playfairDisplay = Playfair_Display({
@@ -46,12 +48,45 @@ const cardVariants = {
   show: { opacity: 1, scale: 1, y: 0, transition: { duration: 0.55, ease: "easeOut" } },
 };
 
+function useMediaQuery(query) {
+  const [matches, setMatches] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia(query);
+    const handleChange = () => setMatches(mediaQuery.matches);
+
+    handleChange();
+    mediaQuery.addEventListener("change", handleChange);
+
+    return () => mediaQuery.removeEventListener("change", handleChange);
+  }, [query]);
+
+  return matches;
+}
+
 export default function TreatmentChecklistBento({ content }) {
+  const useImageSlider = useMediaQuery("(max-width: 576px)");
+
   if (!content) return null;
 
   const headingId = content.headingId || "treatment-checklist-title";
   const isFiveCard = content.layoutVariant === "five-card";
   const imageRows = chunkRows(content.images, isFiveCard);
+  const sliderSettings = {
+    dots: true,
+    arrows: false,
+    infinite: content.images.length > 1,
+    speed: 420,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    swipeToSlide: true,
+    autoplay: true,
+    autoplaySpeed: 2200,
+    pauseOnHover: false,
+    pauseOnFocus: false,
+    cssEase: "ease",
+    adaptiveHeight: false,
+  };
 
   return (
     <section
@@ -104,41 +139,62 @@ export default function TreatmentChecklistBento({ content }) {
           </motion.ul>
         </div>
 
-        <motion.div
-          className={styles.bentoRows}
-          variants={bentoVariants}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.15 }}
-        >
-          {imageRows.map((row, rowIndex) => (
-            <div key={`row-${rowIndex}`} className={`${styles.bentoRow} ${styles[`row${rowIndex + 1}`]}`}>
-              {row.map((image, imageIndex) => {
-                const cardIndex = content.images.indexOf(image) + 1;
-
-                return (
-                  <motion.div
-                    key={image.id}
-                    className={`${styles.bentoCard} ${styles[`card${cardIndex}`] || ""} ${
-                      row.length === 1 ? styles.singleCard : imageIndex === 0 ? styles.primaryCard : styles.secondaryCard
-                    }`}
-                    variants={cardVariants}
-                  >
+        {useImageSlider ? (
+          <div className={styles.mobileSliderWrap}>
+            <Slider className={styles.mobileSlider} {...sliderSettings}>
+              {content.images.map((image) => (
+                <div key={image.id} className={styles.sliderSlide}>
+                  <div className={styles.sliderCard}>
                     <Image
                       src={image.src}
                       alt={image.alt}
                       fill
                       className={styles.cardImg}
                       style={{ objectPosition: image.objectPosition || "center center" }}
-                      sizes={isFiveCard ? "(max-width: 1024px) 50vw, 38vw" : "(max-width: 1024px) 50vw, 34vw"}
+                      sizes="(max-width: 576px) calc(100vw - 32px), 34vw"
                     />
-                  </motion.div>
-                );
-              })}
-            </div>
-          ))}
-        </motion.div>
+                  </div>
+                </div>
+              ))}
+            </Slider>
+          </div>
+        ) : (
+          <motion.div
+            className={styles.bentoRows}
+            variants={bentoVariants}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.15 }}
+          >
+            {imageRows.map((row, rowIndex) => (
+              <div key={`row-${rowIndex}`} className={`${styles.bentoRow} ${styles[`row${rowIndex + 1}`]}`}>
+                {row.map((image, imageIndex) => {
+                  const cardIndex = content.images.indexOf(image) + 1;
+
+                  return (
+                    <motion.div
+                      key={image.id}
+                      className={`${styles.bentoCard} ${styles[`card${cardIndex}`] || ""} ${
+                        row.length === 1 ? styles.singleCard : imageIndex === 0 ? styles.primaryCard : styles.secondaryCard
+                      }`}
+                      variants={cardVariants}
+                    >
+                      <Image
+                        src={image.src}
+                        alt={image.alt}
+                        fill
+                        className={styles.cardImg}
+                        style={{ objectPosition: image.objectPosition || "center center" }}
+                        sizes={isFiveCard ? "(max-width: 1024px) 50vw, 38vw" : "(max-width: 1024px) 50vw, 34vw"}
+                      />
+                    </motion.div>
+                  );
+                })}
+              </div>
+            ))}
+          </motion.div>
+        )}
       </div>
     </section>
   );
-}
+};

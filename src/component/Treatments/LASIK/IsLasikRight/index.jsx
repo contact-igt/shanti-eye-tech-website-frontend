@@ -64,7 +64,7 @@ export default function IsLasikRightSection() {
 
       {/* ── Left: badge, title, list ── */}
       <div className={styles.leftContent}>
-        <span className={styles.badge}>Services</span>
+        <span className={styles.badge}>Treatment</span>
         <h2
           id="is-lasik-right-title"
           className={`${styles.title} ${playfairDisplay.className}`}

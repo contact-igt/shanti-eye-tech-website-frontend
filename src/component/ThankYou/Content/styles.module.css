@@ -1,0 +1,424 @@
+/* ── Section wrapper ── */
+.section {
+  position: relative;
+  overflow: hidden;
+  background: #ffffff;
+  padding: clamp(60px, 9vh, 120px) clamp(24px, 5vw, 90px);
+  display: flex;
+  justify-content: center;
+}
+
+/* ── Decorative background blobs ── */
+.blobLeft {
+  position: absolute;
+  top: -60px;
+  left: -100px;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(22, 193, 228, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.blobRight {
+  position: absolute;
+  bottom: -80px;
+  right: -80px;
+  width: 360px;
+  height: 360px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(1, 17, 57, 0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* ── Content inner ── */
+.inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 680px;
+  width: 100%;
+}
+
+/* ── Check icon ── */
+.iconWrap {
+  margin-bottom: 28px;
+  animation: popIn 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.checkIcon {
+  width: 72px;
+  height: 72px;
+}
+
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ── Heading ── */
+.heading {
+  margin: 0 0 20px;
+  font-size: clamp(26px, 3.5vw, 44px);
+  font-weight: 700;
+  color: #011139;
+  line-height: 1.15;
+  letter-spacing: 0.4px;
+  animation: fadeUp 0.6s 0.1s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* ── Description ── */
+.description {
+  margin: 0 0 36px;
+  font-size: clamp(14px, 1.15vw, 17px);
+  font-weight: 400;
+  color: #5f7281;
+  line-height: 1.7;
+  max-width: 560px;
+  animation: fadeUp 0.6s 0.18s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* ── Action buttons ── */
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  animation: fadeUp 0.6s 0.26s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Shared button base */
+.btnOutline,
+.btnFilled {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 28px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  cursor: pointer;
+  transition: all 0.22s ease;
+  white-space: nowrap;
+}
+
+/* Outline variant */
+.btnOutline {
+  background: transparent;
+  border: 1.5px solid #16c1e4;
+  color: #16c1e4;
+}
+
+.btnOutline:hover {
+  border-color: #0da5c8;
+  color: #0da5c8;
+  background: rgba(22, 193, 228, 0.07);
+}
+
+/* Filled variant */
+.btnFilled {
+  background: #16c1e4;
+  border: 1.5px solid #16c1e4;
+  color: #ffffff;
+  /* box-shadow: 0 6px 24px rgba(22, 193, 228, 0.28); */
+}
+
+.btnFilled:hover {
+  background: #0da5c8;
+  border-color: #0da5c8;
+  /* box-shadow: 0 6px 28px rgba(22, 193, 228, 0.42); */
+}
+
+/* Arrow icon inside button */
+.btnArrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.btnOutline .btnArrow {
+  background: rgba(22, 193, 228, 0.12);
+}
+
+.btnOutline:hover .btnArrow {
+  background: rgba(22, 193, 228, 0.2);
+}
+
+.btnOutline:hover .btnArrow,
+.btnFilled:hover .btnArrow {
+  transform: translateX(2px) translateY(-2px);
+}
+
+.btnFilled .btnArrow{
+  background: #fff;
+}
+/* ── Contact nudge ── */
+.contactNudge {
+  margin: 32px 0 0;
+  font-size: 13px;
+  color: #8a9aaa;
+  animation: fadeUp 0.6s 0.34s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.nudgeLink {
+  color: #16c1e4;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.18s ease;
+}
+
+.nudgeLink:hover {
+  color: #0da5c8;
+}
+
+/* ── Fade-up animation ── */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── Responsive ── */
+@media (max-width: 640px) {
+  .section {
+    padding: 60px 20px;
+  }
+
+  .actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btnOutline,
+  .btnFilled {
+    justify-content: center;
+    padding: 14px 24px;
+  }
+}
+
+/* Remove thank-you CTA button hover effects */
+.btnOutline,
+.btnFilled,
+.btnArrow {
+  transition: none !important;
+}
+
+.btnOutline:hover {
+  border-color: #16c1e4 !important;
+  color: #16c1e4 !important;
+  background: transparent !important;
+}
+
+.btnFilled:hover {
+  background: #16c1e4 !important;
+  border-color: #16c1e4 !important;
+  /* box-shadow: 0 6px 24px rgba(22, 193, 228, 0.28) !important; */
+}
+
+.btnOutline:hover .btnArrow {
+  background: rgba(22, 193, 228, 0.12) !important;
+}
+
+.btnOutline:hover .btnArrow,
+.btnFilled:hover .btnArrow {
+  transform: none !important;
+}
+
+/* Filled thank-you CTA arrow theme color */
+.btnFilled .btnArrow {
+  background: #ffffff !important;
+  color: #16c1e4 !important;
+}
+
+.btnFilled:hover .btnArrow {
+  background: #ffffff !important;
+  color: #16c1e4 !important;
+}
+
+/* Final responsive thank-you buttons: match mobile CTA width and end arrow */
+@media (max-width: 768px) {
+  .actions {
+    width: 100% !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 12px !important;
+  }
+
+  .btnOutline,
+  .btnFilled {
+    width: min(100%, 480px) !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    min-height: 62px !important;
+    display: grid !important;
+    grid-template-columns: 32px minmax(0, 1fr) 32px !important;
+    align-items: center !important;
+    justify-items: center !important;
+    column-gap: 0 !important;
+    padding: 9px 14px !important;
+    text-align: center !important;
+  }
+
+  .btnArrow {
+    grid-column: 3 !important;
+    justify-self: end !important;
+    width: 32px !important;
+    height: 32px !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .btnOutline,
+  .btnFilled {
+    width: min(100%, 420px) !important;
+    min-height: 60px !important;
+  }
+}
+
+@media (max-width: 390px) {
+  .btnOutline,
+  .btnFilled {
+    width: 100% !important;
+    min-height: 56px !important;
+    grid-template-columns: 30px minmax(0, 1fr) 30px !important;
+    padding: 7px 12px !important;
+  }
+
+  .btnArrow {
+    width: 30px !important;
+    height: 30px !important;
+  }
+}
+
+/* Final thank-you mobile label placement fix */
+.btnText {
+  min-width: 0;
+  text-align: center;
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .btnText {
+    grid-column: 2 !important;
+    justify-self: center !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+}
+
+/* Final thank-you breakpoint fix: row tablet, full-width mobile */
+@media (min-width: 577px) and (max-width: 768px) {
+  .actions {
+    width: min(100%, 620px) !important;
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 12px !important;
+  }
+
+  .btnOutline,
+  .btnFilled {
+    flex: 1 1 0 !important;
+    width: auto !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    min-height: 58px !important;
+    display: grid !important;
+    grid-template-columns: 30px minmax(0, 1fr) 30px !important;
+    align-items: center !important;
+    justify-items: center !important;
+    padding: 8px 12px !important;
+    text-align: center !important;
+  }
+
+  .btnText {
+    grid-column: 2 !important;
+    justify-self: center !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+  }
+
+  .btnArrow {
+    grid-column: 3 !important;
+    justify-self: end !important;
+    width: 30px !important;
+    height: 30px !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .actions {
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 12px !important;
+  }
+
+  .btnOutline,
+  .btnFilled {
+    width: 100% !important;
+    max-width: 420px !important;
+    min-height: 60px !important;
+    display: grid !important;
+    grid-template-columns: 34px minmax(0, 1fr) 34px !important;
+    align-items: center !important;
+    justify-items: center !important;
+    padding: 8px 12px !important;
+    text-align: center !important;
+  }
+
+  .btnText {
+    grid-column: 2 !important;
+    justify-self: center !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+  }
+
+  .btnArrow {
+    grid-column: 3 !important;
+    justify-self: end !important;
+    width: 34px !important;
+    height: 34px !important;
+  }
+}
+
+@media (max-width: 390px) {
+  .btnOutline,
+  .btnFilled {
+    min-height: 56px !important;
+    grid-template-columns: 30px minmax(0, 1fr) 30px !important;
+    padding: 7px 12px !important;
+  }
+
+  .btnArrow {
+    width: 30px !important;
+    height: 30px !important;
+  }
+}

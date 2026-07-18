@@ -1,0 +1,483 @@
+/* ── Hero wrapper ── */
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: clamp(420px, 56vh, 620px);
+  overflow: hidden;
+  background: #f0f6ff;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Background image ── */
+.heroImage {
+  z-index: 0;
+  object-fit: cover;
+  object-position: center center;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* ── Header: logo + nav ── */
+.header {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: clamp(32px, 4vw, 80px);
+  padding: clamp(20px, 3vh, 36px) clamp(24px, 5vw, 90px) 0;
+}
+
+.logoLink {
+  display: block;
+  flex-shrink: 0;
+  width: clamp(160px, 18vw, 240px);
+}
+
+.logo {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* ── Nav ── */
+.nav {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.navLinks {
+  display: flex;
+  align-items: center;
+  gap: clamp(18px, 2.2vw, 32px);
+  font-size: 14px;
+  font-weight: 500;
+  color: #263746;
+}
+
+.navLinks a {
+  transition: color 180ms ease;
+  white-space: nowrap;
+}
+
+.navLinks a:hover {
+  color: #16c1e4;
+}
+
+/* ── Treatments dropdown ── */
+.dropdown {
+  position: relative;
+}
+
+.dropdownTrigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 14px;
+  font-weight: 500;
+  color: #263746;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 180ms ease;
+  font-family: inherit;
+}
+
+.dropdownTrigger:hover {
+  color: #16c1e4;
+}
+
+.chevron {
+  transition: transform 0.22s ease;
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 160px;
+  background: rgba(255, 255, 255, 0.97);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 12px;
+  box-shadow: 0 16px 40px rgba(39, 55, 65, 0.14);
+  overflow: hidden;
+  z-index: 100;
+  animation: dropIn 0.18s ease both;
+}
+
+@keyframes dropIn {
+  from { opacity: 0; transform: translateX(-50%) translateY(-6px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+.dropdownItem {
+  display: block;
+  padding: 11px 18px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #151c23;
+  transition: background 0.18s ease, color 0.18s ease;
+  white-space: nowrap;
+}
+
+.dropdownItem:hover {
+  background: rgba(22, 193, 228, 0.08);
+  color: #16c1e4;
+}
+
+/* Hamburger button */
+.menuButton {
+  width: 52px;
+  height: 32px;
+  border: 0;
+  border-radius: 999px;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 0;
+  background: #16c1e4;
+  color: #fff;
+  box-shadow: 0 10px 24px rgba(22, 193, 228, 0.3);
+  cursor: pointer;
+}
+
+.menuButton span {
+  width: 20px;
+  height: 2.5px;
+  border-radius: 99px;
+  background: #fff;
+  transition: transform 0.25s ease, opacity 0.25s ease, width 0.25s ease;
+}
+.menuButton span:nth-child(2) { width: 14px; }
+.menuButton span:nth-child(3) { width: 8px; }
+
+.menuButton.menuOpen span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); width: 20px; }
+.menuButton.menuOpen span:nth-child(2) { opacity: 0; }
+.menuButton.menuOpen span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); width: 20px; }
+
+/* ── Hero copy ── */
+.heroCopy {
+  position: relative;
+  z-index: 3;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(20px, 4vh, 50px) clamp(24px, 5vw, 90px) clamp(40px, 7vh, 90px);
+  max-width: 680px;
+  margin-left: clamp(24px, 5vw, 80px);
+  align-self: flex-start;
+}
+
+.heading {
+  margin: 0 0 16px;
+  font-size: clamp(38px, 5vw, 66px);
+  font-weight: 700;
+  color: #011139;
+  line-height: 1.1;
+  letter-spacing: 0.6px;
+}
+
+.headingAccent {
+  color: #16c1e4;
+}
+
+.subtitle {
+  margin: 0;
+  font-size: clamp(14px, 1.2vw, 17px);
+  font-weight: 400;
+  color: #5f7281;
+  line-height: 1.6;
+}
+
+.subtitleBr {
+  display: inline;
+}
+
+/* ── Mobile nav drawer ── */
+@media (max-width: 720px) {
+  .menuButton {
+    display: flex;
+  }
+
+  .navLinks a {
+    display: none;
+  }
+
+  /* hide the dropdown trigger in collapsed state */
+  .navLinks .dropdownTrigger {
+    display: none;
+  }
+
+  .navOpen .navLinks {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 220px;
+    padding: 20px;
+    border-radius: 16px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 4px;
+    background: rgba(255, 255, 255, 0.97);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    box-shadow: 0 20px 48px rgba(39, 55, 65, 0.16);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    z-index: 1000;
+  }
+
+  .navOpen .navLinks a {
+    display: block;
+    padding: 12px 14px;
+    color: #151c23;
+    font-size: 15px;
+    font-weight: 500;
+    border-radius: 10px;
+    transition: background 0.2s ease;
+  }
+
+  .navOpen .navLinks a:hover {
+    background: rgba(22, 193, 228, 0.08);
+    color: #15bfdf;
+  }
+
+  /* Show Treatments trigger inside open drawer */
+  .navOpen .navLinks .dropdownTrigger {
+    display: flex;
+    padding: 12px 14px;
+    color: #151c23;
+    font-size: 15px;
+    font-weight: 500;
+    border-radius: 10px;
+    width: 100%;
+  }
+
+  /* Dropdown menu in mobile — show inline below trigger */
+  .navOpen .dropdownMenu {
+    position: static;
+    transform: none;
+    animation: none;
+    box-shadow: none;
+    border: none;
+    background: rgba(22, 193, 228, 0.05);
+    border-radius: 10px;
+    margin-top: 2px;
+  }
+
+  .navOpen .dropdownItem {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+
+  .heading {
+    font-size: clamp(30px, 9vw, 48px);
+    letter-spacing: 0.3px;
+  }
+
+  .heroCopy {
+    padding-bottom: 40px;
+  }
+
+  .subtitleBr {
+    display: none;
+  }
+}
+
+/* Hide per-page hero header (logo + nav) on mobile — global sticky header handles mobile nav */
+@media (max-width: 760px) {
+  .header {
+    display: none !important;
+  }
+}
+
+/* Final thank-you hero spacing: keep logo clear of heading */
+@media (max-width: 768px) {
+  .hero {
+    min-height: clamp(590px, 112vw, 660px) !important;
+  }
+
+  .header {
+    padding: 34px 32px 0 !important;
+  }
+
+  .logoLink {
+    width: clamp(150px, 32vw, 190px) !important;
+  }
+
+  .heroCopy {
+    flex: 0 0 auto !important;
+    justify-content: flex-start !important;
+    padding: 58px 32px 80px !important;
+    margin-left: 30px !important;
+    max-width: min(520px, calc(100% - 60px)) !important;
+  }
+
+  .heading {
+    font-size: clamp(42px, 10.5vw, 58px) !important;
+    line-height: 1.08 !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero {
+    min-height: clamp(600px, 124vw, 680px) !important;
+  }
+
+  .header {
+    padding: 36px 30px 0 !important;
+  }
+
+  .logoLink {
+    width: clamp(150px, 42vw, 180px) !important;
+  }
+
+  .heroCopy {
+    padding: 64px 30px 88px !important;
+    margin-left: 24px !important;
+    max-width: min(500px, calc(100% - 48px)) !important;
+  }
+}
+
+@media (max-width: 390px) {
+  .hero {
+    min-height: 620px !important;
+  }
+
+  .header {
+    padding: 32px 26px 0 !important;
+  }
+
+  .heroCopy {
+    padding: 62px 26px 84px !important;
+    margin-left: 18px !important;
+    max-width: calc(100% - 36px) !important;
+  }
+
+  .heading {
+    font-size: clamp(38px, 12vw, 48px) !important;
+  }
+}
+
+/* Final thank-you banner collision fix: title starts below logo row */
+@media (max-width: 900px) {
+  .hero {
+    min-height: clamp(640px, 92vw, 760px) !important;
+  }
+
+  .header {
+    display: flex !important;
+    padding: 38px 40px 0 !important;
+  }
+
+  .logoLink {
+    width: clamp(150px, 27vw, 188px) !important;
+  }
+
+  .heroCopy {
+    flex: 0 0 auto !important;
+    justify-content: flex-start !important;
+    padding: 132px 40px 96px !important;
+    margin-left: 32px !important;
+    max-width: min(560px, calc(100% - 64px)) !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero {
+    min-height: clamp(650px, 134vw, 740px) !important;
+  }
+
+  .header {
+    display: flex !important;
+    padding: 36px 30px 0 !important;
+  }
+
+  .heroCopy {
+    padding: 124px 30px 92px !important;
+    margin-left: 24px !important;
+    max-width: min(500px, calc(100% - 48px)) !important;
+  }
+}
+
+@media (max-width: 390px) {
+  .hero {
+    min-height: 650px !important;
+  }
+
+  .heroCopy {
+    padding-top: 116px !important;
+    margin-left: 18px !important;
+  }
+}
+
+/* Final thank-you mobile header fix: use common header only */
+@media (max-width: 760px) {
+  .header {
+    display: none !important;
+  }
+}
+
+/* Final thank-you mobile title placement after removing duplicate hero header */
+@media (max-width: 760px) {
+  .hero {
+    min-height: clamp(620px, 138vw, 720px) !important;
+  }
+
+  .heroCopy {
+    padding-top: 270px !important;
+    padding-bottom: 92px !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .heroCopy {
+    padding-top: 200px !important;
+  }
+}
+
+@media (max-width: 390px) {
+  .heroCopy {
+    padding-top: 200px !important;
+  }
+}
+
+/* Final Treatments dropdown interaction fix */
+.dropdown {
+  position: relative !important;
+  padding-bottom: 12px !important;
+  margin-bottom: -12px !important;
+}
+
+.dropdownTrigger {
+  appearance: none !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+.dropdownMenu {
+  top: calc(100% - 2px) !important;
+}
+
+.dropdownMenu::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -14px;
+  height: 14px;
+}
