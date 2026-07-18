@@ -80,7 +80,7 @@ export const whyPatientsContent = {
       image: "/assets/why_Patients_choose/7.png"
     },
     {
-      title: "Comprehensive services",
+      title: "Comprehensive Treatments",
       description: "All major eye care under one roof.",
       image: "/assets/why_Patients_choose/8.png"
     }
@@ -90,9 +90,7 @@ export const whyPatientsContent = {
 export const aboutIntroductionContent = {
   badge: "About Us",
   paragraphs: [
-    "Welcome to Shanti EyeTech, where \"Shanti\" signifies peace and \"EyeTech\" represents world-class technology in eye care. Our hospital embodies a harmonious fusion of spirituality, positive energy, and a tranquil ambiance.",
-    "We take pride in our team of highly qualified doctors and well-trained paramedical staff. Shanti EyeTech is equipped with cutting-edge technology and state-of-the-art equipment to ensure the highest standards of care.",
-    "Conveniently situated at the heart of Indore city, our facility is easily accessible from all areas. We are dedicated to providing personalized attention, care, and treatment at affordable rates, with the patient well-being as our foremost priority."
+    "Welcome to Shanti EyeTech, where \"Shanti\" signifies peace and \"EyeTech\" represents world-class technology in eye care. Our hospital embodies a harmonious fusion of spirituality, positive energy, and a tranquil ambiance. We take pride in our team of highly qualified doctors and well-trained paramedical staff. Shanti EyeTech is equipped with cutting-edge technology and state-of-the-art equipment to ensure the highest standards of care. Conveniently situated at the heart of Indore city, our facility is easily accessible from all areas. We are dedicated to providing personalized attention, care, and treatment at affordable rates, with the patient well-being as our foremost priority."
   ]
 };
 // Know Your Doctor section
@@ -110,16 +108,16 @@ export const knowYourDoctorContent = {
       items: ["MBBS", "DOMS", "DNB", "FAECS"]
     },
     {
-      number: "03",
-      title: "Recognition",
-      type: "text",
-      body: "9+ National & international honours"
-    },
-    {
       number: "02",
       title: "Specialization",
       type: "text",
       body: "Cataract Surgery, Glaucoma Care, LASIK / Refractive, Phacoemulsification"
+    },
+    {
+      number: "03",
+      title: "Recognition",
+      type: "text",
+      body: "9+ National & international honours"
     },
     {
       number: "04",
@@ -244,7 +242,9 @@ export const aboutCtaContent = {
   badge: "Let's Talk",
   title: ["Start Your", "Vision Journey"],
   buttonLabel: "Book a Consultation",
-  href: "/#contact",
+  href: "/contact",
+  viewAllLabel: "View all",
+  viewAllHref: "/services",
   images: {
     left: {
       src: "/assets/about/cta_image1.png",

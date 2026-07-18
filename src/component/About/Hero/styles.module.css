@@ -2,7 +2,7 @@
   position: relative;
   width: 100%;
   overflow: hidden;
-  background: #fbfaf7;
+  background: rgba(252, 250, 247, 1);
 }
 
 .aboutBannerInner {
@@ -38,6 +38,7 @@
 .aboutBannerContent {
   margin-top: auto;
   margin-bottom: auto;
+  margin-left: 20px;
 }
 
 .aboutBannerContent h1 {
@@ -45,9 +46,9 @@
   color: #24394a;
   font-family: Georgia, "Times New Roman", serif;
   font-size: clamp(54px, 4.25vw, 76px);
-  line-height: 1.01;
-  letter-spacing: -0.045em;
-  font-weight: 400;
+  line-height: 84px;
+  letter-spacing: -2px;
+  font-weight: 500;
 }
 
 .aboutBannerContent h1 span {
@@ -110,7 +111,7 @@
   position: absolute;
   inset: 0;
   z-index: 0;
-  
+
   pointer-events: none;
 }
 
@@ -154,7 +155,7 @@
   margin-left: 2px;
   border: 0;
   border-radius: 999px;
-  display: grid;
+  display: none;
   place-items: center;
   background: #12c3e5;
   color: #fff;
@@ -168,17 +169,6 @@
   stroke: currentColor;
   stroke-width: 1.8;
   stroke-linecap: round;
-}
-
-.aboutBannerStats {
-  position: absolute;
-  right: -34px;
-  bottom: 46px;
-  z-index: 8;
-  width: 58%;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
 }
 
 .aboutBannerStat {
@@ -229,148 +219,74 @@
   font-weight: 700;
 }
 
-@media (max-width: 1100px) {
-  .aboutBannerInner,
-  .aboutBannerCopy {  
-      min-height: 650px;  
-    }
-  
-  .aboutBannerCopy {  
-      width: 54%;  
-      padding-left: 42px;  
-    }
-  
-  .aboutBannerContent h1 {  
-      font-size: 52px;  
-    }
-  
-  .aboutBannerContent p {  
-      max-width: 390px;  
-      font-size: 16px;  
-    }
-  
-  .aboutBannerVisual {  
-      left: 35%;  
-    }
-  
-  .aboutBannerNav {  
-      left: 10%;  
-    }
-  
-  .aboutBannerStats {  
-      width: 61%;  
-      gap: 10px;  
-    }
-  
-  .aboutBannerStat {  
-      min-height: 164px;  
-      padding-inline: 14px;  
-    }
+.aboutBannerStats {
+  position: absolute;
+  z-index: 8;
+  width: 58%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  right: 0px !important;
+  width: min(1085px, 56.5vw) !important;
+  grid-template-columns: repeat(3, minmax(0, 345px)) !important;
+  justify-content: end !important;
+  gap: 37.8px !important;
+  bottom: 20px;
+  width: 54.2%;
+  gap: 45px;
+  align-items: end;
 }
 
-@media (max-width: 760px) {
-  .aboutBanner {  
-      overflow: visible;  
-    }
-  
-  .aboutBannerInner {  
-      min-height: 920px;  
-      overflow: hidden;  
-    }
-  
-  .aboutBannerCopy {  
-      width: 100%;  
-      min-height: 510px;  
-      padding: 24px 22px;  
-    }
-  
-  .aboutBannerLogo {  
-      width: 220px;  
-      height: 88px;  
-    }
-  
-  .aboutBannerContent {  
-      margin-top: 36px;  
-    }
-  
-  .aboutBannerContent h1 {  
-      margin: 0;  
-      font-size: clamp(42px, 13vw, 58px);  
-    }
-  
-  .aboutBannerContent p {  
-      max-width: 92%;  
-      margin-top: 20px;  
-      font-size: 15px;  
-    }
-  
-  .aboutBannerActions {  
-      gap: 10px;  
-      margin-top: 24px;  
-    }
-  
-  .aboutBannerButton {  
-      min-width: 0;  
-      min-height: 46px;  
-      padding: 0 20px;  
-      font-size: 13px;  
-    }
-  
-  .aboutBannerVisual {  
-      top: 455px;  
-      left: 0;  
-      height: 465px;  
-    }
-  
-  .aboutBannerVisual:before {  
-      background: linear-gradient(180deg, #fbfaf7 0%, transparent 24%);  
-    }
-  
-  .aboutBannerNav {  
-      top: 14px;  
-      left: auto;  
-      right: 18px;  
-      gap: 14px;  
-      font-size: 12px;  
-    }
-  
-  .aboutBannerNav a {  
-      display: none;  
-    }
-  
-  .aboutBannerImage {  
-      object-fit: cover !important;  
-      object-position: 63% center !important;  
-    }
-  
-  .aboutBannerStats {  
-      right: 12px;  
-      bottom: 16px;  
-      left: 12px;  
-      width: auto;  
-      gap: 7px;  
-    }
-  
-  .aboutBannerStat {  
-      min-height: 114px;  
-      padding: 12px 6px;  
-      border-radius: 14px;  
-    }
-  
-  .aboutBannerStatIcon {  
-      width: 36px;  
-      height: 36px;  
-      margin-bottom: 10px;  
-    }
-  
-  .aboutBannerStatIcon svg {  
-      width: 17px;  
-      height: 17px;  
-    }
-  
-  .aboutBannerStat strong {  
-      font-size: 12px;  
-    }
+.aboutBannerStat {
+  min-height: 240.82px !important;
+  aspect-ratio: 325.23 / 260.82 !important;
+  padding: 48px 48px 57.25px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 14.8px !important;
+  border: 1px solid rgba(255, 255, 255, 0.8) !important;
+  border-radius: 18px !important;
+  background: rgba(255, 255, 255, 0.7) !important;
+  box-shadow: 0 28px 62px rgba(44, 62, 80, 0.14) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+}
+
+.aboutBannerStat::before,
+.aboutBannerStat::after {
+  display: none !important;
+}
+
+.aboutBannerStatIcon {
+  width: 62px !important;
+  height: 62px !important;
+  min-width: 62px !important;
+  min-height: 62px !important;
+  margin: 0 !important;
+  display: grid !important;
+  place-items: center !important;
+  border-radius: 999px !important;
+  background: rgba(10, 75, 89, 0.1) !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+.aboutBannerStatIcon img {
+  width: 25px !important;
+  height: 25px !important;
+  object-fit: contain !important;
+}
+
+.aboutBannerStat strong {
+  color: #2c3e50 !important;
+  font-family: var(--font-intel-one-mono), monospace !important;
+  font-size: 26px !important;
+  line-height: 32px !important;
+  letter-spacing: 0 !important;
+  font-weight: 700 !important;
+  text-align: center !important;
+  transform: none !important;
 }
 
 .aboutBannerContent h1 {
@@ -393,27 +309,6 @@
   transform-origin: top right;
 }
 
-@media (max-width: 1100px) {
-  .aboutBannerContent h1 {  
-      font-size: 64px;  
-      line-height: 68px;  
-      letter-spacing: -1.6px;  
-    }
-}
-
-@media (max-width: 760px) {
-  .aboutBannerContent h1 {  
-      font-size: clamp(42px, 13vw, 58px);  
-      line-height: 1.04;  
-      letter-spacing: -1.25px;  
-    }
-  
-  .aboutBannerImage {  
-      object-position: 63% top !important;  
-      transform: scale(1.03);  
-    }
-}
-
 .aboutBannerNav {
   top: 61px;
   left: 5%;
@@ -432,31 +327,6 @@
   font-weight: 700;
 }
 
-@media (max-width: 1100px) {
-  .aboutBannerNav {  
-      top: 52px;  
-      left: 5%;  
-    }
-  
-  .aboutBannerStat strong {  
-      font-size: 24px;  
-      line-height: 25px;  
-    }
-}
-
-@media (max-width: 760px) {
-  .aboutBannerNav {  
-      top: 14px;  
-      left: auto;  
-      right: 18px;  
-    }
-  
-  .aboutBannerStat strong {  
-      font-size: 12px;  
-      line-height: 13px;  
-    }
-}
-
 .aboutBannerContent h1 {
   font-family: var(--font-playfair-display), serif;
   max-width: 688px;
@@ -464,7 +334,7 @@
 
 .aboutBannerStat strong {
   font-family: var(--font-intel-one-mono), monospace;
-  transform: rotate(3.45deg);
+  transform: rotate(-3.45deg);
   transform-origin: center;
 }
 
@@ -474,28 +344,8 @@
 }
 
 .aboutBannerNav {
-  top: 61px;
-  left: calc(max(7.5vw, 72px) + 320px);
-}
-
-@media (max-width: 1100px) {
-  .aboutBannerNav {  
-      top: 52px;  
-      left: 382px;  
-    }
-}
-
-@media (max-width: 760px) {
-  .aboutBannerNav {  
-      top: 28px;  
-      left: auto;  
-      right: 22px;  
-    }
-  
-  .aboutBannerStat strong,
-  .aboutBannerStatIcon {  
-      transform: none;  
-    }
+  top: 80px;
+  left: calc(max(7.5vw, 72px) + 330px);
 }
 
 .aboutBannerStat {
@@ -543,16 +393,7 @@
 
 .aboutBannerImageTwo {
   z-index: -1;
-  transform: translate(0.8%) translateY(30px) scale(1.15);
-}
-
-.aboutBannerStats {
-  right: -16px;
-  bottom: 42px;
-  z-index: 8;
-  width: 54.2%;
-  gap: 45px;
-  align-items: end;
+  transform: translate(0.8%) translateX(70px) scale(1.26);
 }
 
 .aboutBannerStat {
@@ -579,8 +420,16 @@
   border-radius: inherit;
   pointer-events: none;
   background:
-    radial-gradient(circle at 24% 20%, rgba(255, 255, 255, 0.62), transparent 30%),
-    radial-gradient(circle at 72% 31%, rgba(255, 246, 236, 0.34), transparent 26%),
+    radial-gradient(
+      circle at 24% 20%,
+      rgba(255, 255, 255, 0.62),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 72% 31%,
+      rgba(255, 246, 236, 0.34),
+      transparent 26%
+    ),
     linear-gradient(135deg, rgba(255, 255, 255, 0.22), rgba(196, 221, 235, 0.1));
   opacity: 0.78;
 }
@@ -596,648 +445,14 @@
   line-height: 1.09;
 }
 
-@media (max-width: 1100px) {
-  .aboutBannerInner,
-  .aboutBannerCopy {  
-      min-height: 650px;  
-    }
-  
-  .aboutBannerCopy {  
-      width: 52%;  
-    }
-  
-  .aboutBannerVisual {  
-      inset: 0 0 0 50% !important;  
-    }
-  
-  .aboutBannerImageOne {  
-      transform: translateX(0) translateY(0) scale(1.01);  
-    }
-  
-  .aboutBannerImageTwo {  
-      transform: translateX(-6.4%) translateY(32px) scale(0.995);  
-    }
-  
-  .aboutBannerStats {  
-      right: -12px;  
-      bottom: 40px;  
-      width: 54%;  
-      gap: 12px;  
-    }
-}
-
-@media (max-width: 760px) {
-  .aboutBannerInner {  
-      min-height: 920px;  
-    }
-  
-  .aboutBannerCopy {  
-      width: 100%;  
-      min-height: 510px;  
-    }
-  
-  .aboutBannerVisual {  
-      inset: auto 0 0 0 !important;  
-      top: 455px;  
-      height: 465px;  
-      overflow: hidden;  
-    }
-  
-  .aboutBannerImageOne,
-  .aboutBannerImageTwo {  
-      object-fit: cover !important;  
-      object-position: 63% top !important;  
-      transform: scale(1.03);  
-    }
-  
-  .aboutBannerStats {  
-      right: 12px;  
-      bottom: 16px;  
-      left: 12px;  
-      width: auto;  
-      gap: 7px;  
-    }
-  
-  .aboutBannerStat {  
-      min-height: 114px;  
-      padding: 12px 6px;  
-      border-radius: 14px;  
-      box-shadow:  
-        inset 0 1px 0 rgba(255, 255, 255, 0.84),  
-        0 16px 36px rgba(53, 84, 101, 0.16),  
-        0 6px 15px rgba(8, 126, 150, 0.08);  
-    }
-}
-
 .aboutBanner {
   overflow-x: clip;
-}
-
-@media (max-width: 1200px) {
-  .aboutBannerInner,
-  .aboutBannerCopy {  
-      min-height: 650px;  
-    }
-  
-  .aboutBannerCopy {  
-      width: 52%;  
-      padding: 42px 0 88px 56px;  
-    }
-  
-  .aboutBannerLogo {  
-      width: 260px;  
-      height: 104px;  
-    }
-  
-  .aboutBannerContent h1 {  
-      max-width: 650px;  
-      font-size: 64px;  
-      line-height: 1.06;  
-      letter-spacing: -1.5px;  
-    }
-  
-  .aboutBannerContent p {  
-      max-width: 410px;  
-      font-size: 16px;  
-      line-height: 1.52;  
-    }
-  
-  .aboutBannerNav {  
-      top: 52px;  
-      left: 360px;  
-    }
-  
-  .aboutBannerVisual {  
-      inset: 0 0 0 50% !important;  
-    }
-  
-  .aboutBannerImageOne {  
-      transform: translateX(0) translateY(0) scale(1.01);  
-    }
-  
-  .aboutBannerImageTwo {  
-      transform: translateX(-6.2%) translateY(32px) scale(0.995);  
-    }
-  
-  .aboutBannerStats {  
-      right: -12px;  
-      bottom: 40px;  
-      width: 54%;  
-      gap: 12px;  
-    }
-  
-  .aboutBannerStat {  
-      min-height: 156px;  
-      padding: 20px 16px 18px;  
-    }
-  
-  .aboutBannerStat strong {  
-      font-size: 24px;  
-      line-height: 1.08;  
-    }
-}
-
-@media (max-width: 992px) {
-  .aboutBannerInner {  
-      min-height: 1040px;  
-    }
-  
-  .aboutBannerCopy {  
-      width: 100%;  
-      min-height: 520px;  
-      padding: 34px 40px 56px;  
-    }
-  
-  .aboutBannerLogo {  
-      width: 230px;  
-      height: 92px;  
-    }
-  
-  .aboutBannerNav {  
-      top: 46px;  
-      left: auto;  
-      right: 40px;  
-    }
-  
-  .aboutBannerContent {  
-      max-width: 640px;  
-      margin-top: 42px;  
-      margin-bottom: 0;  
-    }
-  
-  .aboutBannerContent h1 {  
-      max-width: 620px;  
-      font-size: 58px;  
-      line-height: 1.06;  
-      letter-spacing: -1.2px;  
-    }
-  
-  .aboutBannerContent p {  
-      max-width: 520px;  
-    }
-  
-  .aboutBannerVisual {  
-      inset: auto 0 0 0 !important;  
-      top: 500px;  
-      height: 540px;  
-      overflow: hidden;  
-    }
-  
-  .aboutBannerImageOne {  
-      object-fit: cover !important;  
-      object-position: right top !important;  
-      transform: scale(1.02);  
-    }
-  
-  .aboutBannerImageTwo {  
-      object-fit: contain !important;  
-      object-position: right top !important;  
-      transform: translateX(-3%) translateY(18px) scale(0.98);  
-    }
-  
-  .aboutBannerStats {  
-      left: 34px;  
-      right: 34px;  
-      bottom: 28px;  
-      width: auto;  
-      gap: 14px;  
-    }
-  
-  .aboutBannerStat {  
-      min-height: 146px;  
-      border-radius: 16px;  
-    }
-  
-  .aboutBannerStat strong {  
-      font-size: 21px;  
-    }
-}
-
-@media (max-width: 768px) {
-  .aboutBannerInner {  
-      min-height: 980px;  
-    }
-  
-  .aboutBannerCopy {  
-      min-height: 500px;  
-      padding: 26px 24px 44px;  
-    }
-  
-  .aboutBannerLogo {  
-      width: 210px;  
-      height: 84px;  
-    }
-  
-  .aboutBannerNav {  
-      top: 28px;  
-      right: 24px;  
-      gap: 14px;  
-    }
-  
-  .aboutBannerNav a {  
-      display: none;  
-    }
-  
-  .aboutBannerContent {  
-      margin-top: 40px;  
-    }
-  
-  .aboutBannerContent h1 {  
-      max-width: 590px;  
-      font-size: clamp(44px, 8vw, 56px);  
-      line-height: 1.06;  
-    }
-  
-  .aboutBannerContent p {  
-      max-width: 92%;  
-      margin-top: 22px;  
-      font-size: 15px;  
-    }
-  
-  .aboutBannerActions {  
-      flex-wrap: wrap;  
-      gap: 12px;  
-      margin-top: 28px;  
-    }
-  
-  .aboutBannerButton {  
-      min-height: 48px;  
-      min-width: 156px;  
-      font-size: 13px;  
-    }
-  
-  .aboutBannerVisual {  
-      top: 500px;  
-      height: 480px;  
-    }
-  
-  .aboutBannerImageOne,
-  .aboutBannerImageTwo {  
-      object-fit: cover !important;  
-      object-position: 62% top !important;  
-      transform: scale(1.03);  
-    }
-  
-  .aboutBannerStats {  
-      left: 18px;  
-      right: 18px;  
-      bottom: 18px;  
-      gap: 8px;  
-    }
-  
-  .aboutBannerStat {  
-      min-height: 116px;  
-      padding: 12px 8px;  
-      border-radius: 14px;  
-    }
-  
-  .aboutBannerStatIcon {  
-      width: 36px;  
-      height: 36px;  
-      margin-bottom: 10px;  
-    }
-  
-  .aboutBannerStat strong {  
-      font-size: 13px;  
-      line-height: 1.1;  
-    }
-}
-
-@media (max-width: 576px) {
-  .aboutBannerInner {  
-      min-height: 900px;  
-    }
-  
-  .aboutBannerCopy {  
-      min-height: 470px;  
-      padding: 22px 18px 36px;  
-    }
-  
-  .aboutBannerLogo {  
-      width: 190px;  
-      height: 76px;  
-    }
-  
-  .aboutBannerNav {  
-      top: 24px;  
-      right: 18px;  
-    }
-  
-  .aboutBannerNav button {  
-      width: 44px;  
-      height: 30px;  
-    }
-  
-  .aboutBannerContent h1 {  
-      font-size: clamp(40px, 12vw, 52px);  
-      line-height: 1.05;  
-    }
-  
-  .aboutBannerContent p {  
-      font-size: 14px;  
-      line-height: 1.5;  
-    }
-  
-  .aboutBannerButton {  
-      min-width: 0;  
-      padding: 0 18px;  
-    }
-  
-  .aboutBannerVisual {  
-      top: 470px;  
-      height: 430px;  
-    }
-  
-  .aboutBannerStats {  
-      grid-template-columns: repeat(3, minmax(0, 1fr));  
-      left: 10px;  
-      right: 10px;  
-      bottom: 12px;  
-      gap: 6px;  
-    }
-  
-  .aboutBannerStat {  
-      min-height: 104px;  
-      padding: 10px 5px;  
-    }
-  
-  .aboutBannerStatIcon {  
-      width: 31px;  
-      height: 31px;  
-      margin-bottom: 8px;  
-    }
-  
-  .aboutBannerStat strong {  
-      font-size: 11px;  
-      line-height: 1.08;  
-    }
-}
-
-@media (max-width: 390px) {
-  .aboutBannerInner {  
-      min-height: 850px;  
-    }
-  
-  .aboutBannerCopy {  
-      min-height: 440px;  
-      padding: 18px 14px 30px;  
-    }
-  
-  .aboutBannerLogo {  
-      width: 170px;  
-      height: 68px;  
-    }
-  
-  .aboutBannerContent {  
-      margin-top: 32px;  
-    }
-  
-  .aboutBannerContent h1 {  
-      font-size: clamp(34px, 12vw, 44px);  
-      letter-spacing: -0.9px;  
-    }
-  
-  .aboutBannerContent p {  
-      max-width: 100%;  
-      font-size: 13px;  
-    }
-  
-  .aboutBannerActions {  
-      gap: 8px;  
-    }
-  
-  .aboutBannerButton {  
-      min-height: 42px;  
-      padding: 0 14px;  
-      font-size: 12px;  
-    }
-  
-  .aboutBannerVisual {  
-      top: 440px;  
-      height: 410px;  
-    }
-  
-  .aboutBannerStats {  
-      left: 8px;  
-      right: 8px;  
-      gap: 5px;  
-    }
-  
-  .aboutBannerStat {  
-      min-height: 94px;  
-      padding: 8px 4px;  
-      border-radius: 12px;  
-    }
-  
-  .aboutBannerStatIcon {  
-      width: 28px;  
-      height: 28px;  
-      margin-bottom: 6px;  
-    }
-  
-  .aboutBannerStatIcon svg {  
-      width: 15px;  
-      height: 15px;  
-    }
-  
-  .aboutBannerStat strong {  
-      font-size: 10px;  
-    }
-}
-
-@media (max-width: 576px) {
-  .aboutBannerInner {  
-      min-height: 1370px;  
-    }
-  
-  .aboutBannerVisual {  
-      top: 470px;  
-      height: 430px;  
-      bottom: auto !important;  
-    }
-  
-  .aboutBannerStats {  
-      position: absolute;  
-      top: 925px;  
-      left: 18px;  
-      right: 18px;  
-      bottom: auto;  
-      width: auto;  
-      display: flex;  
-      flex-direction: column;  
-      gap: 14px;  
-      z-index: 9;  
-    }
-  
-  .aboutBannerStat {  
-      width: 100%;  
-      min-height: 122px;  
-      padding: 18px 20px;  
-      border-radius: 16px;  
-    }
-  
-  .aboutBannerStatIcon {  
-      width: 40px;  
-      height: 40px;  
-      margin-bottom: 10px;  
-    }
-  
-  .aboutBannerStat strong {  
-      font-size: 18px;  
-      line-height: 1.12;  
-    }
-}
-
-@media (max-width: 390px) {
-  .aboutBannerInner {  
-      min-height: 1270px;  
-    }
-  
-  .aboutBannerVisual {  
-      top: 440px;  
-      height: 410px;  
-    }
-  
-  .aboutBannerStats {  
-      top: 872px;  
-      left: 14px;  
-      right: 14px;  
-      gap: 12px;  
-    }
-  
-  .aboutBannerStat {  
-      min-height: 112px;  
-      padding: 30px 18px;  
-    }
-  
-  .aboutBannerStatIcon {  
-      width: 36px;  
-      height: 36px;  
-      margin-bottom: 8px;  
-    }
-  
-  .aboutBannerStat strong {  
-      font-size: 16px;  
-      line-height: 1.12;  
-    }
-}
-
-@media (max-width: 576px) {
-  .aboutBannerVisual {  
-      left: 0 !important;  
-      right: 0 !important;  
-      width: 100% !important;  
-      overflow: hidden;  
-    }
-  
-  .aboutBannerImageOne,
-  .aboutBannerImageTwo {  
-      object-fit: cover !important;  
-      object-position: center top !important;  
-      transform: none !important;  
-    }
-  
-  .aboutBannerStat {  
-      max-width: 100%;  
-      transform: none !important;  
-    }
-  
-  .aboutBannerStat strong,
-  .aboutBannerStatIcon {  
-      transform: none !important;  
-    }
-}
-
-@media (max-width: 390px) {
-  .aboutBannerImageOne,
-  .aboutBannerImageTwo {  
-      object-position: center top !important;  
-    }
-}
-
-@media (max-width: 576px) {
-  .aboutBannerInner {  
-      min-height: 1420px;  
-    }
-  
-  .aboutBannerVisual {  
-      top: 470px;  
-      height: 420px;  
-    }
-  
-  .aboutBannerStats {  
-      top: 930px;  
-    }
-}
-
-@media (max-width: 390px) {
-  .aboutBannerInner {  
-      min-height: 1420px;  
-    }
-  
-  .aboutBannerVisual {  
-      top: 440px;  
-      height: 390px;  
-    }
-  
-  .aboutBannerStats {  
-      top: 910px;  
-    }
 }
 
 .aboutBannerNavLinks {
   display: flex;
   align-items: center;
   gap: 28px;
-}
-
-@media (max-width: 760px) {
-  .aboutBannerNav {  
-      z-index: 30;  
-      align-items: flex-start;  
-    }
-  
-  .aboutBannerNavLinks {  
-      position: absolute;  
-      top: calc(100% + 10px);  
-      right: 0;  
-      min-width: 154px;  
-      padding: 10px;  
-      border: 1px solid rgba(20, 189, 221, 0.18);  
-      border-radius: 16px;  
-      display: flex;  
-      flex-direction: column;  
-      align-items: stretch;  
-      gap: 4px;  
-      background: rgba(255, 255, 255, 0.96);  
-      box-shadow: 0 18px 42px rgba(42, 58, 70, 0.14);  
-      opacity: 0;  
-      pointer-events: none;  
-      transform: translateY(-8px);  
-      transition: opacity 180ms ease, transform 180ms ease;  
-    }
-  
-  .aboutBannerNav.aboutBannerNavOpen .aboutBannerNavLinks {  
-      opacity: 1;  
-      pointer-events: auto;  
-      transform: translateY(0);  
-    }
-  
-  .aboutBannerNav .aboutBannerNavLinks a {  
-      display: block;  
-      padding: 10px 14px;  
-      border-radius: 10px;  
-      color: #243542;  
-      font-size: 14px;  
-      line-height: 1.1;  
-      text-align: left;  
-      white-space: nowrap;  
-    }
-  
-  .aboutBannerNav .aboutBannerNavLinks a:hover {  
-      background: rgba(18, 195, 229, 0.1);  
-      color: #0faed0;  
-    }
 }
 
 .aboutBannerNav button {
@@ -1258,19 +473,6 @@
   stroke-linejoin: round;
 }
 
-@media (max-width: 760px) {
-  .aboutBannerNav button {  
-      width: 54px;  
-      height: 38px;  
-    }
-  
-  .aboutBannerNav button svg {  
-      width: 28px;  
-      height: 20px;  
-      stroke-width: 2.7;  
-    }
-}
-
 .aboutBannerNav button {
   width: 72px;
   height: 42px;
@@ -1287,8 +489,11 @@
 
 .aboutBannerStat {
   border: 1px solid rgba(255, 255, 255, 0.76) !important;
-  background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.62), rgba(221, 239, 248, 0.34)) !important;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.62),
+    rgba(221, 239, 248, 0.34)
+  ) !important;
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.88),
     inset 0 -1px 0 rgba(255, 255, 255, 0.28),
@@ -1300,9 +505,21 @@
 
 .aboutBannerStat::before {
   background:
-    radial-gradient(circle at 22% 16%, rgba(255, 255, 255, 0.88), transparent 31%),
-    radial-gradient(circle at 76% 28%, rgba(201, 229, 244, 0.62), transparent 32%),
-    linear-gradient(120deg, rgba(255, 255, 255, 0.42), rgba(255, 255, 255, 0.05)) !important;
+    radial-gradient(
+      circle at 22% 16%,
+      rgba(255, 255, 255, 0.88),
+      transparent 31%
+    ),
+    radial-gradient(
+      circle at 76% 28%,
+      rgba(201, 229, 244, 0.62),
+      transparent 32%
+    ),
+    linear-gradient(
+      120deg,
+      rgba(255, 255, 255, 0.42),
+      rgba(255, 255, 255, 0.05)
+    ) !important;
   opacity: 1 !important;
 }
 
@@ -1312,7 +529,11 @@
   inset: 1px;
   border-radius: inherit;
   pointer-events: none;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.52), transparent 44%);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.52),
+    transparent 44%
+  );
   opacity: 0.62;
 }
 
@@ -1322,27 +543,27 @@
   z-index: 2;
 }
 
-@media (max-width: 760px) {
-  .aboutBannerNav button {  
-      width: 46px;  
-      height: 34px;  
-    }
-  
-  .aboutBannerNav button svg {  
-      width: 24px;  
-      height: 17px;  
-      stroke-width: 2.6;  
-    }
-}
-
 .aboutBannerStat {
   position: relative;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.78) !important;
   background:
-    radial-gradient(circle at 18% 16%, rgba(255, 255, 255, 0.78), rgba(255, 255, 255, 0) 34%),
-    radial-gradient(circle at 76% 18%, rgba(224, 243, 252, 0.58), rgba(224, 243, 252, 0) 36%),
-    linear-gradient(145deg, rgba(238, 247, 252, 0.6) 0%, rgba(213, 232, 244, 0.38) 50%, rgba(255, 255, 255, 0.52) 100%) !important;
+    radial-gradient(
+      circle at 18% 16%,
+      rgba(255, 255, 255, 0.78),
+      rgba(255, 255, 255, 0) 34%
+    ),
+    radial-gradient(
+      circle at 76% 18%,
+      rgba(224, 243, 252, 0.58),
+      rgba(224, 243, 252, 0) 36%
+    ),
+    linear-gradient(
+      145deg,
+      rgba(238, 247, 252, 0.6) 0%,
+      rgba(213, 232, 244, 0.38) 50%,
+      rgba(255, 255, 255, 0.52) 100%
+    ) !important;
   box-shadow:
     inset 0 1px 1px rgba(255, 255, 255, 0.96),
     inset 0 -1px 0 rgba(145, 178, 198, 0.2),
@@ -1354,9 +575,21 @@
 
 .aboutBannerStat::before {
   background:
-    radial-gradient(circle at 24% 20%, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0) 32%),
-    radial-gradient(circle at 70% 25%, rgba(192, 223, 241, 0.58), rgba(192, 223, 241, 0) 34%),
-    linear-gradient(120deg, rgba(255, 255, 255, 0.44), rgba(255, 255, 255, 0.06)) !important;
+    radial-gradient(
+      circle at 24% 20%,
+      rgba(255, 255, 255, 0.9),
+      rgba(255, 255, 255, 0) 32%
+    ),
+    radial-gradient(
+      circle at 70% 25%,
+      rgba(192, 223, 241, 0.58),
+      rgba(192, 223, 241, 0) 34%
+    ),
+    linear-gradient(
+      120deg,
+      rgba(255, 255, 255, 0.44),
+      rgba(255, 255, 255, 0.06)
+    ) !important;
   opacity: 1 !important;
 }
 
@@ -1366,95 +599,12 @@
   inset: 1px;
   border-radius: inherit;
   pointer-events: none;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.56), rgba(255, 255, 255, 0) 44%);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.56),
+    rgba(255, 255, 255, 0) 44%
+  );
   opacity: 0.66;
-}
-
-@media (max-width: 760px) {
-  .aboutBannerNav {  
-      position: absolute !important;  
-      top: 24px !important;  
-      right: 24px !important;  
-      left: auto !important;  
-      z-index: 100 !important;  
-      display: flex;  
-      align-items: center;  
-      gap: 0;  
-    }
-  
-  .aboutBannerNavLinks a {  
-      display: none !important;  
-    }
-  
-  .aboutBannerNav.aboutBannerNavOpen .aboutBannerNavLinks {  
-      display: flex !important;  
-      flex-direction: column;  
-      position: absolute;  
-      top: 0;  
-      right: 0;  
-      width: 240px;  
-      padding: 24px;  
-      border-radius: 20px;  
-      align-items: stretch;  
-      gap: 4px;  
-      background: rgba(255, 255, 255, 0.96);  
-      backdrop-filter: blur(24px);  
-      -webkit-backdrop-filter: blur(24px);  
-      box-shadow: 0 20px 48px rgba(39, 55, 65, 0.16);  
-      border: 1px solid rgba(0, 0, 0, 0.04);  
-      opacity: 1 !important;  
-      pointer-events: auto;  
-      visibility: visible;  
-      z-index: 1000;  
-    }
-  
-  .aboutBannerNav.aboutBannerNavOpen .aboutBannerNavLinks a {  
-      display: block !important;  
-      padding: 12px 14px !important;  
-      color: #151c23 !important;  
-      font-size: 16px !important;  
-      font-weight: 500 !important;  
-      border-radius: 12px !important;  
-      background: transparent !important;  
-      transition: background-color 0.2s ease !important;  
-    }
-  
-  .aboutBannerNav.aboutBannerNavOpen .aboutBannerNavLinks a:hover {  
-      background-color: rgba(22, 193, 228, 0.08) !important;  
-      color: #15bfdf !important;  
-    }
-  
-  .aboutBannerNav button {  
-      position: relative;  
-      z-index: 102;  
-      width: 52px !important;  
-      height: 34px !important;  
-      border-radius: 999px !important;  
-      background: #16c1e4 !important;  
-      box-shadow: 0 14px 28px rgba(22, 193, 228, 0.26) !important;  
-      display: grid;  
-      place-items: center;  
-      border: 0;  
-      cursor: pointer;  
-    }
-  
-  .aboutBannerNav.aboutBannerNavOpen button {  
-      align-self: flex-end;  
-      margin-top: 12px;  
-      order: 999;  
-    }
-  
-  .aboutBannerNav button svg {  
-      width: 22px !important;  
-      height: 16px !important;  
-      stroke-width: 2.4 !important;  
-    }
-}
-
-@media (max-width: 390px) {
-  .aboutBannerNav .aboutBannerNavLinks {  
-      width: calc(100vw - 48px) !important;  
-    }
 }
 
 .aboutBannerStatIcon {
@@ -1477,32 +627,10 @@
   stroke-width: 1.9 !important;
 }
 
-@media (max-width: 576px) {
-  .aboutBannerStatIcon {  
-      width: 44px !important;  
-      height: 44px !important;  
-      min-width: 44px !important;  
-      min-height: 44px !important;  
-      margin-bottom: 16px !important;  
-    }
-  
-  .aboutBannerStatIcon svg {  
-      width: 22px !important;  
-      height: 22px !important;  
-    }
-}
-
 .aboutBannerStatIcon img {
   width: 34px !important;
   height: 34px !important;
   object-fit: contain !important;
-}
-
-@media (max-width: 576px) {
-  .aboutBannerStatIcon img {  
-      width: 22px !important;  
-      height: 22px !important;  
-    }
 }
 
 .aboutBannerStatIcon img {
@@ -1510,38 +638,26 @@
   height: 25px !important;
 }
 
-@media (max-width: 576px) {
-  .aboutBannerStatIcon img {  
-      width: 18px !important;  
-      height: 18px !important;  
-    }
+.aboutBannerStatIcon {
+  width: 62px !important;
+
+  height: 62px !important;
+
+  min-width: 62px !important;
+
+  min-height: 62px !important;
+
+  margin-bottom: 30px !important;
 }
 
-@media (min-width: 577px) {
-  .aboutBannerStatIcon {  
-      width: 62px !important;  
-      height: 62px !important;  
-      min-width: 62px !important;  
-      min-height: 62px !important;  
-      margin-bottom: 30px !important;  
-    }
-  
-  .aboutBannerStatIcon img {  
-      width: 22px !important;  
-      height: 22px !important;  
-    }
+.aboutBannerStatIcon img {
+  width: 22px !important;
+
+  height: 22px !important;
 }
 
-@media (min-width: 577px) {
-  .aboutBannerStatIcon {  
-      margin-bottom: 18px !important;  
-    }
-}
-
-@media (max-width: 576px) {
-  .aboutBannerStatIcon {  
-      margin-bottom: 10px !important;  
-    }
+.aboutBannerStatIcon {
+  margin-bottom: 18px !important;
 }
 
 .ctaButton {
@@ -1558,7 +674,18 @@
   font-size: 17px;
   font-weight: 500;
   white-space: nowrap;
-  transition: box-shadow 240ms var(--ease), border-color 240ms var(--ease);
+  transition:
+    box-shadow 240ms var(--ease),
+    border-color 240ms var(--ease),
+    transform 240ms var(--ease);
+}
+
+.ctaButton:hover {
+  transform: scale(1.04);
+}
+
+.ctaButton:active {
+  transform: scale(0.98);
 }
 
 .ctaButtonPrimary {
@@ -1590,17 +717,10 @@
     right 0.75s var(--ease),
     border-radius 0.75s var(--ease),
     background 0.75s var(--ease);
-  }
+}
 
 .ctaButtonSecondary .ctaButtonFill {
   background: rgba(36, 197, 232, 0.94);
-}
-
-.ctaButton:hover .ctaButtonFill {
-  right: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 70px;
 }
 
 .ctaButtonText {
@@ -1612,14 +732,6 @@
   transition: color 0.75s var(--ease);
 }
 
-.ctaButtonPrimary:hover .ctaButtonText {
-  color: var(--ink);
-}
-
-.ctaButtonSecondary:hover .ctaButtonText {
-  color: var(--white);
-}
-
 .arrowIcon {
   position: relative;
   z-index: 3;
@@ -1627,9 +739,1992 @@
   height: 28px;
   display: grid;
   place-items: center;
-  background: center / contain no-repeat url("/assets/home_logos/Button_arrow.png");
+  background: center / contain no-repeat
+    url("/assets/home_logos/Button_arrow.png");
 }
 
 .arrowIcon span {
   display: none;
+}
+
+/* -- Treatments dropdown -- */
+.dropdown {
+  position: relative;
+}
+
+.dropdownTrigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: inherit;
+  font-weight: 500;
+  color: inherit;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 180ms ease;
+  font-family: inherit;
+}
+
+.dropdownTrigger:hover {
+  color: #14bddd;
+}
+
+.chevron {
+  transition: transform 0.22s ease;
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 160px;
+  background: rgba(255, 255, 255, 0.97);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 12px;
+  box-shadow: 0 16px 40px rgba(39, 55, 65, 0.14);
+  overflow: hidden;
+  z-index: 100;
+  animation: dropIn 0.18s ease both;
+}
+
+@keyframes dropIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+.dropdownItem {
+  display: block;
+  padding: 11px 18px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #151c23;
+  transition:
+    background 0.18s ease,
+    color 0.18s ease;
+  white-space: nowrap;
+}
+
+.dropdownItem:hover {
+  background: rgba(22, 193, 228, 0.08);
+  color: #16c1e4;
+}
+
+/* Figma-style about hero buttons: no arrow, no border */
+.ctaButton {
+  min-height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  column-gap: 0;
+  padding: 0 34px;
+  box-shadow: none;
+  font-size: 14px;
+  line-height: 1;
+  font-weight: 500;
+  transition:
+    background-color 220ms var(--ease),
+    color 220ms var(--ease),
+    box-shadow 220ms var(--ease),
+    transform 220ms var(--ease);
+}
+
+.ctaButton:hover {
+  transform: scale(1.04);
+}
+
+.ctaButton:active {
+  transform: scale(0.98);
+}
+
+.ctaButtonPrimary {
+  min-width: 166px;
+  color: var(--white);
+  background: var(--aqua);
+  box-shadow: 0 12px 22px rgba(36, 197, 232, 0.18);
+}
+
+.ctaButtonSecondary {
+  min-width: 173px;
+  color: #2c3e50;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.ctaButtonFill,
+.arrowIcon {
+  display: none;
+}
+
+/* About navbar treatment dropdown correction */
+.aboutBannerNav .dropdownTrigger {
+  width: auto !important;
+  height: auto !important;
+  min-width: 0 !important;
+  margin-left: 0 !important;
+  padding: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 4px !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  color: inherit !important;
+  font: inherit !important;
+  font-weight: 500 !important;
+  line-height: inherit !important;
+  white-space: nowrap !important;
+}
+
+.aboutBannerNav .dropdownTrigger:hover {
+  color: #14bddd !important;
+}
+
+.aboutBannerNav .dropdownTrigger .chevron {
+  width: 12px !important;
+  height: 12px !important;
+  color: currentColor !important;
+  fill: none !important;
+  stroke: currentColor !important;
+  stroke-width: 0 !important;
+  transition: transform 0.22s ease !important;
+}
+
+.aboutBannerNav .dropdownTrigger .chevron path {
+  stroke-width: 1.6 !important;
+  stroke-linecap: round !important;
+  stroke-linejoin: round !important;
+}
+@media (max-width: 1600px) {
+  .aboutBannerStats {
+    right: -16px;
+    bottom: 32px;
+    z-index: 8;
+    width: 54.2%;
+    gap: 55px !important;
+    align-items: end;
+    width: min(1100px, 59.5vw) !important;
+  }
+
+  .aboutBannerStat {
+    position: relative;
+    overflow: hidden;
+    min-height: 172px;
+    padding: 24px 22px 20px;
+    border: 1px solid rgba(255, 255, 255, 0.74);
+    border-radius: 18px;
+    background: rgba(229, 241, 248, 0.48);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.9),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.2),
+      0 26px 58px rgba(38, 67, 83, 0.14),
+      0 9px 22px rgba(9, 112, 136, 0.055);
+    backdrop-filter: blur(20px) saturate(1.08);
+    -webkit-backdrop-filter: blur(20px) saturate(1.08);
+  }
+
+  .aboutBannerStat::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    background:
+      radial-gradient(
+        circle at 24% 20%,
+        rgba(255, 255, 255, 0.62),
+        transparent 30%
+      ),
+      radial-gradient(
+        circle at 72% 31%,
+        rgba(255, 246, 236, 0.34),
+        transparent 26%
+      ),
+      linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.22),
+        rgba(196, 221, 235, 0.1)
+      );
+    opacity: 0.78;
+  }
+
+  .aboutBannerStatIcon,
+  .aboutBannerStat strong {
+    position: relative;
+    z-index: 1;
+  }
+
+  .aboutBannerStat strong {
+    font-size: clamp(22px, 1.5vw, 29px);
+    line-height: 1.09;
+  }
+  .aboutBannerStat {
+    border: 1px solid rgba(255, 255, 255, 0.76) !important;
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.62),
+      rgba(221, 239, 248, 0.34)
+    ) !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.88),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.28),
+      0 28px 62px rgba(28, 56, 73, 0.16),
+      0 8px 18px rgba(13, 110, 136, 0.08) !important;
+    backdrop-filter: blur(26px) saturate(1.18) !important;
+    -webkit-backdrop-filter: blur(26px) saturate(1.18) !important;
+  }
+
+  .aboutBannerStat::before {
+    background:
+      radial-gradient(
+        circle at 22% 16%,
+        rgba(255, 255, 255, 0.88),
+        transparent 31%
+      ),
+      radial-gradient(
+        circle at 76% 28%,
+        rgba(201, 229, 244, 0.62),
+        transparent 32%
+      ),
+      linear-gradient(
+        120deg,
+        rgba(255, 255, 255, 0.42),
+        rgba(255, 255, 255, 0.05)
+      ) !important;
+    opacity: 1 !important;
+  }
+
+  .aboutBannerStat::after {
+    content: "";
+    position: absolute;
+    inset: 1px;
+    border-radius: inherit;
+    pointer-events: none;
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.52),
+      transparent 44%
+    );
+    opacity: 0.62;
+  }
+
+  .aboutBannerStatIcon,
+  .aboutBannerStat strong {
+    position: relative;
+    z-index: 2;
+  }
+
+  .aboutBannerStat {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.78) !important;
+    background:
+      radial-gradient(
+        circle at 18% 16%,
+        rgba(255, 255, 255, 0.78),
+        rgba(255, 255, 255, 0) 34%
+      ),
+      radial-gradient(
+        circle at 76% 18%,
+        rgba(224, 243, 252, 0.58),
+        rgba(224, 243, 252, 0) 36%
+      ),
+      linear-gradient(
+        145deg,
+        rgba(238, 247, 252, 0.6) 0%,
+        rgba(213, 232, 244, 0.38) 50%,
+        rgba(255, 255, 255, 0.52) 100%
+      ) !important;
+    box-shadow:
+      inset 0 1px 1px rgba(255, 255, 255, 0.96),
+      inset 0 -1px 0 rgba(145, 178, 198, 0.2),
+      0 28px 62px rgba(38, 65, 82, 0.18),
+      0 9px 22px rgba(7, 88, 112, 0.08) !important;
+    backdrop-filter: blur(30px) saturate(1.18) !important;
+    -webkit-backdrop-filter: blur(30px) saturate(1.18) !important;
+  }
+
+  .aboutBannerStat::before {
+    background:
+      radial-gradient(
+        circle at 24% 20%,
+        rgba(255, 255, 255, 0.9),
+        rgba(255, 255, 255, 0) 32%
+      ),
+      radial-gradient(
+        circle at 70% 25%,
+        rgba(192, 223, 241, 0.58),
+        rgba(192, 223, 241, 0) 34%
+      ),
+      linear-gradient(
+        120deg,
+        rgba(255, 255, 255, 0.44),
+        rgba(255, 255, 255, 0.06)
+      ) !important;
+    opacity: 1 !important;
+  }
+
+  .aboutBannerStat::after {
+    content: "";
+    position: absolute;
+    inset: 1px;
+    border-radius: inherit;
+    pointer-events: none;
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.56),
+      rgba(255, 255, 255, 0) 44%
+    );
+    opacity: 0.66;
+  }
+
+  .aboutBannerStatIcon {
+    width: 74px !important;
+    height: 74px !important;
+    min-width: 74px !important;
+    min-height: 74px !important;
+    margin: 0 0 36px !important;
+    border-radius: 999px !important;
+    display: grid !important;
+    place-items: center !important;
+    background: rgba(173, 201, 218, 0.58) !important;
+    color: #075c6c !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16) !important;
+  }
+
+  .aboutBannerStatIcon svg {
+    width: 33px !important;
+    height: 33px !important;
+    stroke-width: 1.9 !important;
+  }
+
+  .aboutBannerStatIcon img {
+    width: 34px !important;
+    height: 34px !important;
+    object-fit: contain !important;
+  }
+
+  .aboutBannerStatIcon img {
+    width: 25px !important;
+    height: 25px !important;
+  }
+
+  .aboutBannerStatIcon {
+    width: 62px !important;
+
+    height: 62px !important;
+
+    min-width: 62px !important;
+
+    min-height: 62px !important;
+
+    margin-bottom: 30px !important;
+  }
+
+  .aboutBannerStatIcon img {
+    width: 22px !important;
+
+    height: 22px !important;
+  }
+
+  .aboutBannerStatIcon {
+    margin-bottom: 18px !important;
+  }
+  .aboutBannerImageTwo{
+    object-position: center 0% !important;
+    transform: translate(0.8%) translateX(70px) scale(1.35) !important;
+
+  }
+}
+
+@media (max-width: 1500px){
+  .aboutBannerStats{
+    width: min(1100px, 57.5vw) !important;
+    gap: 60.8px !important;
+  }
+   .aboutBannerStat {
+    aspect-ratio: 305.23 / 265.82 !important;
+  }
+  .aboutBannerImageTwo{
+    transform: translate(0.8%) translateX(90px) scale(1.38) !important;
+  }
+}
+@media (max-width: 1400px) {
+  .aboutBannerStats{
+    width: min(1000px, 58.5vw) !important;
+    gap: 55.8px !important;
+  }
+  .aboutBannerStat {
+    aspect-ratio: 280.23 / 265.82 !important;
+  }
+  .aboutBannerImageTwo{
+    transform: translate(0.8%) translateX(120px) scale(1.38) !important;
+    object-position: center 10% !important;
+  }
+    .aboutBannerContent p{
+    max-width: 420px;
+  }
+}
+@media (max-width: 1300px) {
+  .aboutBannerStats{
+    width: min(1000px, 58.5vw) !important;
+    gap: 40.8px !important;
+    bottom: 70px !important;
+  }
+  .aboutBannerImageTwo{
+    transform: translate(0.8%) translateX(140px) scale(1.5) !important;
+    object-position: center 16% !important;
+  }
+  .aboutBannerStat {
+    min-height: 230.82px !important;
+    aspect-ratio: 272.23 / 265.82 !important;
+    
+  }
+  .aboutBannerStat strong{
+font-size: 24px !important;
+  }
+  .aboutBannerContent p{
+    max-width: 390px;
+  }
+}
+@media (max-width: 1200px) {
+  .aboutBannerInner,
+  .aboutBannerCopy {
+    min-height: 650px;
+  }
+
+  .aboutBannerCopy {
+    width: 54%;
+
+    padding-left: 42px;
+  }
+
+  .aboutBannerContent h1 {
+    font-size: 52px;
+  }
+
+  .aboutBannerContent p {
+    max-width: 390px;
+
+    font-size: 16px;
+  }
+
+  .aboutBannerVisual {
+    left: 35%;
+  }
+
+  .aboutBannerNav {
+    left: 10%;
+  }
+
+  .aboutBannerStats {
+    width: 61%;
+
+    gap: 10px;
+  }
+
+  .aboutBannerStat {
+    min-height: 164px;
+
+    padding-inline: 14px;
+  }
+
+  .aboutBannerContent h1 {
+    font-size: 64px;
+
+    line-height: 68px;
+
+    letter-spacing: -1.6px;
+  }
+
+  .aboutBannerNav {
+    top: 52px;
+
+    left: 5%;
+  }
+
+  .aboutBannerStat strong {
+    font-size: 24px;
+
+    line-height: 25px;
+  }
+
+  .aboutBannerNav {
+    top: 52px;
+
+    left: 382px;
+  }
+
+  .aboutBannerInner,
+  .aboutBannerCopy {
+    min-height: 650px;
+  }
+
+  .aboutBannerCopy {
+    width: 52%;
+  }
+
+  .aboutBannerVisual {
+    inset: 0 0 0 50% !important;
+  }
+
+  .aboutBannerImageOne {
+    transform: translateX(0) translateY(0) scale(1.01);
+  }
+
+  .aboutBannerImageTwo {
+    transform: translateX(-6.4%) translateY(32px) scale(0.995);
+  }
+
+  .aboutBannerStats {
+    right: -12px;
+
+    bottom: 10px !important;
+
+    width: 54%;
+
+    gap: 12px;
+  }
+
+  .aboutBannerInner,
+  .aboutBannerCopy {
+    min-height: 650px;
+  }
+
+  .aboutBannerCopy {
+    width: 52%;
+
+    padding: 42px 0 88px 56px;
+  }
+
+  .aboutBannerLogo {
+    width: 260px;
+
+    height: 104px;
+  }
+
+  .aboutBannerContent h1 {
+    max-width: 650px;
+
+    font-size: 64px;
+
+    line-height: 1.06;
+
+    letter-spacing: -1.5px;
+  }
+
+  .aboutBannerContent p {
+    max-width: 360px;
+
+    font-size: 16px;
+
+    line-height: 1.52;
+  }
+
+  .aboutBannerNav {
+    top: 52px;
+
+    left: 360px;
+  }
+
+  .aboutBannerVisual {
+    inset: 0 0 0 50% !important;
+  }
+
+  .aboutBannerImageOne {
+    transform: translateX(0) translateY(0) scale(1.01);
+  }
+
+  .aboutBannerImageTwo {
+   transform: translate(0.8%) translateX(160px) scale(1.45) !important;
+  }
+
+  .aboutBannerStats {
+    right: -12px;
+
+    bottom: 40px !important;
+
+    width: 54%;
+
+    gap: 12px;
+  }
+
+  .aboutBannerStat {
+    min-height: 195px !important;
+    aspect-ratio: 300.23 / 265.82 !important;
+    padding: 20px 16px 18px;
+  }
+  .aboutBanner
+  .aboutBannerStat strong {
+    font-size: 22px !important;
+    line-height: 1.08;
+  }
+  .aboutBannerStatIcon{
+    margin-bottom: 8px !important;
+  }
+}
+@media (max-width: 1100px) {
+  .aboutBannerInner {
+    min-height: 1040px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .aboutBannerCopy {
+    width: 100%;
+    min-height: 520px;
+    padding: 34px 40px 56px;
+  }
+
+  .aboutBannerLogo {
+    width: 230px;
+    height: 92px;
+  }
+
+  .aboutBannerNav {
+    top: 46px;
+    left: auto;
+    right: 40px;
+  }
+
+  .aboutBannerContent {
+    max-width: 640px;
+    margin-top: 42px;
+    margin-bottom: 0;
+    margin-left: 0;
+  }
+
+  .aboutBannerContent h1 {
+    max-width: 620px;
+    font-size: 58px;
+    line-height: 1.06;
+    letter-spacing: -1.2px;
+  }
+
+  .aboutBannerContent p {
+    max-width: 520px;
+  }
+
+  .aboutBannerVisual {
+    inset: auto 0 0 0 !important;
+    top: 500px;
+    height: 540px;
+    overflow: hidden;
+  }
+
+  .aboutBannerImageOne {
+    object-fit: cover !important;
+    object-position: right top !important;
+    transform: scale(1.02);
+  }
+
+  .aboutBannerImageTwo {
+    object-fit: contain !important;
+    object-position: right top !important;
+    transform: translateX(-3%) translateY(18px) scale(0.98) !important;
+  }
+
+  .aboutBannerStats {
+    left: 34px;
+    right: 34px;
+    bottom: 28px !important;
+    width: auto !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 14px !important;
+    justify-content: stretch !important;
+  }
+
+  .aboutBannerStat {
+    min-height: 146px !important;
+    aspect-ratio: auto !important;
+    padding: 18px 14px !important;
+    border-radius: 16px;
+  }
+
+  .aboutBannerStat strong {
+    font-size: 21px !important;
+    line-height: 1.1;
+  }
+}
+
+@media (max-width: 992px) {
+  .aboutBannerInner {
+    min-height: 1040px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .aboutBannerCopy {
+    width: 100%;
+
+    min-height: 520px;
+
+    padding: 34px 40px 56px;
+  }
+
+  .aboutBannerLogo {
+    width: 230px;
+
+    height: 92px;
+  }
+
+  .aboutBannerNav {
+    top: 46px;
+
+    left: auto;
+
+    right: 40px;
+  }
+
+  .aboutBannerContent {
+    max-width: 640px;
+
+    margin-top: 42px;
+
+    margin-bottom: 0;
+
+    margin-left: 0;
+  }
+
+  .aboutBannerContent h1 {
+    max-width: 620px;
+
+    font-size: 58px;
+
+    line-height: 1.06;
+
+    letter-spacing: -1.2px;
+  }
+
+  .aboutBannerContent p {
+    max-width: 520px;
+  }
+
+  .aboutBannerVisual {
+    inset: auto 0 0 0 !important;
+
+    top: 500px;
+
+    height: 540px;
+
+    overflow: hidden;
+  }
+
+  .aboutBannerImageOne {
+    object-fit: cover !important;
+
+    object-position: right top !important;
+
+    transform: scale(1.02);
+  }
+
+  .aboutBannerImageTwo {
+    object-fit: contain !important;
+
+    object-position: right top !important;
+
+    transform: translateX(-3%) translateY(18px) scale(0.98);
+  }
+
+  .aboutBannerStats {
+    left: 34px;
+
+    right: 34px;
+
+    bottom: 28px;
+
+    width: auto;
+
+    gap: 14px;
+  }
+
+  .aboutBannerStat {
+    min-height: 146px;
+
+    border-radius: 16px;
+  }
+
+  .aboutBannerStat strong {
+    font-size: 21px;
+  }
+}
+
+@media (max-width: 768px) {
+  .aboutBanner {
+    overflow: visible;
+  }
+
+  .aboutBannerInner {
+    min-height: 920px;
+
+    overflow: hidden;
+  }
+
+  .aboutBannerCopy {
+    width: 100%;
+
+    min-height: 510px;
+
+    padding: 24px 22px;
+  }
+
+  .aboutBannerLogo {
+    width: 220px;
+
+    height: 88px;
+  }
+
+  .aboutBannerContent {
+    margin-top: 36px;
+  }
+
+  .aboutBannerContent h1 {
+    margin: 0;
+
+    font-size: clamp(42px, 13vw, 58px);
+  }
+
+  .aboutBannerContent p {
+    max-width: 92%;
+
+    margin-top: 20px;
+
+    font-size: 15px;
+  }
+
+  .aboutBannerActions {
+    gap: 10px;
+
+    margin-top: 24px;
+  }
+
+  .aboutBannerButton {
+    min-width: 0;
+
+    min-height: 46px;
+
+    padding: 0 20px;
+
+    font-size: 13px;
+  }
+
+  .aboutBannerVisual {
+    top: 455px;
+
+    left: 0;
+
+    height: 465px;
+  }
+
+  .aboutBannerVisual:before {
+    background: linear-gradient(180deg, #fbfaf7 0%, transparent 24%);
+  }
+
+  .aboutBannerNav {
+    top: 14px;
+
+    left: auto;
+
+    right: 18px;
+
+    gap: 14px;
+
+    font-size: 12px;
+  }
+
+  .aboutBannerNav a {
+    display: none;
+  }
+
+  .aboutBannerImage {
+    object-fit: cover !important;
+
+    object-position: 63% center !important;
+  }
+
+  .aboutBannerStats {
+    right: 12px;
+
+    bottom: 16px;
+
+    left: 12px;
+
+    width: auto;
+
+    gap: 7px;
+  }
+
+  .aboutBannerStat {
+    min-height: 114px;
+
+    padding: 12px 6px;
+
+    border-radius: 14px;
+  }
+
+  .aboutBannerStatIcon {
+    width: 36px;
+
+    height: 36px;
+
+    margin-bottom: 10px;
+  }
+
+  .aboutBannerStatIcon svg {
+    width: 17px;
+
+    height: 17px;
+  }
+
+  .aboutBannerStat strong {
+    font-size: 12px;
+  }
+
+  .aboutBannerContent h1 {
+    font-size: clamp(42px, 13vw, 58px);
+
+    line-height: 1.04;
+
+    letter-spacing: -1.25px;
+  }
+
+  .aboutBannerImage {
+    object-position: 63% top !important;
+
+    transform: scale(1.03);
+  }
+
+  .aboutBannerNav {
+    top: 14px;
+
+    left: auto;
+
+    right: 18px;
+  }
+
+  .aboutBannerStat strong {
+    font-size: 12px;
+
+    line-height: 13px;
+  }
+
+  .aboutBannerNav {
+    top: 28px;
+
+    left: auto;
+
+    right: 22px;
+  }
+
+  .aboutBannerStat strong,
+  .aboutBannerStatIcon {
+    transform: none;
+  }
+
+  .aboutBannerInner {
+    min-height: 920px;
+  }
+
+  .aboutBannerCopy {
+    width: 100%;
+
+    min-height: 510px;
+  }
+
+  .aboutBannerVisual {
+    inset: auto 0 0 0 !important;
+
+    top: 455px;
+
+    height: 465px;
+
+    overflow: hidden;
+  }
+
+  .aboutBannerImageOne,
+  .aboutBannerImageTwo {
+    object-fit: cover !important;
+
+    object-position: 63% top !important;
+
+    transform: scale(1.03);
+  }
+
+  .aboutBannerStats {
+    right: 12px;
+
+    bottom: 16px;
+
+    left: 12px;
+
+    width: auto;
+
+    gap: 7px;
+  }
+
+  .aboutBannerStat {
+    min-height: 114px;
+
+    padding: 12px 6px;
+
+    border-radius: 14px;
+
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.84),
+      0 16px 36px rgba(53, 84, 101, 0.16),
+      0 6px 15px rgba(8, 126, 150, 0.08);
+  }
+
+  .aboutBannerInner {
+    min-height: 980px;
+  }
+
+  .aboutBannerCopy {
+    min-height: 500px;
+
+    padding: 26px 24px 44px;
+  }
+
+  .aboutBannerLogo {
+    width: 210px;
+
+    height: 84px;
+  }
+
+  .aboutBannerNav {
+    top: 28px;
+
+    right: 24px;
+
+    gap: 14px;
+  }
+
+  .aboutBannerNav a {
+    display: none;
+  }
+
+  .aboutBannerContent {
+    margin-top: 40px;
+  }
+
+  .aboutBannerContent h1 {
+    max-width: 590px;
+
+    font-size: clamp(44px, 8vw, 56px);
+
+    line-height: 1.06;
+  }
+
+  .aboutBannerContent p {
+    max-width: 92%;
+
+    margin-top: 22px;
+
+    font-size: 15px;
+  }
+
+  .aboutBannerActions {
+    flex-wrap: wrap;
+
+    gap: 12px;
+
+    margin-top: 28px;
+  }
+
+  .aboutBannerButton {
+    min-height: 48px;
+
+    min-width: 156px;
+
+    font-size: 13px;
+  }
+
+  .aboutBannerVisual {
+    top: 500px;
+
+    height: 480px;
+  }
+
+  .aboutBannerImageOne,
+  .aboutBannerImageTwo {
+    object-fit: cover !important;
+
+    object-position: 62% top !important;
+
+    transform: scale(1.03);
+  }
+
+  .aboutBannerStats {
+    left: 18px;
+
+    right: 18px;
+
+    bottom: 18px;
+
+    gap: 8px;
+  }
+
+  .aboutBannerStat {
+    min-height: 116px;
+
+    padding: 12px 8px;
+
+    border-radius: 14px;
+  }
+
+  .aboutBannerStatIcon {
+    width: 36px;
+
+    height: 36px;
+
+    margin-bottom: 10px;
+  }
+
+  .aboutBannerStat strong {
+    font-size: 13px;
+
+    line-height: 1.1;
+  }
+
+  .aboutBannerNav {
+    z-index: 30;
+
+    align-items: flex-start;
+  }
+
+  .aboutBannerNavLinks {
+    position: absolute;
+
+    top: calc(100% + 10px);
+
+    right: 0;
+
+    min-width: 154px;
+
+    padding: 10px;
+
+    border: 1px solid rgba(20, 189, 221, 0.18);
+
+    border-radius: 16px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: stretch;
+
+    gap: 4px;
+
+    background: rgba(255, 255, 255, 0.96);
+
+    box-shadow: 0 18px 42px rgba(42, 58, 70, 0.14);
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transform: translateY(-8px);
+
+    transition:
+      opacity 180ms ease,
+      transform 180ms ease;
+  }
+
+  .aboutBannerNav.aboutBannerNavOpen .aboutBannerNavLinks {
+    opacity: 1;
+
+    pointer-events: auto;
+
+    transform: translateY(0);
+  }
+
+  .aboutBannerNav .aboutBannerNavLinks a {
+    display: block;
+
+    padding: 10px 14px;
+
+    border-radius: 10px;
+
+    color: #243542;
+
+    font-size: 14px;
+
+    line-height: 1.1;
+
+    text-align: left;
+
+    white-space: nowrap;
+  }
+
+  .aboutBannerNav .aboutBannerNavLinks a:hover {
+    background: rgba(18, 195, 229, 0.1);
+
+    color: #0faed0;
+  }
+
+  .aboutBannerNav button {
+    display: grid;
+
+    width: 54px;
+
+    height: 38px;
+  }
+
+  .aboutBannerNav button svg {
+    width: 28px;
+
+    height: 20px;
+
+    stroke-width: 2.7;
+  }
+
+  .aboutBannerNav button {
+    width: 46px;
+
+    height: 34px;
+  }
+
+  .aboutBannerNav button svg {
+    width: 24px;
+
+    height: 17px;
+
+    stroke-width: 2.6;
+  }
+
+  .aboutBannerNav {
+    position: absolute !important;
+
+    top: 24px !important;
+
+    right: 24px !important;
+
+    left: auto !important;
+
+    z-index: 100 !important;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 0;
+  }
+
+  .aboutBannerNavLinks a {
+    display: none !important;
+  }
+
+  .aboutBannerNav.aboutBannerNavOpen .aboutBannerNavLinks {
+    display: flex !important;
+
+    flex-direction: column;
+
+    position: absolute;
+
+    top: 0;
+
+    right: 0;
+
+    width: 240px;
+
+    padding: 24px;
+
+    border-radius: 20px;
+
+    align-items: stretch;
+
+    gap: 4px;
+
+    background: rgba(255, 255, 255, 0.96);
+
+    backdrop-filter: blur(24px);
+
+    -webkit-backdrop-filter: blur(24px);
+
+    box-shadow: 0 20px 48px rgba(39, 55, 65, 0.16);
+
+    border: 1px solid rgba(0, 0, 0, 0.04);
+
+    opacity: 1 !important;
+
+    pointer-events: auto;
+
+    visibility: visible;
+
+    z-index: 1000;
+  }
+
+  .aboutBannerNav.aboutBannerNavOpen .aboutBannerNavLinks a {
+    display: block !important;
+
+    padding: 12px 14px !important;
+
+    color: #151c23 !important;
+
+    font-size: 16px !important;
+
+    font-weight: 500 !important;
+
+    border-radius: 12px !important;
+
+    background: transparent !important;
+
+    transition: background-color 0.2s ease !important;
+  }
+
+  .aboutBannerNav.aboutBannerNavOpen .aboutBannerNavLinks a:hover {
+    background-color: rgba(22, 193, 228, 0.08) !important;
+
+    color: #15bfdf !important;
+  }
+
+  .aboutBannerNav button {
+    position: relative;
+
+    z-index: 102;
+
+    width: 52px !important;
+
+    height: 34px !important;
+
+    border-radius: 999px !important;
+
+    background: #16c1e4 !important;
+
+    box-shadow: 0 14px 28px rgba(22, 193, 228, 0.26) !important;
+
+    display: grid;
+
+    place-items: center;
+
+    border: 0;
+
+    cursor: pointer;
+  }
+
+  .aboutBannerNav.aboutBannerNavOpen button {
+    align-self: flex-end;
+
+    margin-top: 12px;
+
+    order: 999;
+  }
+
+  .aboutBannerNav button svg {
+    width: 22px !important;
+
+    height: 16px !important;
+
+    stroke-width: 2.4 !important;
+  }
+
+  .aboutBannerNavLinks .dropdownTrigger {
+    display: none !important;
+  }
+  .aboutBannerNav.aboutBannerNavOpen .aboutBannerNavLinks .dropdownTrigger {
+    display: flex !important;
+    padding: 12px 14px !important;
+    color: #151c23 !important;
+    font-size: 16px !important;
+    font-weight: 500 !important;
+    border-radius: 12px !important;
+    width: 100% !important;
+    background: none !important;
+    border: none !important;
+  }
+  .aboutBannerNav.aboutBannerNavOpen .dropdownMenu {
+    position: static !important;
+    transform: none !important;
+    animation: none !important;
+    box-shadow: none !important;
+    border: none !important;
+    background: rgba(22, 193, 228, 0.05) !important;
+    border-radius: 10px !important;
+    margin-top: 2px !important;
+  }
+  .aboutBannerNav.aboutBannerNavOpen .dropdownItem {
+    padding: 10px 20px !important;
+    font-size: 14px !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .aboutBannerInner {
+    min-height: 900px;
+  }
+
+  .aboutBannerCopy {
+    min-height: 470px;
+
+    padding: 22px 18px 36px;
+  }
+
+  .aboutBannerLogo {
+    width: 190px;
+
+    height: 76px;
+  }
+
+  .aboutBannerNav {
+    top: 24px;
+
+    right: 18px;
+  }
+
+  .aboutBannerNav button {
+    width: 44px;
+
+    height: 30px;
+  }
+
+  .aboutBannerContent h1 {
+    font-size: clamp(40px, 12vw, 52px);
+
+    line-height: 1.05;
+  }
+
+  .aboutBannerContent p {
+    font-size: 14px;
+
+    line-height: 1.5;
+  }
+
+  .aboutBannerButton {
+    min-width: 0;
+
+    padding: 0 18px;
+  }
+
+  .aboutBannerVisual {
+    top: 470px;
+
+    height: 430px;
+  }
+
+  .aboutBannerStats {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    left: 10px;
+
+    right: 10px;
+
+    bottom: 12px;
+
+    gap: 6px;
+  }
+
+  .aboutBannerStat {
+    min-height: 104px;
+
+    padding: 10px 5px;
+  }
+
+  .aboutBannerStatIcon {
+    width: 31px;
+
+    height: 31px;
+
+    margin-bottom: 8px;
+  }
+
+  .aboutBannerStat strong {
+    font-size: 11px;
+
+    line-height: 1.08;
+  }
+
+  .aboutBannerInner {
+    min-height: 1370px;
+  }
+
+  .aboutBannerVisual {
+    top: 470px;
+
+    height: 430px;
+
+    bottom: auto !important;
+  }
+
+  .aboutBannerStats {
+    position: absolute;
+
+    top: 925px;
+
+    left: 18px;
+
+    right: 18px;
+
+    bottom: auto;
+
+    width: auto;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 14px;
+
+    z-index: 9;
+  }
+
+  .aboutBannerStat {
+    width: 100%;
+
+    min-height: 122px;
+
+    padding: 18px 20px;
+
+    border-radius: 16px;
+  }
+
+  .aboutBannerStatIcon {
+    width: 40px;
+
+    height: 40px;
+
+    margin-bottom: 10px;
+  }
+
+  .aboutBannerStat strong {
+    font-size: 18px;
+
+    line-height: 1.12;
+  }
+
+  .aboutBannerVisual {
+    left: 0 !important;
+
+    right: 0 !important;
+
+    width: 100% !important;
+
+    overflow: hidden;
+  }
+
+  .aboutBannerImageOne,
+  .aboutBannerImageTwo {
+    object-fit: cover !important;
+
+    object-position: center bottom !important;
+
+    transform: none !important;
+  }
+
+  .aboutBannerStat {
+    max-width: 100%;
+
+    transform: none !important;
+  }
+
+  .aboutBannerStat strong,
+  .aboutBannerStatIcon {
+    transform: none !important;
+  }
+
+  .aboutBannerInner {
+    min-height: 1420px;
+  }
+
+  .aboutBannerVisual {
+    top: 470px;
+
+    height: 420px;
+  }
+
+  .aboutBannerStats {
+    top: 930px;
+  }
+
+  .aboutBannerStatIcon {
+    width: 44px !important;
+
+    height: 44px !important;
+
+    min-width: 44px !important;
+
+    min-height: 44px !important;
+
+    margin-bottom: 16px !important;
+  }
+
+  .aboutBannerStatIcon svg {
+    width: 22px !important;
+
+    height: 22px !important;
+  }
+
+  .aboutBannerStatIcon img {
+    width: 22px !important;
+
+    height: 22px !important;
+  }
+
+  .aboutBannerStatIcon img {
+    width: 18px !important;
+
+    height: 18px !important;
+  }
+
+  .aboutBannerStatIcon {
+    margin-bottom: 10px !important;
+  }
+}
+
+@media (max-width: 390px) {
+  .aboutBannerInner {
+    min-height: 850px;
+  }
+
+  .aboutBannerCopy {
+    min-height: 440px;
+
+    padding: 18px 14px 30px;
+  }
+
+  .aboutBannerLogo {
+    width: 170px;
+
+    height: 68px;
+  }
+
+  .aboutBannerContent {
+    margin-top: 32px;
+  }
+
+  .aboutBannerContent h1 {
+    font-size: clamp(34px, 12vw, 44px);
+
+    letter-spacing: -0.9px;
+  }
+
+  .aboutBannerContent p {
+    max-width: 100%;
+
+    font-size: 13px;
+  }
+
+  .aboutBannerActions {
+    gap: 8px;
+  }
+
+  .aboutBannerButton {
+    min-height: 42px;
+
+    padding: 0 14px;
+
+    font-size: 12px;
+  }
+
+  .aboutBannerVisual {
+    top: 440px;
+
+    height: 410px;
+  }
+
+  .aboutBannerStats {
+    left: 8px;
+
+    right: 8px;
+
+    gap: 5px;
+  }
+
+  .aboutBannerStat {
+    min-height: 94px;
+
+    padding: 8px 4px;
+
+    border-radius: 12px;
+  }
+
+  .aboutBannerStatIcon {
+    width: 28px;
+
+    height: 28px;
+
+    margin-bottom: 6px;
+  }
+
+  .aboutBannerStatIcon svg {
+    width: 15px;
+
+    height: 15px;
+  }
+
+  .aboutBannerStat strong {
+    font-size: 10px;
+  }
+
+  .aboutBannerInner {
+    min-height: 1270px;
+  }
+
+  .aboutBannerVisual {
+    top: 440px;
+
+    height: 410px;
+  }
+
+  .aboutBannerStats {
+    top: 872px;
+
+    left: 14px;
+
+    right: 14px;
+
+    gap: 12px;
+  }
+
+  .aboutBannerStat {
+    min-height: 112px;
+
+    padding: 30px 18px;
+  }
+
+  .aboutBannerStatIcon {
+    width: 36px;
+
+    height: 36px;
+
+    margin-bottom: 8px;
+  }
+
+  .aboutBannerStat strong {
+    font-size: 16px;
+
+    line-height: 1.12;
+  }
+
+  .aboutBannerImageOne,
+  .aboutBannerImageTwo {
+    object-position: center top !important;
+  }
+
+  .aboutBannerInner {
+    min-height: 1420px;
+  }
+
+  .aboutBannerVisual {
+    top: 440px;
+
+    height: 390px;
+  }
+
+  .aboutBannerStats {
+    top: 910px;
+  }
+
+  .aboutBannerNav .aboutBannerNavLinks {
+    width: calc(100vw - 48px) !important;
+  }
+}
+
+@media (max-width: 1100px) {
+  .aboutBannerInner {
+    height: auto !important;
+    min-height: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    overflow: hidden;
+  }
+
+  .aboutBannerCopy {
+    order: 1;
+    width: 100% !important;
+    min-height: auto !important;
+    padding: 34px clamp(18px, 4vw, 40px) 28px !important;
+  }
+
+  .aboutBannerContent {
+    max-width: 640px;
+    margin-top: clamp(30px, 4vw, 42px) !important;
+    margin-bottom: 0 !important;
+    margin-left: 0 !important;
+  }
+
+  .aboutBannerActions {
+    margin-bottom: 0 !important;
+  }
+
+  .aboutBannerVisual {
+    position: relative !important;
+    order: 2;
+    inset: auto !important;
+    top: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    left: auto !important;
+    width: 100% !important;
+    height: clamp(360px, 48vw, 540px) !important;
+    overflow: hidden;
+  }
+
+  .aboutBannerImageOne {
+    object-fit: cover !important;
+    object-position: center top !important;
+    transform: none !important;
+  }
+
+  .aboutBannerImageTwo {
+    object-fit: contain !important;
+    object-position: center top !important;
+    transform: none !important;
+  }
+
+  .aboutBannerStats {
+    position: relative !important;
+    order: 3;
+    inset: auto !important;
+    top: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    left: auto !important;
+    width: 100% !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    align-items: stretch !important;
+    justify-content: center !important;
+    gap: clamp(12px, 2vw, 18px) !important;
+    padding: clamp(20px, 3vw, 34px) clamp(18px, 4vw, 40px) 44px !important;
+    background: rgba(252, 250, 247, 1);
+  }
+
+  .aboutBannerStat {
+    flex: 1 1 clamp(220px, 30%, 300px) !important;
+    max-width: 320px;
+    min-height: 140px !important;
+    aspect-ratio: auto !important;
+    padding: 24px 20px !important;
+    transform: none !important;
+    rotate: none !important;
+  }
+
+  .aboutBannerStatIcon {
+    margin-bottom: 12px !important;
+  }
+
+  .aboutBannerStat strong {
+    font-size: clamp(16px, 2.1vw, 21px) !important;
+    line-height: 1.12 !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .aboutBannerVisual {
+    height: 330px !important;
+  }
+
+  .aboutBannerStats {
+    padding: 20px 18px 36px !important;
+  }
+
+  .aboutBannerStat {
+    flex-basis: 100% !important;
+    max-width: 100%;
+    min-height: 118px !important;
+    padding: 22px 18px !important;
+  }
+    .aboutBannerImageTwo {
+    object-position: center bottom !important
+  }
+}
+
+@media (max-width: 390px) {
+  .aboutBannerVisual {
+    height: 300px !important;
+  }
+
+  .aboutBannerStat {
+    min-height: 108px !important;
+    padding: 20px 16px !important;
+  }
+  .aboutBannerImageTwo {
+    object-position: center bottom !important
+  }
+}
+
+/* Final nav visibility fix: desktop shows links only; shared Header owns <=768px menu. */
+.aboutBannerNav > button {
+  display: none !important;
+}
+
+@media (max-width: 768px) {
+  .aboutBannerNav {
+    display: none !important;
+  }
+}
+
+/* Final responsive button width: match Home mobile buttons */
+@media (max-width: 768px) {
+  .ctaButton,
+  .ctaButtonPrimary,
+  .ctaButtonSecondary,
+  .heroButton,
+  .heroButtonPrimary,
+  .heroButtonSecondary,
+  .actions > a,
+  .actions > button {
+    width: min(100%, 480px) !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    min-height: 62px !important;
+    align-self: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    padding-top: 9px !important;
+    padding-bottom: 9px !important;
+  }
+
+  .actions {
+    width: 100% !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .ctaButton,
+  .ctaButtonPrimary,
+  .ctaButtonSecondary,
+  .heroButton,
+  .heroButtonPrimary,
+  .heroButtonSecondary,
+  .actions > a,
+  .actions > button {
+    width: min(100%, 420px) !important;
+    min-height: 60px !important;
+  }
+}
+
+@media (max-width: 390px) {
+  .ctaButton,
+  .ctaButtonPrimary,
+  .ctaButtonSecondary,
+  .heroButton,
+  .heroButtonPrimary,
+  .heroButtonSecondary,
+  .actions > a,
+  .actions > button {
+    width: 100% !important;
+    min-height: 56px !important;
+    padding-top: 7px !important;
+    padding-bottom: 7px !important;
+  }
 }

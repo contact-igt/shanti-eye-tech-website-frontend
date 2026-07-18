@@ -4,7 +4,7 @@
   min-height: 594px;
   padding: 30px 0 58px;
   overflow: hidden;
-  background: #fbfaf8;
+  background: #f4f0ed;
 }
 
 .aboutIntroductionInner {
@@ -35,9 +35,9 @@
 .aboutIntroductionCopy p {
   margin: 0;
   color: rgba(77, 70, 65, 0.15);
-  font-size: clamp(39px, 2.42vw, 47px);
-  line-height: 1.42;
-  letter-spacing: -0.045em;
+  font-size: clamp(46px, 2.42vw, 50px);
+  line-height: 84px;
+  letter-spacing: -3px;
   font-weight: 600;
 }
 
@@ -45,158 +45,472 @@
   margin-top: 10px;
 }
 
-@media (max-width: 1200px) {
-  .aboutIntroductionSection {  
-      min-height: 0;  
-      padding: 34px 0 64px;  
-    }
-  
-  .aboutIntroductionInner {  
-      width: calc(100% - 64px);  
-    }
-  
-  .aboutIntroductionCopy p {  
-      font-size: 38px;  
-      line-height: 1.38;  
-    }
+.aboutIntroductionWord {
+  display: inline;
 }
 
-@media (max-width: 992px) {
-  .aboutIntroductionInner {  
-      width: calc(100% - 56px);  
-    }
-  
-  .aboutIntroductionCopy {  
-      margin-top: 22px;  
-    }
-  
-  .aboutIntroductionCopy p {  
-      font-size: 34px;  
-      line-height: 1.36;  
-      letter-spacing: -0.035em;  
-    }
-  
-  .aboutIntroductionCopy p + p {  
-      margin-top: 18px;  
-    }
-}
 
-@media (max-width: 768px) {
-  .aboutIntroductionSection {  
-      padding: 32px 0 58px;  
-    }
-  
-  .aboutIntroductionInner {  
-      width: calc(100% - 40px);  
-    }
-  
-  .aboutIntroductionCopy p {  
-      font-size: 30px;  
-      line-height: 1.34;  
-    }
-}
 
-@media (max-width: 576px) {
-  .aboutIntroductionSection {  
-      padding: 30px 0 52px;  
-    }
-  
-  .aboutIntroductionInner {  
-      width: calc(100% - 28px);  
-    }
-  
-  .aboutIntroductionBadge {  
-      min-height: 26px;  
-      padding: 6px 15px;  
-      font-size: 11px;  
-    }
-  
-  .aboutIntroductionCopy {  
-      margin-top: 18px;  
-    }
-  
-  .aboutIntroductionCopy p {  
-      color: rgba(77, 70, 65, 0.19);  
-      font-size: 25px;  
-      line-height: 1.36;  
-      letter-spacing: -0.03em;  
-    }
-}
 
-@media (max-width: 390px) {
-  .aboutIntroductionSection {  
-      padding: 28px 0 48px;  
-    }
-  
-  .aboutIntroductionInner {  
-      width: calc(100% - 32px);  
-    }
-  
-  .aboutIntroductionCopy p {  
-      font-size: 22px;  
-      line-height: 1.4;  
-      letter-spacing: -0.025em;  
-    }
-  
-  .aboutIntroductionCopy p + p {  
-      margin-top: 16px;  
-    }
-}
+
+
+
+
+
+
 
 .aboutIntroductionSection {
   overflow-x: clip;
 }
 
+
+
+
+
+
+
+
+
+
+
+/* Scroll-triggered text reveal */
+.aboutIntroductionSection {
+  min-height: 172vh;
+  padding: 42px 0 54vh;
+  background: #f4f0ed;
+  overflow: visible;
+}
+
+.aboutIntroductionInner {
+  position: sticky;
+  top: 104px;
+  z-index: 1;
+}
+
+.aboutIntroductionCopy {
+  margin-top: 38px;
+}
+
+.aboutIntroductionCopy p {
+  color: rgba(64, 58, 54, 0.13);
+  font-size: clamp(42px, 3vw, 58px);
+  line-height: 1.42;
+  letter-spacing: -0.055em;
+  font-weight: 600;
+}
+
+.aboutIntroductionWord {
+  display: inline;
+  will-change: color, opacity;
+}
+
 @media (max-width: 1200px) {
-  .aboutIntroductionInner {  
-      width: calc(100% - 64px);  
+.aboutIntroductionSection {
+  
+      min-height: 0;
+  
+      padding: 34px 0 64px;
+  
     }
+  
+  .aboutIntroductionInner {
+  
+      width: calc(100% - 64px);
+  
+    }
+  
+  .aboutIntroductionCopy p {
+  
+      font-size: 38px;
+  
+      line-height: 1.38;
+  
+    }
+
+.aboutIntroductionInner {
+  
+      width: calc(100% - 64px);
+  
+    }
+
+.aboutIntroductionSection {
+    min-height: 154vh;
+    padding-bottom: 44vh;
+  }
+
+  .aboutIntroductionInner {
+    top: 86px;
+  }
+
+  .aboutIntroductionCopy p {
+    font-size: clamp(34px, 4vw, 44px);
+    line-height: 1.38;
+    letter-spacing: -0.045em;
+  }
 }
 
 @media (max-width: 992px) {
-  .aboutIntroductionInner {  
-      width: min(760px, calc(100% - 56px));  
+.aboutIntroductionInner {
+  
+      width: calc(100% - 56px);
+  
+    }
+  
+  .aboutIntroductionCopy {
+  
+      margin-top: 22px;
+  
+    }
+  
+  .aboutIntroductionCopy p {
+  
+      font-size: 34px;
+  
+      line-height: 1.36;
+  
+      letter-spacing: -0.035em;
+  
+    }
+  
+  .aboutIntroductionCopy p + p {
+  
+      margin-top: 18px;
+  
+    }
+
+.aboutIntroductionInner {
+  
+      width: min(760px, calc(100% - 56px));
+  
     }
 }
 
 @media (max-width: 768px) {
-  .aboutIntroductionSection {  
-      padding-top: 70px;  
-      padding-bottom: 80px;  
+.aboutIntroductionSection {
+  
+      padding: 32px 0 58px;
+  
     }
   
-  .aboutIntroductionInner {  
-      width: calc(100% - 40px);  
+  .aboutIntroductionInner {
+  
+      width: calc(100% - 40px);
+  
     }
   
-  .aboutIntroductionCopy p {  
-      font-size: 24px;  
-      line-height: 1.35;  
+  .aboutIntroductionCopy p {
+  
+      font-size: 30px;
+  
+      line-height: 1.34;
+  
     }
+
+.aboutIntroductionSection {
+  
+      padding-top: 70px;
+  
+      padding-bottom: 80px;
+  
+    }
+  
+  .aboutIntroductionInner {
+  
+      width: calc(100% - 40px);
+  
+    }
+  
+  .aboutIntroductionCopy p {
+  
+      font-size: 24px;
+  
+      line-height: 1.35;
+  
+    }
+
+.aboutIntroductionSection {
+    min-height: auto;
+    padding: 70px 0 86px;
+    overflow: hidden;
+  }
+
+  .aboutIntroductionInner {
+    position: relative;
+    top: auto;
+  }
+
+  .aboutIntroductionCopy {
+    margin-top: 24px;
+  }
+
+  .aboutIntroductionCopy p {
+    font-size: clamp(24px, 7vw, 32px);
+    line-height: 1.4;
+    letter-spacing: -0.035em;
+  }
 }
 
 @media (max-width: 576px) {
-  .aboutIntroductionSection {  
-      padding-top: 58px;  
-      padding-bottom: 68px;  
+.aboutIntroductionSection {
+  
+      padding: 30px 0 52px;
+  
     }
   
-  .aboutIntroductionInner {  
-      width: calc(100% - 28px);  
+  .aboutIntroductionInner {
+  
+      width: calc(100% - 28px);
+  
     }
   
-  .aboutIntroductionCopy p {  
-      font-size: 20px;  
-      line-height: 1.42;  
+  .aboutIntroductionBadge {
+  
+      min-height: 26px;
+  
+      padding: 6px 15px;
+  
+      font-size: 11px;
+  
+    }
+  
+  .aboutIntroductionCopy {
+  
+      margin-top: 18px;
+  
+    }
+  
+  .aboutIntroductionCopy p {
+  
+      color: rgba(77, 70, 65, 0.19);
+  
+      font-size: 25px;
+  
+      line-height: 1.36;
+  
+      letter-spacing: -0.03em;
+  
+    }
+
+.aboutIntroductionSection {
+  
+      padding-top: 58px;
+  
+      padding-bottom: 68px;
+  
+    }
+  
+  .aboutIntroductionInner {
+  
+      width: calc(100% - 28px);
+  
+    }
+  
+  .aboutIntroductionCopy p {
+  
+      font-size: 20px;
+  
+      line-height: 1.42;
+  
     }
 }
 
 @media (max-width: 390px) {
-  .aboutIntroductionCopy p {  
-      font-size: 18px;  
+.aboutIntroductionSection {
+  
+      padding: 28px 0 48px;
+  
     }
   
-  .aboutIntroductionInner {  
-      width: calc(100% - 24px);  
+  .aboutIntroductionInner {
+  
+      width: calc(100% - 32px);
+  
     }
+  
+  .aboutIntroductionCopy p {
+  
+      font-size: 22px;
+  
+      line-height: 1.4;
+  
+      letter-spacing: -0.025em;
+  
+    }
+  
+  .aboutIntroductionCopy p + p {
+  
+      margin-top: 16px;
+  
+    }
+
+.aboutIntroductionCopy p {
+  
+      font-size: 18px;
+  
+    }
+  
+  .aboutIntroductionInner {
+  
+      width: calc(100% - 24px);
+  
+    }
+}
+
+@media (max-width: 1200px) {
+  .aboutIntroductionCopy p {
+    font-size: clamp(30px, 3.3vw, 40px);
+    line-height: 1.38;
+    letter-spacing: -0.04em;
+  }
+}
+
+@media (max-width: 992px) {
+  .aboutIntroductionCopy p {
+    font-size: clamp(26px, 4vw, 34px);
+    line-height: 1.4;
+    letter-spacing: -0.035em;
+  }
+}
+
+@media (max-width: 768px) {
+  .aboutIntroductionCopy p {
+    font-size: clamp(22px, 5vw, 28px);
+    line-height: 1.42;
+    letter-spacing: -0.03em;
+  }
+}
+
+@media (max-width: 576px) {
+  .aboutIntroductionCopy p {
+    font-size: clamp(19px, 5.4vw, 24px);
+    line-height: 1.45;
+    letter-spacing: -0.025em;
+  }
+}
+
+@media (max-width: 390px) {
+  .aboutIntroductionCopy p {
+    font-size: 18px;
+    line-height: 1.46;
+    letter-spacing: -0.02em;
+  }
+}
+
+/* Tighten spacing before Know Your Doctor section */
+.aboutIntroductionSection {
+  min-height: 150vh;
+  padding-bottom: 34vh;
+}
+
+@media (max-width: 1400px) {
+  .aboutIntroductionSection {
+    min-height: 140vh;
+    padding-bottom: 28vh;
+  }
+}
+
+@media (max-width: 1200px) {
+  .aboutIntroductionSection {
+    min-height: 132vh;
+    padding-bottom: 22vh;
+  }
+}
+
+@media (max-width: 992px) {
+  .aboutIntroductionSection {
+    min-height: auto;
+    padding-bottom: 78px;
+  }
+}
+
+@media (max-width: 768px) {
+  .aboutIntroductionSection {
+    padding-bottom: 64px;
+  }
+}
+
+@media (max-width: 576px) {
+  .aboutIntroductionSection {
+    padding-bottom: 54px;
+  }
+}
+
+/* Final About story-to-doctor spacing tune */
+.aboutIntroductionSection {
+  min-height: 118vh !important;
+  padding-bottom: 12vh !important;
+}
+
+@media (max-width: 1400px) {
+  .aboutIntroductionSection {
+    min-height: 112vh !important;
+    padding-bottom: 10vh !important;
+  }
+}
+
+@media (max-width: 1200px) {
+  .aboutIntroductionSection {
+    min-height: 104vh !important;
+    padding-bottom: 82px !important;
+  }
+}
+
+@media (max-width: 992px) {
+  .aboutIntroductionSection {
+    min-height: auto !important;
+    padding-top: 58px !important;
+    padding-bottom: 56px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .aboutIntroductionSection {
+    padding-top: 52px !important;
+    padding-bottom: 48px !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .aboutIntroductionSection {
+    padding-top: 46px !important;
+    padding-bottom: 40px !important;
+  }
+}
+
+/* Final tighter story-to-doctor spacing pass */
+.aboutIntroductionSection {
+  min-height: 108vh !important;
+  padding-bottom: 6vh !important;
+}
+
+@media (max-width: 1400px) {
+  .aboutIntroductionSection {
+    min-height: 102vh !important;
+    padding-bottom: 5vh !important;
+  }
+}
+
+@media (max-width: 1200px) {
+  .aboutIntroductionSection {
+    min-height: 96vh !important;
+    padding-bottom: 44px !important;
+  }
+}
+
+@media (max-width: 992px) {
+  .aboutIntroductionSection {
+    padding-bottom: 40px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .aboutIntroductionSection {
+    padding-bottom: 34px !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .aboutIntroductionSection {
+    padding-bottom: 30px !important;
+  }
 }

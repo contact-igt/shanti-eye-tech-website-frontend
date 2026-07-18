@@ -85,6 +85,76 @@
   color: #15bfdf;
 }
 
+/* ── Treatments dropdown ── */
+.dropdown {
+  position: relative;
+}
+
+.dropdownTrigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: inherit;
+  font-weight: 500;
+  color: inherit;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 180ms ease;
+  font-family: inherit;
+}
+
+.dropdownTrigger:hover {
+  color: #15bfdf;
+}
+
+.chevron {
+  transition: transform 0.22s ease;
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 160px;
+  background: rgba(255, 255, 255, 0.97);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 12px;
+  box-shadow: 0 16px 40px rgba(39, 55, 65, 0.14);
+  overflow: hidden;
+  z-index: 100;
+  animation: dropIn 0.18s ease both;
+}
+
+@keyframes dropIn {
+  from { opacity: 0; transform: translateX(-50%) translateY(-6px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+.dropdownItem {
+  display: block;
+  padding: 11px 18px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #151c23;
+  transition: background 0.18s ease, color 0.18s ease;
+  white-space: nowrap;
+}
+
+.dropdownItem:hover {
+  background: rgba(22, 193, 228, 0.08);
+  color: #16c1e4;
+}
+
 .menuButton {
   width: 52px;
   height: 32px;
@@ -316,8 +386,12 @@
     height: 34px;
   }
 
-  /* On mobile: hide links by default, show only the hamburger button */
+  /* On mobile: hide links and dropdown trigger by default */
   .navLinks a {
+    display: none;
+  }
+
+  .navLinks .dropdownTrigger {
     display: none;
   }
 
@@ -355,6 +429,34 @@
   .navOpen .navLinks a:hover {
     background-color: rgba(22, 193, 228, 0.08);
     color: #15bfdf;
+  }
+
+  /* Show Treatments trigger inside open drawer */
+  .navOpen .navLinks .dropdownTrigger {
+    display: flex;
+    padding: 12px 14px;
+    color: #151c23;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 12px;
+    width: 100%;
+  }
+
+  /* Dropdown menu in mobile — show inline */
+  .navOpen .dropdownMenu {
+    position: static;
+    transform: none;
+    animation: none;
+    box-shadow: none;
+    border: none;
+    background: rgba(22, 193, 228, 0.05);
+    border-radius: 10px;
+    margin-top: 2px;
+  }
+
+  .navOpen .dropdownItem {
+    padding: 10px 20px;
+    font-size: 14px;
   }
 
   /* Push the X/menu button to the bottom right inside open drawer */
@@ -421,5 +523,160 @@
 @media (max-width: 760px) {
   .heroChrome {
     display: none !important;
+  }
+}
+
+.ctaButton {
+  position: relative;
+  min-height: 54px;
+  display: inline-grid;
+  grid-template-columns: minmax(0, 1fr) 28px;
+  align-items: center;
+  border-radius: 70px;
+  column-gap: 12px;
+  padding: 0 14px 0 24px;
+  border: 2px solid var(--aqua);
+  overflow: hidden;
+  font-size: 17px;
+  font-weight: 500;
+  white-space: nowrap;
+  transition:
+    box-shadow 240ms var(--ease),
+    border-color 240ms var(--ease),
+    transform 240ms var(--ease);
+}
+
+.ctaButton:hover {
+  transform: scale(1.04);
+}
+
+.ctaButton:active {
+  transform: scale(0.98);
+}
+
+.ctaButtonPrimary {
+  min-width: 246px;
+  color: var(--white);
+  background: var(--aqua);
+  box-shadow: 0 14px 30px rgba(36, 197, 232, 0.22);
+}
+
+.ctaButtonSecondary {
+  min-width: 232px;
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.ctaButtonFill {
+  position: absolute;
+  top: 50%;
+  right: 14px;
+  z-index: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 28px;
+  background: #f3efea;
+  transform: translateY(-50%) translateZ(0);
+  transition:
+    width 0.75s var(--ease),
+    height 0.75s var(--ease),
+    right 0.75s var(--ease),
+    border-radius 0.75s var(--ease),
+    background 0.75s var(--ease);
+}
+
+.ctaButtonSecondary .ctaButtonFill {
+  background: rgba(36, 197, 232, 0.94);
+}
+
+.ctaButtonText {
+  position: relative;
+  z-index: 2;
+  min-width: 0;
+  text-align: center;
+  white-space: nowrap;
+  transition: color 0.75s var(--ease);
+}
+
+.arrowIcon {
+  position: relative;
+  z-index: 3;
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  background: center / contain no-repeat url("/assets/home_logos/Button_arrow.png");
+}
+
+.arrowIcon span {
+  display: none;
+}
+
+/* Final responsive CTA buttons: match Home mobile sizing and arrow placement */
+@media (max-width: 768px) {
+  .ctaButton,
+  .ctaButtonPrimary,
+  .ctaButtonSecondary {
+    width: min(100%, 480px) !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    min-height: 62px !important;
+    display: grid !important;
+    grid-template-columns: 38px minmax(0, 1fr) 38px !important;
+    align-items: center !important;
+    justify-items: center !important;
+    column-gap: 0 !important;
+    padding: 9px 12px !important;
+    align-self: center !important;
+    justify-content: center !important;
+  }
+
+  .ctaButtonText {
+    grid-column: 2 !important;
+    justify-self: center !important;
+    text-align: center !important;
+  }
+
+  .arrowIcon {
+    grid-column: 3 !important;
+    justify-self: end !important;
+    width: 38px !important;
+    height: 38px !important;
+    min-width: 38px !important;
+    flex: 0 0 38px !important;
+    background-size: contain !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+  }
+
+  .ctaButtonFill {
+    display: none !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .ctaButton,
+  .ctaButtonPrimary,
+  .ctaButtonSecondary {
+    width: min(100%, 420px) !important;
+    min-height: 60px !important;
+  }
+}
+
+@media (max-width: 390px) {
+  .ctaButton,
+  .ctaButtonPrimary,
+  .ctaButtonSecondary {
+    width: 100% !important;
+    min-height: 56px !important;
+    grid-template-columns: 34px minmax(0, 1fr) 34px !important;
+    padding: 7px 10px !important;
+  }
+
+  .arrowIcon {
+    width: 34px !important;
+    height: 34px !important;
+    min-width: 34px !important;
+    flex-basis: 34px !important;
   }
 }

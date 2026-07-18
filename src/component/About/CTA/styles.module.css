@@ -12,7 +12,9 @@
   z-index: 2;
   width: 100%;
   margin: 0;
+  padding: 0 26px 15px;
   overflow: visible;
+  box-sizing: border-box;
 }
 
 .aboutCtaCard {
@@ -20,7 +22,7 @@
   z-index: 1;
   min-height: 511px;
   border-radius: 20px;
-  overflow: hidden;
+  /* overflow: hidden; */
   display: grid;
   justify-items: center;
   align-content: center;
@@ -64,11 +66,11 @@
 }
 
 .aboutCtaImageLeft {
-  left: clamp(24px, 2vw, 39px);
+  left: clamp(50px, 5vw, 60px)
 }
 
 .aboutCtaImageRight {
-  right: clamp(0px, 1.8vw, 34px);
+  right: clamp(56px, 4vw, 60px);
 }
 
 .aboutCtaBadge {
@@ -99,7 +101,7 @@
   justify-content: center;
   gap: 22px;
   text-align: center;
-  font-size: clamp(72px, 5.2vw, 100px);
+  font-size: clamp(72px, 6.2vw, 100px);
   line-height: 1;
   letter-spacing: 0;
   font-weight: 400;
@@ -117,8 +119,8 @@
 .aboutCtaButton {
   position: relative;
   z-index: 2;
-  min-height: 61px;
-  padding: 8px 8px 8px 31px;
+  min-height: 58px;
+  padding: 18px 10px 18px 34px;
   border-radius: 999px;
   display: inline-flex;
   align-items: center;
@@ -126,7 +128,7 @@
   gap: 18px;
   background: #11c5e7;
   color: #ffffff;
-  font-size: 14px;
+  font-size: 15px;
   line-height: 1;
   font-weight: 600;
   text-decoration: none;
@@ -155,222 +157,86 @@
   height: 15px;
 }
 
-@media (max-width: 1200px) {
-  .aboutCtaCard {  
-      min-height: 430px;  
-    }
-  
-  .aboutCtaCard h2 {  
-      max-width: calc(100% - 120px);  
-      font-size: clamp(58px, 6.2vw, 78px);  
-    }
+/* Buttons wrapper — stacks primary + "View all" vertically, centred */
+.aboutCtaButtons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
 }
 
-@media (max-width: 992px) {
-  .aboutCtaCard {  
-      min-height: 360px;  
-      gap: 28px;  
-    }
-  
-  .aboutCtaImage {  
-      width: 124px;  
-      height: 137px;  
-    }
-  
-  .aboutCtaCard h2 {  
-      max-width: calc(100% - 88px);  
-      flex-wrap: wrap;  
-      gap: 12px;  
-      font-size: clamp(46px, 7.4vw, 64px);  
-    }
+/* "View all" secondary button */
+.ctaViewAll {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translate(-50%, 50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 12px 12px 12px 24px;
+  border-radius: 999px;
+  background: rgba(242, 238, 235, 1);
+  border:1px solid rgba(21, 200, 240, 1);
+  color: #1a1614;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1;
+  text-decoration: none;
+  transition: background 0.25s ease, box-shadow 0.25s ease;
 }
 
-@media (max-width: 768px) {
-  .aboutCtaCard {  
-      min-height: 300px;  
-      padding: 58px 18px 38px;  
-      border-radius: 16px;  
-      gap: 22px;  
-    }
-  
-  .aboutCtaImage {  
-      width: 86px;  
-      height: 95px;  
-      border-radius: 8px;  
-    }
-  
-  .aboutCtaImageLeft {  
-      left: 16px;  
-    }
-  
-  .aboutCtaImageRight {  
-      right: 16px;  
-    }
-  
-  .aboutCtaCard h2 {  
-      max-width: 430px;  
-      display: block;  
-      font-size: clamp(40px, 12vw, 54px);  
-      line-height: 1.08;  
-    }
-  
-  .aboutCtaCard h2 span {  
-      display: inline;  
-    }
-  
-  .aboutCtaBadge {  
-      min-width: 112px;  
-      min-height: 35px;  
-      padding: 0 28px;  
-      font-size: 12px;  
-    }
-  
-  .aboutCtaButton {  
-      min-height: 49px;  
-      padding: 7px 7px 7px 24px;  
-      gap: 16px;  
-      font-size: 12px;  
-    }
-  
-  .aboutCtaButtonIcon {  
-      width: 35px;  
-      height: 35px;  
-    }
+.ctaViewAll:hover {
+  background: rgba(242, 238, 235, 1);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
-@media (max-width: 480px) {
-  .aboutCtaCard {  
-      min-height: 270px;  
-      padding: 54px 14px 32px;  
-      border-radius: 14px;  
-      gap: 20px;  
-    }
-  
-  .aboutCtaImage {  
-      width: 72px;  
-      height: 80px;  
-    }
-  
-  .aboutCtaImageLeft {  
-      left: 10px;  
-    }
-  
-  .aboutCtaImageRight {  
-      right: 10px;  
-    }
-  
-  .aboutCtaCard h2 {  
-      font-size: clamp(34px, 12vw, 44px);  
-    }
-  
-  .aboutCtaButton {  
-      min-height: 46px;  
-      padding-left: 18px;  
-      gap: 12px;  
-    }
-  
-  .aboutCtaButtonIcon {  
-      width: 32px;  
-      height: 32px;  
-    }
+.ctaViewAllText {
+  white-space: nowrap;
 }
+
+.ctaViewAllArrow {
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  color: #1a1614;
+  border: 1px solid rgba(21, 200, 240, 1);
+  flex-shrink: 0;
+}
+
+.ctaViewAllArrow svg {
+  width: 14px;
+  height: 14px;
+}
+
+
+
+
+
+
+
+
+
 
 .aboutCtaSection {
   overflow-x: clip;
 }
 
-@media (max-width: 1200px) {
-  .aboutCtaCard {  
-      min-height: 430px;  
-    }
-}
 
-@media (max-width: 992px) {
-  .aboutCtaCard {  
-      min-height: 360px;  
-    }
-  
-  .aboutCtaImage {  
-      top: -70px;  
-      width: 124px;  
-      height: 137px;  
-    }
-}
 
-@media (max-width: 768px) {
-  .aboutCtaCard {  
-      min-height: 300px;  
-      padding: 58px 18px 38px;  
-      border-radius: 16px;  
-    }
-  
-  .aboutCtaImage {  
-      top: -48px;  
-      width: 86px;  
-      height: 95px;  
-    }
-  
-  .aboutCtaCard h2 {  
-      max-width: 430px;  
-      display: block;  
-      font-size: clamp(40px, 12vw, 54px);  
-      line-height: 1.08;  
-    }
-}
 
-@media (max-width: 576px) {
-  .aboutCtaCard {  
-      min-height: 270px;  
-      padding: 54px 14px 32px;  
-      border-radius: 14px;  
-    }
-  
-  .aboutCtaImage {  
-      top: -42px;  
-      width: 72px;  
-      height: 80px;  
-    }
-  
-  .aboutCtaImageLeft {  
-      left: 10px;  
-    }
-  
-  .aboutCtaImageRight {  
-      right: 10px;  
-    }
-  
-  .aboutCtaCard h2 {  
-      font-size: clamp(34px, 12vw, 44px);  
-    }
-}
 
-@media (max-width: 390px) {
-  .aboutCtaImage {  
-      top: -36px;  
-      width: 62px;  
-      height: 69px;  
-    }
-  
-  .aboutCtaCard {  
-      min-height: 248px;  
-      padding: 46px 12px 28px;  
-    }
-  
-  .aboutCtaCard h2 {  
-      font-size: clamp(30px, 12vw, 38px);  
-    }
-  
-  .aboutCtaButton {  
-      min-height: 44px;  
-      padding-left: 16px;  
-      gap: 10px;  
-    }
-  
-  .aboutCtaButtonIcon {  
-      width: 30px;  
-      height: 30px;  
-    }
-}
+
+
+
+
+
 
 .aboutCtaCard {
   background-image:
@@ -385,30 +251,13 @@
   opacity: 0.35;
 }
 
-@media (max-width: 768px) {
-  .aboutCtaCard {  
-      background-size: cover !important;  
-      background-position: center center !important;  
-    }
-}
 
-@media (max-width: 576px) {
-  .aboutCtaShell {  
-      padding-top: 16px !important;  
-    }
-}
 
-@media (max-width: 390px) {
-  .aboutCtaShell {  
-      padding-top: 12px !important;  
-    }
-}
 
-@media (max-width: 576px) {
-  .aboutCtaShell {  
-      padding-top: 0 !important;  
-    }
-}
+
+
+
+
 
 .ctaButton {
   position: relative;
@@ -418,13 +267,24 @@
   align-items: center;
   border-radius: 70px;
   column-gap: 12px;
-  padding: 0 14px 0 24px;
+  padding: 18px 14px 18px 24px;
   border: 2px solid var(--aqua);
   overflow: hidden;
   font-size: 17px;
   font-weight: 500;
   white-space: nowrap;
-  transition: box-shadow 240ms var(--ease), border-color 240ms var(--ease);
+  transition:
+    box-shadow 240ms var(--ease),
+    border-color 240ms var(--ease),
+    transform 240ms var(--ease);
+}
+
+.ctaButton:hover {
+  transform: scale(1.04);
+}
+
+.ctaButton:active {
+  transform: scale(0.98);
 }
 
 .ctaButtonPrimary {
@@ -448,7 +308,8 @@
   width: 28px;
   height: 28px;
   border-radius: 28px;
-  background: #f3efea;
+  background: rgba(36, 197, 232, 0.94);
+  color: #fff !important;
   transform: translateY(-50%) translateZ(0);
   transition:
     width 0.75s var(--ease),
@@ -456,17 +317,11 @@
     right 0.75s var(--ease),
     border-radius 0.75s var(--ease),
     background 0.75s var(--ease);
-  }
-
-.ctaButtonSecondary .ctaButtonFill {
-  background: rgba(36, 197, 232, 0.94);
+  box-shadow: 0 14px 30px rgba(36, 197, 232, 0.22);
 }
 
-.ctaButton:hover .ctaButtonFill {
-  right: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 70px;
+.ctaButtonSecondary .ctaButtonFill {
+  /* background: rgba(36, 197, 232, 0.94); */
 }
 
 .ctaButtonText {
@@ -476,14 +331,6 @@
   text-align: center;
   white-space: nowrap;
   transition: color 0.75s var(--ease);
-}
-
-.ctaButtonPrimary:hover .ctaButtonText {
-  color: var(--ink);
-}
-
-.ctaButtonSecondary:hover .ctaButtonText {
-  color: var(--white);
 }
 
 .arrowIcon {
@@ -498,4 +345,420 @@
 
 .arrowIcon span {
   display: none;
+}
+
+@media (max-width: 1200px) {
+.aboutCtaCard {
+  
+      min-height: 430px;
+  
+    }
+  
+  .aboutCtaCard h2 {
+  
+      max-width: calc(100% - 120px);
+  
+      font-size: clamp(58px, 6.2vw, 78px);
+  
+    }
+
+.aboutCtaCard {
+  
+      min-height: 430px;
+  
+    }
+}
+
+@media (max-width: 992px) {
+.aboutCtaCard {
+  
+      min-height: 360px;
+  
+      gap: 28px;
+  
+    }
+  
+  .aboutCtaImage {
+  
+      width: 124px;
+  
+      height: 137px;
+  
+    }
+  
+  .aboutCtaCard h2 {
+  
+      max-width: calc(100% - 88px);
+  
+      flex-wrap: wrap;
+  
+      gap: 12px;
+  
+      font-size: clamp(46px, 7.4vw, 64px);
+  
+    }
+
+.aboutCtaCard {
+  
+      min-height: 360px;
+  
+    }
+  
+  .aboutCtaImage {
+  
+      top: -70px;
+  
+      width: 124px;
+  
+      height: 137px;
+  
+    }
+    .aboutCtaShell{
+      padding: 0 15px 15px !important;
+    }
+}
+
+@media (max-width: 768px) {
+.aboutCtaCard {
+  
+      min-height: 300px;
+  
+      padding: 58px 18px 38px;
+  
+      border-radius: 16px;
+  
+      gap: 22px;
+  
+    }
+  
+  .aboutCtaImage {
+  
+      width: 86px;
+  
+      height: 95px;
+  
+      border-radius: 8px;
+  
+    }
+  
+  .aboutCtaImageLeft {
+  
+      left: 50px;
+  
+    }
+  
+  .aboutCtaImageRight {
+  
+      right: 50px;
+  
+    }
+  
+  .aboutCtaCard h2 {
+  
+      max-width: 430px;
+  
+      display: block;
+  
+      font-size: clamp(40px, 12vw, 54px);
+  
+      line-height: 1.08;
+  
+    }
+  
+  .aboutCtaCard h2 span {
+  
+      display: inline;
+  
+    }
+  
+  .aboutCtaBadge {
+  
+      min-width: 112px;
+  
+      min-height: 35px;
+  
+      padding: 0 28px;
+  
+      font-size: 12px;
+  
+    }
+  
+  .aboutCtaButton {
+  
+      min-height: 49px;
+  
+      padding: 7px 7px 7px 24px;
+  
+      gap: 16px;
+  
+      font-size: 12px;
+  
+    }
+  
+  .aboutCtaButtonIcon {
+  
+      width: 35px;
+  
+      height: 35px;
+  
+    }
+
+.aboutCtaCard {
+  
+      min-height: 300px;
+  
+      padding: 58px 18px 38px;
+  
+      border-radius: 16px;
+  
+    }
+  
+  .aboutCtaImage {
+  
+      top: -48px;
+  
+      width: 86px;
+  
+      height: 95px;
+  
+    }
+  
+  .aboutCtaCard h2 {
+  
+      max-width: 430px;
+  
+      display: block;
+  
+      font-size: clamp(40px, 12vw, 54px);
+  
+      line-height: 1.08;
+  
+    }
+
+.aboutCtaCard {
+  
+      background-size: cover !important;
+  
+      background-position: center center !important;
+  
+    }
+}
+
+@media (max-width: 576px) {
+.aboutCtaCard {
+  
+      min-height: 270px;
+  
+      padding: 54px 14px 32px;
+  
+      border-radius: 14px;
+  
+      gap: 20px;
+  
+    }
+  
+  .aboutCtaImage {
+  
+      width: 72px;
+  
+      height: 80px;
+  
+    }
+  
+  .aboutCtaImageLeft {
+  
+      left: 40px;
+  
+    }
+  
+  .aboutCtaImageRight {
+  
+      right: 40px;
+  
+    }
+  
+  .aboutCtaCard h2 {
+  
+      font-size: clamp(34px, 12vw, 44px);
+  
+    }
+  
+  .aboutCtaButton {
+  
+      min-height: 46px;
+  
+      padding-left: 18px;
+  
+      gap: 12px;
+  
+    }
+  
+  .aboutCtaButtonIcon {
+  
+      width: 32px;
+  
+      height: 32px;
+  
+    }
+
+.aboutCtaCard {
+  
+      min-height: 270px;
+  
+      padding: 54px 14px 32px;
+  
+      border-radius: 14px;
+  
+    }
+  
+  .aboutCtaImage {
+  
+      top: -42px;
+  
+      width: 72px;
+  
+      height: 80px;
+  
+    }
+  
+  
+  .aboutCtaCard h2 {
+  
+      font-size: clamp(34px, 12vw, 44px);
+  
+    }
+
+.aboutCtaShell {
+  
+      padding-top: 16px !important;
+  
+    }
+
+.aboutCtaShell {
+  
+      padding-top: 0 !important;
+  
+    }
+    .ctaButton{
+      padding: 14px 14px 14px 24px;
+    }
+}
+
+@media (max-width: 390px) {
+.aboutCtaImage {
+  
+      top: -36px;
+  
+      width: 62px;
+  
+      height: 69px;
+  
+    }
+  
+  .aboutCtaCard {
+  
+      min-height: 248px;
+  
+      padding: 46px 12px 28px;
+  
+    }
+  
+  .aboutCtaCard h2 {
+  
+      font-size: clamp(30px, 12vw, 38px);
+  
+    }
+  
+  .aboutCtaButton {
+  
+      min-height: 44px;
+  
+      padding-left: 16px;
+  
+      gap: 10px;
+  
+    }
+  
+  .aboutCtaButtonIcon {
+  
+      width: 30px;
+  
+      height: 30px;
+  
+    }
+
+.aboutCtaShell {
+  
+      padding-top: 12px !important;
+  
+    }
+}
+
+/* Final responsive CTA buttons: match Home mobile sizing and arrow placement */
+@media (max-width: 768px) {
+  .ctaButton,
+  .ctaButtonPrimary,
+  .ctaButtonSecondary {
+    width: min(100%, 480px) !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    min-height: 62px !important;
+    display: grid !important;
+    grid-template-columns: 38px minmax(0, 1fr) 38px !important;
+    align-items: center !important;
+    justify-items: center !important;
+    column-gap: 0 !important;
+    padding: 9px 12px !important;
+    align-self: center !important;
+    justify-content: center !important;
+  }
+
+  .ctaButtonText {
+    grid-column: 2 !important;
+    justify-self: center !important;
+    text-align: center !important;
+  }
+
+  .arrowIcon {
+    grid-column: 3 !important;
+    justify-self: end !important;
+    width: 38px !important;
+    height: 38px !important;
+    min-width: 38px !important;
+    flex: 0 0 38px !important;
+    background-size: contain !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+  }
+
+  .ctaButtonFill {
+    display: none !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .ctaButton,
+  .ctaButtonPrimary,
+  .ctaButtonSecondary {
+    width: min(100%, 420px) !important;
+    min-height: 60px !important;
+  }
+}
+
+@media (max-width: 390px) {
+  .ctaButton,
+  .ctaButtonPrimary,
+  .ctaButtonSecondary {
+    width: 100% !important;
+    min-height: 56px !important;
+    grid-template-columns: 34px minmax(0, 1fr) 34px !important;
+    padding: 7px 10px !important;
+  }
+
+  .arrowIcon {
+    width: 34px !important;
+    height: 34px !important;
+    min-width: 34px !important;
+    flex-basis: 34px !important;
+  }
 }

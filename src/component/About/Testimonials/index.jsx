@@ -2,7 +2,7 @@ import { useRef } from "react";
 import Image from "next/image";
 import Slider from "react-slick";
 import { motion } from "framer-motion";
-import { Inter, Playfair_Display } from "next/font/google";
+import { Castoro, Inter, Playfair_Display } from "next/font/google";
 import {
   aboutTestimonialsContent,
   reveal,
@@ -17,6 +17,11 @@ const inter = Inter({
   display: "swap"
 });
 
+const castoro = Castoro({
+  subsets: ["latin"],
+  weight: ["400"],
+  display: "swap"
+});
 const playfair = Playfair_Display({
   subsets: ["latin"],
   weight: ["400", "500"],
@@ -79,12 +84,16 @@ export default function Testimonials() {
     waitForAnimate: false,
     responsive: [
       {
+        breakpoint: 1400,
+        settings: { slidesToShow: 3, centerPadding: "7vw" }
+      },
+      {
         breakpoint: 1200,
         settings: { slidesToShow: 3, centerPadding: "6vw" }
       },
       {
         breakpoint: 992,
-        settings: { slidesToShow: 3, centerPadding: "34px" }
+        settings: { slidesToShow: 2, centerPadding: "8vw" }
       },
       {
         breakpoint: 768,
@@ -121,7 +130,7 @@ export default function Testimonials() {
           {aboutTestimonialsContent.badge}
         </motion.span>
         <motion.h2
-          className={playfair.className}
+          className={castoro.className}
           id="about-testimonials-title"
           variants={reveal}
         >

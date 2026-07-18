@@ -1,5 +1,20 @@
+import Image from "next/image";
+import { Inter, Montserrat } from "next/font/google";
 import styles from "./styles.module.css";
 
+
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
+  variable: "--font-contact-montserrat",
+});
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400"],
+  display: "swap",
+  variable: "--font-contact-inter",
+});
 const icons = {
   location: (
     <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -8,9 +23,14 @@ const icons = {
     </svg>
   ),
   phone: (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.08 1.18 2 2 0 012.07 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z" />
-    </svg>
+    <Image
+      className={styles.iconImage}
+      src="/assets/contact/call-icon.png"
+      alt=""
+      width={26}
+      height={26}
+      aria-hidden="true"
+    />
   ),
   email: (
     <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -28,16 +48,26 @@ const icons = {
 
 export default function ContactInfo({ data }) {
   return (
-    <section className={styles.section} id="contact-info">
+    <section className={`${inter.variable} ${montserrat.variable} ${montserrat.className} ${styles.section}`} id="contact-info">
       <div className={styles.inner}>
-        <span className={styles.badge}>Contact</span>
+        <span className={styles.badge}>
+          <Image
+            className={styles.badgeIcon}
+            src="/assets/contact/plus-icon.png"
+            alt=""
+            width={12}
+            height={12}
+            aria-hidden="true"
+          />
+          Contact
+        </span>
 
-        <h2 className={styles.heading}>
+        <h2 className={`${montserrat.className} ${styles.heading}`}>
           {data.heading.line1}
           <span className={styles.headingAccent}>{data.heading.line2}</span>
         </h2>
 
-        <p className={styles.description}>{data.description}</p>
+        <p className={`${inter.className} ${styles.description}`}>{data.description}</p>
 
         <div className={styles.cards}>
           {data.cards.map((card) => (
@@ -45,8 +75,8 @@ export default function ContactInfo({ data }) {
               <div className={styles.iconWrap}>
                 {icons[card.icon]}
               </div>
-              <h3 className={styles.cardTitle}>{card.title}</h3>
-              <p className={styles.cardBody}>{card.body}</p>
+              <h3 className={`${montserrat.className} ${styles.cardTitle}`}>{card.title}</h3>
+              <p className={`${inter.className} ${styles.cardBody}`}>{card.body}</p>
             </div>
           ))}
         </div>
