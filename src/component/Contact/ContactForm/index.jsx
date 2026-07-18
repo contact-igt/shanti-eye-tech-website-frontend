@@ -1,10 +1,12 @@
 "use client";
-import { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import { useFormik } from "formik";
+import * as Yup from "yup";
 import { Inter, Montserrat } from "next/font/google";
 import { submitForm } from "@/lib/formService";
 import styles from "./styles.module.css";
+
 const montserrat = Montserrat({
   subsets: ["latin"],
   weight: ["600", "700"],
@@ -32,64 +34,71 @@ function FieldIcon({ src }) {
   );
 }
 
+const INITIAL_VALUES = {
+  firstName: "",
+  email: "",
+  mobile: "",
+  message: "",
+};
 
-const INITIAL = { firstName: "", lastName: "", email: "", mobile: "", message: "" };
+const contactSchema = Yup.object({
+  firstName: Yup.string()
+    .trim()
+    .min(2, "Name must be at least 2 characters.")
+    .max(50, "Name must be 50 characters or less.")
+    .required("Please enter your name."),
+  email: Yup.string()
+    .trim()
+    .email("Please enter a valid email address.")
+    .required("Please enter your email address."),
+  mobile: Yup.string()
+    .trim()
+    .matches(/^[+]?[(]?[0-9]{1,4}[)]?[-\s./0-9]*$/, "Please enter a valid mobile number.")
+    .min(10, "Mobile number must be at least 10 digits.")
+    .max(16, "Mobile number must be 16 digits or less.")
+    .required("Please enter your mobile number."),
+  message: Yup.string()
+    .trim()
+    .max(500, "Message must be 500 characters or less."),
+});
 
 export default function ContactForm() {
   const router = useRouter();
-  const [form, setForm] = useState(INITIAL);
-  const [loading, setLoading] = useState(false);
 
-  function handleChange(e) {
-    e.target.setCustomValidity("");
-    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  }
+  const formik = useFormik({
+    initialValues: INITIAL_VALUES,
+    validationSchema: contactSchema,
+    validateOnBlur: true,
+    validateOnChange: true,
+    onSubmit: async (values, { resetForm, setSubmitting }) => {
+      const fullName = values.firstName.trim();
 
-  function handleInvalid(e) {
-    const messages = {
-      firstName: "Please enter your first name.",
-      email: "Please enter your email address.",
-      mobile: "Please enter your mobile number.",
-    };
-    e.target.setCustomValidity(messages[e.target.name] || "Please fill out this field.");
-  }
+      const contactData = {
+        fullName,
+        email: values.email.trim(),
+        mobile: values.mobile.trim(),
+        message: values.message.trim(),
+      };
 
-  async function handleSubmit(e) {
-    e.preventDefault();
-    if (!e.currentTarget.reportValidity()) {
-      return;
-    }
-    setLoading(true);
+      try {
+        await submitForm("Contact", contactData);
+        resetForm();
+        router.push("/thank-you");
+      } catch (err) {
+        const msg = err?.message || "Failed to submit contact form";
+        router.push({ pathname: "/error", query: { msg } });
+      } finally {
+        setSubmitting(false);
+      }
+    },
+  });
 
-    const fullName = [form.firstName, form.lastName]
-      .map((value) => value.trim())
-      .filter(Boolean)
-      .join(" ");
-
-    const contactData = {
-      fullName,
-      email: form.email.trim(),
-      mobile: form.mobile.trim(),
-      message: form.message.trim(),
-    };
-
-    try {
-      await submitForm("Contact", contactData);
-      setForm(INITIAL);
-      router.push("/thank-you");
-    } catch (err) {
-      const msg = err?.message || "Failed to submit contact form";
-      router.push({ pathname: "/error", query: { msg } });
-    } finally {
-      setLoading(false);
-    }
-  }
+  const getFieldError = (name) => formik.touched[name] && formik.errors[name] ? formik.errors[name] : "";
+  const getInputClassName = (name) => getFieldError(name) ? styles.inputError : "";
 
   return (
     <section className={`${inter.variable} ${montserrat.variable} ${styles.section}`} id="contact-form">
       <div className={styles.inner}>
-
-        {/* ── Left: form ── */}
         <div className={styles.left}>
           <span className={styles.badge}>
             <Image
@@ -110,71 +119,34 @@ export default function ContactForm() {
 
           <p className={`${inter.className} ${styles.description}`}>
             Have questions or need assistance? Our friendly eyecare team is here
-            to help. Contact us by phone, email, or visit our medical center—we&apos;re
+            to help. Contact us by phone, email, or visit our medical center - we&apos;re
             always ready to assist you.
           </p>
 
           <div className={styles.formCard}>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={formik.handleSubmit} noValidate>
               <div className={styles.formGrid}>
-
-                {/* First Name */}
                 <div className={styles.formGroup}>
-                  <label className={styles.label} htmlFor="firstName">First Name</label>
+                  <label className={styles.label} htmlFor="firstName">Name</label>
                   <div className={styles.inputWrap}>
                     <input
                       id="firstName"
                       name="firstName"
                       type="text"
-                      placeholder="Enter first name"
-                      value={form.firstName}
-                      onChange={handleChange}
-                      onInvalid={handleInvalid}
-                      required
+                      placeholder="Enter name"
+                      value={formik.values.firstName}
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      className={getInputClassName("firstName")}
+                      aria-invalid={Boolean(getFieldError("firstName"))}
+                      aria-describedby={getFieldError("firstName") ? "firstName-error" : undefined}
                       autoComplete="given-name"
                     />
                     <span className={styles.inputIcon}><FieldIcon src="/assets/contact/user-icon.png" /></span>
                   </div>
+                  {getFieldError("firstName") && <p id="firstName-error" className={styles.errorText}>{getFieldError("firstName")}</p>}
                 </div>
 
-                {/* Last Name */}
-                <div className={styles.formGroup}>
-                  <label className={styles.label} htmlFor="lastName">Last Name</label>
-                  <div className={styles.inputWrap}>
-                    <input
-                      id="lastName"
-                      name="lastName"
-                      type="text"
-                      placeholder="Enter last name"
-                      value={form.lastName}
-                      onChange={handleChange}
-                      required
-                      autoComplete="family-name"
-                    />
-                    <span className={styles.inputIcon}><FieldIcon src="/assets/contact/user-icon.png" /></span>
-                  </div>
-                </div>
-
-                {/* Email */}
-                <div className={styles.formGroup}>
-                  <label className={styles.label} htmlFor="email">Email</label>
-                  <div className={styles.inputWrap}>
-                    <input
-                      id="email"
-                      name="email"
-                      type="email"
-                      placeholder="Enter email id"
-                      value={form.email}
-                      onChange={handleChange}
-                      onInvalid={handleInvalid}
-                      required
-                      autoComplete="email"
-                    />
-                    <span className={styles.inputIcon}><FieldIcon src="/assets/contact/email-icon.png" /></span>
-                  </div>
-                </div>
-
-                {/* Mobile */}
                 <div className={styles.formGroup}>
                   <label className={styles.label} htmlFor="mobile">Mobile Number</label>
                   <div className={styles.inputWrap}>
@@ -183,17 +155,41 @@ export default function ContactForm() {
                       name="mobile"
                       type="tel"
                       placeholder="Enter mobile number"
-                      value={form.mobile}
-                      onChange={handleChange}
-                      onInvalid={handleInvalid}
-                      required
+                      value={formik.values.mobile}
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      className={getInputClassName("mobile")}
+                      aria-invalid={Boolean(getFieldError("mobile"))}
+                      aria-describedby={getFieldError("mobile") ? "mobile-error" : undefined}
                       autoComplete="tel"
                     />
                     <span className={styles.inputIcon}><FieldIcon src="/assets/contact/call-icon-blue.png" /></span>
                   </div>
+                  {getFieldError("mobile") && <p id="mobile-error" className={styles.errorText}>{getFieldError("mobile")}</p>}
                 </div>
 
-                {/* Message */}
+
+                <div className={`${styles.formGroup} ${styles.formGroupFull}`}>
+                  <label className={styles.label} htmlFor="email">Email</label>
+                  <div className={styles.inputWrap}>
+                    <input
+                      id="email"
+                      name="email"
+                      type="email"
+                      placeholder="Enter email id"
+                      value={formik.values.email}
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      className={getInputClassName("email")}
+                      aria-invalid={Boolean(getFieldError("email"))}
+                      aria-describedby={getFieldError("email") ? "email-error" : undefined}
+                      autoComplete="email"
+                    />
+                    <span className={styles.inputIcon}><FieldIcon src="/assets/contact/email-icon.png" /></span>
+                  </div>
+                  {getFieldError("email") && <p id="email-error" className={styles.errorText}>{getFieldError("email")}</p>}
+                </div>
+
                 <div className={`${styles.formGroup} ${styles.formGroupFull}`}>
                   <label className={styles.label} htmlFor="message">Message</label>
                   <div className={styles.inputWrap}>
@@ -201,18 +197,22 @@ export default function ContactForm() {
                       id="message"
                       name="message"
                       placeholder="Enter Your Message Or Note here..."
-                      value={form.message}
-                      onChange={handleChange}
+                      value={formik.values.message}
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      className={getInputClassName("message")}
+                      aria-invalid={Boolean(getFieldError("message"))}
+                      aria-describedby={getFieldError("message") ? "message-error" : undefined}
                       rows={4}
                     />
                     <span className={`${styles.inputIcon} ${styles.iconTop}`}><FieldIcon src="/assets/contact/message-icon.png" /></span>
                   </div>
+                  {getFieldError("message") && <p id="message-error" className={styles.errorText}>{getFieldError("message")}</p>}
                 </div>
-
               </div>
 
-              <button className={styles.submitBtn} type="submit" disabled={loading}>
-                {loading ? "Sending..." : "Send Message"}
+              <button className={styles.submitBtn} type="submit" disabled={formik.isSubmitting}>
+                {formik.isSubmitting ? "Sending..." : "Send Message"}
                 <span className={styles.arrowCircle}>
                   <Image
                     className={styles.arrowIconImage}
@@ -228,7 +228,6 @@ export default function ContactForm() {
           </div>
         </div>
 
-        {/* ── Right: map ── */}
         <div className={styles.mapWrap}>
           <iframe
             title="Shanti EyeTech location map"
@@ -238,8 +237,8 @@ export default function ContactForm() {
             referrerPolicy="strict-origin-when-cross-origin"
           />
         </div>
-
       </div>
     </section>
   );
 }
+

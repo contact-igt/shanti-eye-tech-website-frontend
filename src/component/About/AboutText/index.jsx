@@ -3,6 +3,7 @@ import {
   motion,
   useReducedMotion,
   useScroll,
+  useSpring,
   useTransform
 } from "framer-motion";
 import { Inter } from "next/font/google";
@@ -26,17 +27,19 @@ const aboutWordCount = aboutIntroductionContent.paragraphs.reduce(
 );
 
 function ScrollTextWord({ children, index, progress, reduceMotion }) {
-  const start = (index / aboutWordCount) * 0.94;
+  const safeWordCount = Math.max(aboutWordCount - 1, 1);
+  const start = (index / safeWordCount) * 0.76;
+  const end = Math.min(start + 0.18, 1);
   const color = useTransform(
     progress,
-    [start, start + 0.055],
-    ["rgba(77, 70, 65, 0.15)", "#111111"]
+    [start, end],
+    ["rgba(17, 24, 23, 0.24)", "#111817"]
   );
 
   return (
     <motion.span
       className={styles.aboutIntroductionWord}
-      style={reduceMotion ? { color: "#111111" } : { color }}
+      style={reduceMotion ? { color: "#111817" } : { color }}
     >
       {children}{" "}
     </motion.span>
@@ -48,8 +51,14 @@ export default function AboutText() {
   const reduceMotion = useReducedMotion();
   const { scrollYProgress } = useScroll({
     target: sectionRef,
-    offset: ["start 94%", "end 6%"]
+    offset: ["start 82%", "end 24%"]
   });
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 80,
+    damping: 24,
+    mass: 0.35
+  });
+  const revealProgress = useTransform(smoothProgress, [0.04, 0.92], [0, 1]);
 
   return (
     <section
@@ -85,7 +94,7 @@ export default function AboutText() {
                   <ScrollTextWord
                     index={previousWords + wordIndex}
                     key={`${paragraphIndex}-${wordIndex}`}
-                    progress={scrollYProgress}
+                    progress={revealProgress}
                     reduceMotion={reduceMotion}
                   >
                     {word}

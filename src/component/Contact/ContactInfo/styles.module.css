@@ -106,9 +106,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: -29px 0 20px;
+  margin: -19px 0 20px;
   flex-shrink: 0;
-  box-shadow: 0 8px 24px rgba(22, 193, 228, 0.3);
+  /* box-shadow: 0 8px 24px rgba(22, 193, 228, 0.3); */
 }
 
 .iconWrap svg {
@@ -174,4 +174,162 @@
     max-width: 360px;
     gap: 42px;
   }
+}
+
+/* Final contact info responsive tuning */
+@media (max-width: 1200px) {
+  .section {
+    padding: 92px 28px 86px;
+  }
+
+  .inner {
+    max-width: 1040px;
+  }
+
+  .cards {
+    gap: 16px;
+  }
+
+  .card {
+    min-height: 196px;
+    padding: 0 20px 22px;
+  }
+
+  .cardTitle {
+    font-size: 22px;
+    line-height: 1.2;
+  }
+}
+
+@media (max-width: 992px) {
+  .section {
+    padding: 82px 24px 78px;
+  }
+
+  .heading {
+    font-size: clamp(34px, 5vw, 42px);
+  }
+
+  .description {
+    margin-bottom: 54px;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .cards {
+    max-width: 720px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 42px 18px;
+  }
+
+  .card {
+    min-height: 190px;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 72px 20px 72px;
+  }
+
+  .badge {
+    font-size: 13px;
+  }
+
+  .heading {
+    max-width: 620px;
+    font-size: clamp(32px, 6.6vw, 40px);
+    line-height: 1.12;
+  }
+
+  .description {
+    max-width: 470px;
+    margin-bottom: 50px;
+  }
+
+  .cards {
+    max-width: 640px;
+    gap: 40px 16px;
+  }
+
+  .cardTitle {
+    font-size: 21px;
+  }
+}
+
+@media (max-width: 576px) {
+  .section {
+    padding: 64px 16px 68px;
+  }
+
+  .heading {
+    font-size: clamp(29px, 8vw, 36px);
+  }
+
+  .description {
+    margin-bottom: 46px;
+    font-size: 13.5px;
+  }
+
+  .cards {
+    max-width: 370px;
+    grid-template-columns: 1fr;
+    gap: 42px;
+  }
+
+  .card {
+    min-height: 182px;
+    border-radius: 18px;
+  }
+}
+
+@media (max-width: 430px) {
+  .section {
+    padding: 58px 14px 62px;
+  }
+
+  .heading {
+    font-size: 30px;
+  }
+
+  .badge {
+    min-height: 25px;
+    padding: 0 15px;
+    font-size: 12px;
+  }
+
+  .cardTitle {
+    font-size: 20px;
+  }
+
+  .cardBody {
+    font-size: 13.5px;
+    line-height: 1.45;
+  }
+}
+
+@media (max-width: 390px) {
+  .section {
+    padding: 54px 12px 58px;
+  }
+
+  .heading {
+    font-size: 28px;
+  }
+
+  .cards {
+    max-width: 342px;
+  }
+}
+
+/* Final contact section/card color match */
+.section {
+  background: #fcfaf7 !important;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.002) !important;
+  /* border: 1px solid rgba(0, 68, 240, 0.14) !important; */
+  border-top-color: rgba(1, 69, 240, 0.5) !important;
+  box-shadow: 0 1px 5px rgba(0, 68, 240, 0.1) !important;
 }

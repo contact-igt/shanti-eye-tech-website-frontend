@@ -26,6 +26,9 @@ const topNavLinks = [
 const treatmentLinks = [
   { label: "Cataract", href: "/treatments/catract" },
   { label: "LASIK", href: "/treatments/lasik" },
+  { label: "Pediatric Eye Care", href: "/treatments/pediatric-eye-care" },
+  { label: "Glaucoma", href: "/treatments/glaucoma" },
+  { label: "Retina", href: "/treatments/retina" },
 ];
 
 /* ── Treatments dropdown ── */
@@ -100,7 +103,7 @@ export default function ThankYouHero() {
       className={`${inter.className} ${styles.hero}`}
       aria-labelledby="thankyou-hero-heading"
     >
-      {/* Background image — reuse contact page banner */}
+      {/* Background image – reuse contact page banner */}
       <Image
         className={styles.heroImage}
         src="/assets/contact/contact_page_img.png"
@@ -139,7 +142,7 @@ export default function ThankYouHero() {
               Home
             </Link>
 
-            {/* Treatments dropdown */}
+            {/* ── Treatments dropdown ── */}
             <TreatmentsDropdown closeMenu={() => setIsMenuOpen(false)} />
 
             {/* About */}
@@ -189,3 +192,5 @@ export default function ThankYouHero() {
     </section>
   );
 }
+
+

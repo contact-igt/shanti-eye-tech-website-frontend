@@ -24,7 +24,7 @@
 .heroImage {
   z-index: 0;
   object-fit: cover;
-  object-position: right center;
+  object-position: var(--hero-image-position, right center);
   top: -1px !important;
   bottom: -1px !important;
   left: -1px !important;
@@ -40,7 +40,7 @@
   right: clamp(24px, 4.4vw, 92px);
   z-index: 3;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: flex-start;
   gap: clamp(42px, 4vw, 92px);
 }
@@ -59,7 +59,7 @@
 
 .nav {
   position: relative;
-  margin-top: 22px;
+  margin-top: -28px;
   display: flex;
   align-items: center;
   gap: 23px;
@@ -85,7 +85,7 @@
   color: #15bfdf;
 }
 
-/* ── Treatments dropdown ── */
+/* Ã¢â€â‚¬Ã¢â€â‚¬ Treatments dropdown Ã¢â€â‚¬Ã¢â€â‚¬ */
 .dropdown {
   position: relative;
 }
@@ -136,8 +136,14 @@
 }
 
 @keyframes dropIn {
-  from { opacity: 0; transform: translateX(-50%) translateY(-6px); }
-  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
 }
 
 .dropdownItem {
@@ -146,7 +152,9 @@
   font-size: 14px;
   font-weight: 500;
   color: #151c23;
-  transition: background 0.18s ease, color 0.18s ease;
+  transition:
+    background 0.18s ease,
+    color 0.18s ease;
   white-space: nowrap;
 }
 
@@ -178,7 +186,10 @@
   height: 2.5px;
   border-radius: 99px;
   background: #ffffff;
-  transition: transform 0.25s ease, opacity 0.25s ease, width 0.25s ease;
+  transition:
+    transform 0.25s ease,
+    opacity 0.25s ease,
+    width 0.25s ease;
 }
 
 .menuButton span:nth-child(2) {
@@ -208,7 +219,8 @@
   z-index: 2;
   width: min(620px, calc(100vw - 20px));
   padding-top: 0;
-  margin-left: clamp(24px, 4.9vw, 100px);
+  margin-left: clamp(35px, 5.9vw, 100px);
+  margin-top: clamp(10px, 2vw, 20px);
 }
 
 .heroCopy h1 {
@@ -298,8 +310,6 @@
   background: #ffffff;
 }
 
-
-
 @media (min-width: 1800px) {
   .hero {
     min-height: 748px;
@@ -310,12 +320,16 @@
   }
 }
 
-@media (max-width: 1440px) {
+@media (max-width: 1400px) {
   .hero {
+    min-height: 760px;
+    padding-top: 160px;
+    padding-bottom: 96px;
   }
 
   .heroChrome {
     top: 30px;
+    gap: 48px;
   }
 
   .logoLink {
@@ -334,18 +348,18 @@
 
   .heroCopy {
     width: min(558px, calc(100vw - 48px));
-    padding-top: 0;
+    margin-left: clamp(34px, 5.3vw, 74px);
   }
 
   .heroCopy h1 {
     width: min(558px, 100%);
-    height: auto;
     font-size: 61px;
     line-height: 65px;
     letter-spacing: -1.4px;
   }
 
   .heroCopy p {
+    max-width: 540px;
     margin-top: 22px;
     font-size: 15px;
   }
@@ -353,227 +367,329 @@
   .actions {
     margin-top: 26px;
   }
+}
 
-
-}@media (max-width: 1024px) {
+@media (max-width: 1200px) {
   .hero {
+    min-height: 720px;
+    padding-top: 150px;
+    padding-bottom: 84px;
   }
 
   .heroImage {
-    object-position: 78% center;
+    object-position: var(--hero-image-tablet-position, 74% center);
   }
 
-  /* heroShade removed */
-
   .heroChrome {
-    top: 25px;
+    top: 26px;
     left: 32px;
     right: 32px;
-    gap: 22px;
+    gap: 30px;
   }
 
   .logoLink {
-    width: 243px;
-    max-width: 42vw;
+    width: 235px;
+    max-width: 34vw;
   }
 
   .nav {
-    margin-top: 18px;
+    margin-top: 17px;
   }
 
   .heroCopy {
-    width: min(486px, calc(100vw - 48px));
-    padding-top: 0;
-    margin-left: 24px;
+    width: min(500px, calc(100vw - 48px));
+    margin-left: 32px;
   }
 
   .heroCopy h1 {
-    width: min(486px, 100%);
-    font-size: 50px;
-    line-height: 54px;
+    width: min(500px, 100%);
+    font-size: 54px;
+    line-height: 58px;
     letter-spacing: -1.1px;
   }
 
   .heroCopy p {
-    max-width: 450px;
+    max-width: 470px;
     font-size: 15px;
+    line-height: 1.48;
   }
-
-
 }
 
-@media (max-width: 720px) {
+@media (max-width: 992px) {
   .hero {
-    min-height: 780px;
-    height: auto;
+    min-height: 700px;
+    padding-top: 136px;
+    padding-bottom: 74px;
+  }
+
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.94) 0%,
+      rgba(255, 255, 255, 0.82) 40%,
+      rgba(255, 255, 255, 0.38) 70%,
+      rgba(255, 255, 255, 0.08) 100%
+    );
+    pointer-events: none;
   }
 
   .heroImage {
-    object-position: 72% center;
+    object-position: var(--hero-image-tablet-position, 70% center);
   }
 
-  /* heroShade removed */
-
   .heroChrome {
-    top: 18px;
-    left: 18px;
-    right: 18px;
-    justify-content: flex-start;
+    top: 24px;
+    left: 28px;
+    right: 28px;
+    gap: 24px;
   }
 
   .logoLink {
-    width: 200px;
-    max-width: 62vw;
+    width: 210px;
+    max-width: 38vw;
   }
 
-  .nav {
-    margin-top: 11px;
-  }
-
-  .menuButton {
-    display: grid;
-    width: 52px;
-    height: 34px;
-  }
-
-  /* On mobile: hide links and dropdown trigger by default */
-  .navLinks a {
-    display: none;
-  }
-
-  .navLinks .dropdownTrigger {
-    display: none;
-  }
-
-  /* When nav is open: show floating dropdown with all links */
-  .navOpen .navLinks {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 240px;
-    padding: 24px;
-    border-radius: 20px;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 4px;
-    background: rgba(255, 255, 255, 0.96);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-    box-shadow: 0 20px 48px rgba(39, 55, 65, 0.16);
-    border: 1px solid rgba(0, 0, 0, 0.04);
-    z-index: 1000;
-  }
-
-  /* Show links inside open dropdown */
-  .navOpen .navLinks a {
-    display: block;
-    min-height: auto;
-    padding: 12px 14px;
-    color: #151c23;
-    font-size: 16px;
-    font-weight: 500;
-    border-radius: 12px;
-    transition: background-color 0.2s ease;
-  }
-
-  .navOpen .navLinks a:hover {
-    background-color: rgba(22, 193, 228, 0.08);
-    color: #15bfdf;
-  }
-
-  /* Show Treatments trigger inside open drawer */
-  .navOpen .navLinks .dropdownTrigger {
-    display: flex;
-    padding: 12px 14px;
-    color: #151c23;
-    font-size: 16px;
-    font-weight: 500;
-    border-radius: 12px;
-    width: 100%;
-  }
-
-  /* Dropdown menu in mobile — show inline */
-  .navOpen .dropdownMenu {
-    position: static;
-    transform: none;
-    animation: none;
-    box-shadow: none;
-    border: none;
-    background: rgba(22, 193, 228, 0.05);
-    border-radius: 10px;
-    margin-top: 2px;
-  }
-
-  .navOpen .dropdownItem {
-    padding: 10px 20px;
-    font-size: 14px;
-  }
-
-  /* Push the X/menu button to the bottom right inside open drawer */
-  .navOpen .navLinks .menuButton {
-    display: grid;
-    align-self: flex-end;
-    margin-top: 12px;
-    order: 999;
+  .navLinks {
+    gap: 14px;
   }
 
   .heroCopy {
-    width: calc(100vw - 36px);
-    padding-top: 0;
-    margin-left: 18px;
+    width: min(470px, calc(100vw - 48px));
+    margin-left: 28px;
   }
 
   .heroCopy h1 {
-    max-width: 430px;
-    width: auto;
+    width: min(470px, 100%);
+    font-size: 48px;
+    line-height: 52px;
+    letter-spacing: -0.9px;
+  }
+
+  .heroCopy p {
+    max-width: 440px;
+    margin-top: 20px;
+    font-size: 14px;
+  }
+
+  .heroButton {
+    min-height: 36px;
+    padding-inline: 22px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    min-height: 680px;
     height: auto;
-    font-size: 41px;
+    justify-content: flex-end;
+    padding: 96px 0 56px;
+  }
+
+  .hero::before {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.08) 0%,
+        rgba(255, 255, 255, 0.38) 38%,
+        rgba(255, 255, 255, 0.9) 100%
+      ),
+      linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0.94) 0%,
+        rgba(255, 255, 255, 0.8) 48%,
+        rgba(255, 255, 255, 0.3) 78%,
+        rgba(255, 255, 255, 0.08) 100%
+      );
+  }
+
+  .heroImage {
+    object-position: var(--hero-image-mobile-position, 67% center);
+  }
+
+  .heroChrome {
+    display: none !important;
+  }
+
+  .heroCopy {
+    width: calc(100vw - 40px);
+    margin-inline: 20px;
+    margin-top: 0;
+  }
+
+  .heroCopy h1 {
+    max-width: 520px;
+    width: auto;
+    font-size: 42px;
     line-height: 1.08;
     letter-spacing: -0.7px;
   }
 
   .heroCopy p {
-    max-width: 430px;
-    margin-top: 22px;
+    max-width: 500px;
+    margin-top: 18px;
     font-size: 14px;
-    line-height: 1.48;
+    line-height: 1.5;
   }
 
   .actions {
-    margin-top: 26px;
-    flex-direction: column;
-    align-items: flex-start;
+    margin-top: 24px;
     gap: 12px;
   }
+}
 
-
-}@media (max-width: 420px) {
-  /* Inherit min-height: 100dvh from .hero */
-
-  .logoLink {
-    width: 155px;
+@media (max-width: 576px) {
+  .hero {
+    min-height: 640px;
+    padding: 84px 0 44px;
   }
 
-  .navOpen .navLinks {
-    width: calc(100vw - 36px);
+  .heroImage {
+    object-position: var(--hero-image-mobile-position, 66% center);
   }
 
   .heroCopy {
-    padding-top: 0;
+    width: calc(100vw - 32px);
+    margin-inline: 16px;
   }
 
   .heroCopy h1 {
-    font-size: 35px;
+    max-width: 410px;
+    font-size: 36px;
+    line-height: 1.08;
+    letter-spacing: -0.4px;
+  }
+
+  .heroCopy p {
+    max-width: 410px;
+    margin-top: 16px;
+    font-size: 13px;
+    line-height: 1.52;
+  }
+
+  .actions {
+    margin-top: 22px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .heroButton {
+    width: fit-content;
+    max-width: 100%;
+    min-height: 38px;
+    padding-inline: 22px;
+    font-size: 13px;
   }
 }
 
-/* Hide per-page hero chrome (logo + nav) on mobile â€” global sticky header handles mobile nav */
-@media (max-width: 760px) {
-  .heroChrome {
-    display: none !important;
+@media (max-width: 430px) {
+  .hero {
+    min-height: 610px;
+    padding-bottom: 38px;
+  }
+
+  .heroImage {
+    object-position: var(--hero-image-small-position, 63% center);
+  }
+
+  .heroCopy h1 {
+    max-width: 360px;
+    font-size: 33px;
+  }
+
+  .heroCopy p {
+    max-width: 360px;
+    font-size: 13px;
   }
 }
 
+@media (max-width: 390px) {
+  .hero {
+    min-height: 590px;
+    padding-bottom: 34px;
+  }
 
+  .heroCopy {
+    width: calc(100vw - 28px);
+    margin-inline: 14px;
+  }
 
+  .heroCopy h1 {
+    max-width: 340px;
+    font-size: 30px;
+    line-height: 1.1;
+  }
 
+  .heroCopy p {
+    max-width: 340px;
+    margin-top: 14px;
+    font-size: 12px;
+  }
+
+  .heroButton {
+    min-height: 36px;
+    padding-inline: 18px;
+    font-size: 12px;
+  }
+}
+/* Final responsive button width: match Home mobile buttons */
+@media (max-width: 768px) {
+  .ctaButton,
+  .ctaButtonPrimary,
+  .ctaButtonSecondary,
+  .heroButton,
+  .heroButtonPrimary,
+  .heroButtonSecondary,
+  .actions > a,
+  .actions > button {
+    width: min(100%, 480px) !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    min-height: 62px !important;
+    align-self: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    padding-top: 9px !important;
+    padding-bottom: 9px !important;
+  }
+
+  .actions {
+    width: 100% !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .ctaButton,
+  .ctaButtonPrimary,
+  .ctaButtonSecondary,
+  .heroButton,
+  .heroButtonPrimary,
+  .heroButtonSecondary,
+  .actions > a,
+  .actions > button {
+    width: min(100%, 420px) !important;
+    min-height: 60px !important;
+  }
+}
+
+@media (max-width: 390px) {
+  .ctaButton,
+  .ctaButtonPrimary,
+  .ctaButtonSecondary,
+  .heroButton,
+  .heroButtonPrimary,
+  .heroButtonSecondary,
+  .actions > a,
+  .actions > button {
+    width: 100% !important;
+    min-height: 56px !important;
+    padding-top: 7px !important;
+    padding-bottom: 7px !important;
+  }
+}

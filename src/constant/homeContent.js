@@ -122,7 +122,7 @@ export const services = [
   },
   {
     number: "04",
-    title: "Retina Services",
+    title: "Retina Treatment",
     description: "Advanced retinal diagnosis and care",
     tags: ["Specialized Care", "Personalized Treatment", "High Resolution Eye Imaging"]
   },
@@ -150,16 +150,16 @@ export const doctorCards = [
     items: ["MBBS", "DOMS", "DNB", "FAECS"]
   },
   {
-    number: "02",
-    title: "Specialization",
-    type: "text",
-    body: "Cataract Surgery, Glaucoma Care, LASIK / Refractive, Phacoemulsification"
-  },
-  {
     number: "03",
     title: "Recognition",
     type: "text",
     body: "9+ National & international honours"
+  },
+    {
+    number: "02",
+    title: "Specialization",
+    type: "text",
+    body: "Cataract Surgery, Glaucoma Care, LASIK / Refractive, Phacoemulsification"
   },
   {
     number: "04",

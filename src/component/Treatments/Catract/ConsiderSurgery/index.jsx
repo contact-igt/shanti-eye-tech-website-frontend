@@ -80,7 +80,7 @@ export default function ConsiderSurgerySection() {
 
       {/* ── Section header (full-width, balanced padding) ── */}
       <div className={styles.sectionHeader}>
-        <span className={styles.badge}>Services</span>
+        <span className={styles.badge}>Treatments</span>
         <h2
           id="consider-surgery-title"
           className={`${styles.title} ${playfairDisplay.className}`}

@@ -1,29 +1,20 @@
-
-.header {
-  display: none;
-}
-
-.backdrop {
-  display: none;
-}
-
+.header,
+.backdrop,
 .drawer {
   display: none;
 }
 
-/* ─── Mobile breakpoint ──────────────────────────────────────────────────── */
-@media (max-width: 760px) {
-
-  /* ── Transparent Header Container ── */
+@media (max-width: 768px) {
   .header {
     display: flex;
     position: absolute;
-    top: 24px;
-    left: 16px;
-    right: 16px;
+    top: 30px;
+    left: 28px;
+    right: 28px;
+    z-index: 1002;
     align-items: center;
-    justify-content: space-between;
-    /* Removed z-index to prevent creating a stacking context that forces logo above drawer */
+    justify-content: flex-end;
+    pointer-events: none;
   }
 
   .logoLink {
@@ -31,26 +22,30 @@
     flex-shrink: 0;
     position: relative;
     z-index: 900;
+    top: 5px;
   }
 
   .logo {
     display: block;
-    width: 170px;
+    position: relative;
+    width: 184px;
     height: auto;
+    top: 13px;
   }
 
-  /* ── Teal circular hamburger button ── */
   .hamburger {
     margin-left: auto;
+    margin-top: 10px;
+    margin-right: 6px;
     flex-shrink: 0;
     position: relative;
-    z-index: 1002;
-    width: 56px;
-    height: 38px;
+    z-index: 1003;
+    width: 68px;
+    height: 46px;
     border: none;
     border-radius: 999px;
     background: #16c1e4;
-    box-shadow: 0 10px 26px rgba(22, 193, 228, 0.3);
+    box-shadow: 0 14px 30px rgba(22, 193, 228, 0.28);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -58,7 +53,8 @@
     gap: 4px;
     padding: 0;
     cursor: pointer;
-    transition: background-color 0.2s ease;
+    pointer-events: auto;
+    transition: background-color 0.2s ease, opacity 0.2s ease, transform 0.2s ease;
   }
 
   .hamburger:hover {
@@ -85,154 +81,298 @@
     width: 8px;
   }
 
-  /* X animation when open */
-  .hamburgerOpen span:nth-child(1) {
-    transform: translateY(6.5px) rotate(45deg);
-    width: 22px;
-  }
-
-  .hamburgerOpen span:nth-child(2) {
+  .hamburgerOpen {
     opacity: 0;
+    pointer-events: none;
+    transform: scale(0.94);
   }
 
-  .hamburgerOpen span:nth-child(3) {
-    transform: translateY(-6.5px) rotate(-45deg);
-    width: 22px;
-  }
-
-  /* ── Backdrop overlay ── */
   .backdrop {
     display: block;
     position: fixed;
     inset: 0;
     z-index: 1000;
-    background: rgba(12, 20, 30, 0.22);
-    backdrop-filter: blur(2px);
-    -webkit-backdrop-filter: blur(2px);
+    background: rgba(15, 30, 38, 0.44);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
     animation: fadeIn 0.2s ease forwards;
   }
 
-  /* ── Nav drawer panel (Floating Card) ── */
   .drawer {
     display: flex;
-    position: absolute;
-    top: 70px;
-    right: 16px;
-    width: 250px;
-    z-index: 1001;
+    position: fixed;
+    font-family: var(--font-header-montserrat), Montserrat, Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: 1003;
     flex-direction: column;
-    gap: 8px;
-    background: rgba(255, 255, 255, 0.98);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    padding: 20px 16px;
-    border-radius: 20px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    transform: translateY(-10px);
+    overflow-y: auto;
+    background: #fbf9f7;
+    color: #123447;
+    border-left: 0;
+    box-shadow: none;
+    transform: translateX(100%);
     opacity: 0;
     pointer-events: none;
-    transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.25s ease;
+    transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.22s ease;
   }
 
   .drawerOpen {
     pointer-events: all;
-    transform: translateY(0);
+    transform: translateX(0);
     opacity: 1;
   }
 
-  /* ── Nav link items ── */
-  .navLink {
+  .drawerHeader {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 18px;
+    padding: 32px 30px 18px;
+  }
+
+  .drawerLogo {
+    width: 220px;
+    min-height: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border-radius: 0;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+  }
+
+  .drawerLogo img {
+    width: 100%;
+    height: auto;
     display: block;
-    padding: 13px 14px;
-    font-size: 22px;
-    font-weight: 600;
-    line-height: 1;
-    color: #151c23;
-    border-radius: 12px;
-    text-decoration: none;
-    transition: background-color 0.18s ease, color 0.18s ease;
   }
 
-  .navLink:hover {
-    background-color: rgba(22, 193, 228, 0.07);
-    color: #16c1e4;
+  .drawerClose {
+    width: 62px;
+    height: 62px;
+    flex: 0 0 62px;
+    display: grid;
+    place-items: center;
+    border: 2px solid #123447;
+    border-radius: 999px;
+    background: transparent;
+    color: #123447;
+    cursor: pointer;
+    box-shadow: none;
+    transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
   }
 
-  /* ── Treatments dropdown ── */
-  .dropdownItem {
+  .drawerClose:hover {
+    border-color: #16c1e4;
+    color: #16a9c5;
+    transform: rotate(4deg);
+  }
+
+  .drawerLinks {
     display: flex;
     flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    width: min(420px, calc(100vw - 56px));
+    margin: 54px auto 0;
+    padding: 0;
   }
 
+  .navLink,
   .dropdownTrigger {
+    width: 100%;
+    min-height: 66px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 100%;
-    padding: 13px 14px;
-    font-size: 22px;
-    font-weight: 600;
-    line-height: 1;
-    color: #151c23;
-    background: none;
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-    text-align: left;
+    gap: 16px;
+    padding: 0 22px;
+    border: 0;
+    border-bottom: 1px solid rgba(18, 52, 71, 0.12);
+    background: transparent;
+    color: #123447;
+    text-decoration: none;
     font-family: inherit;
-    transition: background-color 0.18s ease;
+    font-size: 24px;
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: 0;
+    text-align: left;
+    cursor: pointer;
+    transition: color 0.18s ease, background-color 0.18s ease, padding-left 0.18s ease;
   }
 
+  .navLink:hover,
   .dropdownTrigger:hover {
-    background-color: rgba(22, 193, 228, 0.07);
+    color: #14c9f0;
+    background: rgba(20, 201, 240, 0.12);
+    padding-left: 28px;
+  }
+
+  .navLinkActive,
+  .navLinkActive:hover {
+    color: #14c9f0;
+    background: rgba(20, 201, 240, 0.12);
+    padding-left: 28px;
+  }
+
+  .navItemIcon {
+    display: none;
+  }
+
+  .navItemText {
+    white-space: nowrap;
+    flex: 1 1 auto;
+  }
+
+  .dropdownItem {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+  }
+
+  .dropdownChevronBox {
+    width: 36px;
+    height: 36px;
+    display: grid;
+    place-items: center;
+    border-radius: 999px;
+    background: rgba(22, 193, 228, 0.12);
+    color: #16a9c5;
   }
 
   .chevron {
-    font-size: 10px;
-    color: #8fa0ae;
-    margin-left: 8px;
+    display: block;
+    width: 15px;
+    height: 15px;
     transition: transform 0.22s ease;
-    flex-shrink: 0;
   }
 
   .chevronOpen {
     transform: rotate(180deg);
   }
 
-  /* Sub-links (LASIK, Cataract) */
   .subLinks {
-    display: flex;
-    flex-direction: column;
-    padding: 4px 0 6px 22px;
-    gap: 0;
+    display: grid;
+    gap: 8px;
+    padding: 14px 22px 18px;
+    background: rgba(22, 193, 228, 0.06);
+    border-bottom: 1px solid rgba(18, 52, 71, 0.1);
   }
 
   .subLink {
-    display: block;
-    padding: 10px 14px;
-    font-size: 18px;
-    font-weight: 500;
-    line-height: 1;
-    color: #3d5060;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 38px;
+    padding: 8px 14px;
+    border: 0;
     border-radius: 10px;
+    background: rgba(255, 255, 255, 0.64);
+    color: #126176;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.1;
     text-decoration: none;
-    transition: background-color 0.18s ease, color 0.18s ease;
+    box-shadow: none;
+    transition: background-color 0.18s ease, color 0.18s ease, transform 0.18s ease;
   }
 
   .subLink:hover {
-    background-color: rgba(22, 193, 228, 0.07);
-    color: #16c1e4;
+    background: #16c1e4;
+    color: #ffffff;
+    transform: translateX(2px);
   }
 
-  /* Divider between items */
-  .divider {
-    height: 1px;
-    background: rgba(0, 0, 0, 0.05);
-    margin: 6px 0;
-    border: none;
+  .subLinkActive {
+    background: #14c9f0;
+    color: #ffffff;
   }
 
+  .subLinkActive:hover {
+    background: #14c9f0;
+    color: #ffffff;
+    transform: translateX(2px);
+  }
+}
+
+@media (max-width: 576px) {
+  .header {
+    top: 28px;
+    left: 22px;
+    right: 22px;
+  }
+
+  .hamburger {
+    width: 64px;
+    height: 44px;
+  }
+
+  .drawer {
+    width: 100%;
+  }
+
+  .drawerHeader {
+    padding: 28px 24px 14px;
+  }
+
+  .drawerLogo {
+    width: 200px;
+    min-height: 0;
+  }
+
+  .drawerLinks {
+    width: min(390px, calc(100vw - 44px));
+    margin-top: 48px;
+  }
+
+  .navLink,
+  .dropdownTrigger {
+    font-size: 23px;
+  }
+}
+
+@media (max-width: 390px) {
+  .header {
+    left: 18px;
+    right: 18px;
+  }
+
+  .drawer {
+    width: 100%;
+  }
+
+  .drawerHeader {
+    width: min(350px, calc(100vw - 15px));
+    margin-top: 42px;
+  }
+
+  .drawerLogo {
+    width: 176px;
+    min-height: 0;
+  }
+
+  .drawerClose {
+    width: 56px;
+    height: 56px;
+    flex-basis: 56px;
+  }
+
+  .drawerLinks {
+    width: min(350px, calc(100vw - 32px));
+    margin-top: 42px;
+  }
+
+  .navLink,
+  .dropdownTrigger {
+    font-size: 22px;
+  }
 }
 
 @keyframes fadeIn {

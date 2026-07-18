@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Inter, Montserrat } from "next/font/google";
@@ -22,6 +22,75 @@ function NavLink({ href, children, onClick }) {
     return <Link href={href} onClick={onClick}>{children}</Link>;
   }
   return <a href={href} onClick={onClick}>{children}</a>;
+}
+const treatmentLinks = [
+  { label: "Cataract", href: "/treatments/catract" },
+  { label: "LASIK", href: "/treatments/lasik" },
+  { label: "Pediatric Eye Care", href: "/treatments/pediatric-eye-care" },
+  { label: "Glaucoma", href: "/treatments/glaucoma" },
+  { label: "Retina", href: "/treatments/retina" },
+];
+
+function TreatmentsDropdown({ closeMenu }) {
+  const [open, setOpen] = useState(false);
+  const ref = useRef(null);
+
+  useEffect(() => {
+    function handler(e) {
+      if (ref.current && !ref.current.contains(e.target)) setOpen(false);
+    }
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
+  }, []);
+
+  return (
+    <div className={styles.dropdown} ref={ref}>
+      <button
+        className={styles.dropdownTrigger}
+        type="button"
+        aria-haspopup="true"
+        aria-expanded={open}
+        onClick={() => setOpen((o) => !o)}
+      >
+        Treatments
+        <svg
+          className={`${styles.chevron} ${open ? styles.chevronOpen : ""}`}
+          width="12"
+          height="12"
+          viewBox="0 0 12 12"
+          fill="none"
+          aria-hidden="true"
+        >
+          <path
+            d="M2 4.5L6 8.5L10 4.5"
+            stroke="currentColor"
+            strokeWidth="1.6"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      </button>
+
+      {open && (
+        <div className={styles.dropdownMenu} role="menu">
+          {treatmentLinks.map((link) => (
+            <Link
+              key={link.label}
+              href={link.href}
+              className={styles.dropdownItem}
+              role="menuitem"
+              onClick={() => {
+                setOpen(false);
+                closeMenu();
+              }}
+            >
+              {link.label}
+            </Link>
+          ))}
+        </div>
+      )}
+    </div>
+  );
 }
 
 export default function ContactHero({ content }) {
@@ -62,15 +131,16 @@ export default function ContactHero({ content }) {
           aria-label="Primary navigation"
         >
           <div className={styles.navLinks}>
-            {content.navLinks.map((link) => (
-              <NavLink
-                key={link.label}
-                href={link.href}
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {link.label}
-              </NavLink>
-            ))}
+            <NavLink href="/" onClick={() => setIsMenuOpen(false)}>
+              Home
+            </NavLink>
+            <TreatmentsDropdown closeMenu={() => setIsMenuOpen(false)} />
+            <NavLink href="/about" onClick={() => setIsMenuOpen(false)}>
+              About
+            </NavLink>
+            <NavLink href="/contact" onClick={() => setIsMenuOpen(false)}>
+              Contact
+            </NavLink>
             <button
               className={`${styles.menuButton} ${isMenuOpen ? styles.menuOpen : ""}`}
               type="button"
@@ -96,3 +166,5 @@ export default function ContactHero({ content }) {
     </section>
   );
 }
+
+

@@ -174,103 +174,395 @@
   height: 20px;
 }
 
-@media (max-width: 1280px) {
+.mobileSliderWrap {
+  position: relative;
+  display: none;
+  width: 100%;
+  min-width: 0;
+  overflow: visible;
+}
+
+.mobileSlideItem {
+  height: 100%;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+.mobileCard {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 320px;
+  overflow: hidden;
+  border-radius: 16px;
+  background: #d6e2ee;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+.mobileCardTitle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  padding: 18px 20px;
+  margin: 0;
+  color: rgb(42, 58, 119);
+  font-size: clamp(22px, 3vw, 30px);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+@media (max-width: 1200px) {
+  .section {
+    padding: 72px 0;
+  }
+
+  .badge {
+    margin-bottom: 16px;
+  }
+
+  .title {
+    max-width: 1040px;
+    padding: 0 28px;
+    font-size: clamp(46px, 5vw, 62px);
+    margin-bottom: 40px;
+  }
+
   .carouselContainer {
     gap: 14px;
   }
 
   .centerCard {
-    width: clamp(360px, 32vw, 440px);
-    height: clamp(390px, 35vw, 500px);
+    width: clamp(360px, 30vw, 430px);
+    height: clamp(390px, 34vw, 490px);
   }
 
   .sideCard {
-    width: clamp(246px, 23vw, 302px);
-    height: clamp(184px, 18vw, 242px);
+    width: clamp(245px, 22vw, 292px);
+    height: clamp(184px, 18vw, 235px);
+    margin-top: 34px;
+  }
+
+  .centerTitle {
+    font-size: clamp(30px, 2.4vw, 40px);
+  }
+}
+
+@media (max-width: 992px) {
+  .section {
+    padding: 66px 0 64px;
+  }
+
+  .title {
+    max-width: 820px;
+    padding: 0 24px;
+    font-size: clamp(40px, 5.8vw, 54px);
+    line-height: 1.08;
+    margin-bottom: 36px;
+  }
+
+  .carouselContainer {
+    display: none;
+  }
+
+  .mobileSliderWrap {
+    display: block;
+    padding: 0 clamp(34px, 5vw, 52px);
+  }
+
+  .mobileSlider {
+    padding: 0 0 42px;
+  }
+
+  .mobileSlider :global(.slick-list) {
+    margin: 0 -10px;
+    overflow: hidden;
+  }
+
+  .mobileSlider :global(.slick-track) {
+    display: flex;
+    align-items: stretch;
+  }
+
+  .mobileSlider :global(.slick-slide) {
+    display: flex;
+    height: auto;
+  }
+
+  .mobileSlider :global(.slick-slide > div) {
+    display: flex;
+    width: 100%;
+    height: 100%;
+  }
+
+  .mobileCard {
+    min-height: 320px;
+  }
+
+  .mobileSlider :global(.slick-dots) {
+    bottom: 0;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin: 0;
+  }
+
+  .mobileSlider :global(.slick-dots li) {
+    width: auto;
+    height: 8px;
+    margin: 0;
+  }
+
+  .mobileSlider :global(.slick-dots li button) {
+    width: 8px;
+    height: 8px;
+    padding: 0;
+    border-radius: 999px;
+    background: rgba(42, 58, 119, 0.3);
+    transition: width 0.25s ease, background-color 0.25s ease;
+  }
+
+  .mobileSlider :global(.slick-dots li button::before) {
+    display: none;
+  }
+
+  .mobileSlider :global(.slick-dots li.slick-active button) {
+    width: 22px;
+    background: rgb(42, 58, 119);
+  }
+
+  .mobileSliderWrap .navButton {
+    width: 56px;
+    height: 56px;
+    top: 45%;
+  }
+
+  .mobileSliderWrap .prevButton {
+    left: clamp(28px, 4vw, 46px);
+    transform: translateY(-50%);
+  }
+
+  .mobileSliderWrap .nextButton {
+    right: clamp(28px, 4vw, 46px);
+    transform: translateY(-50%);
+  }
+
+  .mobileSliderWrap .prevButton:hover,
+  .mobileSliderWrap .nextButton:hover {
+    transform: translateY(-50%) scale(1.04);
   }
 }
 
 @media (max-width: 768px) {
   .section {
-    padding: 50px 0 40px;
+    padding: 56px 0 52px;
+  }
+
+  .badge {
+    padding: 7px 18px;
+    font-size: 12px;
+    margin-bottom: 16px;
   }
 
   .title {
-    margin-bottom: 30px;
-  }
-
-  .carouselContainer {
-    width: 100%;
-    gap: 12px;
+    max-width: 640px;
     padding: 0 22px;
+    font-size: clamp(34px, 7vw, 46px);
+    line-height: 1.1;
+    margin-bottom: 32px;
   }
 
-  .centerCard {
-    width: 48vw;
-    height: 56vw;
+  .mobileSliderWrap {
+    padding: 0 0 0 22px;
+    overflow: hidden;
   }
 
-  .sideCard {
-    width: 32vw;
-    height: 30vw;
-    margin-top: 24px;
+  .mobileSlider {
+    padding: 0 0 42px;
   }
 
-  .centerTitle {
-    padding: 18px 18px;
-    font-size: clamp(25px, 5.2vw, 38px);
+  .mobileSlideItem {
+    width: calc((100vw - 60px) * 0.6667);
+    max-width: 470px;
+    min-width: 360px;
+    padding: 0 18px 0 0;
+    display: flex;
+    height: 100%;
   }
 
-  .sideTitle {
-    padding: 12px 14px;
-    font-size: 13px;
+  .mobileSlider :global(.slick-list) {
+    margin: 0;
+    padding: 0 !important;
+    overflow: visible;
   }
 
-  .navButton {
-    width: 42px;
-    height: 42px;
+  .mobileSlider :global(.slick-track) {
+    display: flex;
+    justify-content: flex-start;
+    align-items: stretch;
   }
 
-  .prevButton {
+  .mobileCard {
+    min-height: 426px;
+    border-radius: 14px;
+  }
+
+  .mobileCardTitle {
+    padding: 18px;
+    font-size: clamp(24px, 4.7vw, 34px);
+  }
+
+  .mobileSliderWrap .navButton {
+    width: 50px;
+    height: 50px;
+  }
+
+  .navIcon {
+    width: 18px;
+    height: 18px;
+  }
+
+  .mobileSliderWrap .prevButton {
     left: 22px;
-    transform: translateY(-50%);
   }
 
-  .nextButton {
+  .mobileSliderWrap .nextButton {
     right: 22px;
-    transform: translateY(-50%);
-  }
-
-  .prevButton:hover,
-  .nextButton:hover {
-    transform: translateY(-50%) scale(1.04);
   }
 }
 
-@media (max-width: 490px) {
-  .carouselContainer {
-    gap: 10px;
+@media (max-width: 576px) {
+  .section {
+    padding: 50px 0 46px;
+  }
+
+  .title {
+    max-width: 460px;
+    padding: 0 18px;
+    font-size: clamp(30px, 8.4vw, 38px);
+    line-height: 1.12;
+    margin-bottom: 28px;
+  }
+
+  .mobileSliderWrap {
     padding: 0 16px;
   }
 
-  .centerCard {
-    width: 58vw;
-    height: 66vw;
+  .mobileSlideItem {
+    width: auto;
+    max-width: none;
+    min-width: 0;
+    padding: 0;
   }
 
-  .sideCard {
-    width: 34vw;
-    height: 34vw;
+  .mobileSlider :global(.slick-list) {
+    margin: 0;
+    overflow: hidden;
   }
 
-  .centerTitle {
-    padding: 14px 14px;
-    font-size: 22px;
+  .mobileCard {
+    min-height: 350px;
+    border-radius: 13px;
   }
 
-  .sideTitle {
-    padding: 10px 11px;
-    font-size: 12px;
+  .mobileCardTitle {
+    padding: 15px;
+    font-size: clamp(22px, 6vw, 30px);
+  }
+
+  .mobileSliderWrap .navButton {
+    width: 46px;
+    height: 46px;
+  }
+
+  .mobileSliderWrap .prevButton {
+    left: 16px;
+  }
+
+  .mobileSliderWrap .nextButton {
+    right: 16px;
   }
 }
 
+@media (max-width: 430px) {
+  .section {
+    padding: 46px 0 42px;
+  }
+
+  .badge {
+    padding: 6px 16px;
+    font-size: 11px;
+    margin-bottom: 14px;
+  }
+
+  .title {
+    padding: 0 14px;
+    font-size: 30px;
+    line-height: 1.14;
+    margin-bottom: 24px;
+  }
+
+  .mobileSliderWrap {
+    padding: 0 12px;
+  }
+
+  .mobileCard {
+    min-height: 330px;
+    border-radius: 12px;
+  }
+
+  .mobileCardTitle {
+    padding: 13px;
+    font-size: 22px;
+  }
+
+  .mobileSliderWrap .navButton {
+    width: 44px;
+    height: 44px;
+  }
+
+  .navIcon {
+    width: 16px;
+    height: 16px;
+  }
+
+  .mobileSliderWrap .prevButton {
+    left: 12px;
+  }
+
+  .mobileSliderWrap .nextButton {
+    right: 12px;
+  }
+}
+
+@media (max-width: 390px) {
+  .section {
+    padding: 42px 0 40px;
+  }
+
+  .title {
+    padding: 0 12px;
+    font-size: 28px;
+    margin-bottom: 22px;
+  }
+
+  .mobileSliderWrap {
+    padding: 0 10px;
+  }
+
+  .mobileCard {
+    min-height: 310px;
+  }
+
+  .mobileCardTitle {
+    padding: 12px;
+    font-size: 20px;
+  }
+
+  .mobileSliderWrap .navButton {
+    width: 42px;
+    height: 42px;
+  }
+}

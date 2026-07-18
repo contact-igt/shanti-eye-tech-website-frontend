@@ -25,9 +25,9 @@ const intelOneMono = Intel_One_Mono({
 const cardRotations = [-3.45, -3.45, -3.45];
 
 const statIcons = [
-  '/assets/about/card_icon1.png',
-  '/assets/about/card_icon2.png',
-  '/assets/about/card_icon3.png',
+  '/assets/about/card_icon1_new.png',
+  '/assets/about/card_icon2_new.png',
+  '/assets/about/card_icon3_new.png',
 ];
 
 function MenuIcon() {
@@ -50,6 +50,9 @@ function StatCard({ stat, index }) {
 const treatmentDropdownLinks = [
   { label: "Cataract", href: "/treatments/catract" },
   { label: "LASIK", href: "/treatments/lasik" },
+  { label: "Pediatric Eye Care", href: "/treatments/pediatric-eye-care" },
+  { label: "Glaucoma", href: "/treatments/glaucoma" },
+  { label: "Retina", href: "/treatments/retina" },
 ];
 
 function TreatmentsDropdown({ closeMenu }) {
@@ -128,18 +131,10 @@ export default function AboutHero() {
             <motion.p variants={reveal}>{heroContent.description}</motion.p>
             <motion.div className={styles.aboutBannerActions} variants={reveal}>
               <a className={`${styles.ctaButton} ${styles.ctaButtonPrimary}`} href="#about-story">
-                <span className={styles.ctaButtonFill} aria-hidden="true" />
                 <span className={styles.ctaButtonText}>Know Our Story</span>
-                <span className={styles.arrowIcon} aria-hidden="true">
-                  <span />
-                </span>
               </a>
               <a className={`${styles.ctaButton} ${styles.ctaButtonSecondary}`} href="#doctor-section">
-                <span className={styles.ctaButtonFill} aria-hidden="true" />
                 <span className={styles.ctaButtonText}>Meet Our Doctor</span>
-                <span className={styles.arrowIcon} aria-hidden="true">
-                  <span />
-                </span>
               </a>
             </motion.div>
           </div>
@@ -168,4 +163,4 @@ export default function AboutHero() {
       </div>
     </section>
   );
-}
+};

@@ -1,17 +1,17 @@
 import Head from "next/head";
-import GlaucomaTreatmentPage from "@/pagecomponent/Treatments/Glaucoma";
+import TreatmentPage from "@/component/Treatments/Common/TreatmentPage";
+import { treatmentPages } from "@/constant/treatmentContent";
 
 export default function GlaucomaTreatment() {
+  const content = treatmentPages.glaucoma;
+
   return (
     <>
       <Head>
-        <title>Glaucoma Treatment | Shanti EyeTech Eye Care & Laser Hospital</title>
-        <meta
-          name="description"
-          content="Explore advanced Glaucoma Treatment at Shanti EyeTech Eye Care & Laser Hospital in Indore, preserving your vision."
-        />
+        <title>{content.seo.title}</title>
+        <meta name="description" content={content.seo.description} />
       </Head>
-      <GlaucomaTreatmentPage />
+      <TreatmentPage content={content} />
     </>
   );
 }

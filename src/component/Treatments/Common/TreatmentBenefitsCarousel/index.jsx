@@ -1,9 +1,10 @@
 "use client";
 
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Bricolage_Grotesque, Playfair_Display } from "next/font/google";
 import Image from "next/image";
+import Slider from "react-slick";
 import styles from "./styles.module.css";
 
 const playfairDisplay = Playfair_Display({
@@ -20,9 +21,46 @@ const bricolageGrotesque = Bricolage_Grotesque({
   display: "swap",
 });
 
+function useMediaQuery(query) {
+  const [matches, setMatches] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia(query);
+    const handleChange = () => setMatches(mediaQuery.matches);
+
+    handleChange();
+    mediaQuery.addEventListener("change", handleChange);
+
+    return () => mediaQuery.removeEventListener("change", handleChange);
+  }, [query]);
+
+  return matches;
+}
+
+function SliderArrow({ direction, onClick }) {
+  return (
+    <button
+      className={`${styles.navButton} ${direction === "prev" ? styles.prevButton : styles.nextButton}`}
+      onClick={onClick}
+      aria-label={direction === "prev" ? "Previous slide" : "Next slide"}
+      type="button"
+    >
+      <svg className={styles.navIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        {direction === "prev" ? (
+          <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+        ) : (
+          <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+        )}
+      </svg>
+    </button>
+  );
+}
+
 export default function TreatmentBenefitsCarousel({ content }) {
   const [currentIndex, setCurrentIndex] = useState(1);
   const [slideDirection, setSlideDirection] = useState(1);
+  const useSlider = useMediaQuery("(max-width: 992px)");
+  const sliderRef = useRef(null);
 
   const total = content?.cards?.length || 1;
 
@@ -37,6 +75,45 @@ export default function TreatmentBenefitsCarousel({ content }) {
   }, [total]);
 
   if (!content) return null;
+
+  const sliderSettings = {
+    dots: true,
+    arrows: false,
+    infinite: true,
+    autoplay: true,
+    autoplaySpeed: 2400,
+    speed: 450,
+    slidesToShow: 2,
+    slidesToScroll: 1,
+    swipeToSlide: true,
+    pauseOnHover: false,
+    pauseOnFocus: false,
+    adaptiveHeight: false,
+    centerMode: false,
+    variableWidth: false,
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          centerMode: false,
+          variableWidth: true,
+          infinite: true,
+        },
+      },
+      {
+        breakpoint: 576,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          centerMode: false,
+          variableWidth: false,
+          infinite: true,
+        },
+      },
+    ],
+  };
 
   const centerIdx = currentIndex;
   const leftIdx = (currentIndex - 1 + total) % total;
@@ -74,79 +151,90 @@ export default function TreatmentBenefitsCarousel({ content }) {
         </h2>
 
         <div className={styles.carouselOuter}>
-          <div className={styles.carouselContainer}>
-            <AnimatePresence mode="popLayout" custom={slideDirection}>
-              <motion.div
-                key={`left-${leftIdx}`}
-                className={`${styles.sideCard} ${styles.sideCardLeft}`}
-                custom={slideDirection}
-                variants={slideVariants}
-                initial="enter"
-                animate="center"
-                exit="exit"
-                transition={slideTransition}
-              >
-                <Image src={leftCard.image} alt={leftCard.title} fill className={styles.cardImage} sizes="30vw" />
-                <div className={styles.cardGradient} />
-                <h3 className={`${styles.sideTitle} ${bricolageGrotesque.className}`}>
-                  {leftCard.title}
-                </h3>
-              </motion.div>
-            </AnimatePresence>
+          {useSlider ? (
+            <div className={styles.mobileSliderWrap}>
+              <Slider ref={sliderRef} className={styles.mobileSlider} {...sliderSettings}>
+                {content.cards.map((card) => (
+                  <div key={card.title} className={styles.mobileSlideItem}>
+                    <div className={styles.mobileCard}>
+                      <Image src={card.image} alt={card.title} fill className={styles.cardImage} sizes="(max-width: 576px) 100vw, (max-width: 992px) 50vw, 33vw" />
+                      <div className={styles.cardGradient} />
+                      <h3 className={`${styles.mobileCardTitle} ${bricolageGrotesque.className}`}>
+                        {card.title}
+                      </h3>
+                    </div>
+                  </div>
+                ))}
+              </Slider>
 
-            <AnimatePresence mode="popLayout" custom={slideDirection}>
-              <motion.div
-                key={`center-${centerIdx}`}
-                className={styles.centerCard}
-                custom={slideDirection}
-                variants={slideVariants}
-                initial="enter"
-                animate="center"
-                exit="exit"
-                transition={slideTransition}
-              >
-                <Image src={centerCard.image} alt={centerCard.title} fill className={styles.cardImage} sizes="40vw" />
-                <div className={styles.cardGradient} />
-                <h3 className={`${styles.centerTitle} ${bricolageGrotesque.className}`}>
-                  {centerCard.title}
-                </h3>
-              </motion.div>
-            </AnimatePresence>
+              <SliderArrow direction="prev" onClick={() => sliderRef.current?.slickPrev()} />
+              <SliderArrow direction="next" onClick={() => sliderRef.current?.slickNext()} />
+            </div>
+          ) : (
+            <div className={styles.carouselContainer}>
+              <AnimatePresence mode="popLayout" custom={slideDirection}>
+                <motion.div
+                  key={`left-${leftIdx}`}
+                  className={`${styles.sideCard} ${styles.sideCardLeft}`}
+                  custom={slideDirection}
+                  variants={slideVariants}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                  transition={slideTransition}
+                >
+                  <Image src={leftCard.image} alt={leftCard.title} fill className={styles.cardImage} sizes="30vw" />
+                  <div className={styles.cardGradient} />
+                  <h3 className={`${styles.sideTitle} ${bricolageGrotesque.className}`}>
+                    {leftCard.title}
+                  </h3>
+                </motion.div>
+              </AnimatePresence>
 
-            <AnimatePresence mode="popLayout" custom={slideDirection}>
-              <motion.div
-                key={`right-${rightIdx}`}
-                className={`${styles.sideCard} ${styles.sideCardRight}`}
-                custom={slideDirection}
-                variants={slideVariants}
-                initial="enter"
-                animate="center"
-                exit="exit"
-                transition={slideTransition}
-              >
-                <Image src={rightCard.image} alt={rightCard.title} fill className={styles.cardImage} sizes="30vw" />
-                <div className={styles.cardGradient} />
-                <h3 className={`${styles.sideTitle} ${bricolageGrotesque.className}`}>
-                  {rightCard.title}
-                </h3>
-              </motion.div>
-            </AnimatePresence>
+              <AnimatePresence mode="popLayout" custom={slideDirection}>
+                <motion.div
+                  key={`center-${centerIdx}`}
+                  className={styles.centerCard}
+                  custom={slideDirection}
+                  variants={slideVariants}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                  transition={slideTransition}
+                >
+                  <Image src={centerCard.image} alt={centerCard.title} fill className={styles.cardImage} sizes="40vw" />
+                  <div className={styles.cardGradient} />
+                  <h3 className={`${styles.centerTitle} ${bricolageGrotesque.className}`}>
+                    {centerCard.title}
+                  </h3>
+                </motion.div>
+              </AnimatePresence>
 
-            <button className={`${styles.navButton} ${styles.prevButton}`} onClick={handlePrev} aria-label="Previous slide">
-              <svg className={styles.navIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-              </svg>
-            </button>
+              <AnimatePresence mode="popLayout" custom={slideDirection}>
+                <motion.div
+                  key={`right-${rightIdx}`}
+                  className={`${styles.sideCard} ${styles.sideCardRight}`}
+                  custom={slideDirection}
+                  variants={slideVariants}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                  transition={slideTransition}
+                >
+                  <Image src={rightCard.image} alt={rightCard.title} fill className={styles.cardImage} sizes="30vw" />
+                  <div className={styles.cardGradient} />
+                  <h3 className={`${styles.sideTitle} ${bricolageGrotesque.className}`}>
+                    {rightCard.title}
+                  </h3>
+                </motion.div>
+              </AnimatePresence>
 
-            <button className={`${styles.navButton} ${styles.nextButton}`} onClick={handleNext} aria-label="Next slide">
-              <svg className={styles.navIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-              </svg>
-            </button>
-          </div>
+              <SliderArrow direction="prev" onClick={handlePrev} />
+              <SliderArrow direction="next" onClick={handleNext} />
+            </div>
+          )}
         </div>
       </div>
     </section>
   );
 }
-

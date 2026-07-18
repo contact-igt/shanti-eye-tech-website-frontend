@@ -57,7 +57,7 @@ export default function ThankYouContent() {
         {/* CTA buttons */}
         <div className={styles.actions}>
           <Link href="/" className={styles.btnOutline}>
-            Return to Home
+            <span className={styles.btnText}>Return to Home</span>
             <span className={styles.btnArrow}>
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                 <path
@@ -71,7 +71,7 @@ export default function ThankYouContent() {
             </span>
           </Link>
           <Link href="/contact" className={styles.btnFilled}>
-            Book Another
+            <span className={styles.btnText}>Book Another</span>
             <span className={styles.btnArrow}>
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                 <path
@@ -97,3 +97,5 @@ export default function ThankYouContent() {
     </section>
   );
 }
+
+

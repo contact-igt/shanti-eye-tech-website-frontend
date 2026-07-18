@@ -31,6 +31,9 @@ function TreatmentLink({ href, children, className, onClick }) {
 const treatmentDropdownLinks = [
   { label: "Cataract", href: "/treatments/catract" },
   { label: "LASIK", href: "/treatments/lasik" },
+  { label: "Pediatric Eye Care", href: "/treatments/pediatric-eye-care" },
+  { label: "Glaucoma", href: "/treatments/glaucoma" },
+  { label: "Retina", href: "/treatments/retina" },
 ];
 
 function TreatmentsDropdown({ closeMenu }) {
@@ -46,7 +49,16 @@ function TreatmentsDropdown({ closeMenu }) {
   }, []);
 
   return (
-    <div className={styles.dropdown} ref={ref}>
+    <div
+      className={styles.dropdown}
+      ref={ref}
+      onMouseEnter={() => setOpen(true)}
+      onMouseLeave={() => setOpen(false)}
+      onFocus={() => setOpen(true)}
+      onBlur={(event) => {
+        if (!event.currentTarget.contains(event.relatedTarget)) setOpen(false);
+      }}
+    >
       <button
         className={styles.dropdownTrigger}
         type="button"
@@ -135,6 +147,12 @@ export default function TreatmentHero({ content }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const headingId = content.headingId || "treatment-hero-title";
   const accentWords = content.accentWords || content.title.accentWords || [content.title.accent];
+  const heroImageStyle = {
+    "--hero-image-position": content.background.objectPosition || "right center",
+    "--hero-image-tablet-position": content.background.tabletObjectPosition || content.background.objectPosition || "70% center",
+    "--hero-image-mobile-position": content.background.mobileObjectPosition || content.background.tabletObjectPosition || content.background.objectPosition || "67% center",
+    "--hero-image-small-position": content.background.smallObjectPosition || content.background.mobileObjectPosition || content.background.tabletObjectPosition || content.background.objectPosition || "63% center",
+  };
 
   return (
     <article className={styles.page}>
@@ -147,11 +165,7 @@ export default function TreatmentHero({ content }) {
           sizes="100vw"
           priority
           aria-hidden="true"
-          style={
-            content.background.objectPosition
-              ? { objectPosition: content.background.objectPosition }
-              : undefined
-          }
+          style={heroImageStyle}
         />
 
         <div className={styles.heroChrome}>
@@ -226,3 +240,5 @@ export default function TreatmentHero({ content }) {
     </article>
   );
 }
+
+

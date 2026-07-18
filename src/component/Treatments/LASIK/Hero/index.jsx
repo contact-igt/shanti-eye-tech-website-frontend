@@ -29,6 +29,9 @@ function TreatmentLink({ href, children, className, onClick }) {
 const treatmentDropdownLinks = [
   { label: "Cataract", href: "/treatments/catract" },
   { label: "LASIK", href: "/treatments/lasik" },
+  { label: "Pediatric Eye Care", href: "/treatments/pediatric-eye-care" },
+  { label: "Glaucoma", href: "/treatments/glaucoma" },
+  { label: "Retina", href: "/treatments/retina" },
 ];
 
 function TreatmentsDropdown({ closeMenu }) {
@@ -44,7 +47,16 @@ function TreatmentsDropdown({ closeMenu }) {
   }, []);
 
   return (
-    <div className={styles.dropdown} ref={ref}>
+    <div
+      className={styles.dropdown}
+      ref={ref}
+      onMouseEnter={() => setOpen(true)}
+      onMouseLeave={() => setOpen(false)}
+      onFocus={() => setOpen(true)}
+      onBlur={(event) => {
+        if (!event.currentTarget.contains(event.relatedTarget)) setOpen(false);
+      }}
+    >
       <button
         className={styles.dropdownTrigger}
         type="button"
@@ -188,3 +200,6 @@ export default function LasikHero({ content }) {
     </article>
   );
 }
+
+
+

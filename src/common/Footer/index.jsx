@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { footerContent } from "@/constant/footerContent";
@@ -90,28 +91,31 @@ function FooterCurveLine({ position }) {
   );
 }
 
+const SOCIAL_ICON_SOURCES = {
+  Facebook: "/assets/facebook.png",
+  WhatsApp: "/assets/whatsapp_2.png",
+  Instagram: "/assets/instagram.png",
+  YouTube: "/assets/youtube_2.png",
+};
+
 function FooterSocialIcon({ label }) {
-  if (label === "Facebook") {
-    return <span aria-hidden="true">f</span>;
+  const src = SOCIAL_ICON_SOURCES[label];
+
+  if (!src) {
+    return null;
   }
 
-  if (label === "X / Twitter") {
-    return <span aria-hidden="true">X</span>;
-  }
-
-  if (label === "Instagram") {
-    return (
-      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-        <rect x="5" y="5" width="14" height="14" rx="4" />
-        <circle cx="12" cy="12" r="3.2" />
-        <circle cx="16.5" cy="7.5" r="0.8" />
-      </svg>
-    );
-  }
-
-  return <span aria-hidden="true">in</span>;
+  return (
+    <Image
+      src={src}
+      alt=""
+      width={18}
+      height={18}
+      className={css("footer-social-image")}
+      aria-hidden="true"
+    />
+  );
 }
-
 function FooterNavLink({ href, children }) {
   if (href.startsWith("/")) {
     return <Link href={href}>{children}</Link>;

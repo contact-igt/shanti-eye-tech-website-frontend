@@ -65,10 +65,10 @@
 }
 
 .description {
-  max-width: 415px;
+  max-width: 450px;
   font-family: var(--font-contact-form-montserrat), Montserrat, Arial, sans-serif;
   color: rgba(75, 85, 99, 0.55);
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 400;
   line-height: 16.8px;
   letter-spacing: 0;
@@ -118,12 +118,12 @@
 .inputWrap input,
 .inputWrap textarea {
   width: 100%;
-  padding: 12px 42px 12px 14px;
+  padding: 15px 42px 15px 15px;
   border: 1px solid #dde4ef;
   border-radius: 10px;
   font-size: 13.5px;
   color: #1a2b3c;
-  background: #fff;
+  background: rgba(255, 255, 255, 1);
   outline: none;
   transition: border-color 200ms ease, box-shadow 200ms ease;
   box-sizing: border-box;
@@ -132,7 +132,7 @@
 
 .inputWrap input::placeholder,
 .inputWrap textarea::placeholder {
-  color: #b0bac8;
+  color: rgba(75, 85, 99, 1);
 }
 
 .inputWrap input:focus,
@@ -176,7 +176,7 @@
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  padding: 13px 26px;
+  padding: 15px 26px;
   border: 0;
   border-radius: 999px;
   background: #16c1e4;
@@ -184,7 +184,7 @@
   font-size: 15px;
   font-weight: 600;
   cursor: pointer;
-  box-shadow: 0 8px 24px rgba(22, 193, 228, 0.32);
+  /* box-shadow: 0 8px 24px rgba(22, 193, 228, 0.32); */
   transition: background 200ms ease, transform 200ms ease, box-shadow 200ms ease;
 }
 
@@ -205,8 +205,8 @@
 }
 
 .arrowCircle {
-  width: 30px;
-  height: 30px;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
   background: #fff;
   display: flex;
@@ -268,5 +268,546 @@
 
   .formCard {
     padding: 22px 18px 26px;
+  }
+}
+
+/* Final contact form responsive tuning */
+@media (max-width: 1200px) {
+  .section {
+    padding: 76px 28px 86px;
+  }
+
+  .inner {
+    max-width: 1060px;
+    gap: 38px;
+  }
+
+  .heading {
+    font-size: clamp(36px, 3.8vw, 44px);
+    line-height: 1.12;
+  }
+
+  .mapWrap,
+  .mapWrap iframe {
+    min-height: 500px;
+  }
+}
+
+@media (max-width: 992px) {
+  .section {
+    padding: 70px 24px 78px;
+  }
+
+  .inner {
+    max-width: 720px;
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
+
+  .left {
+    align-items: center;
+    text-align: center;
+  }
+
+  .badge {
+    align-self: center;
+  }
+
+  .description {
+    max-width: 520px;
+    margin: 18px auto 34px;
+  }
+
+  .formCard {
+    width: 100%;
+  }
+
+  .mapWrap,
+  .mapWrap iframe {
+    min-height: 390px;
+  }
+
+  .label{
+    margin-left: 5px;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 64px 20px 72px;
+  }
+
+  .heading {
+    font-size: clamp(32px, 6.4vw, 40px);
+  }
+
+  .formCard {
+    padding: 26px 24px 30px;
+  }
+
+  .formGrid {
+    gap: 16px;
+  }
+
+  .mapWrap,
+  .mapWrap iframe {
+    min-height: 360px;
+  }
+}
+
+@media (max-width: 576px) {
+  .section {
+    padding: 56px 16px 64px;
+  }
+
+  .heading {
+    font-size: clamp(29px, 8vw, 36px);
+  }
+
+  .description {
+    font-size: 13.5px;
+    line-height: 1.5;
+  }
+
+  .formGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .formGroupFull {
+    grid-column: 1;
+  }
+
+  .formCard {
+    padding: 22px 18px 26px;
+    border-radius: 18px;
+  }
+
+  .label {
+    font-size: 15px;
+  }
+
+  .submitBtn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .mapWrap,
+  .mapWrap iframe {
+    min-height: 330px;
+  }
+}
+
+@media (max-width: 430px) {
+  .section {
+    padding: 52px 14px 58px;
+  }
+
+  .heading {
+    font-size: 30px;
+  }
+
+  .badge {
+    font-size: 12px;
+  }
+
+  .formCard {
+    padding: 20px 14px 24px;
+  }
+
+  .inputWrap input,
+  .inputWrap textarea {
+    font-size: 13px;
+  }
+
+  .mapWrap,
+  .mapWrap iframe {
+    min-height: 300px;
+  }
+}
+
+@media (max-width: 390px) {
+  .section {
+    padding: 48px 12px 54px;
+  }
+
+  .heading {
+    font-size: 28px;
+  }
+
+  .formCard {
+    padding: 18px 12px 22px;
+  }
+
+  .mapWrap,
+  .mapWrap iframe {
+    min-height: 280px;
+  }
+}
+
+/* Final contact form section color match */
+.section {
+  background: #f5f7fc !important;
+}
+
+.formCard {
+  background: #f5f7fc !important;
+}
+
+.mapWrap {
+  background: #e4e1db !important;
+}
+
+/* Final contact form and map section breakpoint polish */
+@media (max-width: 1200px) {
+  .section {
+    padding: 74px 26px 84px !important;
+  }
+
+  .inner {
+    max-width: 1080px !important;
+    grid-template-columns: minmax(0, 1fr) minmax(420px, 0.95fr) !important;
+    gap: 34px !important;
+  }
+
+  .heading {
+    font-size: clamp(38px, 3.8vw, 44px) !important;
+    line-height: 1.08 !important;
+  }
+
+  .description {
+    max-width: 430px !important;
+    font-size: 15px !important;
+    line-height: 1.35 !important;
+  }
+
+  .formCard {
+    padding: 26px 26px 30px !important;
+  }
+
+  .mapWrap,
+  .mapWrap iframe {
+    min-height: 520px !important;
+  }
+}
+
+@media (max-width: 992px) {
+  .section {
+    padding: 68px 22px 78px !important;
+  }
+
+  .inner {
+    max-width: 900px !important;
+    grid-template-columns: minmax(0, 1fr) minmax(360px, 0.92fr) !important;
+    gap: 28px !important;
+  }
+
+  .left {
+    align-items: flex-start !important;
+    text-align: left !important;
+  }
+
+  .badge {
+    align-self: flex-start !important;
+  }
+
+  .heading {
+    font-size: clamp(34px, 4.3vw, 40px) !important;
+    line-height: 1.08 !important;
+  }
+
+  .description {
+    max-width: 390px !important;
+    margin: 16px 0 30px !important;
+    font-size: 14px !important;
+    line-height: 1.42 !important;
+  }
+
+  .formCard {
+    padding: 22px 20px 26px !important;
+    border-radius: 18px !important;
+  }
+
+  .formGrid {
+    gap: 15px 16px !important;
+  }
+
+  .label {
+    font-size: 14.5px !important;
+    line-height: 1.35 !important;
+  }
+
+  .inputWrap input,
+  .inputWrap textarea {
+    padding: 14px 40px 14px 14px !important;
+    font-size: 13px !important;
+  }
+
+  .mapWrap,
+  .mapWrap iframe {
+    min-height: 520px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 62px 20px 70px !important;
+  }
+
+  .inner {
+    max-width: 620px !important;
+    grid-template-columns: 1fr !important;
+    gap: 34px !important;
+  }
+
+  .left {
+    align-items: center !important;
+    text-align: center !important;
+  }
+
+  .badge {
+    align-self: center !important;
+  }
+
+  .heading {
+    font-size: clamp(32px, 6.2vw, 40px) !important;
+    line-height: 1.1 !important;
+  }
+
+  .description {
+    max-width: 520px !important;
+    margin: 16px auto 30px !important;
+    font-size: 14px !important;
+  }
+
+  .formCard {
+    width: 100% !important;
+    padding: 24px 22px 28px !important;
+  }
+
+  .mapWrap,
+  .mapWrap iframe {
+    min-height: 370px !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .section {
+    padding: 56px 16px 64px !important;
+  }
+
+  .inner {
+    max-width: 430px !important;
+    gap: 30px !important;
+  }
+
+  .heading {
+    font-size: clamp(29px, 8.2vw, 36px) !important;
+  }
+
+  .description {
+    max-width: 360px !important;
+    font-size: 13.5px !important;
+    line-height: 1.48 !important;
+  }
+
+  .formGrid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  .formGroupFull {
+    grid-column: 1 !important;
+  }
+
+  .formCard {
+    padding: 22px 18px 26px !important;
+  }
+
+  .inputWrap textarea {
+    min-height: 118px !important;
+  }
+
+  .submitBtn {
+    width: 100% !important;
+    min-height: 58px !important;
+    justify-content: center !important;
+  }
+
+  .mapWrap,
+  .mapWrap iframe {
+    min-height: 330px !important;
+  }
+}
+
+@media (max-width: 430px) {
+  .section {
+    padding: 50px 14px 58px !important;
+  }
+
+  .inner {
+    max-width: 100% !important;
+    gap: 28px !important;
+  }
+
+  .badge {
+    min-height: 25px !important;
+    padding: 0 15px !important;
+    font-size: 12px !important;
+  }
+
+  .heading {
+    font-size: 30px !important;
+  }
+
+  .description {
+    font-size: 13px !important;
+  }
+
+  .formCard {
+    padding: 20px 14px 24px !important;
+    border-radius: 16px !important;
+  }
+
+  .label {
+    font-size: 14px !important;
+  }
+
+  .mapWrap {
+    border-radius: 16px !important;
+  }
+
+  .mapWrap,
+  .mapWrap iframe {
+    min-height: 300px !important;
+  }
+}
+
+@media (max-width: 390px) {
+  .section {
+    padding: 46px 12px 54px !important;
+  }
+
+  .heading {
+    font-size: 28px !important;
+  }
+
+  .description {
+    max-width: 320px !important;
+  }
+
+  .formCard {
+    padding: 18px 12px 22px !important;
+  }
+
+  .inputWrap input,
+  .inputWrap textarea {
+    padding: 14px 38px 14px 14px !important;
+  }
+
+  .mapWrap,
+  .mapWrap iframe {
+    min-height: 280px !important;
+  }
+}
+
+/* Contact form stacks from 992px down */
+@media (max-width: 992px) {
+  .inner {
+    max-width: 720px !important;
+    grid-template-columns: 1fr !important;
+    gap: 34px !important;
+  }
+
+  .left {
+    align-items: center !important;
+    text-align: center !important;
+  }
+
+  .badge {
+    align-self: center !important;
+  }
+
+  .description {
+    max-width: 520px !important;
+    margin: 18px auto 34px !important;
+  }
+
+  .formCard {
+    width: 100% !important;
+  }
+
+  .mapWrap,
+  .mapWrap iframe {
+    min-height: 390px !important;
+  }
+}
+
+/* Keep contact form labels start-aligned when section is centered */
+.formGroup {
+  text-align: left !important;
+  align-items: stretch !important;
+}
+
+.label {
+  text-align: left !important;
+  align-self: flex-start !important;
+}
+
+@media (max-width: 992px) {
+  .formGroup {
+    text-align: left !important;
+    align-items: stretch !important;
+  }
+
+  .label {
+    text-align: left !important;
+    align-self: flex-start !important;
+  }
+}
+
+/* Formik/Yup validation states */
+.inputWrap input.inputError,
+.inputWrap textarea.inputError {
+  border-color: rgba(220, 38, 38, 0.72) !important;
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.08) !important;
+}
+
+.errorText {
+  margin: 5px 0 0;
+  color: #dc2626;
+  font-family: var(--font-contact-form-inter), Inter, Arial, sans-serif;
+  font-size: 12px;
+  line-height: 1.35;
+  font-weight: 500;
+  text-align: left;
+}
+
+/* Final responsive submit button width: match Home mobile buttons */
+@media (max-width: 768px) {
+  .submitBtn {
+    width: min(100%, 480px) !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    min-height: 62px !important;
+    justify-content: center !important;
+    align-self: center !important;
+    padding-top: 9px !important;
+    padding-bottom: 9px !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .submitBtn {
+    width: min(100%, 420px) !important;
+    min-height: 60px !important;
+  }
+}
+
+@media (max-width: 390px) {
+  .submitBtn {
+    width: 100% !important;
+    min-height: 56px !important;
+    padding-top: 7px !important;
+    padding-bottom: 7px !important;
   }
 }

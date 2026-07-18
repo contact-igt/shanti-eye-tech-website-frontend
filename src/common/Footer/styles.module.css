@@ -1,31 +1,31 @@
 .footerSection {
   position: relative;
   width: 100%;
-  margin-top: 0;
+  margin: 0;
   padding: 0;
   overflow: hidden;
+  background: #f4f0ed;
 }
 
 .footerShell {
   position: relative;
   width: 100%;
-  min-height: 520px;
+  min-height: 570px;
   overflow: hidden;
-  border: 0;
-  border-radius: 0;
-  background:
-    linear-gradient(135deg, rgba(230, 255, 251, 0.94) 0%, rgba(210, 246, 235, 0.94) 48%, rgba(224, 255, 247, 0.92) 100%);
-  color: var(--ink);
+  padding: 80px 0 54px;
+  background: linear-gradient(90deg, #e3fff9 0%, #d5f8eb 49%, #e4fff9 100%);
+  color: #101817;
 }
 
 .footerShell::before {
   content: "";
   position: absolute;
-  inset: 0 0 auto;
-  z-index: 2;
-  height: 120px;
+  inset: 0;
+  z-index: 0;
   pointer-events: none;
-  background: linear-gradient(180deg, rgba(255, 252, 248, 0.78) 0%, rgba(255, 252, 248, 0.34) 42%, rgba(255, 252, 248, 0) 100%);
+  background:
+    radial-gradient(circle at 49% 44%, rgba(255, 255, 255, 0.3), transparent 40%),
+    linear-gradient(90deg, rgba(219, 255, 247, 0.72), rgba(202, 246, 232, 0.72), rgba(222, 255, 248, 0.7));
 }
 
 .footerBgImage {
@@ -36,7 +36,8 @@
   height: 100%;
   object-fit: cover;
   object-position: center center;
-  opacity: 0.62;
+  opacity: 0.12;
+  mix-blend-mode: soft-light;
   pointer-events: none;
 }
 
@@ -45,45 +46,43 @@
   inset: 0;
   z-index: 1;
   pointer-events: none;
-  background:
-    linear-gradient(90deg, rgba(232, 255, 251, 0.68), rgba(215, 248, 238, 0.74), rgba(233, 255, 250, 0.66)),
-    radial-gradient(circle at 50% 42%, rgba(255, 255, 255, 0.36), transparent 38%);
+  background: linear-gradient(90deg, rgba(227, 255, 249, 0.86), rgba(213, 248, 235, 0.86), rgba(228, 255, 249, 0.84));
 }
 
 .footerCurve {
   position: relative;
   z-index: 2;
   display: block;
-  width: calc(100% - 88px);
-  height: 92px;
+  width: min(1372px, calc(100% - 128px));
+  height: 72px;
   margin: 0 auto;
   overflow: visible;
 }
 
 .footerCurve path {
   fill: none;
-  stroke: rgba(36, 48, 46, 0.5);
-  stroke-width: 1.4;
+  stroke: rgba(30, 45, 42, 0.5);
+  stroke-width: 1.1;
   vector-effect: non-scaling-stroke;
 }
 
 .footerCurveTop {
-  margin-top: 58px;
+  margin-bottom: 22px;
 }
 
 .footerCurveBottom {
-  margin-top: 28px;
+  margin-top: 32px;
 }
 
 .footerContent {
   position: relative;
   z-index: 2;
-  width: min(1660px, calc(100% - 92px));
-  min-height: 286px;
+  width: min(1280px, calc(100% - 176px));
+  min-height: 275px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: minmax(260px, 1fr) minmax(360px, 1.25fr) minmax(280px, 1fr);
-  align-items: center;
+  grid-template-columns: minmax(350px, 1fr) minmax(286px, 0.78fr) minmax(350px, 1fr);
+  align-items: stretch;
   gap: 64px;
 }
 
@@ -91,44 +90,46 @@
 .footerCenter,
 .footerRight {
   min-width: 0;
+  min-height: 275px;
 }
 
 .footerLeft {
-  min-height: 260px;
   display: grid;
-  grid-template-columns: minmax(220px, 0.88fr) minmax(230px, 1fr);
-  align-items: end;
+  grid-template-columns: minmax(238px, 1fr) minmax(176px, 0.72fr);
+  align-items: stretch;
   gap: 54px;
-}
-
-.footerPages {
-  align-self: start;
-  justify-self: end;
-  width: min(210px, 100%);
 }
 
 .footerDescription {
   align-self: end;
-  max-width: 366px;
+  justify-self: start;
+  max-width: 310px;
   margin: 0;
-  color: rgba(35, 40, 39, 0.78);
-  font-size: 16px;
-  line-height: 1.48;
+  color: rgba(30, 38, 37, 0.78);
+  font-size: 13px;
+  line-height: 1.5;
   font-weight: 400;
+  text-align: left;
+}
+
+.footerPages {
+  align-self: start;
+  justify-self: start;
+  width: max-content;
 }
 
 .footerCenter {
-  min-height: 260px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
+  padding-top: 10px;
 }
 
 .footerLogo {
   display: block;
-  width: 330px;
+  width: 250px;
   max-width: 100%;
   height: auto;
   margin: 0 auto;
@@ -141,82 +142,74 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 26px;
-  margin-top: 42px;
+  gap: 22px;
+  margin-top: 38px;
 }
 
 .footerSocialIcon {
-  width: 72px;
-  height: 48px;
+  width: 60px;
+  height: 39px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid rgba(18, 27, 26, 0.58);
+  border: 1px solid rgba(16, 24, 23, 0.56);
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.08);
-  color: #101716;
+  color: #101817;
   text-decoration: none;
-  font-size: 25px;
+  font-size: 19px;
   line-height: 1;
   font-weight: 700;
-  transition:
-    background 0.35s var(--ease),
-    border-color 0.35s var(--ease),
-    color 0.35s var(--ease),
-    box-shadow 0.35s var(--ease);
+  transition: background 0.3s var(--ease), border-color 0.3s var(--ease), color 0.3s var(--ease), box-shadow 0.3s var(--ease);
 }
 
-.footerSocialIcon svg {
-  width: 22px;
-  height: 22px;
+.footerSocialImage {
+  width: 18px;
+  height: 18px;
   display: block;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 2.2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+  object-fit: contain;
+  flex: 0 0 18px;
 }
 
 .footerSocialIcon:hover {
   border-color: rgba(20, 99, 89, 0.88);
   background: #14695f;
   color: #ffffff;
-  box-shadow: 0 16px 34px rgba(20, 105, 95, 0.22);
+  box-shadow: 0 14px 28px rgba(20, 105, 95, 0.18);
 }
 
 .footerRight {
-  min-height: 260px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
   align-items: flex-start;
-  padding-left: 30px;
+  justify-content: flex-start;
+  padding-left: 16px;
 }
 
 .footerSupport nav,
 .footerPages nav {
   display: flex;
   flex-direction: column;
-  gap: 13px;
+  gap: 10px;
 }
 
 .footerPages h3,
 .footerSupport h3,
 .footerVisit h3 {
-  margin: 0 0 19px;
-  color: #070909;
-  font-size: 25px;
-  line-height: 1.1;
-  font-weight: 600;
+  margin: 0 0 17px;
+  color: #060908;
+  font-size: 19px;
+  line-height: 1.15;
+  font-weight: 700;
   letter-spacing: 0;
 }
 
 .footerPages a,
 .footerSupport a {
   width: max-content;
-  color: rgba(34, 39, 38, 0.76);
-  font-size: 16px;
-  line-height: 1.25;
+  color: rgba(30, 38, 37, 0.78);
+  font-size: 13px;
+  line-height: 1.35;
   font-weight: 400;
   text-decoration: none;
   transition: color 0.28s var(--ease), transform 0.28s var(--ease);
@@ -229,203 +222,957 @@
 }
 
 .footerVisit {
-  margin-top: 32px;
+  margin-top: 30px;
 }
 
 .footerVisit address,
 .footerVisit p {
   margin: 0;
-  color: rgba(34, 39, 38, 0.76);
+  color: rgba(30, 38, 37, 0.78);
   font-style: normal;
-  font-size: 16px;
-  line-height: 1.48;
+  font-size: 13px;
+  line-height: 1.5;
   font-weight: 400;
 }
 
 .footerVisit p {
-  margin-top: 19px;
+  margin-top: 15px;
 }
 
 .footerCopy {
   position: relative;
   z-index: 2;
-  margin: -16px auto 32px;
-  color: rgba(34, 39, 38, 0.82);
+  width: min(560px, calc(100% - 40px));
+  margin: -22px auto 0;
+  color: rgba(30, 38, 37, 0.8);
   text-align: center;
-  font-size: 16px;
-  line-height: 1.2;
+  font-size: 12px;
+  line-height: 1.35;
   font-weight: 400;
 }
 
-@media (max-width: 1280px) {
-  .footerContent {  
-      width: min(1180px, calc(100% - 64px));  
-      grid-template-columns: 1fr 1.05fr 1fr;  
-      gap: 42px;  
-    }
-  
-  .footerLeft {  
-      grid-template-columns: 1fr;  
-      align-items: start;  
-      gap: 42px;  
-    }
-  
-  .footerPages {  
-      justify-self: start;  
-    }
-  
-  .footerDescription {  
-      max-width: 330px;  
-    }
-  
-  .footerLogo {  
-      width: 286px;  
-    }
+@media (max-width: 1400px) {
+  .footerShell {
+    min-height: 540px;
+    padding: 72px 0 48px;
+  }
+
+  .footerCurve {
+    width: min(1280px, calc(100% - 112px));
+  }
+
+  .footerContent {
+    width: min(1080px, calc(100% - 136px));
+    grid-template-columns: minmax(330px, 1fr) minmax(270px, 0.78fr) minmax(330px, 1fr);
+    gap: 54px;
+  }
+
+  .footerLeft {
+    gap: 44px;
+  }
+  .footerCopy{
+    margin: 0 auto 0;
+  }
 }
 
-@media (max-width: 960px) {
-  .footerShell {  
-      min-height: auto;  
-    }
-  
-  .footerCurve {  
-      width: calc(100% - 44px);  
-      height: 74px;  
-    }
-  
-  .footerCurveTop {  
-      margin-top: 38px;  
-    }
-  
-  .footerContent {  
-      width: min(680px, calc(100% - 44px));  
-      grid-template-columns: 1fr;  
-      gap: 44px;  
-      text-align: center;  
-    }
-  
-  .footerLeft,
-  .footerCenter,
-  .footerRight {  
-      min-height: auto;  
-      align-items: center;  
-    }
-  
-  .footerLeft {  
-      grid-template-columns: 1fr;  
-      gap: 28px;  
-    }
-  
-  .footerPages,
-  .footerDescription {  
-      justify-self: center;  
-    }
-  
-  .footerPages a,
-  .footerSupport a {  
-      margin: 0 auto;  
-    }
-  
-  .footerDescription {  
-      max-width: 500px;  
-    }
-  
-  .footerRight {  
-      padding-left: 0;  
-    }
-  
-  .footerSocials {  
-      flex-wrap: wrap;  
-      gap: 16px;  
-      margin-top: 30px;  
-    }
-}
+@media (max-width: 1200px) {
+  .footerShell {
+    min-height: 520px;
+    padding: 64px 0 46px;
+  }
 
-@media (max-width: 560px) {
-  .footerSection {  
-      padding: 0;  
-    }
-  
-  .footerShell {  
-      border-radius: 0;  
-    }
-  
-  .footerContent {  
-      width: min(100%, calc(100% - 28px));  
-      gap: 34px;  
-    }
-  
-  .footerCurve {  
-      width: calc(100% - 28px);  
-      height: 58px;  
-    }
-  
-  .footerCurveTop {  
-      margin-top: 24px;  
-    }
-  
-  .footerCurveBottom {  
-      margin-top: 20px;  
-    }
-  
-  .footerPages h3,
-  .footerSupport h3,
-  .footerVisit h3 {  
-      font-size: 22px;  
-    }
-  
+  .footerCurve {
+    width: min(1060px, calc(100% - 80px));
+    height: 66px;
+  }
+
+  .footerContent {
+    width: min(980px, calc(100% - 72px));
+    grid-template-columns: minmax(290px, 1fr) minmax(240px, 0.75fr) minmax(290px, 1fr);
+    gap: 38px;
+  }
+
+  .footerLeft {
+    grid-template-columns: minmax(210px, 1fr) minmax(150px, 0.68fr);
+    gap: 30px;
+  }
+
   .footerDescription,
   .footerPages a,
   .footerSupport a,
   .footerVisit address,
-  .footerVisit p,
-  .footerCopy {  
-      font-size: 15px;  
-    }
-  
-  .footerLogo {  
-      width: 236px;  
-    }
-  
-  .footerSocialIcon {  
-      width: 60px;  
-      height: 44px;  
-      font-size: 22px;  
-    }
-  
-  .footerCopy {  
-      width: min(100%, calc(100% - 28px));  
-      margin: -8px auto 24px;  
-    }
+  .footerVisit p {
+    font-size: 12.5px;
+  }
+
+  .footerLogo {
+    width: 230px;
+  }
+  .footerCopy{
+    margin: 10px auto 0;
+  }
 }
 
-.footerSection {
-  background: transparent;
+@media (max-width: 992px) {
+  .footerShell {
+    min-height: auto;
+    padding: 54px 0 40px;
+  }
+
+  .footerCurve {
+    width: calc(100% - 56px);
+    height: 58px;
+  }
+
+  .footerCurveTop {
+    margin-bottom: 20px;
+  }
+
+  .footerContent {
+    width: min(720px, calc(100% - 56px));
+    min-height: auto;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "pages visit"
+      "brand brand"
+      "desc desc";
+    align-items: start;
+    gap: 34px 48px;
+    text-align: left;
+  }
+
+  .footerLeft,
+  .footerCenter,
+  .footerRight {
+    min-height: auto;
+  }
+
+  .footerLeft {
+    display: contents;
+  }
+
+  .footerPages {
+    grid-area: pages;
+    justify-self: start;
+  }
+
+  .footerDescription {
+    grid-area: desc;
+    justify-self: center;
+    max-width: 520px;
+    text-align: center;
+  }
+
+  .footerCenter {
+    grid-area: brand;
+    padding-top: 0;
+  }
+
+  .footerRight {
+    grid-area: visit;
+    padding-left: 0;
+    align-items: flex-start;
+  }
+
+  .footerLogo {
+    width: 236px;
+  }
+
+  .footerSocials {
+    margin-top: 28px;
+  }
+
+  .footerCurveBottom {
+    margin-top: 26px;
+  }
+
+  .footerCopy {
+    margin: 10px auto 0;
+  }
 }
 
-@media (max-width: 1100px) {
-  .footerGrid {  
-      padding: 48px 40px;  
-      gap: 0 28px;  
-    }
+@media (max-width: 768px) {
+  .footerShell {
+    padding: 48px 0 36px;
+  }
+
+  .footerCurve {
+    width: calc(100% - 38px);
+    height: 52px;
+  }
+
+  .footerContent {
+    width: min(560px, calc(100% - 38px));
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "brand"
+      "pages"
+      "visit"
+      "desc";
+    gap: 30px;
+    text-align: center;
+  }
+
+  .footerPages,
+  .footerRight,
+  .footerDescription {
+    justify-self: center;
+    text-align: center;
+  }
+
+  .footerPages nav,
+  .footerSupport nav {
+    align-items: center;
+  }
+
+  .footerPages a,
+  .footerSupport a {
+    margin: 0 auto;
+  }
+
+  .footerRight {
+    align-items: center;
+  }
+
+  .footerDescription {
+    max-width: 440px;
+  }
 }
 
-@media (max-width: 760px) {
-  .footerGrid {  
-      grid-template-columns: 1fr 1fr;  
-      gap: 36px 20px;  
-      padding: 40px 20px;  
-    }
-  
-  .footerColBio {  
-      grid-column: 1 / -1;  
-    }
-  
-  .footerColCenter {  
-      grid-column: 1 / -1;  
-    }
-  
-  .footerLogo {  
-      width: 120px;  
-    }
+@media (max-width: 576px) {
+  .footerShell {
+    padding: 42px 0 32px;
+  }
+
+  .footerCurve {
+    width: calc(100% - 28px);
+    height: 46px;
+  }
+
+  .footerCurveTop {
+    margin-bottom: 18px;
+  }
+
+  .footerCurveBottom {
+    margin-top: 20px;
+  }
+
+  .footerContent {
+    width: calc(100% - 30px);
+    gap: 28px;
+  }
+
+  .footerPages h3,
+  .footerSupport h3,
+  .footerVisit h3 {
+    font-size: 18px;
+    margin-bottom: 14px;
+  }
+
+  .footerDescription,
+  .footerPages a,
+  .footerSupport a,
+  .footerVisit address,
+  .footerVisit p {
+    font-size: 12.5px;
+  }
+
+  .footerLogo {
+    width: 214px;
+  }
+
+  .footerSocials {
+    gap: 12px;
+    margin-top: 24px;
+  }
+
+  .footerSocialIcon {
+    width: 50px;
+    height: 35px;
+    font-size: 17px;
+  }
+
+  .footerCopy {
+    width: calc(100% - 30px);
+    margin-top: -8px;
+    font-size: 11.5px;
+  }
+}
+
+@media (max-width: 430px) {
+  .footerShell {
+    padding: 38px 0 30px;
+  }
+
+  .footerCurve {
+    width: calc(100% - 22px);
+    height: 42px;
+  }
+
+  .footerContent {
+    width: calc(100% - 24px);
+    gap: 26px;
+  }
+
+  .footerLogo {
+    width: 198px;
+  }
+
+  .footerDescription {
+    max-width: 320px;
+  }
+
+  .footerSocialIcon {
+    width: 48px;
+    height: 34px;
+  }
+}
+
+@media (max-width: 390px) {
+  .footerShell {
+    padding: 36px 0 28px;
+  }
+
+  .footerContent {
+    width: calc(100% - 20px);
+    gap: 24px;
+  }
+
+  .footerCurve {
+    width: calc(100% - 20px);
+    height: 40px;
+  }
+
+  .footerDescription,
+  .footerPages a,
+  .footerSupport a,
+  .footerVisit address,
+  .footerVisit p {
+    font-size: 12px;
+  }
+
+  .footerPages h3,
+  .footerSupport h3,
+  .footerVisit h3 {
+    font-size: 17px;
+  }
+
+  .footerLogo {
+    width: 188px;
+  }
+
+  .footerSocialIcon {
+    width: 46px;
+    height: 33px;
+  }
+}
+
+/* Figma footer typography lock */
+.footerShell .footerPages h3,
+.footerShell .footerSupport h3,
+.footerShell .footerVisit h3 {
+  font-family: Inter, var(--font-inter), var(--font-montserrat), sans-serif !important;
+  font-size: 24px !important;
+  line-height: 31.2px !important;
+  font-weight: 500 !important;
+  letter-spacing: -0.98px !important;
+  color: rgb(18, 10, 11) !important;
+}
+
+.footerShell .footerPages a,
+.footerShell .footerSupport a,
+.footerShell .footerDescription,
+.footerShell .footerVisit address,
+.footerShell .footerVisit p {
+  font-family: Inter, var(--font-inter), var(--font-montserrat), sans-serif !important;
+  font-size: 16px !important;
+  line-height: 24px !important;
+  font-weight: 400 !important;
+  letter-spacing: -0.48px !important;
+  color: rgb(69, 65, 64) !important;
+}
+
+.footerShell .footerCopy {
+  font-family: Inter, var(--font-inter), var(--font-montserrat), sans-serif !important;
+  font-size: 15px !important;
+  line-height: 22px !important;
+  font-weight: 400 !important;
+  letter-spacing: -0.3px !important;
+  color: rgb(69, 65, 64) !important;
+}
+
+@media (max-width: 768px) {
+  .footerShell .footerPages h3,
+  .footerShell .footerSupport h3,
+  .footerShell .footerVisit h3 {
+    font-size: 22px !important;
+    line-height: 28.6px !important;
+  }
+
+  .footerShell .footerPages a,
+  .footerShell .footerSupport a,
+  .footerShell .footerDescription,
+  .footerShell .footerVisit address,
+  .footerShell .footerVisit p {
+    font-size: 15px !important;
+    line-height: 22px !important;
+  }
+}
+
+@media (max-width: 430px) {
+  .footerShell .footerPages h3,
+  .footerShell .footerSupport h3,
+  .footerShell .footerVisit h3 {
+    font-size: 20px !important;
+    line-height: 26px !important;
+  }
+
+  .footerShell .footerPages a,
+  .footerShell .footerSupport a,
+  .footerShell .footerDescription,
+  .footerShell .footerVisit address,
+  .footerShell .footerVisit p {
+    font-size: 14px !important;
+    line-height: 21px !important;
+  }
+
+  .footerShell .footerCopy {
+    font-size: 13px !important;
+    line-height: 19px !important;
+  }
+}
+
+/* Footer final responsive lock: 1200, 992, 768, 576, 430, 390 */
+@media (max-width: 1200px) {
+  .footerShell {
+    min-height: 520px !important;
+    padding: 64px 0 46px !important;
+  }
+
+  .footerCurve {
+    width: min(1080px, calc(100% - 80px)) !important;
+    height: 66px !important;
+  }
+
+  .footerContent {
+    width: min(1020px, calc(100% - 72px)) !important;
+    min-height: 258px !important;
+    grid-template-columns: minmax(292px, 1fr) minmax(230px, 0.75fr) minmax(292px, 1fr) !important;
+    gap: 36px !important;
+  }
+
+  .footerLeft,
+  .footerCenter,
+  .footerRight {
+    min-height: 258px !important;
+  }
+
+  .footerLeft {
+    grid-template-columns: minmax(190px, 1fr) minmax(142px, 0.72fr) !important;
+    gap: 28px !important;
+  }
+
+  .footerLogo {
+    width: 228px !important;
+  }
+
+  .footerSocials {
+    gap: 16px !important;
+    margin-top: 30px !important;
+  }
+
+  .footerSocialIcon {
+    width: 54px !important;
+    height: 36px !important;
+  }
+
+  .footerShell .footerPages h3,
+  .footerShell .footerSupport h3,
+  .footerShell .footerVisit h3 {
+    font-size: 22px !important;
+    line-height: 28.6px !important;
+  }
+
+  .footerShell .footerPages a,
+  .footerShell .footerSupport a,
+  .footerShell .footerDescription,
+  .footerShell .footerVisit address,
+  .footerShell .footerVisit p {
+    font-size: 15px !important;
+    line-height: 22px !important;
+  }
+}
+
+@media (max-width: 992px) {
+  .footerShell {
+    min-height: auto !important;
+    padding: 56px 0 42px !important;
+  }
+
+  .footerCurve {
+    width: calc(100% - 56px) !important;
+    height: 58px !important;
+  }
+
+  .footerCurveTop {
+    margin-bottom: 22px !important;
+  }
+
+  .footerContent {
+    width: min(760px, calc(100% - 56px)) !important;
+    min-height: auto !important;
+    grid-template-columns: 1fr 1fr !important;
+    grid-template-areas:
+      "pages visit"
+      "brand brand"
+      "desc desc" !important;
+    align-items: start !important;
+    gap: 34px 44px !important;
+    text-align: left !important;
+  }
+
+  .footerLeft {
+    display: contents !important;
+    min-height: auto !important;
+  }
+
+  .footerCenter,
+  .footerRight {
+    min-height: auto !important;
+  }
+
+  .footerPages {
+    grid-area: pages !important;
+    justify-self: start !important;
+    text-align: left !important;
+  }
+
+  .footerCenter {
+    grid-area: brand !important;
+    padding-top: 0 !important;
+  }
+
+  .footerRight {
+    grid-area: visit !important;
+    padding-left: 0 !important;
+    align-items: flex-start !important;
+    text-align: left !important;
+  }
+
+  .footerDescription {
+    grid-area: desc !important;
+    justify-self: center !important;
+    max-width: 540px !important;
+    text-align: center !important;
+  }
+
+  .footerLogo {
+    width: 236px !important;
+  }
+
+  .footerCurveBottom {
+    margin-top: 28px !important;
+  }
+
+  .footerCopy {
+    margin-top: -24px !important;
+  }
+
+  .footerShell .footerPages h3,
+  .footerShell .footerSupport h3,
+  .footerShell .footerVisit h3 {
+    font-size: 22px !important;
+    line-height: 28.6px !important;
+  }
+
+  .footerShell .footerPages a,
+  .footerShell .footerSupport a,
+  .footerShell .footerDescription,
+  .footerShell .footerVisit address,
+  .footerShell .footerVisit p {
+    font-size: 15px !important;
+    line-height: 22px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .footerShell {
+    padding: 48px 0 38px !important;
+  }
+
+  .footerCurve {
+    width: calc(100% - 40px) !important;
+    height: 52px !important;
+  }
+
+  .footerContent {
+    width: min(580px, calc(100% - 40px)) !important;
+    grid-template-columns: 1fr !important;
+    grid-template-areas:
+      "brand"
+      "pages"
+      "visit"
+      "desc" !important;
+    gap: 30px !important;
+    text-align: center !important;
+  }
+
+  .footerPages,
+  .footerCenter,
+  .footerRight,
+  .footerDescription {
+    justify-self: center !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+
+  .footerPages nav,
+  .footerSupport nav {
+    align-items: center !important;
+  }
+
+  .footerPages a,
+  .footerSupport a {
+    margin: 0 auto !important;
+  }
+
+  .footerVisit {
+    margin-top: 24px !important;
+  }
+
+  .footerDescription {
+    max-width: 450px !important;
+  }
+
+  .footerLogo {
+    width: 222px !important;
+  }
+
+  .footerSocials {
+    gap: 14px !important;
+    margin-top: 26px !important;
+  }
+
+  .footerSocialIcon {
+    width: 52px !important;
+    height: 36px !important;
+  }
+
+  .footerShell .footerPages h3,
+  .footerShell .footerSupport h3,
+  .footerShell .footerVisit h3 {
+    font-size: 21px !important;
+    line-height: 27px !important;
+  }
+
+  .footerShell .footerPages a,
+  .footerShell .footerSupport a,
+  .footerShell .footerDescription,
+  .footerShell .footerVisit address,
+  .footerShell .footerVisit p {
+    font-size: 15px !important;
+    line-height: 22px !important;
+  }
+
+    .footerCopy {
+    margin: 10px auto 0 !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .footerShell {
+    padding: 42px 0 34px !important;
+  }
+
+  .footerCurve {
+    width: calc(100% - 28px) !important;
+    height: 46px !important;
+  }
+
+  .footerCurveTop {
+    margin-bottom: 18px !important;
+  }
+
+  .footerCurveBottom {
+    margin-top: 20px !important;
+  }
+
+  .footerContent {
+    width: calc(100% - 30px) !important;
+    gap: 28px !important;
+  }
+
+  .footerDescription {
+    max-width: 390px !important;
+  }
+
+  .footerLogo {
+    width: 210px !important;
+  }
+
+  .footerSocials {
+    gap: 12px !important;
+    margin-top: 22px !important;
+  }
+
+  .footerSocialIcon {
+    width: 50px !important;
+    height: 35px !important;
+    font-size: 17px !important;
+  }
+
+  .footerCopy {
+    width: calc(100% - 30px) !important;
+    margin-top: 10px !important;
+  }
+
+  .footerShell .footerPages h3,
+  .footerShell .footerSupport h3,
+  .footerShell .footerVisit h3 {
+    font-size: 20px !important;
+    line-height: 26px !important;
+    margin-bottom: 13px !important;
+  }
+
+  .footerShell .footerPages a,
+  .footerShell .footerSupport a,
+  .footerShell .footerDescription,
+  .footerShell .footerVisit address,
+  .footerShell .footerVisit p {
+    font-size: 14px !important;
+    line-height: 21px !important;
+  }
+
+  .footerShell .footerCopy {
+    font-size: 13px !important;
+    line-height: 19px !important;
+  }
+}
+
+@media (max-width: 430px) {
+  .footerShell {
+    padding: 38px 0 30px !important;
+  }
+
+  .footerCurve {
+    width: calc(100% - 22px) !important;
+    height: 42px !important;
+  }
+
+  .footerContent {
+    width: calc(100% - 24px) !important;
+    gap: 26px !important;
+  }
+
+  .footerDescription {
+    max-width: 330px !important;
+  }
+
+  .footerLogo {
+    width: 198px !important;
+  }
+
+  .footerSocials {
+    gap: 10px !important;
+  }
+
+  .footerSocialIcon {
+    width: 47px !important;
+    height: 33px !important;
+    font-size: 16px !important;
+  }
+
+  .footerShell .footerPages h3,
+  .footerShell .footerSupport h3,
+  .footerShell .footerVisit h3 {
+    font-size: 19px !important;
+    line-height: 25px !important;
+  }
+
+  .footerShell .footerPages a,
+  .footerShell .footerSupport a,
+  .footerShell .footerDescription,
+  .footerShell .footerVisit address,
+  .footerShell .footerVisit p {
+    font-size: 13.5px !important;
+    line-height: 20px !important;
+  }
+}
+
+@media (max-width: 390px) {
+  .footerShell {
+    padding: 36px 0 28px !important;
+  }
+
+  .footerCurve {
+    width: calc(100% - 20px) !important;
+    height: 40px !important;
+  }
+
+  .footerContent {
+    width: calc(100% - 20px) !important;
+    gap: 24px !important;
+  }
+
+  .footerDescription {
+    max-width: 300px !important;
+  }
+
+  .footerLogo {
+    width: 188px !important;
+  }
+
+  .footerSocialIcon {
+    width: 45px !important;
+    height: 32px !important;
+  }
+
+  .footerShell .footerPages h3,
+  .footerShell .footerSupport h3,
+  .footerShell .footerVisit h3 {
+    font-size: 18px !important;
+    line-height: 24px !important;
+  }
+
+  .footerShell .footerPages a,
+  .footerShell .footerSupport a,
+  .footerShell .footerDescription,
+  .footerShell .footerVisit address,
+  .footerShell .footerVisit p {
+    font-size: 13px !important;
+    line-height: 19px !important;
+  }
+
+  .footerShell .footerCopy {
+    font-size: 12.5px !important;
+    line-height: 18px !important;
+  }
+}
+
+/* Footer tablet correction: keep 992px-769px compact like desktop */
+@media (min-width: 769px) and (max-width: 992px) {
+  .footerShell {
+    min-height: 500px !important;
+    padding: 50px 0 38px !important;
+  }
+
+  .footerCurve {
+    width: calc(100% - 54px) !important;
+    height: 56px !important;
+  }
+
+  .footerCurveTop {
+    margin-bottom: 18px !important;
+  }
+
+  .footerContent {
+    width: min(860px, calc(100% - 58px)) !important;
+    min-height: 236px !important;
+    display: grid !important;
+    grid-template-columns: minmax(250px, 1fr) minmax(210px, 0.75fr) minmax(250px, 1fr) !important;
+    grid-template-areas: none !important;
+    align-items: stretch !important;
+    gap: 28px !important;
+    text-align: left !important;
+  }
+
+  .footerLeft {
+    display: grid !important;
+    min-height: 236px !important;
+    grid-column: auto !important;
+    grid-row: auto !important;
+    grid-template-columns: minmax(155px, 1fr) minmax(112px, 0.72fr) !important;
+    align-items: stretch !important;
+    gap: 18px !important;
+  }
+
+  .footerCenter,
+  .footerRight {
+    min-height: 236px !important;
+    grid-column: auto !important;
+    grid-row: auto !important;
+  }
+
+  .footerPages,
+  .footerCenter,
+  .footerRight,
+  .footerDescription {
+    grid-area: auto !important;
+  }
+
+  .footerPages {
+    align-self: start !important;
+    justify-self: start !important;
+    text-align: left !important;
+  }
+
+  .footerDescription {
+    align-self: end !important;
+    justify-self: start !important;
+    max-width: 260px !important;
+    text-align: left !important;
+  }
+
+  .footerCenter {
+    align-items: center !important;
+    justify-content: center !important;
+    padding-top: 0 !important;
+    text-align: center !important;
+  }
+
+  .footerRight {
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    padding-left: 0 !important;
+    text-align: left !important;
+  }
+
+  .footerLogo {
+    width: 210px !important;
+  }
+
+  .footerSocials {
+    gap: 12px !important;
+    margin-top: 24px !important;
+  }
+
+  .footerSocialIcon {
+    width: 48px !important;
+    height: 33px !important;
+    font-size: 16px !important;
+  }
+
+  .footerVisit {
+    margin-top: 24px !important;
+  }
+
+  .footerCurveBottom {
+    margin-top: 24px !important;
+  }
+
+  .footerCopy {
+    margin-top: 10px !important;
+  }
+
+  .footerShell .footerPages h3,
+  .footerShell .footerSupport h3,
+  .footerShell .footerVisit h3 {
+    font-size: 20px !important;
+    line-height: 26px !important;
+    margin-bottom: 12px !important;
+  }
+
+  .footerShell .footerPages a,
+  .footerShell .footerSupport a,
+  .footerShell .footerDescription,
+  .footerShell .footerVisit address,
+  .footerShell .footerVisit p {
+    font-size: 13.5px !important;
+    line-height: 20px !important;
+  }
+
+  .footerShell .footerCopy {
+    font-size: 12.5px !important;
+    line-height: 18px !important;
+  }
 }

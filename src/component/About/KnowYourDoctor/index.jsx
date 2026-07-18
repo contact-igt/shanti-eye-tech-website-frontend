@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
 import { Inter, Playfair_Display } from "next/font/google";
 import {
   ease,
@@ -27,24 +26,27 @@ const playfair = Playfair_Display({
 function DoctorInfoCard({ card }) {
   return (
     <motion.article className={styles.aboutDoctorCard} variants={reveal}>
-      <div className={styles.aboutDoctorCardHeading}>
-        <h3>{card.title}</h3>
-        <span aria-hidden="true">{card.number}</span>
-      </div>
+      <span className={styles.aboutDoctorCardNumber}>{card.number}</span>
+      <div className={styles.aboutDoctorCardPanel}>
+        <div className={styles.aboutDoctorCardBody}>
+          <div className={styles.aboutDoctorCardHeading}>
+            <h3>{card.title}</h3>
+          </div>
 
-      {card.type === "pills" ? (
-        <div className={styles.aboutDoctorPills}>
-          {card.items.map((item) => (
-            <span key={item}>{item}</span>
-          ))}
+          {card.type === "pills" ? (
+            <div className={styles.aboutDoctorPills}>
+              {card.items.map((item) => (
+                <span key={item}>{item}</span>
+              ))}
+            </div>
+          ) : (
+            <p>{card.body}</p>
+          )}
         </div>
-      ) : (
-        <p>{card.body}</p>
-      )}
+      </div>
     </motion.article>
   );
 }
-
 
 export default function KnowYourDoctor() {
   return (
@@ -115,3 +117,4 @@ export default function KnowYourDoctor() {
     </section>
   );
 }
+
