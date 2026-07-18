@@ -1,25 +1,64 @@
-const GOOGLE_APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxyeCVcViIO5lOqfb2zAb1ZNhhUQylvHqLk56JY7CBOXnqjRCC-UG25sB0CnX2y8yPd2Q/exec";
+const BACKEND_BASE_URL = (
+  process.env.NEXT_PUBLIC_BACKEND_API_BASE_URL || "http://localhost:8000"
+).replace(/\/+$/, "");
+const BACKEND_CLIENT_KEY =
+  process.env.NEXT_PUBLIC_BACKEND_CLIENT_KEY || "shanti_eye_tech";
 
-export async function submitForm(formName, data) {
-  if (!GOOGLE_APPS_SCRIPT_URL) {
-    throw new Error("NEXT_PUBLIC_GOOGLE_APPS_SCRIPT_URL not configured");
+export async function registerContactLead(data) {
+  const endpoint = `${BACKEND_BASE_URL}/api/v1/shanti-eye-tech/register`;
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 12000);
+  let response;
+
+  try {
+    response = await fetch(endpoint, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Client-Key": BACKEND_CLIENT_KEY,
+      },
+      body: JSON.stringify(data),
+      signal: controller.signal,
+    });
+  } catch (error) {
+    if (error?.name === "AbortError") {
+      throw new Error("Backend request timed out. Please try again.");
+    }
+    throw new Error(`Unable to connect to the backend at ${BACKEND_BASE_URL}.`);
+  } finally {
+    clearTimeout(timeout);
   }
 
-  const payload = { form: formName, data };
+  const result = await response.json().catch(() => null);
+  if (!response.ok || result?.success !== true) {
+    const details = Array.isArray(result?.details) ? result.details.join(" ") : "";
+    throw new Error(details || result?.message || "Failed to submit contact form");
+  }
 
-  // Local API submission disabled by request.
-  // const res = await fetch("/api/forms/submit", {
-  //   method: "POST",
-  //   headers: { "Content-Type": "application/json" },
-  //   body: JSON.stringify(payload),
-  // });
+  return result;
+}
 
-  await fetch(GOOGLE_APPS_SCRIPT_URL, {
+export async function submitContactLeadToGoogleSheets(data) {
+  const response = await fetch("/api/forms/submit", {
     method: "POST",
-    mode: "no-cors",
-    headers: { "Content-Type": "text/plain;charset=utf-8" },
-    body: JSON.stringify(payload),
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      form: "Contact",
+      data: {
+        fullName: data.name,
+        mobile: data.mobile_number,
+        treatment: data.service,
+        message: data.message,
+        ip_address: data.ip_address,
+        utm_source: data.utm_source,
+      },
+    }),
   });
 
-  return { ok: true };
+  const result = await response.json().catch(() => null);
+  if (!response.ok || result?.ok !== true) {
+    throw new Error(result?.error || "Google Sheets submission failed");
+  }
+
+  return result;
 }
