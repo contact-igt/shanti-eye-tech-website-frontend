@@ -287,6 +287,7 @@
   z-index: 6;
   display: flex;
   align-items: center;
+<<<<<<< Updated upstream
   gap: 24px;
   color: var(--ink);
   font-size: 18px;
@@ -310,19 +311,31 @@
 }
 
 .navDropdownTrigger {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  cursor: pointer;
-  border: 0;
-  padding: 0;
-  background: transparent;
-  font: inherit;
-  color: var(--ink);
-  font-weight: 500;
-  transition: opacity 220ms var(--ease);
+=======
+  gap: 12px;
 }
 
+.navPill {
+>>>>>>> Stashed changes
+  display: flex;
+  align-items: center;
+  height: 48px;
+  background: var(--white);
+  border-radius: 999px;
+  padding: 0 36px;
+  gap: 28px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+}
+
+.navPill a {
+  color: var(--ink);
+  font-size: 15px;
+  font-weight: 500;
+  transition: color 200ms ease, opacity 200ms ease;
+  white-space: nowrap;
+}
+
+<<<<<<< Updated upstream
 .navDropdownTrigger:hover {
   opacity: 0.62;
 }
@@ -334,6 +347,11 @@
   flex-shrink: 0;
   margin-top: 1px;
   transition: transform 0.25s var(--ease);
+=======
+.navPill a:hover {
+  color: var(--aqua);
+  opacity: 0.85;
+>>>>>>> Stashed changes
 }
 
 .navDropdown:hover .navDropdownChevron,
@@ -413,6 +431,7 @@
 }
 
 .menuButton {
+<<<<<<< Updated upstream
   width: 64px;
   height: 42px;
   border: 0;
@@ -421,14 +440,36 @@
   place-items: center;
   gap: 4px;
   padding: 9px 20px;
+=======
+  width: 60px;
+  height: 48px;
+  border: 0;
+  border-radius: 999px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 0;
+>>>>>>> Stashed changes
   cursor: pointer;
   background: var(--aqua);
-  box-shadow: 0 18px 34px rgba(36, 197, 232, 0.22);
+  box-shadow: 0 10px 24px rgba(36, 197, 232, 0.25);
+  transition: background-color 200ms ease, box-shadow 200ms ease;
+}
+
+.menuButton:hover {
+  background: #1bcde8;
 }
 
 .menuButton span {
+<<<<<<< Updated upstream
   width: 22px;
   height: 3px;
+=======
+  width: 20px;
+  height: 2.5px;
+>>>>>>> Stashed changes
   border-radius: 99px;
   background: var(--white);
   transition:
@@ -438,7 +479,11 @@
 }
 
 .menuButton span:nth-child(2) {
+<<<<<<< Updated upstream
   width: 15px;
+=======
+  width: 14px;
+>>>>>>> Stashed changes
 }
 
 .menuButton span:nth-child(3) {
@@ -446,8 +491,13 @@
 }
 
 .menuButton.menuOpen span:nth-child(1) {
+<<<<<<< Updated upstream
   transform: translateY(7px) rotate(45deg);
   width: 22px;
+=======
+  transform: translateY(6.5px) rotate(45deg);
+  width: 20px;
+>>>>>>> Stashed changes
 }
 
 .menuButton.menuOpen span:nth-child(2) {
@@ -455,8 +505,8 @@
 }
 
 .menuButton.menuOpen span:nth-child(3) {
-  transform: translateY(-5px) rotate(-45deg);
-  width: 17px;
+  transform: translateY(-6.5px) rotate(-45deg);
+  width: 20px;
 }
 
 .featurePill {

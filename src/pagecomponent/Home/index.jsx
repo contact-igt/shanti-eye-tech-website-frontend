@@ -236,10 +236,16 @@ function HeroImage() {
     >
 
       <div className={css("image-card")}>
+<<<<<<< Updated upstream
         <motion.span
           className={css("image-card-photo")}
           role="img"
           aria-label="Santhi Eye Tech reception"
+=======
+        <motion.img
+          src="/assets/home_logos/new_background.png"
+          alt="Shanthi Eye Tech reception"
+>>>>>>> Stashed changes
           initial={{ scale: 1.08 }}
           animate={{ scale: 1.04 }}
           transition={{ duration: 0.75, ease }}
@@ -285,6 +291,7 @@ function Hero() {
 
   return (
     <section className={css("hero-canvas")} id="home">
+<<<<<<< Updated upstream
       <nav className={`${css(`nav-links ${isMenuOpen ? "nav-open" : ""}`)} ${homeNavMontserrat.variable}`} aria-label="Primary navigation">
         <Link href="#home" onClick={() => setIsMenuOpen(false)}>Home</Link>
         <div className={css("nav-dropdown")}>
@@ -319,9 +326,15 @@ function Hero() {
             <Link href="/treatments/glaucoma" onClick={() => setIsMenuOpen(false)}>Glaucoma</Link>
             <Link href="/treatments/retina" onClick={() => setIsMenuOpen(false)}>Retina</Link>
           </div>
+=======
+      <nav className={css(`nav-links ${isMenuOpen ? "nav-open" : ""}`)} aria-label="Primary navigation">
+        <div className={css("nav-pill")}>
+          <Link href="#home" onClick={() => setIsMenuOpen(false)}>Home</Link>
+          <Link href="#services" onClick={() => setIsMenuOpen(false)}>Services</Link>
+          <Link href="/about" onClick={() => setIsMenuOpen(false)}>About</Link>
+          <Link href="/contact" onClick={() => setIsMenuOpen(false)}>Contact</Link>
+>>>>>>> Stashed changes
         </div>
-        <Link href="/about" onClick={() => setIsMenuOpen(false)}>About</Link>
-        <Link href="/contact" onClick={() => setIsMenuOpen(false)}>Contact</Link>
         <MenuButton isOpen={isMenuOpen} onClick={() => setIsMenuOpen(!isMenuOpen)} />
       </nav>
 
