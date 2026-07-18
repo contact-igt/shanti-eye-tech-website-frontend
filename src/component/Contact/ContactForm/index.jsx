@@ -1,10 +1,14 @@
 "use client";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { Inter, Montserrat } from "next/font/google";
-import { submitForm } from "@/lib/formService";
+import {
+  registerContactLead,
+  submitContactLeadToGoogleSheets,
+} from "@/lib/formService";
 import styles from "./styles.module.css";
 
 const montserrat = Montserrat({
@@ -49,9 +53,12 @@ const contactSchema = Yup.object({
     .required("Please enter your name."),
   mobile: Yup.string()
     .trim()
-    .matches(/^[+]?[(]?[0-9]{1,4}[)]?[-\s./0-9]*$/, "Please enter a valid mobile number.")
-    .min(10, "Mobile number must be at least 10 digits.")
-    .max(16, "Mobile number must be 16 digits or less.")
+    .matches(/^[0-9+()\s-]+$/, "Please enter a valid mobile number.")
+    .test("mobile-digit-count", "Mobile number must contain 10 to 15 digits.", (value) => {
+      if (!value) return true;
+      const digitCount = value.replace(/\D/g, "").length;
+      return digitCount >= 10 && digitCount <= 15;
+    })
     .required("Please enter your mobile number."),
   treatment: Yup.string()
     .required("Please select a treatment."),
@@ -62,6 +69,24 @@ const contactSchema = Yup.object({
 
 export default function ContactForm() {
   const router = useRouter();
+  const [utmSource, setUtmSource] = useState("");
+
+  useEffect(() => {
+    if (!router.isReady) return;
+
+    const queryValue = Array.isArray(router.query.utm_source)
+      ? router.query.utm_source[0]
+      : router.query.utm_source;
+    const source = typeof queryValue === "string" ? queryValue.trim().slice(0, 100) : "";
+
+    if (source) {
+      sessionStorage.setItem("shanti_eye_tech_utm_source", source);
+      setUtmSource(source);
+      return;
+    }
+
+    setUtmSource(sessionStorage.getItem("shanti_eye_tech_utm_source") || "");
+  }, [router.isReady, router.query.utm_source]);
 
   const formik = useFormik({
     initialValues: INITIAL_VALUES,
@@ -69,17 +94,28 @@ export default function ContactForm() {
     validateOnBlur: true,
     validateOnChange: true,
     onSubmit: async (values, { resetForm, setSubmitting }) => {
-      const fullName = values.firstName.trim();
-
       const contactData = {
-        fullName,
-        mobile: values.mobile.trim(),
-        treatment: values.treatment,
+        name: values.firstName.trim(),
+        mobile_number: values.mobile.trim(),
+        service: values.treatment,
         message: values.message.trim(),
+        utm_source: utmSource || "direct",
       };
 
       try {
-        await submitForm("Contact", contactData);
+        const backendResult = await registerContactLead(contactData);
+        const sheetData = {
+          ...contactData,
+          ip_address: backendResult.data?.ip_address || "",
+          utm_source: backendResult.data?.utm_source || contactData.utm_source,
+        };
+
+        try {
+          await submitContactLeadToGoogleSheets(sheetData);
+        } catch (sheetError) {
+          console.error("Lead created, but Google Sheets sync failed", sheetError);
+        }
+
         resetForm();
         router.push("/thank-you");
       } catch (err) {
@@ -138,7 +174,7 @@ export default function ContactForm() {
                       className={getInputClassName("firstName")}
                       aria-invalid={Boolean(getFieldError("firstName"))}
                       aria-describedby={getFieldError("firstName") ? "firstName-error" : undefined}
-                      autoComplete="given-name"
+                      autoComplete="name"
                     />
                     <span className={styles.inputIcon}><FieldIcon src="/assets/contact/user-icon.png" /></span>
                   </div>
@@ -182,8 +218,8 @@ export default function ContactForm() {
                     >
                       <option value="">Select treatment</option>
                       <option value="Cataract">Cataract</option>
-                      <option value="LASIK">LASIK</option>
-                      <option value="Pediatric Eye Care">Pediatric Eye Care</option>
+                      <option value="Lasik">LASIK</option>
+                      <option value="Pediatric">Pediatric Eye Care</option>
                       <option value="Glaucoma">Glaucoma</option>
                       <option value="Retina">Retina</option>
                     </select>
