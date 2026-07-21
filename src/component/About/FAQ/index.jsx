@@ -84,7 +84,7 @@ export default function FAQ({ content = aboutFaqContent }) {
           <p>{content.callout}</p>
           <Link className={styles.aboutFaqBook} href="/contact">
             <CalendarDays aria-hidden="true" strokeWidth={1.7} />
-            <span>Book a call</span>
+            <span>Book an Appointment</span>
           </Link>
           <a className={styles.aboutFaqEmail} href={`mailto:${content.email}`}>
             or {content.email}

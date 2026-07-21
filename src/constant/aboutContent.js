@@ -80,8 +80,8 @@ export const whyPatientsContent = {
       image: "/assets/why_Patients_choose/7.png"
     },
     {
-      title: "Comprehensive Treatments",
-      description: "All major eye care under one roof.",
+      title: "In-house Opticals & Pharmacy",
+      description: "Convenient access to eyewear and prescribed eye-care medicines.",
       image: "/assets/why_Patients_choose/8.png"
     }
   ]
@@ -130,7 +130,7 @@ export const knowYourDoctorContent = {
 // About pinned testimonials carousel
 export const aboutTestimonialsContent = {
   badge: "Client Testimonials",
-  title: ["You're Not Alone,", "Hear From Others Like You"],
+  title: ["Patient Experiences at Shanti EyeTech"],
   items: [
     {
       id: "emily-carson",
@@ -191,49 +191,49 @@ export const aboutTestimonialsContent = {
 // About FAQ section
 export const aboutFaqContent = {
   eyebrow: "Frequently asked question",
-  title: "Answers to your asked queries",
-  callout: "Still not sure? Book a free discovery call now.",
+  title: "Answers to Frequently Asked Questions",
+  callout: "Have questions about your eye care? Book a consultation with our eye specialist.",
   email: "info@shantieyetech.com",
   items: [
     {
       id: "book-appointment",
-      question: "How do I book a doctor?",
-      answer: "You can book an appointment through our website contact section or call our clinic directly at +91 91791 91939."
+      question: "How can I book an appointment with Dr. Amit N. Solanki?",
+      answer: "Booking an appointment is easy. You can call us directly at +91 91791 91939 during clinic hours or use the appointment form on our website. Our team will help you schedule a convenient consultation."
     },
     {
-      id: "reports",
-      question: "Can I access reports later?",
-      answer: "Yes. Please contact the clinic with your registered details and our team will help you access available reports and visit records."
+      id: "eye-conditions",
+      question: "What eye conditions does Shanti EyeTech treat?",
+      answer: "We provide comprehensive eye care services including cataract surgery, LASIK & vision correction, glaucoma care, retina services, pediatric eye care, keratoconus management, optical services, and an in-house pharmacy."
     },
     {
-      id: "availability",
-      question: "Is Shanti EyeTech available 24/7?",
-      answer: "Our regular consultation hours are scheduled. For urgent eye concerns, call the clinic so our team can guide you appropriately."
+      id: "lasik-safety",
+      question: "Is LASIK surgery safe?",
+      answer: "LASIK is a safe and commonly performed vision correction procedure for eligible patients. During your consultation, Dr. Amit N. Solanki will perform a detailed eye examination to determine whether LASIK is the right option for you."
     },
     {
-      id: "hospital-visit",
-      question: "Do I need to visit hospital?",
-      answer: "A physical examination is recommended for accurate diagnosis because many eye conditions require specialist instruments and clinical evaluation."
+      id: "cataract-duration",
+      question: "How long does cataract surgery take?",
+      answer: "Cataract surgery is a quick procedure that usually takes 15–30 minutes per eye. Most patients return home the same day and experience gradual improvement in vision as the eye heals."
     },
     {
-      id: "prescriptions",
-      question: "Can I get prescriptions online?",
-      answer: "Prescriptions are provided after an appropriate consultation. Follow-up guidance may be shared remotely when clinically suitable."
+      id: "eye-exam",
+      question: "When should I have my eyes examined?",
+      answer: "Regular eye examinations help detect vision problems and eye diseases early. Adults should have routine eye check-ups, while children, senior citizens, and patients with diabetes or glaucoma may require more frequent examinations."
     },
     {
-      id: "data-safety",
-      question: "Is my data safe?",
-      answer: "We handle your personal and medical information carefully and use it only for treatment, communication, and legally required purposes."
+      id: "insurance",
+      question: "Does Shanti EyeTech provide cashless insurance?",
+      answer: "Insurance availability may vary depending on your provider and treatment. Please contact our team before your visit to confirm your eligibility and required documents."
     },
     {
-      id: "choose-doctor",
-      question: "Can I choose my doctor?",
-      answer: "Yes. You may request an appointment with Dr. Amit N. Solanki, subject to schedule and consultation availability."
+      id: "walk-in",
+      question: "Do I need an appointment before visiting?",
+      answer: "Appointments are recommended to reduce waiting time and ensure adequate consultation time with the doctor. However, walk-in patients are also welcome during working hours."
     },
     {
-      id: "test-results",
-      question: "How fast are test results?",
-      answer: "Many diagnostic findings are discussed during the same visit. Tests requiring additional review may take longer, and our team will explain the expected timeline."
+      id: "location",
+      question: "Where is Shanti EyeTech located?",
+      answer: "Shanti EyeTech Eye Care & Laser Hospital is located at Shekhar Central, M1 & M2, Palasia Square, Manorama Ganj, Indore, Madhya Pradesh – 452001, making it easily accessible from across the city."
     }
   ]
 };

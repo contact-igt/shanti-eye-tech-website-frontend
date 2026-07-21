@@ -629,7 +629,9 @@ function ServiceCard({ service }) {
 }
 
 function ServicesSection() {
-  const serviceRows = [services.slice(0, 3), services.slice(3, 6)];
+  const serviceRows = Array.from({ length: Math.ceil(services.length / 3) }, (_, i) =>
+    services.slice(i * 3, i * 3 + 3)
+  );
 
   return (
     <section className={css("services-section")} id="services">
@@ -719,10 +721,7 @@ function DoctorSection() {
             Cataract, Glaucoma &amp; Refractive-LASIK Surgeon
           </motion.h2>
           <motion.p variants={reveal}>
-            Director of Shanti EyeTech, with more than 20 years of ophthalmology
-            experience. Trained at B.J. Medical College, Ahmedabad and Aravind Eye
-            Hospital, Tamil Nadu — with advanced training in phacoemulsification,
-            glaucoma diagnosis &amp; management, and LASIK refractive surgery.
+            Director of Shanti EyeTech with over 20 years of ophthalmology experience. Trained at B.J. Medical College, Ahmedabad and Aravind Eye Hospital, Tamil Nadu, with advanced training in phacoemulsification and glaucoma care, and LASIK surgical training in Vadodara, Gujarat.
           </motion.p>
         </motion.div>
 
@@ -975,7 +974,8 @@ function AwardsSection() {
 
           {awards.map((item, i) => {
             if (!item.year && !item.num) return null;
-            const tailItem = awards[i + 1]?.year || awards[i + 1]?.num ? null : awards[i + 1];
+            const nextItem = awards[i + 1];
+            const tailItem = nextItem && !nextItem.year && !nextItem.num ? nextItem : null;
             return <TimelineRow key={item.id} item={item} index={i} tailItem={tailItem} />;
           })}
         </div>
