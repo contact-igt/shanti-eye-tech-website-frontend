@@ -1,4 +1,4 @@
-﻿import { whyPatientsContent } from "@/constant/aboutContent";
+import { whyPatientsContent } from "@/constant/aboutContent";
 
 export const lasikTreatmentContent = {
   hero: {
@@ -97,7 +97,7 @@ export const lasikTreatmentContent = {
   },
   faq: {
     eyebrow: "Frequently asked question",
-    title: "Answers to your asked queries",
+    title: "Frequently Asked Questions",
     callout: "Still not sure? Book a free discovery call now.",
     email: "info@shantieyetech.com",
     items: [
@@ -227,7 +227,7 @@ export const catractTreatmentContent = {
   },
   faq: {
     eyebrow: "Frequently asked question",
-    title: "Answers to your asked queries",
+    title: "Frequently Asked Questions",
     callout: "Still not sure? Book a free discovery call now.",
     email: "info@shantieyetech.com",
     items: [
@@ -356,7 +356,7 @@ export const pediatricEyeCareTreatmentContent = {
   },
   faq: {
     eyebrow: "Frequently asked question",
-    title: "Answers to your asked queries",
+    title: "Frequently Asked Questions",
     callout: "Still not sure? Book a free discovery call now.",
     email: "info@shantieyetech.com",
     items: [
@@ -531,7 +531,7 @@ export const retinaTreatmentContent = {
   },
   faq: {
     eyebrow: "Frequently asked question",
-    title: "Answers to your asked queries",
+    title: "Frequently Asked Questions",
     callout: "Still not sure? Book a free discovery call now.",
     email: "info@shantieyetech.com",
     items: [
@@ -929,7 +929,7 @@ export const treatmentPages = {
     },
     faq: {
       eyebrow: "Frequently asked question",
-      title: "Answers to your asked queries",
+      title: "Frequently Asked Questions",
       callout: "Still not sure? Book a free discovery call now.",
       email: "info@shantieyetech.com",
       items: [
@@ -1146,7 +1146,7 @@ export const glaucomaTreatmentContent = {
   },
   faq: {
     eyebrow: "Frequently asked question",
-    title: "Answers to your asked queries",
+    title: "Frequently Asked Questions",
     callout: "Still not sure? Book a free discovery call now.",
     email: "info@shantieyetech.com",
     items: [
